@@ -1,0 +1,129 @@
+{
+  "title": "Live infrastructure host",
+  "description": "Synthetic source assets; target artifacts are generated exclusively by migrator convert. Numeric parity does not validate every stated approximation or assumption.",
+  "layout_type": "ordered",
+  "template_variables": [
+    {
+      "name": "host",
+      "prefix": "host",
+      "default": "*"
+    }
+  ],
+  "widgets": [
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "host: load",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:system.load.1{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "host: cpu-user",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:system.cpu.user{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "host: memory-total",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:system.mem.total{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "host: memory-usable",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:system.mem.usable{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "host: disk-utilization",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:system.io.util{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

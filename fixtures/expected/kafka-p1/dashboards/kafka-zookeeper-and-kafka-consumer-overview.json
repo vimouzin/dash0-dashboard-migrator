@@ -1,0 +1,471 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "kafka-zookeeper-and-kafka-consumer-overview",
+    "project": "datadog-migration"
+  },
+  "spec": {
+    "display": {
+      "description": "## Kafka Overview Dashboard\n\nThis dashboard provides an overview of your Kafka environment. It displays metrics from Kafka, Zookeeper, and Kafka Consumer Integrations with Datadog, giving you a complete view of the health and observability measures of your Kafka Cluster. Enabling the Kafka integration alone populates most of the dashboard widgets. To populate all groups with data, enable all three integrations.\n\nIf you would benefit from visualizing the topology of your streaming data pipelines, or from investigating localized bottlenecks within your data streams setup, check out [Data Streams Monitoring](https://www.datadoghq.com/product/data-streams-monitoring/).\n\nFor more information, read:\n* [Kafka integration documentation](https://docs.datadoghq.com/integrations/kafka/?tab=host)\n* [Monitoring Kafka blog post](https://www.datadoghq.com/blog/monitor-kafka-with-datadog/)\n* [ZooKeeper integration documentation](https://docs.datadoghq.com/integrations/zk/?tab=host)\n\nMigration remarks: WEIGHTED (see panel descriptions).",
+      "name": "Kafka, Zookeeper and Kafka Consumer Overview"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1"
+              },
+              "height": 6,
+              "width": 6,
+              "x": 6,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Data Streams Monitoring"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-0"
+              },
+              "height": 3,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Clusters Health"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-0"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-1"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 4,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-2"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 8,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Broker Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-0"
+              },
+              "height": 3,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Producer Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-0"
+              },
+              "height": 3,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Consumer Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-6-0"
+              },
+              "height": 3,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Lag, Throughput and Message Size"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-7-0"
+              },
+              "height": 3,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Zookeeper Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-8-0"
+              },
+              "height": 3,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Broker JVM Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-9-0"
+              },
+              "height": 3,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Logs"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-10-0"
+              },
+              "height": 3,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Useful Links**\n\n* [Data Streams Monitoring](https://docs.datadoghq.com/data_streams/setup/technologies/kafka/?referrer=kafka)\n* [Kafka Broker Integration Doc](https://docs.datadoghq.com/integrations/kafka/?tab=host)\n* [Kafka Consumer Integration Doc](https://docs.datadoghq.com/integrations/kafka-consumer/?tab=host)\n* [Kafka Blog by Datadog](https://www.datadoghq.com/blog/monitor-kafka-with-datadog/)\n* [Data Streams Kafka Lag Dashboard](/dashboard/lists?q=Data%20Streams%20Monitoring%3A%20Kafka&p=1)\n* [ZooKeeper Integration Doc](https://docs.datadoghq.com/integrations/zk/?tab=host)\n"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-10-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "When investigating logs, you can refer to the timeseries data to see the ratio of a certain log status to other expected statuses. In situations where you notice an increase in the ratio of error logs, you can refer to the log stream set up to filter erroneous logs for your perusal."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-2-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Visualize streaming pipelines, debug Kafka issues, and spot bottlenecks with [Data Streams Monitoring](/data-streams)"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-3-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[WEIGHTED] Weighted sum uses raw sample sums normalized by the fullest selected series in the rate window. Datadog's submission cadence and graph buckets are unavailable; unequal cadence, sparse series and resource churn can change the result.",
+            "name": "Offline Partitions"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (sum_over_time({otel_metric_name=\"kafka.partition.offline\", otel_metric_type=\"sum\"}[$__rate_interval]) / scalar(max(count_over_time({otel_metric_name=\"kafka.partition.offline\", otel_metric_type=\"sum\"}[$__rate_interval]))))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-3-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[WEIGHTED] Weighted sum uses raw sample sums normalized by the fullest selected series in the rate window. Datadog's submission cadence and graph buckets are unavailable; unequal cadence, sparse series and resource churn can change the result.",
+            "name": "Under Replicated Partitions"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (sum_over_time({otel_metric_name=\"kafka.partition.underReplicated\", otel_metric_type=\"sum\"}[$__rate_interval]) / scalar(max(count_over_time({otel_metric_name=\"kafka.partition.underReplicated\", otel_metric_type=\"sum\"}[$__rate_interval]))))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-3-2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "ISR Delta"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(max (rate({otel_metric_name=\"kafka.isr.operation.count\", otel_metric_type=\"sum\", operation=\"expand\"}[5m]))) - (max (rate({otel_metric_name=\"kafka.isr.operation.count\", otel_metric_type=\"sum\", operation=\"shrink\"}[5m])))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "The Kafka Broker metrics here inform you of data loss/delay through unclean leader elections, network throughputs, and request fails through request purgatories and timeouts metrics.\n\nTo access these metrics you need to have the [Kafka Broker](https://docs.datadoghq.com/integrations/kafka/?tab=host) integration enabled."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-5-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Kafka Producers send messages to brokers for storage and distribution by topic. These metrics inform you of the volume and rate of data sent, and the success rate of message delivery.\n\nTo access these metrics you need to have the [Kafka Broker](https://docs.datadoghq.com/integrations/kafka/?tab=host) integration enabled."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-6-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Kafka Consumer metrics provide insights into lag between message production and consumption, success rates and latency of message delivery, and the volume of data consumed.\n\nTo access these metrics you need to have the [Kafka Broker](https://docs.datadoghq.com/integrations/kafka/?tab=host) and [Kafka Consumer](https://docs.datadoghq.com/integrations/kafka-consumer/?tab=host) integrations enabled."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-7-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Get insights into your topics' producers and consumers, including anomaly detection by instrumenting with Data Streams Monitoring. \nOpen in [Data Streams Monitoring](/data-streams) or [Learn More](https://docs.datadoghq.com/data_streams/setup/technologies/kafka/?referrer=kafka).\n\nAssign the **topic** variable to view insights about a specific topic"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-8-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Zookeeper is a distributed coordination service for Kafka clusters. It coordinates activities like leader election, partition reassignment, and broker registration. This group will only be populated if you are using Zookeeper and have enabled [Datadog's Zookeeper Integration](https://docs.datadoghq.com/integrations/zk/?tab=host). Running Zookeeper is not mandatory if you are using Kafka version 3.0 onwards, in which case, you can delete this group."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-9-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Kafka brokers are Java applications that expose JVM metrics to inform on the broker's system health. Garbage collection metrics like those below provide key insights into free memory, broker performance, and heap size. You need to enable [new_gc_metrics](https://docs.datadoghq.com/integrations/java/?tab=host#configuration-options) for this section to populate. \n"
+            }
+          },
+          "queries": []
+        }
+      }
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "allowAllValue": true,
+          "allowMultiple": true,
+          "defaultValue": "$__all",
+          "display": {
+            "name": "consumer_group"
+          },
+          "name": "consumer_group",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "group"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

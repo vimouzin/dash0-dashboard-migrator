@@ -1,0 +1,7 @@
+{
+  "name": "Live deterministic maximum Redis memory ratio",
+  "type": "query alert",
+  "query": "max(last_5m):(avg:redis.mem.used{*} / avg:redis.mem.rss{*}) * 100 > 90",
+  "message": "Empirical arithmetic value verification. Imported check remains disabled.",
+  "options": {"thresholds": {"critical": 90, "warning": 80}, "notify_no_data": false}
+}

@@ -1,0 +1,315 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: docker_daemon/assets/dashboards/docker_dashboard.json
+  fixture: fixtures/datadog/integrations-core/docker_daemon/dashboards/docker_dashboard.json
+service: docker_daemon
+dashboard_id: docker_dashboard
+title: Docker - Overview
+layout_type: free
+template_variables:
+- name: scope
+  prefix: null
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: timeseries
+  title: Running containers by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1]
+  type: toplist
+  title: Most RAM-intensive containers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2]
+  type: toplist
+  title: Most CPU-intensive containers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3]
+  type: heatmap
+  title: Memory by container
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4]
+  type: query_value
+  title: Running containers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5]
+  type: query_value
+  title: Stopped containers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6]
+  type: heatmap
+  title: CPU by container
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7]
+  type: timeseries
+  title: CPU user by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8]
+  type: timeseries
+  title: RSS memory by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[9]
+  type: event_stream
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[10]
+  type: event_timeline
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[11]
+  type: query_value
+  title: Running container change
+  request_count: 1
+  has_layout: true
+- source_path: widgets[12]
+  type: timeseries
+  title: CPU system by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[13]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[14]
+  type: timeseries
+  title: Cache memory by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[15]
+  type: image
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[16]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[17]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[18]
+  type: timeseries
+  title: Swap by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[19]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[20]
+  type: timeseries
+  title: Avg. I/O bytes read by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[21]
+  type: timeseries
+  title: Avg. I/O bytes written by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[22]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[23]
+  type: timeseries
+  title: Avg. rx bytes by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[24]
+  type: timeseries
+  title: Avg. tx bytes by image
+  request_count: 1
+  has_layout: true
+- source_path: widgets[25]
+  type: toplist
+  title: Most tx-intensive containers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[26]
+  type: heatmap
+  title: tx by container
+  request_count: 1
+  has_layout: true
+- source_path: widgets[27]
+  type: toplist
+  title: Running containers by image
+  request_count: 1
+  has_layout: true
+requests:
+- source_path: widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Running containers by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:docker.containers.running{$scope} by {docker_image}.fill(0)
+  formulas: []
+- source_path: widgets[1].definition.requests[0]
+  widget_type: toplist
+  widget_title: Most RAM-intensive containers
+  queries:
+  - name: null
+    data_source: metrics
+    query: top(avg:docker.mem.rss{$scope} by {container_name}, 5, 'max', 'desc')
+  formulas: []
+- source_path: widgets[2].definition.requests[0]
+  widget_type: toplist
+  widget_title: Most CPU-intensive containers
+  queries:
+  - name: null
+    data_source: metrics
+    query: top(avg:docker.cpu.user{$scope} by {container_name}, 5, 'max', 'desc')
+  formulas: []
+- source_path: widgets[3].definition.requests[0]
+  widget_type: heatmap
+  widget_title: Memory by container
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.mem.rss{$scope} by {container_name}
+  formulas: []
+- source_path: widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Running containers
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:docker.containers.running{$scope}
+  formulas: []
+- source_path: widgets[5].definition.requests[0]
+  widget_type: query_value
+  widget_title: Stopped containers
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:docker.containers.stopped{$scope}
+  formulas: []
+- source_path: widgets[6].definition.requests[0]
+  widget_type: heatmap
+  widget_title: CPU by container
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.cpu.user{$scope} by {container_name}
+  formulas: []
+- source_path: widgets[7].definition.requests[0]
+  widget_type: timeseries
+  widget_title: CPU user by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.cpu.user{$scope} by {docker_image}.fill(0)
+  formulas: []
+- source_path: widgets[8].definition.requests[0]
+  widget_type: timeseries
+  widget_title: RSS memory by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.mem.rss{$scope} by {docker_image}.fill(0)
+  formulas: []
+- source_path: widgets[11].definition.requests[0]
+  widget_type: query_value
+  widget_title: Running container change
+  queries:
+  - name: null
+    data_source: metrics
+    query: 100*(sum:docker.containers.running{$scope}/timeshift(sum:docker.containers.running{$scope}, -300))
+  formulas: []
+- source_path: widgets[12].definition.requests[0]
+  widget_type: timeseries
+  widget_title: CPU system by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.cpu.system{$scope} by {docker_image}.fill(0)
+  formulas: []
+- source_path: widgets[14].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Cache memory by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:docker.mem.cache{$scope} by {docker_image}
+  formulas: []
+- source_path: widgets[18].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Swap by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.mem.swap{$scope} by {docker_image}
+  formulas: []
+- source_path: widgets[20].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Avg. I/O bytes read by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.io.read_bytes{$scope} by {docker_image}
+  formulas: []
+- source_path: widgets[21].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Avg. I/O bytes written by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.io.write_bytes{$scope} by {docker_image}
+  formulas: []
+- source_path: widgets[23].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Avg. rx bytes by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.net.bytes_rcvd{$scope} by {docker_image}
+  formulas: []
+- source_path: widgets[24].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Avg. tx bytes by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.net.bytes_sent{$scope} by {docker_image}
+  formulas: []
+- source_path: widgets[25].definition.requests[0]
+  widget_type: toplist
+  widget_title: Most tx-intensive containers
+  queries:
+  - name: null
+    data_source: metrics
+    query: top(avg:docker.net.bytes_sent{$scope} by {container_name}, 5, 'max', 'desc')
+  formulas: []
+- source_path: widgets[26].definition.requests[0]
+  widget_type: heatmap
+  widget_title: tx by container
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:docker.net.bytes_sent{$scope} by {container_name}
+  formulas: []
+- source_path: widgets[27].definition.requests[0]
+  widget_type: toplist
+  widget_title: Running containers by image
+  queries:
+  - name: null
+    data_source: metrics
+    query: top(timeshift(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 40), 20, 'last', 'desc')
+  formulas: []

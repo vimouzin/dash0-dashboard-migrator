@@ -1,0 +1,83 @@
+{
+  "title": "Live infrastructure nginx",
+  "description": "Synthetic source assets; target artifacts are generated exclusively by migrator convert. Numeric parity does not validate every stated approximation or assumption.",
+  "layout_type": "ordered",
+  "template_variables": [
+    {
+      "name": "host",
+      "prefix": "host",
+      "default": "*"
+    }
+  ],
+  "widgets": [
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "nginx: connections",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:nginx.net.connections{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "nginx: requests",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:nginx.net.request_per_s{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "nginx: dropped",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:nginx.net.conn_dropped_per_s{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

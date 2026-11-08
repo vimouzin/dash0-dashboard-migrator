@@ -1,0 +1,8 @@
+version: 1
+name: infrastructure
+users: 5
+spawn_rate: 1
+collection_seconds: 10
+receivers: [postgresql, redis, nginx, kafkametrics, hostmetrics, docker_stats]
+seed_sql: []
+feature_flags: null

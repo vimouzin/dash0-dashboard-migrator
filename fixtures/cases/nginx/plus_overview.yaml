@@ -1,0 +1,380 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: nginx/assets/dashboards/plus_overview.json
+  fixture: fixtures/datadog/integrations-core/nginx/dashboards/plus_overview.json
+service: nginx
+dashboard_id: plus_overview
+title: NGINX Plus - Overview
+layout_type: ordered
+template_variables:
+- name: host
+  prefix: host
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: group
+  title: About NGINX Plus
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1]
+  type: group
+  title: Basic Activity Summary
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[0]
+  type: check_status
+  title: Nginx host up
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[1]
+  type: query_value
+  title: Accepted connections
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[2]
+  type: query_value
+  title: Active connections
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[3]
+  type: query_value
+  title: Idle/waiting connections
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[4]
+  type: query_value
+  title: Dropped connections
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[5]
+  type: query_value
+  title: Total requests
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2]
+  type: group
+  title: Anomaly Detection
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[0]
+  type: event_stream
+  title: Nginx Plus Watchdog alerts
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3]
+  type: group
+  title: Performance Summary
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3].definition.widgets[0]
+  type: hostmap
+  title: Request load by host
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4]
+  type: group
+  title: Error Summary
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[0]
+  type: query_table
+  title: 4xx & 5xx responses per sec
+  request_count: 3
+  has_layout: true
+- source_path: widgets[4].definition.widgets[1]
+  type: timeseries
+  title: 4xx & 5xx responses per sec
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5]
+  type: group
+  title: Cache
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[0]
+  type: query_value
+  title: Avg bytes hit
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[1]
+  type: timeseries
+  title: Bytes hit in cache
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[2]
+  type: timeseries
+  title: Bypassed bytes in cached
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[3]
+  type: query_value
+  title: Hosts loading cache
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[4]
+  type: timeseries
+  title: Cache size
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[5]
+  type: timeseries
+  title: Missed bytes in cache
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6]
+  type: group
+  title: Connections
+  request_count: 0
+  has_layout: true
+- source_path: widgets[6].definition.widgets[0]
+  type: timeseries
+  title: Current connections (idle & active)
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[1]
+  type: timeseries
+  title: Dropped connections per second
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7]
+  type: group
+  title: SSL
+  request_count: 0
+  has_layout: true
+- source_path: widgets[7].definition.widgets[0]
+  type: query_table
+  title: Handshakes per hosts
+  request_count: 2
+  has_layout: true
+- source_path: widgets[7].definition.widgets[1]
+  type: timeseries
+  title: Successful vs failed SSL handshakes
+  request_count: 2
+  has_layout: true
+requests:
+- source_path: widgets[1].definition.widgets[1].definition.requests[0]
+  widget_type: query_value
+  widget_title: Accepted connections
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.connections.accepted{$host}
+  formulas: []
+- source_path: widgets[1].definition.widgets[2].definition.requests[0]
+  widget_type: query_value
+  widget_title: Active connections
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.connections.active{$host}
+  formulas: []
+- source_path: widgets[1].definition.widgets[3].definition.requests[0]
+  widget_type: query_value
+  widget_title: Idle/waiting connections
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.connections.idle{$host}
+  formulas: []
+- source_path: widgets[1].definition.widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Dropped connections
+  queries:
+  - name: null
+    data_source: metrics
+    query: per_second(sum:nginx.connections.dropped{$host})
+  formulas: []
+- source_path: widgets[1].definition.widgets[5].definition.requests[0]
+  widget_type: query_value
+  widget_title: Total requests
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.requests.total{$host}
+  formulas: []
+- source_path: widgets[3].definition.widgets[0].definition.requests.fill
+  widget_type: hostmap
+  widget_title: Request load by host
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:nginx.requests.current{$host} by {host}
+  formulas: []
+- source_path: widgets[4].definition.widgets[0].definition.requests[0]
+  widget_type: query_table
+  widget_title: 4xx & 5xx responses per sec
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:nginx.server_zone.responses.total{$host} by {host}
+  formulas: []
+- source_path: widgets[4].definition.widgets[0].definition.requests[1]
+  widget_type: query_table
+  widget_title: 4xx & 5xx responses per sec
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:nginx.server_zone.responses.4xx{$host} by {host}
+  formulas: []
+- source_path: widgets[4].definition.widgets[0].definition.requests[2]
+  widget_type: query_table
+  widget_title: 4xx & 5xx responses per sec
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:nginx.server_zone.responses.5xx{$host} by {host}
+  formulas: []
+- source_path: widgets[4].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: 4xx & 5xx responses per sec
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.server_zone.responses.4xx{$host} by {host}
+  - name: query2
+    data_source: metrics
+    query: sum:nginx.server_zone.responses.5xx{$host} by {host}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[5].definition.widgets[0].definition.requests[0]
+  widget_type: query_value
+  widget_title: Avg bytes hit
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:nginx.cache.hit.bytes{$host}
+  formulas: []
+- source_path: widgets[5].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Bytes hit in cache
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.cache.hit.bytes{$host}
+  formulas: []
+- source_path: widgets[5].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Bypassed bytes in cached
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.cache.bypass.bytes{$host}
+  - name: query2
+    data_source: metrics
+    query: sum:nginx.cache.bypass.bytes_written{$host}
+  formulas:
+  - query1
+  - query2
+  - query1 + query2
+- source_path: widgets[5].definition.widgets[3].definition.requests[0]
+  widget_type: query_value
+  widget_title: Hosts loading cache
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.cache.cold{$host}
+  formulas: []
+- source_path: widgets[5].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Cache size
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.cache.max_size{$host}
+  - name: query2
+    data_source: metrics
+    query: sum:nginx.cache.size{$host}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[5].definition.widgets[5].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Missed bytes in cache
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.cache.miss.bytes{$host}
+  - name: query2
+    data_source: metrics
+    query: sum:nginx.cache.miss.bytes_written{$host}
+  formulas:
+  - query1
+  - query2
+  - query1 + query2
+- source_path: widgets[6].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Current connections (idle & active)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.connections.active{$host}
+  - name: query2
+    data_source: metrics
+    query: sum:nginx.connections.idle{$host}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[6].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Dropped connections per second
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.connections.dropped{$host}
+  formulas:
+  - per_second(query1)
+- source_path: widgets[7].definition.widgets[0].definition.requests[0]
+  widget_type: query_table
+  widget_title: Handshakes per hosts
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.ssl.handshakes_count{*} by {host}.as_count()
+  formulas: []
+- source_path: widgets[7].definition.widgets[0].definition.requests[1]
+  widget_type: query_table
+  widget_title: Handshakes per hosts
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.ssl.handshakes_failed_count{*} by {host}.as_count()
+  formulas: []
+- source_path: widgets[7].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Successful vs failed SSL handshakes
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.ssl.handshakes_count{$host} by {host}.as_count()
+  formulas:
+  - query1
+- source_path: widgets[7].definition.widgets[1].definition.requests[1]
+  widget_type: timeseries
+  widget_title: Successful vs failed SSL handshakes
+  queries:
+  - name: null
+    data_source: metrics
+    query: -sum:nginx.ssl.handshakes_failed_count{*} by {host}.as_count()
+  formulas: []

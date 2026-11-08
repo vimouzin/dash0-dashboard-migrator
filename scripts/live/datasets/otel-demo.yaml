@@ -1,0 +1,9 @@
+version: 1
+name: otel-demo-full
+users: 5
+spawn_rate: 1
+collection_seconds: 10
+receivers: [postgresql, redis, nginx, kafkametrics]
+seed_sql: []
+# Optional path to a complete flagd JSON document, relative to this file.
+feature_flags: null

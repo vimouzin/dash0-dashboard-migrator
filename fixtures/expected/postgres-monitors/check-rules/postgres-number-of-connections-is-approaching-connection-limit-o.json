@@ -1,0 +1,18 @@
+{
+  "annotations": {
+    "description": "{{ \"{{\" }}#is_alert{{ \"}}\" }}\n\n## What's happening?\nPostgreSQL connection usage on host {{ \"{{\" }}host.name{{ \"}}\" }} has exceeded 90% of the maximum allowed connections over the last 15 minutes.\n\n## Related Links\n\n- [Metrics Explorer (postgresql.percent_usage_connections)](/metric/explorer?exp_metric=postgresql.percent_usage_connections&exp_agg=avg&exp_type=line)\n\n{{ \"{{\" }}/is_alert{{ \"}}\" }}",
+    "summary": "[Postgres] Number of connections is approaching connection limit on {{ \"{{\" }}host.name{{ \"}}\" }}"
+  },
+  "enabled": false,
+  "expression": "avg_over_time((avg (sum by (service_instance_id) (max by (service_instance_id, postgresql_database_name) ({otel_metric_name=\"postgresql.backends\", otel_metric_type=\"sum\"})) / on (service_instance_id) max by (service_instance_id) ({otel_metric_name=\"postgresql.connection.max\", otel_metric_type=\"gauge\"})))[15m:1m]) > $__threshold",
+  "for": "0s",
+  "interval": "1m",
+  "labels": {
+    "migration_remarks": "NEWHOST,FULLWINDOW"
+  },
+  "name": "[Postgres] Number of connections is approaching connection limit on {{host.name}}",
+  "thresholds": {
+    "degraded": 0.8,
+    "failed": 0.9
+  }
+}

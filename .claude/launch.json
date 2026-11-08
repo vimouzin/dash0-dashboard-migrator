@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "viewer",
+      "runtimeExecutable": "scripts/review/up.sh",
+      "port": 8080
+    }
+  ]
+}

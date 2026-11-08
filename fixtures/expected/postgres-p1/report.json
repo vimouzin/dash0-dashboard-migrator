@@ -1,0 +1,3823 @@
+{
+  "compilerVersion": "0.1.0",
+  "diagnostics": [
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_fetched' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_fetched{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_fetched' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_fetched{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_returned' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[1].queries[0].query",
+      "sourceText": "avg:postgresql.rows_returned{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_returned' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[1].queries[0].query",
+      "sourceText": "avg:postgresql.rows_returned{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[1].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_inserted' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[2].queries[0].query",
+      "sourceText": "avg:postgresql.rows_inserted{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_inserted' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[2].queries[0].query",
+      "sourceText": "avg:postgresql.rows_inserted{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[2].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_updated' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[3].queries[0].query",
+      "sourceText": "avg:postgresql.rows_updated{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_updated' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[3].queries[0].query",
+      "sourceText": "avg:postgresql.rows_updated{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[3].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.connections{$scope} by {db}",
+      "suggestedAction": "Review the 'postgresql.connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.connections{$scope} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "postgresql.rows_inserted{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_inserted' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "postgresql.rows_inserted{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_inserted' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "postgresql.rows_inserted{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[1].query",
+      "sourceText": "postgresql.rows_deleted{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_deleted' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[1].query",
+      "sourceText": "postgresql.rows_deleted{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_deleted' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[1].query",
+      "sourceText": "postgresql.rows_deleted{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[2].query",
+      "sourceText": "postgresql.rows_updated{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_updated' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[2].query",
+      "sourceText": "postgresql.rows_updated{$scope}",
+      "suggestedAction": "Review the 'postgresql.rows_updated' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[2].query",
+      "sourceText": "postgresql.rows_updated{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].queries[2].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'system.io.util'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "avg:system.io.util{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'system.io.util' to the mapping file."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "system.load.1{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.load.1' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "system.load.1{$scope}",
+      "suggestedAction": "Review the 'system.load.1' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "system.load.1{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[1].queries[0].query",
+      "sourceText": "system.load.5{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.load.5' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[1].queries[0].query",
+      "sourceText": "system.load.5{$scope}",
+      "suggestedAction": "Review the 'system.load.5' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[1].queries[0].query",
+      "sourceText": "system.load.5{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[2].queries[0].query",
+      "sourceText": "system.load.15{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.load.15' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[2].queries[0].query",
+      "sourceText": "system.load.15{$scope}",
+      "suggestedAction": "Review the 'system.load.15' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[2].queries[0].query",
+      "sourceText": "system.load.15{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "system.cpu.idle{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.cpu.idle' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "system.cpu.idle{$scope}",
+      "suggestedAction": "Review the 'system.cpu.idle' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "system.cpu.idle{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[1].query",
+      "sourceText": "system.cpu.system{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.cpu.system' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[1].query",
+      "sourceText": "system.cpu.system{$scope}",
+      "suggestedAction": "Review the 'system.cpu.system' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[1].query",
+      "sourceText": "system.cpu.system{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[2].query",
+      "sourceText": "system.cpu.iowait{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.cpu.iowait' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[2].query",
+      "sourceText": "system.cpu.iowait{$scope}",
+      "suggestedAction": "Review the 'system.cpu.iowait' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[2].query",
+      "sourceText": "system.cpu.iowait{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[3].query",
+      "sourceText": "system.cpu.user{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.cpu.user' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[3].query",
+      "sourceText": "system.cpu.user{$scope}",
+      "suggestedAction": "Review the 'system.cpu.user' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[3].query",
+      "sourceText": "system.cpu.user{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[4].query",
+      "sourceText": "system.cpu.stolen{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.cpu.stolen' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[4].query",
+      "sourceText": "system.cpu.stolen{$scope}",
+      "suggestedAction": "Review the 'system.cpu.stolen' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[4].query",
+      "sourceText": "system.cpu.stolen{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "DEFAULT_AGGREGATOR_APPLIED",
+      "message": "Query has no space aggregator; applied Datadog's default 'avg' (https://docs.datadoghq.com/dashboards/querying/#aggregation-method).",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[5].query",
+      "sourceText": "system.cpu.guest{$scope}",
+      "suggestedAction": "Add an explicit space aggregator to the source query if 'avg' is not intended."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'system.cpu.guest'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].queries[5].query",
+      "sourceText": "system.cpu.guest{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'system.cpu.guest' to the mapping file."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.cpu.iowait' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "max:system.cpu.iowait{$scope}",
+      "suggestedAction": "Review the 'system.cpu.iowait' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "max:system.cpu.iowait{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'system.mem.usable'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[7].definition.requests[0].queries[0].query",
+      "sourceText": "sum:system.mem.usable{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'system.mem.usable' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'system.mem.total'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[7].definition.requests[0].queries[1].query",
+      "sourceText": "sum:system.mem.total{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'system.mem.total' to the mapping file."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.net.bytes_rcvd' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[8].definition.requests[0].queries[0].query",
+      "sourceText": "sum:system.net.bytes_rcvd{$scope}",
+      "suggestedAction": "Review the 'system.net.bytes_rcvd' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[8].definition.requests[0].queries[0].query",
+      "sourceText": "sum:system.net.bytes_rcvd{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'system.net.bytes_sent' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[8].definition.requests[1].queries[0].query",
+      "sourceText": "sum:system.net.bytes_sent{$scope}",
+      "suggestedAction": "Review the 'system.net.bytes_sent' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[8].definition.requests[1].queries[0].query",
+      "sourceText": "sum:system.net.bytes_sent{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Template variable '$db' became a Perses ListVariable on label 'postgresql_database_name'; variable rendering unverified in Dash0. Selected values are matched as an anchored regex (=~\"^($db)$\"); they are not escaped, so values containing regex characters such as '.' can match more series.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "template_variables[2]",
+      "suggestedAction": "Check the variable in Dash0 after publishing."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Template variable '$host' became a Perses ListVariable on label 'host_name'; variable rendering unverified in Dash0. Selected values are matched as an anchored regex (=~\"^($host)$\"); they are not escaped, so values containing regex characters such as '.' can match more series.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "template_variables[3]",
+      "suggestedAction": "Check the variable in Dash0 after publishing."
+    },
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'banner_img' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.banner_img",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_unit' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.custom_unit",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.percent_usage_connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "max:postgresql.percent_usage_connections{$scope,$host}",
+      "suggestedAction": "Review the 'postgresql.percent_usage_connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "max:postgresql.percent_usage_connections{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_unit' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.custom_unit",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_fetched' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.rows_fetched{$scope,$host}",
+      "suggestedAction": "Review the 'postgresql.rows_fetched' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.rows_fetched{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_returned' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[1].query",
+      "sourceText": "sum:postgresql.rows_returned{$scope,$host}",
+      "suggestedAction": "Review the 'postgresql.rows_returned' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[1].query",
+      "sourceText": "sum:postgresql.rows_returned{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.dead_rows' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.dead_rows{$scope,$db,$table,$host}",
+      "suggestedAction": "Review the 'postgresql.dead_rows' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.dead_rows{$scope,$db,$table,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$table' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.dead_rows{$scope,$db,$table,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'query_table' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.temp_bytes'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.temp_bytes{$scope,$db,$table,$host}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.temp_bytes' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "ASSUMED",
+      "message": "TOPN: Datadog showed the top 5. Datadog showed only the top (or bottom) N series; the Perses bar chart has no limit, so it shows every series in the same order. The first N bars match.",
+      "remark": "TOPN",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0]",
+      "suggestedAction": "Check that the series beyond the cut do not crowd the panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.index_scans' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.index_scans{$scope,$db,$host} by {index}",
+      "suggestedAction": "Review the 'postgresql.index_scans' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.index_scans{$scope,$db,$host} by {index}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "ASSUMED",
+      "message": "TOPN: Datadog showed the bottom 5. Datadog showed only the top (or bottom) N series; the Perses bar chart has no limit, so it shows every series in the same order. The first N bars match.",
+      "remark": "TOPN",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0]",
+      "suggestedAction": "Check that the series beyond the cut do not crowd the panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.index_scans' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.index_scans{$scope,$db,$host} by {index}",
+      "suggestedAction": "Review the 'postgresql.index_scans' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.index_scans{$scope,$db,$host} by {index}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.total_size'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.total_size{$scope,$table,$host} by {table}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.total_size' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.live_rows' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.live_rows{$scope,$table,$host} by {table}",
+      "suggestedAction": "Review the 'postgresql.live_rows' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.live_rows{$scope,$table,$host} by {table}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$table' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.live_rows{$scope,$table,$host} by {table}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "MISSING_LABEL_MAPPING",
+      "message": "No label mapping for group-by tag 'table' on metric 'postgresql.live_rows'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.live_rows{$scope,$table,$host} by {table}",
+      "suggestedAction": "Add a reviewed label mapping for 'table' to the 'postgresql.live_rows' entry."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_FORMULA",
+      "message": "Function 'top' is not supported: Datadog ranks each series once over its points (https://docs.datadoghq.com/dashboards/functions/rank/#top); PromQL topk ranks at every step, and the docs leave the ranked window open.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].formulas[0].formula",
+      "sourceText": "top(query1, 5, 'mean', 'desc')",
+      "suggestedAction": "Remove top() to convert all series unranked, or migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.locks'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.locks{$scope,$host} by {lock_mode,table}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.locks' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.deadlocks.count'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "max:postgresql.deadlocks.count{$scope,$host} by {db}.as_count()",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.deadlocks.count' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_inserted' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_inserted{$scope,$db,$host} by {db}",
+      "suggestedAction": "Review the 'postgresql.rows_inserted' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_inserted{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_updated' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_updated{$scope,$db,$host} by {db}",
+      "suggestedAction": "Review the 'postgresql.rows_updated' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_updated{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'query_table' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_deleted' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_deleted{$scope,$db,$host} by {db}",
+      "suggestedAction": "Review the 'postgresql.rows_deleted' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_deleted{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.rows_hot_updated' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_hot_updated{$scope,$db,$host} by {db}",
+      "suggestedAction": "Review the 'postgresql.rows_hot_updated' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.rows_hot_updated{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "BEST_EFFORT",
+      "message": "ROLLUP: Rollup uses a trailing PromQL sample window before space aggregation, instead of Datadog's UNIX-aligned graph buckets. An omitted interval follows the target rate window. Boundary values and sparse-series weights can differ. Window=$__rate_interval; reducer=max.",
+      "remark": "ROLLUP",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.connections{$scope,$db,$host} by {db}.rollup(max)",
+      "suggestedAction": "Verify the source and target numerically on representative telemetry; no global error bound is guaranteed."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.connections{$scope,$db,$host} by {db}.rollup(max)",
+      "suggestedAction": "Review the 'postgresql.connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.connections{$scope,$db,$host} by {db}.rollup(max)",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.max_connections'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].queries[0].query",
+      "sourceText": "min:postgresql.max_connections{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.max_connections' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "ASSUMED",
+      "message": "TOPN: Datadog showed the top 10. Datadog showed only the top (or bottom) N series; the Perses bar chart has no limit, so it shows every series in the same order. The first N bars match.",
+      "remark": "TOPN",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0]",
+      "suggestedAction": "Check that the series beyond the cut do not crowd the panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "max:postgresql.connections{$scope,$db,$host} by {db}",
+      "suggestedAction": "Review the 'postgresql.connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "max:postgresql.connections{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.index_scans' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.index_scans{$scope,$db,$host} by {db}",
+      "suggestedAction": "Review the 'postgresql.index_scans' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.index_scans{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.seq_scans'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[1].query",
+      "sourceText": "avg:postgresql.seq_scans{$scope,$db,$host} by {db}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.seq_scans' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'query_table' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.seq_scans'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.seq_scans{$scope,$db,$table,$host}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.seq_scans' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.seq_scans'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].queries[0].query",
+      "sourceText": "sum:postgresql.seq_scans{$scope,$db,$table,$host}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.seq_scans' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.function.calls'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "avg:postgresql.function.calls{$scope,$db,$table,$host} by {function}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.function.calls' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[3].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_FORMULA",
+      "message": "Function 'count_nonzero' is not supported: Datadog counts values per point across series, but does not document the result when no series has a value (https://docs.datadoghq.com/dashboards/functions/count/).",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].formulas[0].formula",
+      "sourceText": "count_nonzero(query1)",
+      "suggestedAction": "Migrate this widget or monitor manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.replication_delay'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "max:postgresql.replication_delay{$scope,$host} by {host}",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.replication_delay' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.bgwriter.checkpoints_timed'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:postgresql.bgwriter.checkpoints_timed{$scope,$db,$host}.as_count()",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.bgwriter.checkpoints_timed' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.bgwriter.checkpoints_requested'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].queries[1].query",
+      "sourceText": "sum:postgresql.bgwriter.checkpoints_requested{$scope,$db,$host}.as_count()",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.bgwriter.checkpoints_requested' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[1].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[1].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'postgresql.bgwriter.checkpoints_requested'.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[1].queries[0].query",
+      "sourceText": "sum:postgresql.bgwriter.checkpoints_requested{$scope,$db,$host}.as_count()",
+      "suggestedAction": "Add a reviewed entry for 'postgresql.bgwriter.checkpoints_requested' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[1].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.requests[1].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[9].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[9].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'log_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[9].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    }
+  ],
+  "format": "json",
+  "items": [
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "",
+      "title": "Postgres - Metrics"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[0]",
+      "title": "Rows fetched / returned / inserted / updated (per sec)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[1]",
+      "title": "Connections"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[2]",
+      "title": "Inserts / updates / deletes (per sec)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[3]",
+      "title": "Disk utilization (%)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[4]",
+      "title": "System load"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[5]",
+      "title": "CPU usage (%)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[6]",
+      "title": "I/O wait (%)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[7]",
+      "title": "System memory"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_dashboard.json",
+      "sourcePath": "widgets[8]",
+      "title": "Network traffic (per sec)"
+    },
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "remarks": [
+        "TOPN"
+      ],
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "",
+      "title": "Postgres - Overview"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0]",
+      "title": "Max connections in use"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1]",
+      "title": "Rows fetched / returned"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0]",
+      "title": "Dead rows"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1]",
+      "title": "Resources by table"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[2]",
+      "title": "Temp bytes"
+    },
+    {
+      "kind": "widget",
+      "outcome": "assumed",
+      "remarks": [
+        "TOPN"
+      ],
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[3]",
+      "title": "Most frequently scanned indexes"
+    },
+    {
+      "kind": "widget",
+      "outcome": "assumed",
+      "remarks": [
+        "TOPN"
+      ],
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[4]",
+      "title": "Least frequently scanned indexes"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[5]",
+      "title": "Tables with most disk usage (top 5)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[6]",
+      "title": "Tables with most live rows"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0]",
+      "title": "Locks by lock mode"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1]",
+      "title": "Locks by lock mode"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[2]",
+      "title": "Deadlocks count"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0]",
+      "title": "Inserted"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1]",
+      "title": "Updated"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2]",
+      "title": "Actions"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3]",
+      "title": "Deleted"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4]",
+      "title": "Heap-only updates "
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0]",
+      "title": "Connections per database"
+    },
+    {
+      "kind": "widget",
+      "outcome": "assumed",
+      "remarks": [
+        "TOPN"
+      ],
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1]",
+      "title": "Most connected databases"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[0]",
+      "title": "Sequential scans vs index scans"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[1]",
+      "title": "Top table scans"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[2]",
+      "title": "Sequential scans vs. week before"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[6].definition.widgets[3]",
+      "title": "Top function calls"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[0]",
+      "title": "Number of hosts with replication delay"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[7].definition.widgets[1]",
+      "title": "Max replication delay"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[8].definition.widgets[0]",
+      "title": "Scheduled vs requested checkpoints"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+      "sourcePath": "widgets[9].definition.widgets[0]",
+      "title": ""
+    }
+  ],
+  "mapping": [
+    {
+      "sha256": "4123ccb1de4a78cf0f8eb5d0c205e2aeaece6292d7d41289680449e304fc5c0e",
+      "sourceId": "postgres.json"
+    }
+  ],
+  "mappingCoverage": {
+    "metrics": [
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[8].definition.widgets[0].definition.requests[1].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.bgwriter.checkpoints_requested"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[8].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.bgwriter.checkpoints_timed"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[1].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.connections"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[1].definition.requests[0].queries[3].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.dead_rows"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.deadlocks.count"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.function.calls"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[1].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.index_scans"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[1].definition.requests[0].queries[2].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.live_rows"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[3].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.locks"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[5].definition.widgets[0].definition.requests[1].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.max_connections"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.percent_usage_connections"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.replication_delay"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.replication_delay_bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[2].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[2].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.rows_deleted"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.rows_fetched"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.rows_hot_updated"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[0].definition.requests[2].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[2].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.rows_inserted"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[0].definition.requests[1].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.rows_returned"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[0].definition.requests[3].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[2].definition.requests[0].queries[2].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.rows_updated"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[1].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[2].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[6].definition.widgets[2].definition.requests[1].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.seq_scans"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.temp_bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[1].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_screenboard_dashboard.json",
+            "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "postgresql.total_size"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].queries[5].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "system.cpu.guest"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.cpu.idle"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].queries[2].query"
+          },
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[6].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.cpu.iowait"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].queries[4].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.cpu.stolen"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.cpu.system"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].queries[3].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.cpu.user"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "system.io.util"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.load.1"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[2].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.load.15"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[1].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.load.5"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[7].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "system.mem.total"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[7].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "system.mem.usable"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[8].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.net.bytes_rcvd"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/postgresql_dashboard.json",
+            "sourcePath": "widgets[8].definition.requests[1].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "system.net.bytes_sent"
+      }
+    ],
+    "parsedQueries": 61,
+    "unparsedQueries": []
+  },
+  "provider": "datadog",
+  "reportVersion": 1,
+  "summary": {
+    "dashboards": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 2,
+      "translated": 0
+    },
+    "monitors": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 0,
+      "translated": 0
+    },
+    "skippedFiles": 0,
+    "widgets": {
+      "approximated": 0,
+      "assumed": 3,
+      "best_effort": 0,
+      "blocked": 20,
+      "partial": 0,
+      "translated": 16
+    }
+  },
+  "validation": {
+    "api": "not_run",
+    "schema": "passed",
+    "semantics": "not_run",
+    "syntax": "passed"
+  }
+}

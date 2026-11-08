@@ -1,0 +1,252 @@
+version: 1
+inputs:
+- ../assets/infrastructure-postgres.json
+- ../assets/infrastructure-redis.json
+- ../assets/infrastructure-nginx.json
+- ../assets/infrastructure-kafka.json
+- ../assets/infrastructure-host.json
+- ../assets/infrastructure-docker.json
+- ../assets/infrastructure-monitor.json
+mappings:
+- ../../../mappings/datadog
+warmup_seconds: 300
+window_seconds: 120
+settle_seconds: 120
+step_seconds: 60
+rate_interval: 5m
+cases:
+- id: postgres-connections
+  source: infrastructure-postgres.json
+  request: /widgets/0/definition/requests/0
+  panel: widget-0
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: postgres-row-rate
+  source: infrastructure-postgres.json
+  request: /widgets/1/definition/requests/0
+  panel: widget-1
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: postgres-locks
+  source: infrastructure-postgres.json
+  request: /widgets/2/definition/requests/0
+  panel: widget-2
+  variables:
+    host: $run
+  expected_outcome: assumed
+  expected_remarks:
+  - SEMANTIC
+- id: postgres-total-size
+  source: infrastructure-postgres.json
+  request: /widgets/3/definition/requests/0
+  panel: widget-3
+  variables:
+    host: $run
+  expected_outcome: assumed
+  expected_remarks:
+  - SEMANTIC
+- id: postgres-top-connections
+  source: infrastructure-postgres.json
+  request: /widgets/4/definition/requests/0
+  panel: widget-4
+  variables:
+    host: $run
+  expected_outcome: assumed
+  expected_remarks:
+  - TOPN
+  series_labels:
+    db: postgresql_database_name
+- id: redis-memory
+  source: infrastructure-redis.json
+  request: /widgets/0/definition/requests/0
+  panel: widget-0
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: redis-clients
+  source: infrastructure-redis.json
+  request: /widgets/1/definition/requests/0
+  panel: widget-1
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: redis-keys
+  source: infrastructure-redis.json
+  request: /widgets/2/definition/requests/0
+  panel: widget-2
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: redis-fragmentation
+  source: infrastructure-redis.json
+  request: /widgets/3/definition/requests/0
+  panel: widget-3
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: redis-maxmemory
+  source: infrastructure-redis.json
+  request: /widgets/4/definition/requests/0
+  panel: widget-4
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+  require_nonzero: false
+- id: redis-pinned-memory
+  source: infrastructure-redis.json
+  request: /widgets/5/definition/requests/0
+  panel: widget-5
+  variables:
+    host: $run
+  expected_outcome: approximated
+  expected_remarks:
+  - TIMEPIN
+- id: nginx-connections
+  source: infrastructure-nginx.json
+  request: /widgets/0/definition/requests/0
+  panel: widget-0
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: nginx-requests
+  source: infrastructure-nginx.json
+  request: /widgets/1/definition/requests/0
+  panel: widget-1
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: nginx-dropped
+  source: infrastructure-nginx.json
+  request: /widgets/2/definition/requests/0
+  panel: widget-2
+  variables:
+    host: $run
+  expected_outcome: assumed
+  expected_remarks:
+  - DERIVED
+  require_nonzero: false
+- id: kafka-consumer-offset
+  source: infrastructure-kafka.json
+  request: /widgets/0/definition/requests/0
+  panel: widget-0
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: kafka-consumer-lag
+  source: infrastructure-kafka.json
+  request: /widgets/1/definition/requests/0
+  panel: widget-1
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+  require_nonzero: false
+- id: kafka-network-in
+  source: infrastructure-kafka.json
+  request: /widgets/2/definition/requests/0
+  panel: widget-2
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: kafka-offline-partitions
+  source: infrastructure-kafka.json
+  request: /widgets/3/definition/requests/0
+  panel: widget-3
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+  require_nonzero: false
+- id: host-load
+  source: infrastructure-host.json
+  request: /widgets/0/definition/requests/0
+  panel: widget-0
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: host-cpu-user
+  source: infrastructure-host.json
+  request: /widgets/1/definition/requests/0
+  panel: widget-1
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: host-memory-total
+  source: infrastructure-host.json
+  request: /widgets/2/definition/requests/0
+  panel: widget-2
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: host-memory-usable
+  source: infrastructure-host.json
+  request: /widgets/3/definition/requests/0
+  panel: widget-3
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: host-disk-utilization
+  source: infrastructure-host.json
+  request: /widgets/4/definition/requests/0
+  panel: widget-4
+  variables:
+    host: $run
+  expected_outcome: assumed
+  expected_remarks:
+  - DERIVED
+- id: docker-running
+  source: infrastructure-docker.json
+  request: /widgets/0/definition/requests/0
+  panel: widget-0
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: docker-memory-cache
+  source: infrastructure-docker.json
+  request: /widgets/1/definition/requests/0
+  panel: widget-1
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: docker-network-receive
+  source: infrastructure-docker.json
+  request: /widgets/2/definition/requests/0
+  panel: widget-2
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: docker-cpu-user
+  source: infrastructure-docker.json
+  request: /widgets/3/definition/requests/0
+  panel: widget-3
+  variables:
+    host: $run
+  expected_outcome: translated
+  expected_remarks: []
+- id: postgres-monitor-approx
+  source: infrastructure-monitor.json
+  kind: monitor
+  expected_outcome: approximated
+  expected_remarks:
+  - FULLWINDOW
+  - NEWHOST

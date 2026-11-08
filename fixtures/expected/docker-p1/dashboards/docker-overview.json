@@ -1,0 +1,331 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "docker-overview",
+    "project": "datadog-migration"
+  },
+  "spec": {
+    "display": {
+      "description": "The Docker dashboard gives you an overview of your cluster's status, including a view of how many containers are running per image over time, and a list of the top images that containers are running. Further reading on Docker monitoring:\n\n- [Datadog's Docker integration docs](https://docs.datadoghq.com/integrations/docker_daemon/) \n\n- [The Docker monitoring problem](https://www.datadoghq.com/blog/the-docker-monitoring-problem/)\n\n- [How to monitor Docker resource metrics](https://www.datadoghq.com/blog/how-to-monitor-docker-resource-metrics/)\n\n- [How iHeartRadio monitors Docker performance](https://www.datadoghq.com/blog/iheartradio-monitors-docker/)\n\n- [Monitor Docker performance with Datadog](https://www.datadoghq.com/blog/monitor-docker-datadog/)\n\nClone this template dashboard to make changes and add your own graph widgets.\n\nMigration remarks: TIMEPIN (see panel descriptions).",
+      "name": "Docker - Overview"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-13"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-14"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-16"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 8
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-17"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 8
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-19"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 16
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-20"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 16
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-21"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 24
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-22"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 24
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-23"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 32
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-24"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 32
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-13": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "\n\nContainers"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-14": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TIMEPIN] Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+            "name": "Cache memory by image"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum by (container_image_name) ({otel_metric_name=\"container.memory.file\", otel_metric_type=\"sum\"})",
+                    "seriesNameFormat": "{{container_image_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-16": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "[CPU Core Load](https://www.datadoghq.com/blog/how-to-monitor-docker-resource-metrics/#toc2)"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-17": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Memory"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-19": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "I/O"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-20": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TIMEPIN] Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+            "name": "Avg. I/O bytes read by image"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (container_image_name) (rate({otel_metric_name=\"container.blockio.io_service_bytes_recursive\", otel_metric_type=\"sum\", operation=\"read\"}[$__rate_interval]))",
+                    "seriesNameFormat": "{{container_image_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-21": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TIMEPIN] Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+            "name": "Avg. I/O bytes written by image"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (container_image_name) (rate({otel_metric_name=\"container.blockio.io_service_bytes_recursive\", otel_metric_type=\"sum\", operation=\"write\"}[$__rate_interval]))",
+                    "seriesNameFormat": "{{container_image_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-22": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Network"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-23": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TIMEPIN] Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+            "name": "Avg. rx bytes by image"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (container_image_name) (rate({otel_metric_name=\"container.network.io.usage.rx_bytes\", otel_metric_type=\"sum\"}[$__rate_interval]))",
+                    "seriesNameFormat": "{{container_image_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-24": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TIMEPIN] Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+            "name": "Avg. tx bytes by image"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (container_image_name) (rate({otel_metric_name=\"container.network.io.usage.tx_bytes\", otel_metric_type=\"sum\"}[$__rate_interval]))",
+                    "seriesNameFormat": "{{container_image_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "variables": []
+  }
+}

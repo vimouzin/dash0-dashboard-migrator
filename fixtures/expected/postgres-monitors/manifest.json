@@ -1,0 +1,48 @@
+{
+  "compilerVersion": "0.1.0",
+  "entries": [
+    {
+      "eligible": true,
+      "kind": "check-rule",
+      "outcome": "approximated",
+      "path": "check-rules/postgres-number-of-connections-is-approaching-connection-limit-o.json",
+      "remarks": [
+        "NEWHOST",
+        "FULLWINDOW"
+      ],
+      "sha256": "b1a5b21c6cde7fa18b537a352db8f05dedeac5603d4881f5f9e7a999e4b21352",
+      "sourceId": "monitors/percent_usage_connections.json"
+    },
+    {
+      "eligible": true,
+      "kind": "prometheus-rule",
+      "outcome": "approximated",
+      "path": "rules/postgres-number-of-connections-is-approaching-connection-limit-o.prometheus.json",
+      "remarks": [
+        "NEWHOST",
+        "FULLWINDOW"
+      ],
+      "sha256": "520641f05ce642b89b1c13b6e06d74920ccdf8577187e2301dbb59bf57a007c7",
+      "sourceId": "monitors/percent_usage_connections.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/monitors/percent_usage_connections.json",
+      "sha256": "bee9f93e3a2382d8181d0a8831519c3c0c8ee73eb85d3a2ddfef1d5444c5a084",
+      "sourceId": "monitors/percent_usage_connections.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/monitors/replication_delay.json",
+      "sha256": "2f80ae825ba6afb93ee99bceb9a71992324459136f5a299ac96d91667922f0bf",
+      "sourceId": "monitors/replication_delay.json"
+    }
+  ],
+  "format": "json",
+  "manifestVersion": 1,
+  "provider": "datadog"
+}

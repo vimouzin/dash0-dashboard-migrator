@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# uv / virtualenv
+.venv/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment / secrets
+.env
+.env.*
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Local Claude worktrees
+.claude/worktrees/
+
+# Restored from original .gitignore
+node_modules/
+coverage/
+!.env.example
+artifacts/
+private-input/
+*.log
+
+# Local run artifacts (test report, convert output)
+out/
+
+# Cached voice lines for the local copilot tour (ElevenLabs audio)
+.copilot-voice/

@@ -1,0 +1,27 @@
+{
+  "compilerVersion": "0.1.0",
+  "entries": [
+    {
+      "eligible": false,
+      "kind": "dashboard",
+      "outcome": "partial",
+      "path": "dashboards/docker-overview.json",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sha256": "0fd9f0d663f7daf29a4d46912b08950443b186daa53c5afb8c33faaa3518098c",
+      "sourceId": "dashboards/docker_dashboard.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/dashboards/docker_dashboard.json",
+      "sha256": "ea9ab764a188010f088b15159e78f9b8150b8e4f4b3752b5a105ba8f9bab7f34",
+      "sourceId": "dashboards/docker_dashboard.json"
+    }
+  ],
+  "format": "json",
+  "manifestVersion": 1,
+  "provider": "datadog"
+}

@@ -1,0 +1,389 @@
+{
+  "gaps": {
+    "postgresql.replication_delay": {
+      "reason": "Datadog (integrations-core@a9b9e42 postgres util.py REPLICATION_METRICS_10, gauge, second) runs on the standby (WHERE pg_is_in_recovery()) and reports now() - pg_last_xact_replay_timestamp(), 0 when receive = replay LSN. The vendor row's postgresql.wal.delay (fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml; collector-contrib@v0.165.0 client.go getReplicationStats) is measured on the primary from pg_stat_replication write/flush/replay_lag per replication_client, and replay_lag is NULL (not recorded) on an idle primary; different host, different definition, no deterministic rebuild. dash0: not checked (no access in this run).",
+      "tag": "NOEQUIV"
+    }
+  },
+  "labels": {
+    "db": "postgresql_database_name",
+    "host": "host_name"
+  },
+  "metrics": {
+    "postgresql.connections": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "gauge",
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.connections -> postgresql.backends. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py DBM_MIGRATED_METRICS numbackends (pg_stat_database), AgentCheck.gauge, per db; metadata.csv gauge, unit connection. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.backends, sum non-monotonic, unit 1, per database. Semantic note (#27): OTel backends counts all backend types, incl. autovacuum and parallel workers (metadata.yaml description); Datadog connections is pg_stat_database.numbackends. dash0 (default, 2026-11-08): count by (postgresql_database_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.backends\", otel_metric_type=\"sum\"}[24h])) returned 2 series (astronomy_db, postgres). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); it keeps one series per database, as Datadog postgresql.connections is per db.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "postgresql.backends",
+        "type": "sum"
+      },
+      "targetUnit": "1"
+    },
+    "postgresql.dead_rows": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "postgresql_table_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "dead"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.dead_rows -> postgresql.rows. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS pg_stat_get_dead_tuples, gauge, per table (tags db, schema, table), only with `relations` configured; metadata.csv gauge, unit row. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.rows state=dead, sum non-monotonic, unit 1, per table. dash0 (default, 2026-11-08): count by (state, postgresql_database_name, postgresql_table_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.rows\", otel_metric_type=\"sum\"}[24h])) returned 8 series (4 tables x dead, live). labels: table is not mapped. OTel postgresql_table_name is schema.table (accounting.order); Datadog table is the bare name plus a schema tag. grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, postgresql_table_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per table.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row",
+      "target": {
+        "name": "postgresql.rows",
+        "type": "sum"
+      },
+      "targetUnit": "1"
+    },
+    "postgresql.function.calls": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "function"
+        ]
+      },
+      "kind": "rate",
+      "labels": {
+        "db": "postgresql_database_name",
+        "function": "function",
+        "host": "host_name"
+      },
+      "ref": "vendor deviation: fixtures/datadog/otel-mapping.yaml has no row for postgresql.function.calls (nor any row targeting postgresql.function.calls). Paired on identical source SQL: datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py FUNCTION_METRICS 'calls' from pg_stat_user_functions, funcname = proname, or proname_<argnames> for overloaded functions, AgentCheck.rate, tags db (global), schema, function, only with `collect_function_metrics`; metadata.csv gauge, no unit, no per_unit_name. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.function.calls, sum monotonic cumulative, unit {call}, attribute function (\"The name of the function.\"), disabled by default, requires track_functions; collector-contrib@v0.165.0 receiver/postgresqlreceiver/client.go getFunctionStats runs the same overloaded_funcs/funcname query and reads s.calls; scraper.go collectFunctions emits it on the per-database resource. type deviation: metadata.csv lists gauge without per_unit_name, but FUNCTION_METRICS submits the cumulative calls column with AgentCheck.rate, so Datadog shows calls per second; rate() over the OTel counter gives the same. labels: function -> function (same funcname expression on both sides); db -> postgresql_database_name. table is not mapped: the Datadog metric has no table tag either. Resource model: receiver.postgresql.useOTelSemconv is alpha (off by default, fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml feature_gates), so the legacy per-entity resources apply (scraper.go metricsBuilderConfigForFeatureGate drops db.namespace/db.collection.name; postgresql.database.name and postgresql.table.name are resource attributes); with receiver.postgresql.separateSchemaAttr also alpha, postgresql.table.name is schema.table on table metrics (scraper.go collectTables). dash0: not checked (no access in this run). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, function) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2), as the file's other entries do; schema is not kept (Datadog tags it; OTel legacy mode does not carry it), so same-named functions in two schemas of one database collapse.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "",
+      "target": {
+        "name": "postgresql.function.calls",
+        "type": "sum"
+      },
+      "targetUnit": "{call}"
+    },
+    "postgresql.index_scans": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "postgresql_table_name",
+          "postgresql_index_name"
+        ]
+      },
+      "kind": "rate",
+      "labels": {
+        "db": "postgresql_database_name",
+        "host": "host_name",
+        "index": "postgresql_index_name",
+        "table": "postgresql_table_name"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.index_scans -> postgresql.index.scans. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py IDX_METRICS pg_stat_get_numscans(index), rate, per index (tags db, schema, table, index), only with `relations` configured; metadata.csv gauge, unit scan/second. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.index.scans, sum monotonic cumulative, unit {scans}, per index; rate() gives per second. dash0 (default, 2026-11-08): count by (postgresql_database_name, postgresql_table_name, postgresql_index_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.index.scans\", otel_metric_type=\"sum\"}[24h])) returned 4 series (e.g. table products, index products_pkey). labels: on this metric postgresql_table_name is the bare table name, like Datadog table; postgresql_index_name is the index name, like Datadog index. grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, postgresql_table_name, postgresql_index_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per index.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "scan/second",
+      "target": {
+        "name": "postgresql.index.scans",
+        "type": "sum"
+      },
+      "targetUnit": "{scans}"
+    },
+    "postgresql.live_rows": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "postgresql_table_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "live"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.live_rows -> postgresql.rows. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS pg_stat_get_live_tuples, gauge, per table (tags db, schema, table), only with `relations` configured; metadata.csv gauge, unit row. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.rows state=live, sum non-monotonic, unit 1, per table. dash0 (default, 2026-11-08): count by (state, postgresql_database_name, postgresql_table_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.rows\", otel_metric_type=\"sum\"}[24h])) returned 8 series (4 tables x dead, live). labels: table is not mapped. OTel postgresql_table_name is schema.table (accounting.order); Datadog table is the bare name plus a schema tag. grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, postgresql_table_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per table.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row",
+      "target": {
+        "name": "postgresql.rows",
+        "type": "sum"
+      },
+      "targetUnit": "1"
+    },
+    "postgresql.locks": {
+      "assumption": "SEMANTIC",
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "relation",
+          "mode",
+          "lock_type"
+        ]
+      },
+      "kind": "gauge",
+      "labels": {
+        "db": "postgresql_database_name",
+        "host": "host_name",
+        "lock_mode": "mode",
+        "lock_type": "lock_type",
+        "table": "relation"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.locks -> postgresql.database.locks. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py LOCK_METRICS count(*) FROM pg_locks LEFT JOIN pg_class, gauge, grouped by mode (tag lock_mode), locktype (lock_type), schema, db (pd.datname, omitted when NULL), table (pc.relname, omitted when NULL), granted, fastpath; WHERE pc IS NULL OR ({relations} AND relname NOT LIKE 'pg_%'); metadata.csv gauge, unit lock. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.database.locks, gauge, unit {lock}, attributes relation (\"name of the relation ... or empty if the target is not a relation\"), mode (\"lock mode held or desired\"), lock_type, disabled by default; collector-contrib@v0.165.0 client.go getDatabaseLocks/getServerScopedLocks: COALESCE(relname,'') AS relation, mode, locktype, COUNT(*) FROM pg_locks LEFT JOIN pg_class, per connected database plus server-scoped locks once (scraper.go collectServerScopedLocks, no database). SEMANTIC: same pg_locks rows and grouping keys, but scope differs. Datadog counts relation locks only for relations matched by the `relations` config and skips pg_* relations; OTel counts every relation lock, and its description says it includes the receiver's own connections' locks. Per-relation counts of user tables match up to the collector's own locks; totals and catalog relations differ. labels: lock_mode -> mode, lock_type -> lock_type, table -> relation (both pg_class.relname; empty/absent for non-relation targets); db -> postgresql_database_name (per-database resource; server-scoped locks have none, like Datadog's NULL datname). Resource model: receiver.postgresql.useOTelSemconv is alpha (off by default, fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml feature_gates), so the legacy per-entity resources apply (scraper.go metricsBuilderConfigForFeatureGate drops db.namespace/db.collection.name; postgresql.database.name and postgresql.table.name are resource attributes); with receiver.postgresql.separateSchemaAttr also alpha, postgresql.table.name is schema.table on table metrics (scraper.go collectTables). dash0: not checked (no access in this run). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, relation, mode, lock_type) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); granted and fastpath are not OTel dimensions, the OTel count already sums them.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "lock",
+      "target": {
+        "name": "postgresql.database.locks",
+        "type": "gauge"
+      },
+      "targetUnit": "{lock}"
+    },
+    "postgresql.max_connections": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id"
+        ]
+      },
+      "kind": "gauge",
+      "labels": {
+        "host": "host_name"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.max_connections -> postgresql.connection.max. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py CONNECTION_METRICS MAX(setting) AS max_connections from pg_settings name='max_connections', AgentCheck.gauge, per instance (no datname descriptor); metadata.csv gauge, unit connection. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.connection.max, gauge, unit {connections}, no attributes, \"Configured maximum number of client connections allowed\", enabled by default; collector-contrib@v0.165.0 client.go getMaxConnections runs SHOW max_connections; scraper.go collectMaxConnections records it once per scrape on the instance resource. Same server setting; units connection vs {connections}. Consistent with postgresql.percent_usage_connections, which divides by the same series with max by (service_instance_id). labels: db is not mapped (postgresql.connection.max has no database attribute or per-database resource), so the fixture's `by {db}` widget blocks on db. dash0: not checked (no access in this run). grain (assumption, not reviewed): max by (service_instance_id) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2), as in percent_usage_connections.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "postgresql.connection.max",
+        "type": "gauge"
+      },
+      "targetUnit": "{connections}"
+    },
+    "postgresql.percent_usage_connections": {
+      "expression": "sum by (service_instance_id) (max by (service_instance_id, postgresql_database_name) ({otel_metric_name=\"postgresql.backends\", otel_metric_type=\"sum\"$filters})) / on (service_instance_id) max by (service_instance_id) ({otel_metric_name=\"postgresql.connection.max\", otel_metric_type=\"gauge\"$filters})",
+      "kind": "expression",
+      "labels": {
+        "host": "host_name"
+      },
+      "outputLabels": [
+        "service_instance_id"
+      ],
+      "ref": "vendor deviation: the table has no row for postgresql.percent_usage_connections; derived from rows postgresql.connections -> postgresql.backends and postgresql.max_connections -> postgresql.connection.max. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py CONNECTION_METRICS SUM(numbackends)/MAX(setting) over pg_stat_database, per instance (no db tag); metadata.csv gauge, unit fraction. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.backends (sum, unit 1, per database) / postgresql.connection.max (gauge, unit {connections}, per instance); result unit 1. dash0 (default, 2026-11-08): count by (service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.connection.max\", otel_metric_type=\"gauge\"}[24h])) returned 1 series. Backends: see postgresql.connections. Dedup: max by (service_instance_id[, postgresql_database_name]) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "fraction",
+      "targetUnit": "1"
+    },
+    "postgresql.rows_deleted": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "rate",
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.rows_deleted -> postgresql.tup_deleted. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py COMMON_METRICS tup_deleted (pg_stat_database), AgentCheck.rate, per db; metadata.csv gauge, unit row/second. Open point: with `relations` set, Datadog also sends postgresql.rows_deleted per table (integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS); this entry maps the per-db series. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.tup_deleted, sum monotonic cumulative, unit {tup_deleted}, per database (disabled by default; on in the demo); rate() gives per second. dash0 (default, 2026-11-08): count by (postgresql_database_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.tup_deleted\", otel_metric_type=\"sum\"}[24h])) returned 2 series (astronomy_db, postgres). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per database, so sums and averages over databases keep their meaning.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row/second",
+      "target": {
+        "name": "postgresql.tup_deleted",
+        "type": "sum"
+      },
+      "targetUnit": "{tup_deleted}"
+    },
+    "postgresql.rows_fetched": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "rate",
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.rows_fetched -> postgresql.tup_fetched. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py COMMON_METRICS tup_fetched (pg_stat_database), AgentCheck.rate, per db; metadata.csv gauge, unit row/second. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.tup_fetched, sum monotonic cumulative, unit {tup_fetched}, per database (disabled by default; on in the demo); rate() gives per second. dash0 (default, 2026-11-08): count by (postgresql_database_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.tup_fetched\", otel_metric_type=\"sum\"}[24h])) returned 2 series (astronomy_db, postgres). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per database, so sums and averages over databases keep their meaning.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row/second",
+      "target": {
+        "name": "postgresql.tup_fetched",
+        "type": "sum"
+      },
+      "targetUnit": "{tup_fetched}"
+    },
+    "postgresql.rows_hot_updated": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "postgresql_table_name"
+        ]
+      },
+      "kind": "rate",
+      "matchers": {
+        "operation": "hot_upd"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.rows_hot_updated -> postgresql.operations. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS pg_stat_get_tuples_hot_updated, rate, per table (tags db, schema, table), only with `relations` configured; metadata.csv gauge, unit row/second. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.operations operation=hot_upd, sum monotonic cumulative, unit 1, per table; rate() gives per second. dash0 (default, 2026-11-08): count by (operation, postgresql_database_name, postgresql_table_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.operations\", otel_metric_type=\"sum\"}[24h])) returned 16 series (4 tables x ins, upd, del, hot_upd). labels: table is not mapped. OTel postgresql_table_name is schema.table (accounting.order); Datadog table is the bare name plus a schema tag. grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, postgresql_table_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per table.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row/second",
+      "target": {
+        "name": "postgresql.operations",
+        "type": "sum"
+      },
+      "targetUnit": "1"
+    },
+    "postgresql.rows_inserted": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "rate",
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.rows_inserted -> postgresql.tup_inserted. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py COMMON_METRICS tup_inserted (pg_stat_database), AgentCheck.rate, per db; metadata.csv gauge, unit row/second. Open point: with `relations` set, Datadog also sends postgresql.rows_inserted per table (integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS); this entry maps the per-db series. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.tup_inserted, sum monotonic cumulative, unit {tup_inserted}, per database (disabled by default; on in the demo); rate() gives per second. dash0 (default, 2026-11-08): count by (postgresql_database_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.tup_inserted\", otel_metric_type=\"sum\"}[24h])) returned 2 series (astronomy_db, postgres). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per database, so sums and averages over databases keep their meaning.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row/second",
+      "target": {
+        "name": "postgresql.tup_inserted",
+        "type": "sum"
+      },
+      "targetUnit": "{tup_inserted}"
+    },
+    "postgresql.rows_returned": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "rate",
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.rows_returned -> postgresql.tup_returned. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py COMMON_METRICS tup_returned (pg_stat_database), AgentCheck.rate, per db; metadata.csv gauge, unit row/second. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.tup_returned, sum monotonic cumulative, unit {tup_returned}, per database (disabled by default; on in the demo); rate() gives per second. dash0 (default, 2026-11-08): count by (postgresql_database_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.tup_returned\", otel_metric_type=\"sum\"}[24h])) returned 2 series (astronomy_db, postgres). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per database, so sums and averages over databases keep their meaning.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row/second",
+      "target": {
+        "name": "postgresql.tup_returned",
+        "type": "sum"
+      },
+      "targetUnit": "{tup_returned}"
+    },
+    "postgresql.rows_updated": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "rate",
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.rows_updated -> postgresql.tup_updated. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py COMMON_METRICS tup_updated (pg_stat_database), AgentCheck.rate, per db; metadata.csv gauge, unit row/second. Open point: with `relations` set, Datadog also sends postgresql.rows_updated per table (integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS); this entry maps the per-db series. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.tup_updated, sum monotonic cumulative, unit {tup_updated}, per database (disabled by default; on in the demo); rate() gives per second. dash0 (default, 2026-11-08): count by (postgresql_database_name, service_instance_id, host_name) (last_over_time({otel_metric_name=\"postgresql.tup_updated\", otel_metric_type=\"sum\"}[24h])) returned 2 series (astronomy_db, postgres). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per database, so sums and averages over databases keep their meaning.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "row/second",
+      "target": {
+        "name": "postgresql.tup_updated",
+        "type": "sum"
+      },
+      "targetUnit": "{tup_updated}"
+    },
+    "postgresql.seq_scans": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "postgresql_table_name"
+        ]
+      },
+      "kind": "rate",
+      "labels": {
+        "db": "postgresql_database_name",
+        "host": "host_name"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.seq_scans -> postgresql.sequential_scans. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS pg_stat_get_numscans(C.oid), type rate, per table (tags db, schema, table; relkind 'r'), only with `relations` configured; metadata.csv gauge, unit scan/second. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.sequential_scans, sum monotonic cumulative, unit {sequential_scan}, per table, disabled by default; collector-contrib@v0.165.0 client.go getDatabaseTableMetrics reads pg_stat_user_tables.seq_scan (= pg_stat_get_numscans(relid)); rate() gives per second. Kind rate matches Datadog gauge per second. labels: db -> postgresql_database_name. table is not mapped: OTel postgresql_table_name is schema.table on table metrics, Datadog table is the bare name (see postgresql.dead_rows). Resource model: receiver.postgresql.useOTelSemconv is alpha (off by default, fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml feature_gates), so the legacy per-entity resources apply (scraper.go metricsBuilderConfigForFeatureGate drops db.namespace/db.collection.name; postgresql.database.name and postgresql.table.name are resource attributes); with receiver.postgresql.separateSchemaAttr also alpha, postgresql.table.name is schema.table on table metrics (scraper.go collectTables). dash0: not checked (no access in this run). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, postgresql_table_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per table.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "scan/second",
+      "target": {
+        "name": "postgresql.sequential_scans",
+        "type": "sum"
+      },
+      "targetUnit": "{sequential_scan}"
+    },
+    "postgresql.temp_bytes": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name"
+        ]
+      },
+      "kind": "rate",
+      "labels": {
+        "db": "postgresql_database_name",
+        "host": "host_name"
+      },
+      "ref": "vendor: fixtures/datadog/otel-mapping.yaml row postgresql.temp_bytes -> postgresql.temp.io. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/util.py NEWER_92_METRICS 'temp_bytes' from pg_stat_database, AgentCheck.rate, per db; metadata.csv gauge, unit byte/second. otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.temp.io, sum monotonic cumulative, unit By, \"Total amount of data written to temporary files by queries\", per database, disabled by default; collector-contrib@v0.165.0 client.go reads temp_bytes FROM pg_stat_database; scraper.go recordDatabase emits it on the per-database resource. rate() gives By/s. Kind rate matches Datadog gauge per second. labels: db -> postgresql_database_name. table is not mapped: the metric is per database on both sides (no table tag or attribute). Resource model: receiver.postgresql.useOTelSemconv is alpha (off by default, fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml feature_gates), so the legacy per-entity resources apply (scraper.go metricsBuilderConfigForFeatureGate drops db.namespace/db.collection.name; postgresql.database.name and postgresql.table.name are resource attributes); with receiver.postgresql.separateSchemaAttr also alpha, postgresql.table.name is schema.table on table metrics (scraper.go collectTables). dash0: not checked (no access in this run). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per database.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "postgresql.temp.io",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "postgresql.total_size": {
+      "assumption": "SEMANTIC",
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "service_instance_id",
+          "postgresql_database_name",
+          "postgresql_table_name"
+        ]
+      },
+      "kind": "gauge",
+      "labels": {
+        "db": "postgresql_database_name",
+        "host": "host_name"
+      },
+      "ref": "vendor deviation: fixtures/datadog/otel-mapping.yaml has no row for postgresql.total_size; it pairs postgresql.table_size -> postgresql.table.size, but metadata.csv defines table_size as table plus TOAST without indexes, while the OTel definition includes indexes, which is total_size. datadog: integrations-core@a9b9e42 postgres/datadog_checks/postgres/relationsmanager.py QUERY_PG_CLASS_SIZE total_size = pg_relation_size(C.oid) + pg_indexes_size(C.oid) + pg_relation_size(reltoastrelid), gauge, per table (tags db, schema, table), only with `relations`; metadata.csv gauge, unit byte, \"total disk space used by the table, including indexes and TOAST data\". otel: fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml postgresql.table.size, sum non-monotonic, unit By, \"Total disk space used by a table, including its indexes and TOAST data\", enabled by default; collector-contrib@v0.165.0 client.go getDatabaseTableMetrics pg_total_relation_size(s.relid). SEMANTIC: pg_total_relation_size also counts the free space map and visibility map forks of the table and its TOAST table, and the TOAST index; Datadog's sum uses main-fork pg_relation_size for table and TOAST (metadata.csv relation_size: free space map and visibility map not included). The OTel value is slightly larger, not identical. Kind gauge: Datadog gauge, OTel non-monotonic sum read as a value. labels: db -> postgresql_database_name. table is not mapped: OTel postgresql_table_name is schema.table on table metrics, Datadog table is the bare name (see postgresql.dead_rows), so the fixture's `by {table}` widgets block on table. Resource model: receiver.postgresql.useOTelSemconv is alpha (off by default, fixtures/otel/collector-contrib/receiver/postgresqlreceiver/metadata.yaml feature_gates), so the legacy per-entity resources apply (scraper.go metricsBuilderConfigForFeatureGate drops db.namespace/db.collection.name; postgresql.database.name and postgresql.table.name are resource attributes); with receiver.postgresql.separateSchemaAttr also alpha, postgresql.table.name is schema.table on table metrics (scraper.go collectTables). dash0: not checked (no access in this run). grain (assumption, not reviewed): max by (service_instance_id, postgresql_database_name, postgresql_table_name) collapses resource-hash duplicates (docs/DASH0_INVENTORY.md#caveats item 2); one series per table.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte",
+      "target": {
+        "name": "postgresql.table.size",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    }
+  },
+  "source": "datadog",
+  "version": 1
+}

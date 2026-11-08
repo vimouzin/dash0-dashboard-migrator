@@ -1,0 +1,263 @@
+# Agent0 answer, verbatim. Asked 2026-11-07T20:27:08Z via dash0 MCP runTask (scripts/run_oracle.py, requested advanced/high), dataset default, thread 05b39b88-b47b-4c95-bbdd-71c00bbcf5b7, prompt: prompt.md (sha256 0d90ebe28e8e).
+# Provenance only, never test input.
+- source_path: 'widgets[1].definition.widgets[0].definition.requests[0]'
+  outcome: translated
+  promql:
+    - '(avg(rate({otel_metric_name="redis.keyspace.hits", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) / (avg(rate({otel_metric_name="redis.keyspace.hits", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) + avg(rate({otel_metric_name="redis.keyspace.misses", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])))) * 100'
+  otel_metrics: [redis.keyspace.hits, redis.keyspace.misses]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (about 23-37 between 14:15Z and 15:15Z)'
+  notes: 'Datadog redis.stats.keyspace_hits/misses are per-second rates of the INFO counters. OTel has cumulative monotonic sums, so rate() matches them. The constant 100 comes from the source. $scope is dropped. OTel series split at each collector restart (new os_description / dash0_resource_hash); the outer avg() collapses that label, but while stale and new series overlap, avg covers both.'
+
+- source_path: 'widgets[1].definition.widgets[1].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.clients.blocked", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [redis.clients.blocked]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (0 throughout)'
+  notes: 'Non-monotonic sum (gauge-like), so no rate(). Restart duplicates split by dash0_resource_hash; sum() collapses them but double-counts during the overlap.'
+
+- source_path: 'widgets[1].definition.widgets[2].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.db.keys", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.db.keys]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Both the Datadog and OTel metrics are per database (Datadog tag redis_db, OTel label db); sum() collapses db. Restart duplicates (dash0_resource_hash) inflate the sum during overlaps: values jump, e.g. 76 -> 138 -> 125 -> 218.'
+
+- source_path: 'widgets[1].definition.widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.rdb.changes_since_last_save", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [redis.rdb.changes_since_last_save]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Non-monotonic sum, so no rate(). Same restart-duplicate caveat (dash0_resource_hash).'
+
+- source_path: 'widgets[1].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: nothing in the dataset or the candidate list measures master_link_down_since_seconds'
+  otel_metrics: []
+  labels: {host: host_name}
+  notes: 'redis.replication.offset and backlog_first_byte_offset are byte offsets, not the duration the replica link has been down.'
+
+- source_path: 'widgets[2].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: redis.info.latency_ms (the Agent''s INFO round-trip time) has no equivalent in this dataset or the candidate list'
+  otel_metrics: []
+  labels: {host: host_name}
+  notes: 'redis.cmd.latency (gauge, s, cmd and percentile) is server-side per-command latency, a different quantity; it is also not in the dataset.'
+
+- source_path: 'widgets[2].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: top'
+  otel_metrics: []
+  labels: {host: host_name}
+  notes: 'Also no OTel metric: no candidate measures slowlog entry durations (redis.slowlog.micros.95percentile). The closest would be topk(10, ...), which is not allowed. The /1000 in the source converts us to ms.'
+
+- source_path: 'widgets[2].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no slowlog entry count in this dataset or the candidate list'
+  otel_metrics: []
+  labels: {host: host_name}
+  notes: 'redis.cmd.calls counts all command calls, not slowlog entries, and is not in the dataset. The tags name and command have no OTel label.'
+
+- source_path: 'widgets[2].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'no direct OTel equivalent: replication delay would have to be computed from other metrics'
+  otel_metrics: []
+  labels: {host: host_name}
+  notes: 'Datadog redis.replication.delay = master_repl_offset - replica offset. Proposed: avg({otel_metric_name="redis.replication.offset", otel_metric_type="gauge", host_name=~"$host"}) - avg({otel_metric_name="redis.replication.replica_offset", otel_metric_type="gauge", host_name=~"$host"}). redis.replication.replica_offset is not in the dataset (collector-contrib/receiver/redisreceiver/metadata.yaml).'
+
+- source_path: 'widgets[2].definition.widgets[5].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg(rate({otel_metric_name="redis.cpu.time", otel_metric_type="sum", host_name=~"$host", state="sys"}[$__rate_interval]))'
+    - 'avg(rate({otel_metric_name="redis.cpu.time", otel_metric_type="sum", host_name=~"$host", state="user"}[$__rate_interval]))'
+  otel_metrics: [redis.cpu.time]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series per formula (sys about 0.0005-0.0008, user about 0.0008-0.0012 s/s)'
+  notes: 'Datadog redis.cpu.sys/user are per-second rates of used_cpu_sys/user (s/s). rate() on the cumulative redis.cpu.time gives the same unit. state also has sys_children, user_children, sys_main_thread and user_main_thread, which the matchers exclude. Restart duplicates collapse under avg().'
+
+- source_path: 'widgets[2].definition.widgets[6].definition.requests[0]'
+  outcome: translated
+  promql:
+    - '(avg(rate({otel_metric_name="redis.keyspace.hits", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) / (avg(rate({otel_metric_name="redis.keyspace.hits", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) + avg(rate({otel_metric_name="redis.keyspace.misses", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])))) * 100'
+  otel_metrics: [redis.keyspace.hits, redis.keyspace.misses]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Same as widgets[1].definition.widgets[0].'
+
+- source_path: 'widgets[2].definition.widgets[7].definition.requests[0]'
+  outcome: translated
+  promql:
+    - '(avg(rate({otel_metric_name="redis.keyspace.hits", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) / (avg(rate({otel_metric_name="redis.keyspace.hits", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) + avg(rate({otel_metric_name="redis.keyspace.misses", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])))) * 100'
+  otel_metrics: [redis.keyspace.hits, redis.keyspace.misses]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Same as widgets[1].definition.widgets[0].'
+
+- source_path: 'widgets[3].definition.widgets[0].definition.requests[0]'
+  outcome: translated
+  promql:
+    - '(avg by (host_name) ({otel_metric_name="redis.memory.used", otel_metric_type="gauge", host_name=~"$host"}) / max by (host_name) ({otel_metric_name="redis.maxmemory", otel_metric_type="gauge", host_name=~"$host"})) * 100'
+  otel_metrics: [redis.memory.used, redis.maxmemory]
+  in_dataset: partly
+  otel_source: [collector-contrib/receiver/redisreceiver/metadata.yaml]
+  labels: {host: host_name}
+  live_check: 'no, 0 series (redis.maxmemory not in dataset; redis.memory.used alone returns 1 series for docker-desktop)'
+  notes: 'redis.maxmemory is an optional receiver metric and has to be enabled. With maxmemory 0 (no limit) the ratio becomes +Inf, as in Datadog. by host maps to by (host_name), which also collapses the restart duplicates (dash0_resource_hash).'
+
+- source_path: 'widgets[3].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: per_minute'
+  otel_metrics: [redis.keys.evicted]
+  labels: {host: host_name}
+  notes: 'Closest (not allowed): sum by (host_name) (rate({otel_metric_name="redis.keys.evicted", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])) * 60. The constant 60 is not in the source.'
+
+- source_path: 'widgets[3].definition.widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.memory.rss", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.memory.rss]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Bytes in both. Restart duplicates (dash0_resource_hash) inflate the sum during overlaps.'
+
+- source_path: 'widgets[3].definition.widgets[4].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg({otel_metric_name="redis.memory.fragmentation_ratio", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.memory.fragmentation_ratio]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Dimensionless ratio in both. Restart duplicates collapse under avg().'
+
+- source_path: 'widgets[3].definition.widgets[5].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg({otel_metric_name="redis.memory.fragmentation_ratio", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.memory.fragmentation_ratio]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Same as widgets[3].definition.widgets[4].'
+
+- source_path: 'widgets[4].definition.widgets[0].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.clients.connected", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [redis.clients.connected]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Non-monotonic sum, so no rate(). Restart overlap (dash0_resource_hash) can double the sum, e.g. 6 vs 3.'
+
+- source_path: 'widgets[4].definition.widgets[2].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.clients.blocked", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [redis.clients.blocked]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (0 throughout)'
+  notes: 'Same as widgets[1].definition.widgets[1].'
+
+- source_path: 'widgets[4].definition.widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.slaves.connected", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [redis.slaves.connected]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (0 throughout)'
+  notes: 'Non-monotonic sum, so no rate(). Same restart-duplicate caveat.'
+
+- source_path: 'widgets[4].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: diff'
+  otel_metrics: [redis.connections.rejected]
+  labels: {host: host_name}
+  notes: 'Closest (not allowed): sum(increase({otel_metric_name="redis.connections.rejected", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])).'
+
+- source_path: 'widgets[4].definition.widgets[5].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum(rate({otel_metric_name="redis.commands.processed", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval]))'
+  otel_metrics: [redis.commands.processed]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (about 1.7-2.4 commands/s)'
+  notes: 'Datadog redis.net.commands is submitted as a per-second rate of total_commands_processed, so rate() of the monotonic sum matches. redis.commands (gauge, instantaneous_ops_per_sec) is a different quantity.'
+
+- source_path: 'widgets[5].definition.widgets[0].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.db.keys", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.db.keys]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Same as widgets[1].definition.widgets[2].'
+
+- source_path: 'widgets[5].definition.widgets[1].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.db.keys", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.db.keys]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Same as widgets[1].definition.widgets[2].'
+
+- source_path: 'widgets[5].definition.widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum(rate({otel_metric_name="redis.keys.expired", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval]))'
+  otel_metrics: [redis.keys.expired]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (0 throughout)'
+  notes: 'Datadog redis.keys.expired is a gauge of the cumulative expired_keys total, so the Datadog panel plots a running total, while rate() plots expirations per second. The conventions require rate() on monotonic sums. A selector without rate() would reproduce the running total; if the converter treats that difference as inexact, the request should be blocked instead.'
+
+- source_path: 'widgets[5].definition.widgets[4].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="redis.db.expires", otel_metric_type="gauge", host_name=~"$host"})'
+  otel_metrics: [redis.db.expires]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series'
+  notes: 'Both are per database (Datadog redis_db, OTel db); sum() collapses db. Same restart-duplicate caveat (dash0_resource_hash).'
+
+- source_path: 'widgets[5].definition.widgets[5].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no per-key element count (redis.key.length) in this dataset or the candidate list'
+  otel_metrics: []
+  labels: {host: host_name}
+  notes: 'The $key variable (tag key) has no OTel label. The distribution widget would also need a distribution metric.'
+
+- source_path: 'widgets[6].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: 'not a metrics request (log stream)'
+  otel_metrics: []
+  labels: {}
+  notes: 'list_stream of error logs; out of scope for metric translation.'
+
+- source_path: 'widgets[6].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'not a metrics request (log stream)'
+  otel_metrics: []
+  labels: {}
+  notes: 'list_stream of all logs; out of scope for metric translation.'

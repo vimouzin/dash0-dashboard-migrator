@@ -1,0 +1,24 @@
+# Perses server config for the local oracle review viewer (issue #87). No secrets in this file.
+# Reference (Perses v0.55.1): https://perses.dev/perses/docs/configuration/configuration/
+#   source: https://github.com/perses/perses/blob/v0.55.1/docs/configuration/configuration.md
+#   provisioning: https://github.com/perses/perses/blob/v0.55.1/docs/configuration/provisioning.md
+database:
+  file:
+    folder: /perses        # inside the container only; `docker compose down` throws it away
+    extension: json
+security:
+  enable_auth: false       # bound to 127.0.0.1 by docker-compose.yaml; local review only
+  # The Dash0 token reaches Perses only as the compose secret file /run/secrets/dash0_auth_token,
+  # referenced by provisioning/secret.yaml (authorization.credentialsFile). Perses reads the file
+  # on every proxied request and never returns its content from the API.
+  secret_file_allowed_directories:
+    - /run/secrets
+provisioning:
+  interval: 1m
+  folders:
+    - /etc/perses/provisioning
+datasource:
+  proxy:
+    # The datasource proxy may only reach Dash0 (SSRF guard, see "DatasourceProxy config").
+    allowed_hosts:
+      - "*.dash0.com"

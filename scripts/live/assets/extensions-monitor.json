@@ -1,0 +1,7 @@
+{
+  "name": "Live deterministic Redis memory ratio",
+  "type": "query alert",
+  "query": "avg(last_5m):avg:redis.mem.used{*} / avg:redis.mem.rss{*} > 0.9",
+  "message": "Empirical arithmetic value verification. Imported check remains disabled.",
+  "options": {"thresholds": {"critical": 0.9, "warning": 0.8}, "notify_no_data": false}
+}

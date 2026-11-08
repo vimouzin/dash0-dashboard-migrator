@@ -1,0 +1,16 @@
+{
+  "dataset": "default",
+  "model_class": "advanced",
+  "reasoning_effort": "high",
+  "dashboards": [
+    {"case": "postgres/postgresql_dashboard"},
+    {"case": "postgres/postgresql_screenboard_dashboard"},
+    {"case": "nginx/NGINX-Metrics_dashboard"},
+    {"case": "nginx/NGINX-Overview_dashboard"},
+    {"case": "nginx/plus_overview"},
+    {"case": "redisdb/overview"},
+    {"case": "docker_daemon/docker_dashboard"},
+    {"case": "kafka/kafka_dashboard"},
+    {"case": "kafka/kafka_kraft_dashboard"}
+  ]
+}

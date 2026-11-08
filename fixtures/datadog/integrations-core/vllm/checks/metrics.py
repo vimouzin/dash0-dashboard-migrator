@@ -1,0 +1,96 @@
+# (C) Datadog, Inc. 2024-present
+# All rights reserved
+# Licensed under a 3-clause BSD style license (see LICENSE)
+
+METRIC_MAP = {
+    'python_gc_objects_collected': 'python.gc.objects.collected',
+    'python_gc_objects_uncollectable': 'python.gc.objects.uncollectable',
+    'python_gc_collections': 'python.gc.collections',
+    'python_info': 'python.info',
+    'process_virtual_memory_bytes': 'process.virtual_memory_bytes',
+    'process_resident_memory_bytes': 'process.resident_memory_bytes',
+    'process_start_time_seconds': 'process.start_time_seconds',
+    'process_cpu_seconds': 'process.cpu_seconds',
+    'process_open_fds': 'process.open_fds',
+    'process_max_fds': 'process.max_fds',
+    'vllm:cache_config_info': 'cache_config_info',
+    'vllm:num_requests_running': 'num_requests.running',
+    'vllm:num_requests_waiting': 'num_requests.waiting',
+    'vllm:num_requests_swapped': 'num_requests.swapped',
+    'vllm:gpu_cache_usage_perc': 'gpu_cache_usage_perc',
+    'vllm:cpu_cache_usage_perc': 'cpu_cache_usage_perc',
+    'vllm:num_preemptions': 'num_preemptions',
+    'vllm:prompt_tokens': 'prompt_tokens',
+    'vllm:generation_tokens': 'generation_tokens',
+    'vllm:time_to_first_token_seconds': 'time_to_first_token.seconds',
+    'vllm:time_per_output_token_seconds': 'time_per_output_token.seconds',
+    'vllm:e2e_request_latency_seconds': 'e2e_request_latency.seconds',
+    'vllm:request_prompt_tokens': 'request.prompt_tokens',
+    'vllm:request_generation_tokens': 'request.generation_tokens',
+    'vllm:request_params_best_of': 'request.params.best_of',
+    'vllm:request_params_n': 'request.params.n',
+    'vllm:request_success': 'request.success',
+    'vllm:avg_prompt_throughput_toks_per_s': 'avg.prompt.throughput.toks_per_s',
+    'vllm:avg_generation_throughput_toks_per_s': 'avg.generation_throughput.toks_per_s',
+    # Current vLLM names for KV cache usage and per-token latency; older versions expose
+    # gpu_cache_usage_perc and time_per_output_token_seconds instead.
+    'vllm:kv_cache_usage_perc': 'kv_cache_usage_perc',
+    'vllm:inter_token_latency_seconds': 'inter_token_latency.seconds',
+    'vllm:request_time_per_output_token_seconds': 'request.time_per_output_token.seconds',
+}
+
+GPU_METRIC_MAP = {
+    'vllm:estimated_flops_per_gpu': 'estimated_flops_per_gpu',
+    'vllm:external_prefix_cache_hits': 'external_prefix_cache.hits',
+    'vllm:external_prefix_cache_queries': 'external_prefix_cache.queries',
+    'vllm:nixl_bytes_transferred': 'nixl.bytes_transferred',
+    'vllm:nixl_num_descriptors': 'nixl.num_descriptors',
+    'vllm:nixl_num_failed_notifications': 'nixl.num_failed_notifications',
+    'vllm:nixl_num_failed_transfers': 'nixl.num_failed_transfers',
+    'vllm:nixl_num_kv_expired_reqs': 'nixl.num_kv_expired_reqs',
+    'vllm:nixl_num_notifications_after_expiry': 'nixl.num_notifications_after_expiry',
+    'vllm:nixl_post_time_seconds': 'nixl.post_time.seconds',
+    'vllm:nixl_xfer_time_seconds': 'nixl.xfer_time.seconds',
+    'vllm:prefix_cache_hits': 'prefix_cache.hits',
+    'vllm:prefix_cache_queries': 'prefix_cache.queries',
+    'vllm:prompt_tokens_cached': 'prompt_tokens.cached',
+    'vllm:request_decode_time_seconds': 'request.decode_time.seconds',
+    'vllm:request_prefill_kv_computed_tokens': 'request.prefill_kv_computed_tokens',
+    'vllm:request_prefill_time_seconds': 'request.prefill_time.seconds',
+    'vllm:request_queue_time_seconds': 'request.queue_time.seconds',
+    'vllm:spec_decode_num_accepted_tokens': 'spec_decode.num_accepted_tokens',
+    'vllm:spec_decode_num_accepted_tokens_per_pos': 'spec_decode.num_accepted_tokens_per_pos',
+    'vllm:spec_decode_num_draft_tokens': 'spec_decode.num_draft_tokens',
+}
+
+# RAY_METRIC_MAP for metrics exposed with ray_vllm. prefix when vllm run as a library
+RAY_METRIC_MAP = {
+    'ray_vllm:cache_config_info': 'cache_config_info',
+    'ray_vllm:num_requests_running': 'num_requests.running',
+    'ray_vllm:num_requests_waiting': 'num_requests.waiting',
+    'ray_vllm:num_requests_swapped': 'num_requests.swapped',
+    'ray_vllm:gpu_cache_usage_perc': 'gpu_cache_usage_perc',
+    'ray_vllm:cpu_cache_usage_perc': 'cpu_cache_usage_perc',
+    'ray_vllm:num_preemptions': 'num_preemptions',
+    'ray_vllm:prompt_tokens': 'prompt_tokens',
+    'ray_vllm:generation_tokens': 'generation_tokens',
+    'ray_vllm:time_to_first_token_seconds': 'time_to_first_token.seconds',
+    'ray_vllm:time_per_output_token_seconds': 'time_per_output_token.seconds',
+    'ray_vllm:e2e_request_latency_seconds': 'e2e_request_latency.seconds',
+    'ray_vllm:request_prompt_tokens': 'request.prompt_tokens',
+    'ray_vllm:request_generation_tokens': 'request.generation_tokens',
+    'ray_vllm:request_params_best_of': 'request.params.best_of',
+    'ray_vllm:request_params_n': 'request.params.n',
+    'ray_vllm:request_success': 'request.success',
+    'ray_vllm:avg_prompt_throughput_toks_per_s': 'avg.prompt.throughput.toks_per_s',
+    'ray_vllm:avg_generation_throughput_toks_per_s': 'avg.generation_throughput.toks_per_s',
+    'ray_vllm:kv_cache_usage_perc': 'kv_cache_usage_perc',
+    'ray_vllm:inter_token_latency_seconds': 'inter_token_latency.seconds',
+    'ray_vllm:request_time_per_output_token_seconds': 'request.time_per_output_token.seconds',
+}
+
+RAY_GPU_METRIC_MAP = {name.replace('vllm:', 'ray_vllm:', 1): metric for name, metric in GPU_METRIC_MAP.items()}
+
+RENAME_LABELS_MAP = {
+    'version': 'python_version',
+}

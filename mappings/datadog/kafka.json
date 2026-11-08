@@ -1,0 +1,420 @@
+{
+  "gaps": {
+    "kafka.controller.active_broker_count": {
+      "reason": "Datadog reads the KRaft controller bean kafka.controller:type=KafkaController,name=ActiveBrokerCount (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L786-792); no pinned OTel rule maps it. The closest, kafkametricsreceiver kafka.brokers ('Number of brokers in the cluster', from cluster metadata), does not document whether fenced brokers count, so it is not a deterministic rebuild. No vendor row.",
+      "tag": "NOEQUIV"
+    },
+    "kafka.controller.fenced_broker_count": {
+      "reason": "Datadog reads kafka.controller:type=KafkaController,name=FencedBrokerCount (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L775-781); no pinned OTel source maps that bean or counts fenced brokers (jmx-scraper kafka.yaml, kafkametricsreceiver, fixtures/otel/catalog.yaml). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.append_records_rate": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.broker_metadata.last_applied_record_lag_ms": {
+      "reason": "Datadog reads JMX bean kafka.server:type=broker-metadata-metrics (L949-965) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.broker_metadata.metadata_apply_error_count": {
+      "reason": "Datadog reads JMX bean kafka.server:type=broker-metadata-metrics (L949-965) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.broker_metadata.metadata_load_error_count": {
+      "reason": "Datadog reads JMX bean kafka.server:type=broker-metadata-metrics (L949-965) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.commit_latency_avg": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.commit_latency_max": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.current_leader": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.fetch_records_rate": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.high_watermark": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.metadata_loader.current_controller_id": {
+      "reason": "Datadog reads JMX bean kafka.server:type=MetadataLoader,name=CurrentControllerId (L983-987) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.metadata_loader.current_metadata_version": {
+      "reason": "Datadog reads JMX bean kafka.server:type=MetadataLoader,name=CurrentMetadataVersion (L972-976) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.poll_idle_ratio_avg": {
+      "reason": "Datadog reads JMX bean kafka.server:type=raft-metrics (L899-942) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.kraft.snapshot_emitter.latest_snapshot_generated_age_ms": {
+      "reason": "Datadog reads JMX bean kafka.server:type=SnapshotEmitter,name=LatestSnapshotGeneratedAgeMs (L1005-1009) in integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml; no pinned OTel source maps it (fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml has no raft, broker-metadata, MetadataLoader or SnapshotEmitter rule; kafkametricsreceiver and fixtures/otel/catalog.yaml have no KRaft metric). No vendor row.",
+      "tag": "NOOTEL"
+    },
+    "kafka.producer.bytes_out": {
+      "reason": "AMBIG: one Datadog name, two sources. integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L59-65 aliases producer-metrics outgoing-byte-rate (per client, all brokers) and L152-161 aliases producer-topic-metrics byte-rate (tags client, topic) to kafka.producer.bytes_out; the vendor table lists both kafka.producer.outgoing-byte-rate and kafka.producer.byte-rate. A query without a topic filter sums both series sets, which no single OTel metric reproduces; picking one changes values.",
+      "tag": "AMBIG"
+    }
+  },
+  "labels": {
+    "instance": "service_instance_id"
+  },
+  "metrics": {
+    "kafka.consumer.bytes_in": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.consumer.bytes_in -> kafka.consumer.total.bytes-consumed-rate. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, byte per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L254-260: bean_regex kafka\\.consumer:type=consumer-fetch-manager-metrics,client-id=.*, attribute bytes-consumed-rate, metric_type gauge (L220-226 is the Kafka 0.8 ConsumerTopicMetrics BytesPerSec bean). type deviation: Datadog submits the client's JMX attribute, already a per-second rate, as a gauge (metric_type gauge), so the per-second unit is not a Datadog rate() of a counter; kind gauge reads the OTel gauge as is. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-consumer.yaml L5-17: bean kafka.consumer:client-id=*,type=consumer-fetch-manager-metrics, attribute bytes-consumed-rate -> kafka.consumer.total.bytes-consumed-rate, gauge, unit By, 'The average number of bytes consumed for all topics per second'; catalog: gauge, By, attribute client-id. Units: byte/second vs By (a per-second value; the OTel unit omits /s); scale 1. Caveat: the Datadog regex client-id=.* also fits the per-topic bean name (client-id=...,topic=...), whose bytes-consumed-rate L300-306 aliases kafka.consumer.bytes_consumed; which rule JMXFetch applies to that bean is not in the pinned sources. consumer_group (fixture filter and group-by) is a user tag with no OTel attribute. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "kafka.consumer.total.bytes-consumed-rate",
+        "type": "gauge"
+      },
+      "targetUnit": "By"
+    },
+    "kafka.consumer.fetch_rate": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "No vendor row; pairing from the same JMX bean and attribute. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, unit request (no per-unit), description 'The minimum rate at which the consumer sends fetch requests to a broker'; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L293-299: bean_regex kafka\\.consumer:type=consumer-fetch-manager-metrics,client-id=(.*?), attribute fetch-rate, metric_type gauge. The 'minimum' wording belongs to the Kafka 0.8 rule L213-219 (ConsumerFetcherManager MinFetchRate), a bean current clients do not register. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-consumer.yaml L5-13: bean kafka.consumer:client-id=*,type=consumer-fetch-manager-metrics, attribute fetch-rate -> kafka.consumer.fetch-rate, gauge, unit {request}, 'The number of fetch requests for all topics per second'; catalog: gauge, attribute client-id. Units: request vs {request}, both requests per second; scale 1. consumer_group (fixture filter and group-by) is a user tag with no OTel attribute. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "request",
+      "target": {
+        "name": "kafka.consumer.fetch-rate",
+        "type": "gauge"
+      },
+      "targetUnit": "{request}"
+    },
+    "kafka.consumer.messages_in": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.consumer.messages_in -> kafka.consumer.total.records-consumed-rate. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, message per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L261-267: bean_regex kafka\\.consumer:type=consumer-fetch-manager-metrics,client-id=.*, attribute records-consumed-rate, metric_type gauge (L227-233 is the Kafka 0.8 ConsumerTopicMetrics MessagesPerSec bean). type deviation: Datadog submits the client's JMX attribute, already a per-second rate, as a gauge (metric_type gauge), so the per-second unit is not a Datadog rate() of a counter; kind gauge reads the OTel gauge as is. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-consumer.yaml L5-26: same bean and attribute -> kafka.consumer.total.records-consumed-rate, gauge, unit {record}, 'The average number of records consumed for all topics per second'; catalog: gauge, attribute client-id. Units: message/second vs {record} (a per-second value); scale 1. Caveat: the Datadog regex client-id=.* also fits the per-topic bean name, whose records-consumed-rate L320-326 aliases kafka.consumer.records_consumed; which rule JMXFetch applies to that bean is not in the pinned sources. consumer_group (fixture filter) is a user tag with no OTel attribute. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "message/second",
+      "target": {
+        "name": "kafka.consumer.total.records-consumed-rate",
+        "type": "gauge"
+      },
+      "targetUnit": "{record}"
+    },
+    "kafka.consumer_lag": {
+      "kind": "gauge",
+      "labels": {
+        "consumer_group": "group",
+        "host": "host_name",
+        "partition": "partition",
+        "topic": "topic"
+      },
+      "ref": "Vendor: metrics_mapping row kafka.consumer_lag -> kafka.consumer_group.lag. Datadog: integrations-core@a9b9e42 kafka_consumer/metadata.csv gauge, unit message; integrations-core@a9b9e42 kafka_consumer/datadog_checks/kafka_consumer/kafka_consumer.py report_consumer_offsets_and_lag: highwater offset minus committed group offset per partition (negative floored to 0), tags topic, partition, consumer_group, kafka_cluster_id. OTel: fixtures/otel/collector-contrib/receiver/kafkametricsreceiver/metadata.yaml kafka.consumer_group.lag, gauge, unit 1, 'Current approximate lag of consumer group at partition of topic', attributes group, topic, partition (Dash0 scope kafkametricsreceiver 0.160.0). Units: message vs 1, both a message count; scale 1. Dash0 default 2026-11-08 (read-only): count by (group, topic, partition, host_name) (last_over_time({otel_metric_name=\"kafka.consumer_group.lag\"}[7d])) -> groups accounting, fraud-detection; topic orders; partition 0; host_name docker-desktop. Labels: consumer_group -> group, topic -> topic, partition -> partition; host -> host_name: Datadog host is the Agent host running the check, Dash0 host_name is the collector host (docker-desktop), as in redis.json and nginx.json. Datadog kafka_cluster_id has no OTel attribute. Churn: collector restarts rotate the resource hash; 41 of 513 minutes in 7 d had 2+ series per (group, topic, partition) (count_over_time((count by (group, topic, partition) ({otel_metric_name=\"kafka.consumer_group.lag\"}) > 1)[7d:1m])), so sum double-counts then. No grain set (open question in the PR for issue #112).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "message",
+      "target": {
+        "name": "kafka.consumer_group.lag",
+        "type": "gauge"
+      },
+      "targetUnit": "1"
+    },
+    "kafka.consumer_offset": {
+      "kind": "gauge",
+      "labels": {
+        "consumer_group": "group",
+        "host": "host_name",
+        "partition": "partition",
+        "topic": "topic"
+      },
+      "ref": "Vendor: metrics_mapping row kafka.consumer_offset -> kafka.consumer_group.offset. Datadog: integrations-core@a9b9e42 kafka_consumer/metadata.csv gauge, unit offset; integrations-core@a9b9e42 kafka_consumer/datadog_checks/kafka_consumer/kafka_consumer.py report_consumer_offsets_and_lag: committed consumer group offset per partition, tags topic, partition, consumer_group, kafka_cluster_id. OTel: fixtures/otel/collector-contrib/receiver/kafkametricsreceiver/metadata.yaml kafka.consumer_group.offset, gauge, unit 1, 'Current offset of the consumer group at partition of topic', attributes group, topic, partition (Dash0 scope kafkametricsreceiver 0.160.0). Units: offset vs 1, both an offset; scale 1. Dash0 default 2026-11-08 (read-only): count by (group, topic, partition, host_name) (last_over_time({otel_metric_name=\"kafka.consumer_group.offset\"}[7d])) -> groups accounting, fraud-detection; topic orders; partition 0; host_name docker-desktop. Labels: consumer_group -> group, topic -> topic, partition -> partition; host -> host_name: Datadog host is the Agent host running the check, Dash0 host_name is the collector host (docker-desktop), as in redis.json and nginx.json. Datadog kafka_cluster_id has no OTel attribute. Churn: collector restarts rotate the resource hash; 41 of 513 minutes in 7 d had 2+ series per (group, topic, partition) (count_over_time((count by (group, topic, partition) ({otel_metric_name=\"kafka.consumer_group.offset\"}) > 1)[7d:1m])), so sum double-counts then. No grain set (open question in the PR for issue #112).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "offset",
+      "target": {
+        "name": "kafka.consumer_group.offset",
+        "type": "gauge"
+      },
+      "targetUnit": "1"
+    },
+    "kafka.net.bytes_in.rate": {
+      "kind": "rate",
+      "matchers": {
+        "direction": "in"
+      },
+      "rateWindow": "5m",
+      "ref": "Vendor: metrics_mapping row kafka.net.bytes_in.rate -> kafka.network.io. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, byte per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L345-351: bean kafka.server:type=BrokerTopicMetrics,name=BytesInPerSec, attribute Count, metric_type rate (per-second rate of the JMX counter). OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L82-90 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.network.io, counter, unit By, direction=in. Units: byte/second vs cumulative By; rate() gives By/s; scale 1. Dash0 default 2026-11-08 (read-only): count by (direction) (last_over_time({otel_metric_name=\"kafka.network.io\"}[7d])) -> in, out. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 29 of 499 minutes in 7 d had 2+ series (count_over_time((count by (direction) ({otel_metric_name=\"kafka.network.io\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id. rateWindow 5m (issue #90): one sample per 60 s (count_over_time({otel_metric_name=\"kafka.network.io\", direction=\"in\"}[10m]) = 10, 2026-11-08), too sparse for $__rate_interval.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "kafka.network.io",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "kafka.net.bytes_out.rate": {
+      "kind": "rate",
+      "matchers": {
+        "direction": "out"
+      },
+      "rateWindow": "5m",
+      "ref": "Vendor: metrics_mapping row kafka.net.bytes_out.rate -> kafka.network.io. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, byte per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L334-340: bean kafka.server:type=BrokerTopicMetrics,name=BytesOutPerSec, attribute Count, metric_type rate (per-second rate of the JMX counter). OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L92-100 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.network.io, counter, unit By, direction=out. Units: byte/second vs cumulative By; rate() gives By/s; scale 1. Dash0 default 2026-11-08 (read-only): count by (direction) (last_over_time({otel_metric_name=\"kafka.network.io\"}[7d])) -> in, out. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 27 of 499 minutes in 7 d had 2+ series (count_over_time((count by (direction) ({otel_metric_name=\"kafka.network.io\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id. rateWindow 5m (issue #90): one sample per 60 s (count_over_time({otel_metric_name=\"kafka.network.io\", direction=\"in\"}[10m]) = 10, 2026-11-08), too sparse for $__rate_interval.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "kafka.network.io",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "kafka.producer.io_wait": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.producer.io_wait -> kafka.producer.io-wait-time-ns-avg. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, unit nanosecond; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L66-72: bean_regex kafka\\.producer:type=producer-metrics,client-id=.*, attribute io-wait-time-ns-avg, metric_type gauge. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-producer.yaml L4-12: bean kafka.producer:client-id=*,type=producer-metrics, attribute io-wait-time-ns-avg -> kafka.producer.io-wait-time-ns-avg, gauge, unit ns; catalog: gauge, ns, attribute client-id. Units: nanosecond vs ns; scale 1. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "nanosecond",
+      "target": {
+        "name": "kafka.producer.io-wait-time-ns-avg",
+        "type": "gauge"
+      },
+      "targetUnit": "ns"
+    },
+    "kafka.producer.request_latency_avg": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.producer.request_latency_avg -> kafka.producer.request-latency-avg. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, unit millisecond; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L52-58 and L111-113: bean_regex kafka\\.producer:type=producer-metrics,client-id=..., attribute request-latency-avg, metric_type gauge (L13-19 is the Kafka 0.8 ProducerRequestRateAndTimeMs Mean bean). OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-producer.yaml L4-18: same bean and attribute -> kafka.producer.request-latency-avg, gauge, unit ms; catalog: gauge, ms, attribute client-id. Units: millisecond vs ms; scale 1. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "millisecond",
+      "target": {
+        "name": "kafka.producer.request-latency-avg",
+        "type": "gauge"
+      },
+      "targetUnit": "ms"
+    },
+    "kafka.producer.request_rate": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.producer.request_rate -> kafka.producer.request-rate. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, request per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L45-51: bean_regex kafka\\.producer:type=producer-metrics,client-id=.*, attribute request-rate, metric_type gauge (L6-12 is the Kafka 0.8 ProducerRequestRateAndTimeMs Count bean). type deviation: Datadog submits the client's JMX attribute, already a per-second rate, as a gauge (metric_type gauge), so the per-second unit is not a Datadog rate() of a counter; kind gauge reads the OTel gauge as is. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-producer.yaml L4-21: same bean and attribute -> kafka.producer.request-rate, gauge, unit {request}, 'The average number of requests sent per second'; catalog: gauge, attribute client-id. Units: request/second vs {request} (a per-second value); scale 1. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "request/second",
+      "target": {
+        "name": "kafka.producer.request-rate",
+        "type": "gauge"
+      },
+      "targetUnit": "{request}"
+    },
+    "kafka.producer.response_rate": {
+      "kind": "gauge",
+      "labels": {
+        "client-id": "client_id"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.producer.response_rate -> kafka.producer.response-rate. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, response per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L38-44: bean_regex kafka\\.producer:type=producer-metrics,client-id=.*, attribute response-rate, metric_type gauge. type deviation: Datadog submits the client's JMX attribute, already a per-second rate, as a gauge (metric_type gauge), so the per-second unit is not a Datadog rate() of a counter; kind gauge reads the OTel gauge as is. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka-producer.yaml L4-24: same bean and attribute -> kafka.producer.response-rate, gauge, unit {response}, 'Responses received per second'; catalog: gauge, attribute client-id. Units: response/second vs {response} (a per-second value); scale 1. dash0: not checked (no access in this run). Labels: client-id -> client_id (jmx-scraper attribute client-id=param(client-id), Dash0 label form). host and env are not attributes of the jmx-scraper metric, so filters or groups on them stay blocked.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "response/second",
+      "target": {
+        "name": "kafka.producer.response-rate",
+        "type": "gauge"
+      },
+      "targetUnit": "{response}"
+    },
+    "kafka.replication.isr_expands.rate": {
+      "kind": "rate",
+      "matchers": {
+        "operation": "expand"
+      },
+      "rateWindow": "5m",
+      "ref": "Vendor: metrics_mapping row kafka.replication.isr_expands.rate -> kafka.isr.operation.count. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, node per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L720-726: bean kafka.server:type=ReplicaManager,name=IsrExpandsPerSec, attribute Count, metric_type rate (per-second rate of the JMX counter). OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L148-156 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.isr.operation.count, unit {operations}, operation=expand. Declared updowncounter, but the JMX Meter Count only grows, so rate() holds. Units: node/second vs cumulative {operations}, both count ISR changes; rate() gives per second; scale 1. Dash0 default 2026-11-08 (read-only): count by (operation) (last_over_time({otel_metric_name=\"kafka.isr.operation.count\"}[7d])) -> expand, shrink. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 27 of 499 minutes in 7 d had 2+ series (count_over_time((count by (operation) ({otel_metric_name=\"kafka.isr.operation.count\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id. rateWindow 5m (issue #90): one sample per 60 s (count_over_time({otel_metric_name=\"kafka.network.io\", direction=\"in\"}[10m]) = 10, 2026-11-08), too sparse for $__rate_interval.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "node/second",
+      "target": {
+        "name": "kafka.isr.operation.count",
+        "type": "sum"
+      },
+      "targetUnit": "{operations}"
+    },
+    "kafka.replication.isr_shrinks.rate": {
+      "kind": "rate",
+      "matchers": {
+        "operation": "shrink"
+      },
+      "rateWindow": "5m",
+      "ref": "Vendor: metrics_mapping row kafka.replication.isr_shrinks.rate -> kafka.isr.operation.count. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, node per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L709-715: bean kafka.server:type=ReplicaManager,name=IsrShrinksPerSec, attribute Count, metric_type rate (per-second rate of the JMX counter). OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L138-146 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.isr.operation.count, unit {operations}, operation=shrink. Declared updowncounter, but the JMX Meter Count only grows, so rate() holds. Units: node/second vs cumulative {operations}, both count ISR changes; rate() gives per second; scale 1. Dash0 default 2026-11-08 (read-only): count by (operation) (last_over_time({otel_metric_name=\"kafka.isr.operation.count\"}[7d])) -> expand, shrink. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 28 of 499 minutes in 7 d had 2+ series (count_over_time((count by (operation) ({otel_metric_name=\"kafka.isr.operation.count\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id. rateWindow 5m (issue #90): one sample per 60 s (count_over_time({otel_metric_name=\"kafka.network.io\", direction=\"in\"}[10m]) = 10, 2026-11-08), too sparse for $__rate_interval.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "node/second",
+      "target": {
+        "name": "kafka.isr.operation.count",
+        "type": "sum"
+      },
+      "targetUnit": "{operations}"
+    },
+    "kafka.replication.leader_elections.rate": {
+      "kind": "rate",
+      "rateWindow": "5m",
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.replication.leader_elections.rate -> kafka.leader.election.rate. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, event per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L731-737: bean kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs, attribute Count, metric_type rate (per-second rate of the JMX counter). OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml L180-186: same bean and attribute -> kafka.leader.election.rate, counter, unit {election}; catalog: sum, monotonic, no attributes. Units: event/second vs cumulative {election}; rate() gives per second; scale 1. Caveat: the Dash0 source named in sibling entries, opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L173-179, emits the same bean as kafka.leaderElection.count; the kafka.replication.unclean_leader_elections.rate ref records that Dash0 had data under neither name on 2026-11-08, so this entry keeps the vendor name. dash0: not checked (no access in this run). Labels: instance -> service_instance_id (file default). rateWindow 5m as in the sibling JMX rate entries (one sample per 60 s measured for kafka.network.io, issue #90); not measured for this metric.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "event/second",
+      "target": {
+        "name": "kafka.leader.election.rate",
+        "type": "sum"
+      },
+      "targetUnit": "{election}"
+    },
+    "kafka.replication.offline_partitions_count": {
+      "kind": "gauge",
+      "ref": "Vendor: metrics_mapping row kafka.replication.offline_partitions_count -> kafka.partition.offline. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, no unit; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L753-759: bean kafka.controller:type=KafkaController,name=OfflinePartitionsCount, attribute Value, metric_type gauge. OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L122-128 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.partition.offline, updowncounter (Dash0 sum), unit {partitions}. Units: partitions (csv lists none) vs {partitions}; read as current value; scale 1. Dash0 default 2026-11-08 (read-only): count by (otel_metric_name) (last_over_time({otel_metric_name=\"kafka.partition.offline\"}[7d])) -> 1 label set; max_over_time over 7 d = 0. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 28 of 499 minutes in 7 d had 2+ series (count_over_time((count by (otel_metric_name) ({otel_metric_name=\"kafka.partition.offline\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "partition",
+      "target": {
+        "name": "kafka.partition.offline",
+        "type": "sum"
+      },
+      "targetUnit": "{partitions}"
+    },
+    "kafka.replication.unclean_leader_elections.rate": {
+      "kind": "rate",
+      "rateWindow": "5m",
+      "ref": "vendor deviation: the row maps to kafka.unclean.election.rate (jmx-scraper name; pinned fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml, same bean). Dash0 has no data under that name; its Java agent emits the same bean as kafka.leaderElection.unclean.count. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, event per second; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L742-748: bean kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec, attribute Count, metric_type rate (per-second rate of the JMX counter). OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L181-187 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.leaderElection.unclean.count, counter, unit {elections}. Units: event/second vs cumulative {elections}; rate() gives per second; scale 1. Dash0 default 2026-11-08 (read-only): count by (otel_metric_name) (last_over_time({otel_metric_name=~\"kafka.(leaderElection.unclean.count|unclean.election.rate|leaderElection.count|leader.election.rate)\"}[7d])) -> only kafka.leaderElection.unclean.count. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 28 of 499 minutes in 7 d had 2+ series (count_over_time((count by (otel_metric_name) ({otel_metric_name=\"kafka.leaderElection.unclean.count\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id. rateWindow 5m (issue #90): one sample per 60 s (count_over_time({otel_metric_name=\"kafka.network.io\", direction=\"in\"}[10m]) = 10, 2026-11-08), too sparse for $__rate_interval.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "event/second",
+      "target": {
+        "name": "kafka.leaderElection.unclean.count",
+        "type": "sum"
+      },
+      "targetUnit": "{elections}"
+    },
+    "kafka.replication.under_replicated_partitions": {
+      "kind": "gauge",
+      "ref": "vendor deviation: the row maps to kafka.partition.under_replicated (jmx-scraper name; pinned fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml, same bean). Dash0 has no data under that name; its Java agent emits the same bean as kafka.partition.underReplicated. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, no unit; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L687-693: bean kafka.server:type=ReplicaManager,name=UnderReplicatedPartitions, attribute Value, metric_type gauge. OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L130-136 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.partition.underReplicated, updowncounter (Dash0 sum), unit {partitions}. Units: partitions (csv lists none) vs {partitions}; read as current value; scale 1. Dash0 default 2026-11-08 (read-only): count by (otel_metric_name) (last_over_time({otel_metric_name=~\"kafka.partition.(offline|underReplicated|under_replicated)\"}[7d])) -> kafka.partition.offline, kafka.partition.underReplicated. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 29 of 499 minutes in 7 d had 2+ series (count_over_time((count by (otel_metric_name) ({otel_metric_name=\"kafka.partition.underReplicated\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "partition",
+      "target": {
+        "name": "kafka.partition.underReplicated",
+        "type": "sum"
+      },
+      "targetUnit": "{partitions}"
+    },
+    "kafka.request.fetch_consumer.time.avg": {
+      "kind": "gauge",
+      "matchers": {
+        "type": "FetchConsumer"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.request.fetch_consumer.time.avg -> kafka.request.time.avg. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, unit millisecond; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L528-534: bean kafka.network:type=RequestMetrics,name=TotalTimeMs,request=FetchConsumer, attribute Mean, metric_type gauge. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml L53-77: same bean and attribute Mean -> kafka.request.time.avg, gauge, unit ms, type=param(request), so type=FetchConsumer (the rule's bean list documents Produce, FetchConsumer, FetchFollower); fixtures/otel/catalog.yaml kafka.request.time.avg: gauge, ms, attribute type. Units: millisecond vs ms; scale 1. Caveat: the Dash0 source named in sibling entries, opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L53-72, maps Count, 50thPercentile and 99thPercentile of this bean but not Mean, so a Java-agent deployment has no kafka.request.time.avg series; it needs the jmx-scraper rules. dash0: not checked (no access in this run). Labels: instance -> service_instance_id (file default; see kafka.request.produce.time.99percentile). Fixture queries filter $env and group by env; env has no OTel attribute here.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "millisecond",
+      "target": {
+        "name": "kafka.request.time.avg",
+        "type": "gauge"
+      },
+      "targetUnit": "ms"
+    },
+    "kafka.request.fetch_follower.time.avg": {
+      "kind": "gauge",
+      "matchers": {
+        "type": "FetchFollower"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.request.fetch_follower.time.avg -> kafka.request.time.avg. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, unit millisecond; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L542-548: bean kafka.network:type=RequestMetrics,name=TotalTimeMs,request=FetchFollower, attribute Mean, metric_type gauge. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml L53-77: same bean and attribute Mean -> kafka.request.time.avg, gauge, unit ms, type=param(request), so type=FetchFollower (the rule's bean list documents Produce, FetchConsumer, FetchFollower); fixtures/otel/catalog.yaml kafka.request.time.avg: gauge, ms, attribute type. Units: millisecond vs ms; scale 1. Caveat: the Dash0 source named in sibling entries, opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L53-72, maps Count, 50thPercentile and 99thPercentile of this bean but not Mean, so a Java-agent deployment has no kafka.request.time.avg series; it needs the jmx-scraper rules. dash0: not checked (no access in this run). Labels: instance -> service_instance_id (file default; see kafka.request.produce.time.99percentile). Fixture queries filter $env and group by env; env has no OTel attribute here.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "millisecond",
+      "target": {
+        "name": "kafka.request.time.avg",
+        "type": "gauge"
+      },
+      "targetUnit": "ms"
+    },
+    "kafka.request.fetch_request_purgatory.size": {
+      "kind": "gauge",
+      "matchers": {
+        "type": "Fetch"
+      },
+      "ref": "Vendor: metrics_mapping row kafka.request.fetch_request_purgatory.size -> kafka.purgatory.size. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, unit request; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L672-678: bean kafka.server:type=DelayedOperationPurgatory,name=PurgatorySize,delayedOperation=Fetch, attribute Value, metric_type gauge. OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L102-112 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same beans and attribute -> kafka.purgatory.size, updowncounter (Dash0 sum), unit {requests}, type=param(delayedOperation), so type=Fetch. Units: request vs {requests}; read as current value; scale 1. Dash0 default 2026-11-08 (read-only): count by (type) (last_over_time({otel_metric_name=\"kafka.purgatory.size\"}[7d])) -> Fetch, Produce. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 27 of 499 minutes in 7 d had 2+ series (count_over_time((count by (type) ({otel_metric_name=\"kafka.purgatory.size\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "request",
+      "target": {
+        "name": "kafka.purgatory.size",
+        "type": "sum"
+      },
+      "targetUnit": "{requests}"
+    },
+    "kafka.request.produce.time.99percentile": {
+      "kind": "gauge",
+      "matchers": {
+        "type": "Produce"
+      },
+      "ref": "Vendor: metrics_mapping row kafka.request.produce.time.99percentile -> kafka.request.time.99p. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, unit millisecond; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L484-493: bean kafka.network:type=RequestMetrics,name=TotalTimeMs,request=Produce, attribute 99thPercentile, metric_type gauge. OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L53-72 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same bean and attribute -> kafka.request.time.99p, gauge, unit ms, type=param(request), so type=Produce. Units: millisecond vs ms; scale 1. Dash0 default 2026-11-08 (read-only): count by (type) (last_over_time({otel_metric_name=\"kafka.request.time.99p\"}[7d])) -> FetchConsumer, FetchFollower, Produce; Produce 0-23 ms over 7 d (min_over_time, max_over_time). Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 29 of 499 minutes in 7 d had 2+ series (count_over_time((count by (type) ({otel_metric_name=\"kafka.request.time.99p\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "millisecond",
+      "target": {
+        "name": "kafka.request.time.99p",
+        "type": "gauge"
+      },
+      "targetUnit": "ms"
+    },
+    "kafka.request.produce.time.avg": {
+      "kind": "gauge",
+      "matchers": {
+        "type": "Produce"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row kafka.request.produce.time.avg -> kafka.request.time.avg. Datadog: fixtures/datadog/integrations-core/kafka/metadata.csv gauge, unit millisecond; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L484-490: bean kafka.network:type=RequestMetrics,name=TotalTimeMs,request=Produce, attribute Mean, metric_type gauge. OTel: fixtures/otel/java-contrib/jmx-scraper/src/main/resources/kafka.yaml L53-77: same bean and attribute Mean -> kafka.request.time.avg, gauge, unit ms, type=param(request), so type=Produce (the rule's bean list documents Produce, FetchConsumer, FetchFollower); fixtures/otel/catalog.yaml kafka.request.time.avg: gauge, ms, attribute type. Units: millisecond vs ms; scale 1. Caveat: the Dash0 source named in sibling entries, opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L53-72, maps Count, 50thPercentile and 99thPercentile of this bean but not Mean, so a Java-agent deployment has no kafka.request.time.avg series; it needs the jmx-scraper rules. dash0: not checked (no access in this run). Labels: instance -> service_instance_id (file default; see kafka.request.produce.time.99percentile). Fixture queries filter $env and group by env; env has no OTel attribute here.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "millisecond",
+      "target": {
+        "name": "kafka.request.time.avg",
+        "type": "gauge"
+      },
+      "targetUnit": "ms"
+    },
+    "kafka.request.producer_request_purgatory.size": {
+      "kind": "gauge",
+      "matchers": {
+        "type": "Produce"
+      },
+      "ref": "Vendor: metrics_mapping row kafka.request.producer_request_purgatory.size -> kafka.purgatory.size. Datadog: integrations-core@a9b9e42 kafka/metadata.csv gauge, unit request; integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/metrics.yaml L661-667: bean kafka.server:type=DelayedOperationPurgatory,name=PurgatorySize,delayedOperation=Produce, attribute Value, metric_type gauge. OTel: opentelemetry-java-instrumentation@v2.31.1 instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/experimental-kafka-broker.yaml L102-112 (the Dash0 source: scope io.opentelemetry.jmx 2.31.1-alpha, -Dotel.jmx.target.system=kafka-broker): same beans and attribute -> kafka.purgatory.size, updowncounter (Dash0 sum), unit {requests}, type=param(delayedOperation), so type=Produce. Units: request vs {requests}; read as current value; scale 1. Dash0 default 2026-11-08 (read-only): count by (type) (last_over_time({otel_metric_name=\"kafka.purgatory.size\"}[7d])) -> Fetch, Produce. Labels: instance -> service_instance_id (file default). Datadog instance is the JMX instance name (integrations-core@a9b9e42 kafka/datadog_checks/kafka/data/conf.yaml.example, param name); Dash0 service_instance_id is a random UUID per broker start (docs/DASH0_INVENTORY.md, Caveats). Grouping works; an instance:<name> filter matches nothing. Churn: after a broker restart old and new series overlap; 29 of 499 minutes in 7 d had 2+ series (count_over_time((count by (type) ({otel_metric_name=\"kafka.purgatory.size\"}) > 1)[7d:1m])), so sum double-counts then. No grain: the duplicates differ only in service_instance_id.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "request",
+      "target": {
+        "name": "kafka.purgatory.size",
+        "type": "sum"
+      },
+      "targetUnit": "{requests}"
+    }
+  },
+  "source": "datadog",
+  "version": 1
+}

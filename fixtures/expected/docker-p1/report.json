@@ -1,0 +1,1920 @@
+{
+  "compilerVersion": "0.1.0",
+  "diagnostics": [
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Query function '.fill()' is blocked: PromQL has no equivalent of Datadog's gap interpolation (methods linear, last, zero, null; gap limit in seconds; https://docs.datadoghq.com/dashboards/functions/interpolation/#fill).",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[0].q",
+      "sourceText": "sum:docker.containers.running{$scope} by {docker_image}.fill(0)",
+      "suggestedAction": "Migrate this widget manually, or remove '.fill()' from the source query if unfilled gaps are acceptable."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Function 'top' is not supported: Datadog ranks each series once over its points (https://docs.datadoghq.com/dashboards/functions/rank/#top); PromQL topk ranks at every step, and the docs leave the ranked window open.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1].definition.requests[0].q",
+      "sourceText": "top(avg:docker.mem.rss{$scope} by {container_name}, 5, 'max', 'desc')",
+      "suggestedAction": "Remove top() to convert all series unranked, or migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Function 'top' is not supported: Datadog ranks each series once over its points (https://docs.datadoghq.com/dashboards/functions/rank/#top); PromQL topk ranks at every step, and the docs leave the ranked window open.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].q",
+      "sourceText": "top(avg:docker.cpu.user{$scope} by {container_name}, 5, 'max', 'desc')",
+      "suggestedAction": "Remove top() to convert all series unranked, or migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'heatmap' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[3].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'docker.containers.running'.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[0].q",
+      "sourceText": "sum:docker.containers.running{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'docker.containers.running' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1m. Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'docker.containers.stopped'.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.requests[0].q",
+      "sourceText": "sum:docker.containers.stopped{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'docker.containers.stopped' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1m. Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'heatmap' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[6].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Query function '.fill()' is blocked: PromQL has no equivalent of Datadog's gap interpolation (methods linear, last, zero, null; gap limit in seconds; https://docs.datadoghq.com/dashboards/functions/interpolation/#fill).",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.requests[0].q",
+      "sourceText": "avg:docker.cpu.user{$scope} by {docker_image}.fill(0)",
+      "suggestedAction": "Migrate this widget manually, or remove '.fill()' from the source query if unfilled gaps are acceptable."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Query function '.fill()' is blocked: PromQL has no equivalent of Datadog's gap interpolation (methods linear, last, zero, null; gap limit in seconds; https://docs.datadoghq.com/dashboards/functions/interpolation/#fill).",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.requests[0].q",
+      "sourceText": "avg:docker.mem.rss{$scope} by {docker_image}.fill(0)",
+      "suggestedAction": "Migrate this widget manually, or remove '.fill()' from the source query if unfilled gaps are acceptable."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'event_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[9].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'event_timeline' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[10].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_unit' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.custom_unit",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'docker.containers.running'.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.requests[0].q",
+      "sourceText": "sum:docker.containers.running{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'docker.containers.running' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'docker.containers.running'.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.requests[0].q",
+      "sourceText": "sum:docker.containers.running{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'docker.containers.running' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 5m. Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Query function '.fill()' is blocked: PromQL has no equivalent of Datadog's gap interpolation (methods linear, last, zero, null; gap limit in seconds; https://docs.datadoghq.com/dashboards/functions/interpolation/#fill).",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.requests[0].q",
+      "sourceText": "avg:docker.cpu.system{$scope} by {docker_image}.fill(0)",
+      "suggestedAction": "Migrate this widget manually, or remove '.fill()' from the source query if unfilled gaps are acceptable."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'docker.mem.cache' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.requests[0].q",
+      "sourceText": "sum:docker.mem.cache{$scope} by {docker_image}",
+      "suggestedAction": "Review the 'docker.mem.cache' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.requests[0].q",
+      "sourceText": "sum:docker.mem.cache{$scope} by {docker_image}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'image' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[15].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'docker.mem.swap'.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.requests[0].q",
+      "sourceText": "avg:docker.mem.swap{$scope} by {docker_image}",
+      "suggestedAction": "Add a reviewed entry for 'docker.mem.swap' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'docker.io.read_bytes' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.requests[0].q",
+      "sourceText": "avg:docker.io.read_bytes{$scope} by {docker_image}",
+      "suggestedAction": "Review the 'docker.io.read_bytes' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.requests[0].q",
+      "sourceText": "avg:docker.io.read_bytes{$scope} by {docker_image}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'docker.io.write_bytes' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.requests[0].q",
+      "sourceText": "avg:docker.io.write_bytes{$scope} by {docker_image}",
+      "suggestedAction": "Review the 'docker.io.write_bytes' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.requests[0].q",
+      "sourceText": "avg:docker.io.write_bytes{$scope} by {docker_image}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'docker.net.bytes_rcvd' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.requests[0].q",
+      "sourceText": "avg:docker.net.bytes_rcvd{$scope} by {docker_image}",
+      "suggestedAction": "Review the 'docker.net.bytes_rcvd' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.requests[0].q",
+      "sourceText": "avg:docker.net.bytes_rcvd{$scope} by {docker_image}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'docker.net.bytes_sent' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.requests[0].q",
+      "sourceText": "avg:docker.net.bytes_sent{$scope} by {docker_image}",
+      "suggestedAction": "Review the 'docker.net.bytes_sent' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.requests[0].q",
+      "sourceText": "avg:docker.net.bytes_sent{$scope} by {docker_image}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Function 'top' is not supported: Datadog ranks each series once over its points (https://docs.datadoghq.com/dashboards/functions/rank/#top); PromQL topk ranks at every step, and the docs leave the ranked window open.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25].definition.requests[0].q",
+      "sourceText": "top(avg:docker.net.bytes_sent{$scope} by {container_name}, 5, 'max', 'desc')",
+      "suggestedAction": "Remove top() to convert all series unranked, or migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'heatmap' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[26].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Function 'top' is not supported: Datadog ranks each series once over its points (https://docs.datadoghq.com/dashboards/functions/rank/#top); PromQL topk ranks at every step, and the docs leave the ranked window open.",
+      "severity": "error",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27].definition.requests[0].q",
+      "sourceText": "top(timeshift(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 40), 20, 'last', 'desc')",
+      "suggestedAction": "Remove top() to convert all series unranked, or migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    }
+  ],
+  "format": "json",
+  "items": [
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "",
+      "title": "Docker - Overview"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[0]",
+      "title": "Running containers by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[1]",
+      "title": "Most RAM-intensive containers"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[2]",
+      "title": "Most CPU-intensive containers"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[3]",
+      "title": "Memory by container"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[4]",
+      "title": "Running containers"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[5]",
+      "title": "Stopped containers"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[6]",
+      "title": "CPU by container"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[7]",
+      "title": "CPU user by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[8]",
+      "title": "RSS memory by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[9]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[10]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[11]",
+      "title": "Running container change"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[12]",
+      "title": "CPU system by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[13]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[14]",
+      "title": "Cache memory by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[15]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[16]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[17]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[18]",
+      "title": "Swap by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[19]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[20]",
+      "title": "Avg. I/O bytes read by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[21]",
+      "title": "Avg. I/O bytes written by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[22]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[23]",
+      "title": "Avg. rx bytes by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[24]",
+      "title": "Avg. tx bytes by image"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[25]",
+      "title": "Most tx-intensive containers"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[26]",
+      "title": "tx by container"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/docker_dashboard.json",
+      "sourcePath": "widgets[27]",
+      "title": "Running containers by image"
+    }
+  ],
+  "mapping": [
+    {
+      "sha256": "0508d1b86f73d389c5d6778a6049172a07f9cd86fb1c0cddbde63ede5db9e05a",
+      "sourceId": "docker.json"
+    }
+  ],
+  "mappingCoverage": {
+    "metrics": [
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[0].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[0].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "docker.containers.running"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[5].definition.requests[0].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "docker.containers.stopped"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[12].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.cpu.system"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[6].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[7].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.cpu.user"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[20].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.io.read_bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[21].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.io.write_bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[14].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.mem.cache"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[3].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[8].definition.requests[0].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "docker.mem.rss"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[18].definition.requests[0].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "docker.mem.swap"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[23].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.net.bytes_rcvd"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[24].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/docker_dashboard.json",
+            "sourcePath": "widgets[26].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "docker.net.bytes_sent"
+      }
+    ],
+    "parsedQueries": 15,
+    "unparsedQueries": [
+      {
+        "code": "UNSUPPORTED_QUERY_FUNCTION",
+        "message": "Function 'top' is not supported.",
+        "severity": "error",
+        "sourceId": "dashboards/docker_dashboard.json",
+        "sourcePath": "widgets[1].definition.requests[0].q",
+        "sourceText": "top(avg:docker.mem.rss{$scope} by {container_name}, 5, 'max', 'desc')",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      },
+      {
+        "code": "UNSUPPORTED_QUERY_FUNCTION",
+        "message": "Function 'top' is not supported.",
+        "severity": "error",
+        "sourceId": "dashboards/docker_dashboard.json",
+        "sourcePath": "widgets[2].definition.requests[0].q",
+        "sourceText": "top(avg:docker.cpu.user{$scope} by {container_name}, 5, 'max', 'desc')",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      },
+      {
+        "code": "UNSUPPORTED_QUERY_SYNTAX",
+        "message": "Unexpected '1' at offset 0.",
+        "severity": "error",
+        "sourceId": "dashboards/docker_dashboard.json",
+        "sourcePath": "widgets[11].definition.requests[0].q",
+        "sourceText": "100*(sum:docker.containers.running{$scope}/timeshift(sum:docker.containers.running{$scope}, -300))",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      },
+      {
+        "code": "UNSUPPORTED_QUERY_FUNCTION",
+        "message": "Function 'top' is not supported.",
+        "severity": "error",
+        "sourceId": "dashboards/docker_dashboard.json",
+        "sourcePath": "widgets[25].definition.requests[0].q",
+        "sourceText": "top(avg:docker.net.bytes_sent{$scope} by {container_name}, 5, 'max', 'desc')",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      },
+      {
+        "code": "UNSUPPORTED_QUERY_FUNCTION",
+        "message": "Function 'top' is not supported.",
+        "severity": "error",
+        "sourceId": "dashboards/docker_dashboard.json",
+        "sourcePath": "widgets[27].definition.requests[0].q",
+        "sourceText": "top(timeshift(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 40), 20, 'last', 'desc')",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      }
+    ]
+  },
+  "provider": "datadog",
+  "reportVersion": 1,
+  "summary": {
+    "dashboards": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 1,
+      "translated": 0
+    },
+    "monitors": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 0,
+      "translated": 0
+    },
+    "skippedFiles": 0,
+    "widgets": {
+      "approximated": 5,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 18,
+      "partial": 0,
+      "translated": 5
+    }
+  },
+  "validation": {
+    "api": "not_run",
+    "schema": "passed",
+    "semantics": "not_run",
+    "syntax": "passed"
+  }
+}

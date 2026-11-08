@@ -1,0 +1,38 @@
+version: 1
+inputs: [../assets/dashboard.json, ../assets/monitor.json]
+mappings: [../../../mappings/datadog]
+warmup_seconds: 300
+window_seconds: 600
+settle_seconds: 120
+step_seconds: 60
+rate_interval: 5m
+cases:
+  - id: postgres-connections
+    source: dashboard.json
+    request: /widgets/0/definition/requests/0
+    panel: widget-0
+    variables: {host: $run}
+  - id: postgres-row-rate
+    source: dashboard.json
+    request: /widgets/1/definition/requests/0
+    panel: widget-1
+    variables: {host: $run}
+  - id: redis-memory
+    source: dashboard.json
+    request: /widgets/2/definition/requests/0
+    panel: widget-2
+    variables: {host: $run}
+  - id: nginx-connections
+    source: dashboard.json
+    request: /widgets/3/definition/requests/0
+    panel: widget-3
+    variables: {host: $run}
+  - id: redis-memory-formula
+    source: dashboard.json
+    request: /widgets/4/definition/requests/0
+    panel: widget-4
+    variables: {host: $run}
+    require_nonzero: false
+  - id: connection-monitor
+    source: monitor.json
+    kind: monitor

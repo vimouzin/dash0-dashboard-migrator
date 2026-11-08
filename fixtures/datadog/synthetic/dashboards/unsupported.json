@@ -1,0 +1,49 @@
+{
+  "title": "Synthetic unsupported",
+  "description": "Every widget is blocked for a different reason.",
+  "layout_type": "ordered",
+  "template_variables": [],
+  "widgets": [
+    {
+      "definition": {
+        "type": "toplist",
+        "title": "Toplist",
+        "requests": [{ "q": "top(avg:postgresql.connections{*} by {db}, 10, 'mean', 'desc')" }]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "Logs",
+        "requests": [{ "queries": [{ "data_source": "logs", "name": "query1", "search": { "query": "*" } }] }]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "Formula",
+        "requests": [
+          {
+            "queries": [{ "data_source": "metrics", "name": "query1", "query": "avg:postgresql.connections{*}" }],
+            "formulas": [{ "formula": "query1 * 100" }]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "Own time window",
+        "time": { "live_span": "1h" },
+        "requests": [{ "q": "avg:postgresql.connections{*}" }]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "Rollup",
+        "requests": [{ "q": "avg:postgresql.connections{*}.rollup(max)" }]
+      }
+    }
+  ]
+}

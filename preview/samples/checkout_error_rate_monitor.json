@@ -1,0 +1,16 @@
+{
+  "name": "[Checkout] Error rate above 5%",
+  "type": "query alert",
+  "query": "sum(last_5m):100 * sum:trace.http.request.errors{service:checkout,env:prod}.as_rate() / sum:trace.http.request.hits{service:checkout,env:prod}.as_rate() > 5",
+  "message": "{{#is_alert}}More than {{threshold}}% of checkout requests are failing ({{value}}%). Customers cannot complete orders.{{/is_alert}}\n{{#is_warning}}Checkout error rate is rising: {{value}}%.{{/is_warning}}\n{{#is_recovery}}Checkout error rate is back to normal.{{/is_recovery}}\n@slack-shop-oncall",
+  "tags": ["service:checkout", "env:prod", "team:shop"],
+  "priority": 2,
+  "options": {
+    "thresholds": { "critical": 5, "warning": 2 },
+    "notify_no_data": false,
+    "require_full_window": false,
+    "renotify_interval": 0,
+    "include_tags": true,
+    "new_host_delay": 300
+  }
+}

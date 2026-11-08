@@ -1,0 +1,199 @@
+# Agent0 answer, verbatim. Asked 2026-11-07T20:27:01Z via dash0 MCP runTask (scripts/run_oracle.py, requested advanced/high), dataset default, thread 36cc596e-96b8-437a-bbe2-1e9a5f5dc37e, prompt: prompt.md (sha256 c3f5a26e3c23).
+# Provenance only, never test input.
+- source_path: 'widgets[1].definition.widgets[1].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_accepted", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [nginx.connections_accepted]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (cumulative values 52-185 in 14:05Z-15:21Z)'
+  notes: >-
+    Datadog nginx.connections.accepted is a gauge that holds the cumulative total of accepted connections.
+    The OTel metric is a cumulative monotonic sum of the same quantity ({connections}). It is read raw,
+    without rate(), so the widget keeps showing a total and not connections/s, because the Datadog query
+    has no per_second(). The total resets when nginx restarts. In the data window the series is replaced
+    across restarts (dash0_resource_hash changes) with no overlap. The sum over host_name collapses it to
+    one series per host.
+- source_path: 'widgets[1].definition.widgets[2].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state=~"reading|writing", host_name=~"$host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (value 1 throughout)'
+  notes: >-
+    NGINX Plus connections.active leaves out idle connections
+    (https://nginx.org/en/docs/http/ngx_http_api_module.html#def_nginx_connections). The OTel state="active"
+    value is stub_status "Active connections", and that includes Waiting
+    (https://nginx.org/en/docs/http/ngx_http_stub_status_module.html). So state="active" would equal
+    Plus active+idle, and reading+writing is the Plus equivalent. Live data confirms active = reading+writing+waiting
+    (26 = 1 + 25). Non-monotonic sum, so no rate().
+- source_path: 'widgets[1].definition.widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state="waiting", host_name=~"$host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (values 20-25)'
+  notes: >-
+    NGINX Plus connections.idle equals stub_status Waiting (state="waiting"). Non-monotonic sum used as a
+    current value, so no rate().
+- source_path: 'widgets[1].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: per_second'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: >-
+    The request would also be blocked without the function. No OTel metric measures dropped connections,
+    and it would have to be computed as accepted minus handled. Closest PromQL (not applied):
+    sum(rate({otel_metric_name="nginx.connections_accepted", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval]))
+    - sum(rate({otel_metric_name="nginx.connections_handled", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])).
+- source_path: 'widgets[1].definition.widgets[5].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.requests", otel_metric_type="sum", host_name=~"$host"})'
+  otel_metrics: [nginx.requests]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 1 series (cumulative values 424-2465)'
+  notes: >-
+    Datadog nginx.requests.total is a gauge that holds the cumulative total of client requests. The OTel
+    nginx.requests is a cumulative monotonic sum of the same quantity ({requests}). It is read raw, without
+    rate(), to keep "total" semantics. The total resets on nginx restart. The series is replaced across
+    restarts (dash0_resource_hash), and summing over host_name collapses it.
+- source_path: 'widgets[3].definition.widgets[0].definition.requests.fill'
+  outcome: blocked
+  reason: 'no OTel metric: nothing measures nginx.requests.current (in-flight client requests)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: >-
+    nginx.requests is a cumulative total, not current requests. nginx.connections_current reading/writing
+    counts connections, not requests. Neither measures the same quantity.
+- source_path: 'widgets[4].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no per-server-zone response counts (nginx.server_zone.responses.total)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The nginx receiver scrapes stub_status, which exposes no server zones or responses by status class.
+- source_path: 'widgets[4].definition.widgets[0].definition.requests[1]'
+  outcome: blocked
+  reason: 'no OTel metric: no per-server-zone 4xx response counts (nginx.server_zone.responses.4xx)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: stub_status (nginx receiver) has no responses by status code.
+- source_path: 'widgets[4].definition.widgets[0].definition.requests[2]'
+  outcome: blocked
+  reason: 'no OTel metric: no per-server-zone 5xx response counts (nginx.server_zone.responses.5xx)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: stub_status (nginx receiver) has no responses by status code.
+- source_path: 'widgets[4].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no per-server-zone 4xx/5xx response counts'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: Both formulas need nginx.server_zone.responses.4xx/5xx. No dataset or candidate metric matches either one.
+- source_path: 'widgets[5].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no cache hit bytes (nginx.cache.hit.bytes)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The nginx receiver exposes no proxy cache metrics.
+- source_path: 'widgets[5].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no cache hit bytes (nginx.cache.hit.bytes)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The nginx receiver exposes no proxy cache metrics.
+- source_path: 'widgets[5].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no cache bypass bytes / bytes_written'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: All three formulas (query1, query2, query1 + query2) depend on missing cache metrics.
+- source_path: 'widgets[5].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no cache cold-state indicator (nginx.cache.cold)'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The nginx receiver exposes no proxy cache metrics.
+- source_path: 'widgets[5].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no cache max_size / size'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The nginx receiver exposes no proxy cache metrics.
+- source_path: 'widgets[5].definition.widgets[5].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric: no cache miss bytes / bytes_written'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: All three formulas (query1, query2, query1 + query2) depend on missing cache metrics.
+- source_path: 'widgets[6].definition.widgets[0].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state=~"reading|writing", host_name=~"$host"})'
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state="waiting", host_name=~"$host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: 'yes, 2 series (1 per formula; active 1, idle 20-25)'
+  notes: >-
+    Same mapping as the Active and Idle query values. Plus active = reading+writing, and Plus idle = waiting.
+    state="active" is not used because it includes idle connections. Non-monotonic sum, so no rate().
+- source_path: 'widgets[6].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: per_second'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: >-
+    The request would also be blocked without the function. Dropped connections have no direct OTel metric
+    and would have to be computed. Closest PromQL (not applied):
+    sum(rate({otel_metric_name="nginx.connections_accepted", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval]))
+    - sum(rate({otel_metric_name="nginx.connections_handled", otel_metric_type="sum", host_name=~"$host"}[$__rate_interval])).
+- source_path: 'widgets[7].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: as_count'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The request would also be blocked without the function. No dataset or candidate metric counts SSL handshakes.
+- source_path: 'widgets[7].definition.widgets[0].definition.requests[1]'
+  outcome: blocked
+  reason: 'unsupported function: as_count'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The request would also be blocked without the function. No dataset or candidate metric counts failed SSL handshakes.
+- source_path: 'widgets[7].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: as_count'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: The request would also be blocked without the function. No dataset or candidate metric counts SSL handshakes.
+- source_path: 'widgets[7].definition.widgets[1].definition.requests[1]'
+  outcome: blocked
+  reason: 'unsupported function: as_count'
+  otel_metrics: []
+  labels: {host: host_name}
+  live_check: not run (blocked)
+  notes: >-
+    The request would also be blocked without the function. No dataset or candidate metric counts failed
+    SSL handshakes. The leading unary minus (mirrored display) would be kept as a plain negation if a metric existed.

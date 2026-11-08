@@ -1,0 +1,227 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: postgres/assets/dashboards/postgresql_dashboard.json
+  fixture: fixtures/datadog/integrations-core/postgres/dashboards/postgresql_dashboard.json
+service: postgres
+dashboard_id: postgresql_dashboard
+title: Postgres - Metrics
+layout_type: ordered
+template_variables:
+- name: scope
+  prefix: null
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: timeseries
+  title: Rows fetched / returned / inserted / updated (per sec)
+  request_count: 4
+  has_layout: false
+- source_path: widgets[1]
+  type: timeseries
+  title: Connections
+  request_count: 1
+  has_layout: false
+- source_path: widgets[2]
+  type: timeseries
+  title: Inserts / updates / deletes (per sec)
+  request_count: 1
+  has_layout: false
+- source_path: widgets[3]
+  type: timeseries
+  title: Disk utilization (%)
+  request_count: 1
+  has_layout: false
+- source_path: widgets[4]
+  type: timeseries
+  title: System load
+  request_count: 3
+  has_layout: false
+- source_path: widgets[5]
+  type: timeseries
+  title: CPU usage (%)
+  request_count: 1
+  has_layout: false
+- source_path: widgets[6]
+  type: timeseries
+  title: I/O wait (%)
+  request_count: 1
+  has_layout: false
+- source_path: widgets[7]
+  type: timeseries
+  title: System memory
+  request_count: 1
+  has_layout: false
+- source_path: widgets[8]
+  type: timeseries
+  title: Network traffic (per sec)
+  request_count: 2
+  has_layout: false
+requests:
+- source_path: widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Rows fetched / returned / inserted / updated (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_fetched{$scope}
+  formulas:
+  - query1
+- source_path: widgets[0].definition.requests[1]
+  widget_type: timeseries
+  widget_title: Rows fetched / returned / inserted / updated (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_returned{$scope}
+  formulas:
+  - query1
+- source_path: widgets[0].definition.requests[2]
+  widget_type: timeseries
+  widget_title: Rows fetched / returned / inserted / updated (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_inserted{$scope}
+  formulas:
+  - query1
+- source_path: widgets[0].definition.requests[3]
+  widget_type: timeseries
+  widget_title: Rows fetched / returned / inserted / updated (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_updated{$scope}
+  formulas:
+  - query1
+- source_path: widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Connections
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.connections{$scope} by {db}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Inserts / updates / deletes (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: postgresql.rows_inserted{$scope}
+  - name: query2
+    data_source: metrics
+    query: postgresql.rows_deleted{$scope}
+  - name: query3
+    data_source: metrics
+    query: postgresql.rows_updated{$scope}
+  formulas:
+  - query1
+  - query2
+  - query3
+- source_path: widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Disk utilization (%)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:system.io.util{$scope}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: System load
+  queries:
+  - name: query1
+    data_source: metrics
+    query: system.load.1{$scope}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.requests[1]
+  widget_type: timeseries
+  widget_title: System load
+  queries:
+  - name: query1
+    data_source: metrics
+    query: system.load.5{$scope}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.requests[2]
+  widget_type: timeseries
+  widget_title: System load
+  queries:
+  - name: query1
+    data_source: metrics
+    query: system.load.15{$scope}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.requests[0]
+  widget_type: timeseries
+  widget_title: CPU usage (%)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: system.cpu.idle{$scope}
+  - name: query2
+    data_source: metrics
+    query: system.cpu.system{$scope}
+  - name: query3
+    data_source: metrics
+    query: system.cpu.iowait{$scope}
+  - name: query4
+    data_source: metrics
+    query: system.cpu.user{$scope}
+  - name: query5
+    data_source: metrics
+    query: system.cpu.stolen{$scope}
+  - name: query6
+    data_source: metrics
+    query: system.cpu.guest{$scope}
+  formulas:
+  - query1
+  - query2
+  - query3
+  - query4
+  - query5
+  - query6
+- source_path: widgets[6].definition.requests[0]
+  widget_type: timeseries
+  widget_title: I/O wait (%)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:system.cpu.iowait{$scope}
+  formulas:
+  - query1
+- source_path: widgets[7].definition.requests[0]
+  widget_type: timeseries
+  widget_title: System memory
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:system.mem.usable{$scope}
+  - name: query2
+    data_source: metrics
+    query: sum:system.mem.total{$scope}
+  formulas:
+  - query1
+  - query2 - query1
+- source_path: widgets[8].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Network traffic (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:system.net.bytes_rcvd{$scope}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.requests[1]
+  widget_type: timeseries
+  widget_title: Network traffic (per sec)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:system.net.bytes_sent{$scope}
+  formulas:
+  - query1

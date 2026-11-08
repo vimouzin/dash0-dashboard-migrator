@@ -1,0 +1,738 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: kafka/assets/dashboards/kafka_kraft_dashboard.json
+  fixture: fixtures/datadog/integrations-core/kafka/dashboards/kafka_kraft_dashboard.json
+service: kafka
+dashboard_id: kafka_kraft_dashboard
+title: Kafka KRaft Overview
+layout_type: ordered
+template_variables:
+- name: env
+  prefix: env
+  default: '*'
+- name: consumer_group
+  prefix: consumer_group
+  default: '*'
+- name: topic
+  prefix: topic
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: image
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2]
+  type: group
+  title: Data Streams Monitoring
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[1]
+  type: topology_map
+  title: Kafka Topology for $topic, $env
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[2]
+  type: query_table
+  title: Topic Health
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3]
+  type: group
+  title: Clusters Health
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3].definition.widgets[0]
+  type: query_value
+  title: Offline Partitions
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[1]
+  type: query_value
+  title: Under Replicated Partitions
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[2]
+  type: query_value
+  title: ISR Delta
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[3]
+  type: query_value
+  title: Follower Fetch Latency
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[4]
+  type: query_value
+  title: Consumer Fetch Latency
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[5]
+  type: query_value
+  title: Produce Latency
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[6]
+  type: manage_status
+  title: Kafka Monitors
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4]
+  type: group
+  title: Broker Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[1]
+  type: timeseries
+  title: Clean and Unclean Leader Elections
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[2]
+  type: timeseries
+  title: Broker Network Throughput
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[3]
+  type: timeseries
+  title: 'Producer and Fetch Request Purgatory '
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[4]
+  type: timeseries
+  title: Request Times
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5]
+  type: group
+  title: Producer Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[1]
+  type: timeseries
+  title: Bytes Out by Topic
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[2]
+  type: timeseries
+  title: Request and Response Rate
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[3]
+  type: timeseries
+  title: Average Request Latency
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[4]
+  type: timeseries
+  title: I/O Wait Time
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6]
+  type: group
+  title: Consumer Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[6].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[6].definition.widgets[1]
+  type: timeseries
+  title: Consumer Lag by Group
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[2]
+  type: timeseries
+  title: Bytes Consumed
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[3]
+  type: timeseries
+  title: Messages Consumed
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[4]
+  type: timeseries
+  title: Min Fetch Rate
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7]
+  type: group
+  title: Lag, Throughput and Message Size
+  request_count: 0
+  has_layout: true
+- source_path: widgets[7].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[7].definition.widgets[1]
+  type: timeseries
+  title: Top 10 Max Kafka Lag by env
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7].definition.widgets[2]
+  type: timeseries
+  title: Incoming messages by env, producing service for $topic
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7].definition.widgets[3]
+  type: timeseries
+  title: Outgoing messages by env, consuming service for $topic
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7].definition.widgets[4]
+  type: timeseries
+  title: Top 10 p95 message size by env for $topic
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7].definition.widgets[5]
+  type: distribution
+  title: Distribution of message size for $topic
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8]
+  type: group
+  title: KRaft Quorum Health
+  request_count: 0
+  has_layout: true
+- source_path: widgets[8].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[8].definition.widgets[1]
+  type: query_value
+  title: Current Leader
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[2]
+  type: query_value
+  title: Controller ID
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[3]
+  type: query_value
+  title: Active Brokers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[4]
+  type: query_value
+  title: Fenced Brokers
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[5]
+  type: query_value
+  title: High Watermark
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[6]
+  type: query_value
+  title: Metadata Version
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[7]
+  type: timeseries
+  title: Metadata Replication Lag
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[8]
+  type: timeseries
+  title: Raft Commit Latency
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[9]
+  type: timeseries
+  title: Raft Records Rate
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[10]
+  type: timeseries
+  title: Metadata Errors
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[11]
+  type: timeseries
+  title: Snapshot Age
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8].definition.widgets[12]
+  type: timeseries
+  title: Poll Idle Ratio
+  request_count: 1
+  has_layout: true
+- source_path: widgets[9]
+  type: group
+  title: Broker JVM Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[9].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[9].definition.widgets[1]
+  type: timeseries
+  title: JVM GC Count by Type
+  request_count: 1
+  has_layout: true
+- source_path: widgets[9].definition.widgets[2]
+  type: timeseries
+  title: JVM GC Time by Type
+  request_count: 1
+  has_layout: true
+- source_path: widgets[10]
+  type: group
+  title: Logs
+  request_count: 0
+  has_layout: true
+- source_path: widgets[10].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[10].definition.widgets[1]
+  type: timeseries
+  title: Count per Log Status
+  request_count: 1
+  has_layout: true
+- source_path: widgets[10].definition.widgets[2]
+  type: list_stream
+  title: Error Logs
+  request_count: 1
+  has_layout: true
+requests:
+- source_path: widgets[2].definition.widgets[1].definition.requests[0]
+  widget_type: topology_map
+  widget_title: Kafka Topology for $topic, $env
+  queries: []
+  formulas: []
+- source_path: widgets[2].definition.widgets[2].definition.requests[0]
+  widget_type: query_table
+  widget_title: Topic Health
+  queries:
+  - name: query1
+    data_source: metrics
+    query: count:data_streams.latency{type:kafka AND direction:out AND (pathway_type:edge OR pathway_type:partial_edge) AND $topic AND $env} by {topic,env}.as_rate()
+  - name: query2
+    data_source: metrics
+    query: count:data_streams.latency{type:kafka AND direction:in AND (pathway_type:edge OR pathway_type:partial_edge) AND $topic AND $env} by {topic,env}.as_rate()
+  - name: query3
+    data_source: metrics
+    query: max:data_streams.kafka.lag_seconds{$topic,$env} by {topic,env}
+  formulas:
+  - query1
+  - query2
+  - query3
+- source_path: widgets[3].definition.widgets[0].definition.requests[0]
+  widget_type: query_value
+  widget_title: Offline Partitions
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.replication.offline_partitions_count{*}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[1].definition.requests[0]
+  widget_type: query_value
+  widget_title: Under Replicated Partitions
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.replication.under_replicated_partitions{$env}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[2].definition.requests[0]
+  widget_type: query_value
+  widget_title: ISR Delta
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:kafka.replication.isr_expands.rate{$env}
+  - name: query2
+    data_source: metrics
+    query: max:kafka.replication.isr_shrinks.rate{$env}
+  formulas:
+  - query1 - query2
+- source_path: widgets[3].definition.widgets[3].definition.requests[0]
+  widget_type: query_value
+  widget_title: Follower Fetch Latency
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.request.fetch_follower.time.avg{$env}
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Consumer Fetch Latency
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.request.fetch_consumer.time.avg{$env}
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[5].definition.requests[0]
+  widget_type: query_value
+  widget_title: Produce Latency
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.request.produce.time.avg{$env}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Clean and Unclean Leader Elections
+  queries:
+  - name: query2
+    data_source: metrics
+    query: avg:kafka.replication.leader_elections.rate{$env}
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.replication.unclean_leader_elections.rate{$env}
+  formulas:
+  - query2
+  - query1
+- source_path: widgets[4].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Broker Network Throughput
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.net.bytes_in.rate{$env} by {env}.weighted()
+  - name: query2
+    data_source: metrics
+    query: sum:kafka.net.bytes_out.rate{$env} by {env}.weighted()
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[4].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: 'Producer and Fetch Request Purgatory '
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.request.producer_request_purgatory.size{$env} by {env}.weighted()
+  - name: query2
+    data_source: metrics
+    query: sum:kafka.request.fetch_request_purgatory.size{$env} by {env}.weighted()
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[4].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Request Times
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.request.produce.time.avg{$env} by {env}
+  - name: query2
+    data_source: metrics
+    query: avg:kafka.request.fetch_consumer.time.avg{$env} by {env}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[5].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Bytes Out by Topic
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.producer.bytes_out{$env} by {topic,env}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Request and Response Rate
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.producer.request_rate{$env} by {host}.weighted()
+  - name: query2
+    data_source: metrics
+    query: sum:kafka.producer.response_rate{$env} by {host}.weighted()
+  formulas:
+  - abs(query1)
+  - abs(query2)
+- source_path: widgets[5].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Average Request Latency
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.producer.request_latency_avg{$env} by {env}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: I/O Wait Time
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.producer.io_wait{$env} by {env}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[6].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Consumer Lag by Group
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.consumer_lag{$env,$consumer_group} by {host,consumer_group,env}
+  - name: query2
+    data_source: metrics
+    query: sum:kafka.consumer_offset{$env,$consumer_group} by {host,consumer_group,env}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[6].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Bytes Consumed
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.consumer.bytes_in{$env,$consumer_group} by {consumer_group,env}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[6].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Messages Consumed
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.consumer.messages_in{$env,$consumer_group} by {client-id,env}.weighted()
+  formulas:
+  - abs(query1)
+- source_path: widgets[6].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Min Fetch Rate
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.consumer.fetch_rate{$env,$consumer_group} by {env,consumer_group}.weighted()
+  formulas:
+  - query1
+- source_path: widgets[7].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Top 10 Max Kafka Lag by env
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:data_streams.kafka.lag_seconds{$topic ,$env} by {env,topic}
+  formulas:
+  - top(query1, 10, 'max', 'desc')
+- source_path: widgets[7].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Incoming messages by env, producing service for $topic
+  queries:
+  - name: upstream_services_throughput
+    data_source: metrics
+    query: 'count(v: v>=0):data_streams.latency{direction:out,pathway_type:full,type:kafka,$topic,$env} by {service,env}.as_rate().rollup(10)'
+  formulas:
+  - default_zero(upstream_services_throughput)
+- source_path: widgets[7].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Outgoing messages by env, consuming service for $topic
+  queries:
+  - name: downstream_services_throughput_by_queues
+    data_source: metrics
+    query: 'count(v: v>=0):data_streams.latency{direction:in,pathway_type:full,type:kafka,$topic,$env} by {service,env}.as_rate().rollup(10)'
+  formulas:
+  - default_zero(downstream_services_throughput_by_queues)
+- source_path: widgets[7].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Top 10 p95 message size by env for $topic
+  queries:
+  - name: query1
+    data_source: metrics
+    query: p95:data_streams.payload_size{type:kafka,$topic,$env} by {topic,env}
+  formulas:
+  - top(query1, 10, 'mean', 'desc')
+- source_path: widgets[7].definition.widgets[5].definition.requests[0]
+  widget_type: distribution
+  widget_title: Distribution of message size for $topic
+  queries: []
+  formulas: []
+- source_path: widgets[8].definition.widgets[1].definition.requests[0]
+  widget_type: query_value
+  widget_title: Current Leader
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.current_leader{$env}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[2].definition.requests[0]
+  widget_type: query_value
+  widget_title: Controller ID
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.metadata_loader.current_controller_id{$env}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[3].definition.requests[0]
+  widget_type: query_value
+  widget_title: Active Brokers
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.controller.active_broker_count{$env}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Fenced Brokers
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.controller.fenced_broker_count{$env}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[5].definition.requests[0]
+  widget_type: query_value
+  widget_title: High Watermark
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.high_watermark{$env}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[6].definition.requests[0]
+  widget_type: query_value
+  widget_title: Metadata Version
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.metadata_loader.current_metadata_version{$env}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[7].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Metadata Replication Lag
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.broker_metadata.last_applied_record_lag_ms{$env} by {host}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[8].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Raft Commit Latency
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.commit_latency_avg{$env} by {host}
+  - name: query2
+    data_source: metrics
+    query: avg:kafka.kraft.commit_latency_max{$env} by {host}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[8].definition.widgets[9].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Raft Records Rate
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.append_records_rate{$env} by {host}
+  - name: query2
+    data_source: metrics
+    query: avg:kafka.kraft.fetch_records_rate{$env} by {host}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[8].definition.widgets[10].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Metadata Errors
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:kafka.kraft.broker_metadata.metadata_load_error_count{$env} by {host}
+  - name: query2
+    data_source: metrics
+    query: sum:kafka.kraft.broker_metadata.metadata_apply_error_count{$env} by {host}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[8].definition.widgets[11].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Snapshot Age
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.snapshot_emitter.latest_snapshot_generated_age_ms{$env} by {host}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[12].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Poll Idle Ratio
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:kafka.kraft.poll_idle_ratio_avg{$env} by {host}
+  formulas:
+  - query1
+- source_path: widgets[9].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: JVM GC Count by Type
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:jvm.gc.major_collection_count{$env} by {type,env}.weighted()
+  - name: query2
+    data_source: metrics
+    query: sum:jvm.gc.minor_collection_count{$env} by {type,env}.weighted()
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[9].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: JVM GC Time by Type
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:jvm.gc.major_collection_time{$env} by {type,env}.weighted()
+  - name: query2
+    data_source: metrics
+    query: sum:jvm.gc.minor_collection_time{$env} by {type,env}.weighted()
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[10].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Count per Log Status
+  queries:
+  - name: a
+    data_source: logs
+    query: null
+  formulas:
+  - a
+- source_path: widgets[10].definition.widgets[2].definition.requests[0]
+  widget_type: list_stream
+  widget_title: Error Logs
+  queries: []
+  formulas: []

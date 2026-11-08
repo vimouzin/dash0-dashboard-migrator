@@ -1,0 +1,106 @@
+{
+  "title": "Live infrastructure docker",
+  "description": "Synthetic source assets; target artifacts are generated exclusively by migrator convert. Numeric parity does not validate every stated approximation or assumption.",
+  "layout_type": "ordered",
+  "template_variables": [
+    {
+      "name": "host",
+      "prefix": "host",
+      "default": "*"
+    }
+  ],
+  "widgets": [
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "docker: running",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:docker.containers.running{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "docker: memory-cache",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:docker.mem.cache{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "docker: network-receive",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:docker.net.bytes_rcvd{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "docker: cpu-user",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:docker.cpu.user{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

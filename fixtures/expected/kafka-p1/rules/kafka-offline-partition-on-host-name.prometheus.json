@@ -1,0 +1,34 @@
+{
+  "groups": [
+    {
+      "interval": "1m",
+      "name": "kafka-offline-partition-on-host-name",
+      "rules": [
+        {
+          "alert": "kafka-offline-partition-on-host-name",
+          "annotations": {
+            "description": "Partition without an active leader detected",
+            "summary": "[Kafka] Offline partition on {{ \"{{\" }}host.name{{ \"}}\" }}"
+          },
+          "expr": "avg_over_time((avg ({otel_metric_name=\"kafka.partition.offline\", otel_metric_type=\"sum\"}))[5m:1m]) > 0",
+          "labels": {
+            "migration_remarks": "NEWHOST,FULLWINDOW",
+            "severity": "warning"
+          }
+        },
+        {
+          "alert": "kafka-offline-partition-on-host-name",
+          "annotations": {
+            "description": "Partition without an active leader detected",
+            "summary": "[Kafka] Offline partition on {{ \"{{\" }}host.name{{ \"}}\" }}"
+          },
+          "expr": "avg_over_time((avg ({otel_metric_name=\"kafka.partition.offline\", otel_metric_type=\"sum\"}))[5m:1m]) > 1",
+          "labels": {
+            "migration_remarks": "NEWHOST,FULLWINDOW",
+            "severity": "critical"
+          }
+        }
+      ]
+    }
+  ]
+}

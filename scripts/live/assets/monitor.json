@@ -1,0 +1,14 @@
+{
+  "name": "Live comparison connections",
+  "type": "query alert",
+  "query": "avg(last_5m):avg:postgresql.connections{*} > 100",
+  "message": "Read-only numeric verification; imported check stays disabled.",
+  "options": {
+    "thresholds": {
+      "critical": 100,
+      "warning": 80
+    },
+    "notify_no_data": false,
+    "require_full_window": true
+  }
+}

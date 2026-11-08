@@ -1,0 +1,181 @@
+# Agent0 answer, verbatim. Asked 2026-11-07T20:28:59Z via dash0 MCP runTask (scripts/run_oracle.py, requested advanced/high), dataset default, thread 67a2353f-2940-44aa-bb43-ca814ca9ce06, prompt: prompt.md (sha256 39f4dc1481cb).
+# Provenance only, never test input.
+- source_path: 'widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: fill"
+  otel_metrics: [container.state.status]
+  labels: {docker_image: container_image_name}
+  live_check: not run (blocked)
+  notes: "Without .fill(0) the closest query would be sum({otel_metric_name=\"container.state.status\", otel_metric_type=\"sum\", container_state_status=\"running\"}). Even then it cannot be grouped by image: the receiver emits container.state.status without the per-container resource attributes, so container_image_name is not there. The metric is also not in dataset default."
+
+- source_path: 'widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: top"
+  otel_metrics: [container.memory.anon]
+  labels: {container_name: container_name}
+  live_check: not run (blocked)
+  notes: "The closest query would be topk(5, avg by (container_name) ({otel_metric_name=\"container.memory.anon\", otel_metric_type=\"sum\"})). This is not exact: the 'max' reducer over the whole window is lost. RSS mapping: see widgets[3]."
+
+- source_path: 'widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: top"
+  otel_metrics: [container.cpu.usage.usermode]
+  labels: {container_name: container_name}
+  live_check: not run (blocked)
+  notes: "The closest query would be topk(5, avg by (container_name) (rate({otel_metric_name=\"container.cpu.usage.usermode\", otel_metric_type=\"sum\"}[$__rate_interval]))). It would also have the same ns/s vs percent unit gap as widgets[6]."
+
+- source_path: 'widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_name) ({otel_metric_name="container.memory.anon", otel_metric_type="sum"})'
+  otel_metrics: [container.memory.anon]
+  in_dataset: no
+  otel_source: [collector-contrib/receiver/dockerstatsreceiver/metadata.yaml]
+  labels: {container_name: container_name}
+  live_check: not in dataset
+  notes: "docker.mem.rss is the non-cache memory of the container (bytes, gauge). The Datadog agent fills it from memory.stat 'anon' on cgroup v2 (pkg/util/cgroups/cgroupv2_memory.go) and from 'rss' on cgroup v1. This dataset is cgroup v2: container.memory.file is present, while v1-only container.memory.total_cache, which is enabled by default, is absent. So container.memory.anon (non-monotonic sum, By, cgroup v2 only) is the equivalent. It is disabled by default (metrics.container.memory.anon.enabled: true). On cgroup v1 hosts use container.memory.rss instead. Units match (bytes). $scope dropped. Restarts produce several container_id series per container_name, which avg by (container_name) collapses. Datadog heatmap shows the distribution of these per-container series; a Perses heatmap panel would need the same per-series input."
+
+- source_path: 'widgets[4].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="container.state.status", otel_metric_type="sum", container_state_status="running"})'
+  otel_metrics: [container.state.status]
+  in_dataset: no
+  otel_source: [collector-contrib/receiver/dockerstatsreceiver/metadata.yaml]
+  labels: {}
+  live_check: not in dataset
+  notes: "container.state.status is 'Number of containers in a given state' (non-monotonic sum, attribute container.state.status). It is emitted per scrape without container resource attributes, so the grain is one series per collector and state, and sum() adds up hosts the way Datadog's sum does. It is disabled by default (metrics.container.state.status.enabled: true). It only counts containers the receiver scrapes, so excluded_images and the other receiver filters lower the count."
+
+- source_path: 'widgets[5].definition.requests[0]'
+  outcome: blocked
+  reason: "no OTel metric: no candidate counts stopped containers. container.state.status only counts containers the receiver lists, and LoadContainerList filters on status=running (internal/docker/docker.go), so non-running states are never reported"
+  otel_metrics: []
+  labels: {}
+  live_check: not run (blocked)
+  notes: "Datadog counts every container whose state is not running (pkg/collector/corechecks/containers/docker/check.go). The query that matches the metric definition, sum({otel_metric_name=\"container.state.status\", otel_metric_type=\"sum\", container_state_status!=\"running\"}), would always be empty with the current receiver."
+
+- source_path: 'widgets[6].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_name) (rate({otel_metric_name="container.cpu.usage.usermode", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [container.cpu.usage.usermode]
+  in_dataset: yes
+  labels: {container_name: container_name}
+  live_check: "yes, 23 series (rate window 5m substituted for $__rate_interval, 14:05–15:21Z)"
+  notes: "Unit mismatch: docker.cpu.user is the percent of one core, not normalized (gauge). It is computed as ns of user CPU per second divided by 1e7 (generic.ConvertNanosecondsToHz in datadog-agent pkg/collector/corechecks/containers/docker/adapter.go). The OTel query returns ns/s (container.cpu.usage.usermode is a monotonic sum in ns). Proposed scale: divide by 1e7 to get percent (1e9 ns/s = 100%). Not applied. Unit references: https://docs.datadoghq.com/integrations/docker_daemon/#metrics and https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/dockerstatsreceiver/documentation.md. Restarts produce several container_id series per container_name. Heatmap caveat as in widgets[3]."
+
+- source_path: 'widgets[7].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: fill"
+  otel_metrics: [container.cpu.usage.usermode]
+  labels: {docker_image: container_image_name}
+  live_check: not run (blocked)
+  notes: "Without .fill(0) the query would be avg by (container_image_name) (rate({otel_metric_name=\"container.cpu.usage.usermode\", otel_metric_type=\"sum\"}[$__rate_interval])). It would have the same ns/s vs percent gap as widgets[6]."
+
+- source_path: 'widgets[8].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: fill"
+  otel_metrics: [container.memory.anon]
+  labels: {docker_image: container_image_name}
+  live_check: not run (blocked)
+  notes: "Without .fill(0) the query would be avg by (container_image_name) ({otel_metric_name=\"container.memory.anon\", otel_metric_type=\"sum\"}). RSS mapping as in widgets[3]; the metric is not in the dataset."
+
+- source_path: 'widgets[11].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: timeshift"
+  otel_metrics: [container.state.status]
+  labels: {}
+  live_check: not run (blocked)
+  notes: "The closest query would be 100 * (sum({otel_metric_name=\"container.state.status\", otel_metric_type=\"sum\", container_state_status=\"running\"}) / sum({otel_metric_name=\"container.state.status\", otel_metric_type=\"sum\", container_state_status=\"running\"} offset 5m)). The 100 comes from the source."
+
+- source_path: 'widgets[12].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: fill"
+  otel_metrics: [container.cpu.usage.kernelmode]
+  labels: {docker_image: container_image_name}
+  live_check: not run (blocked)
+  notes: "Without .fill(0) the query would be avg by (container_image_name) (rate({otel_metric_name=\"container.cpu.usage.kernelmode\", otel_metric_type=\"sum\"}[$__rate_interval])). That uses kernel-mode CPU time per container, not container.cpu.usage.system, which is host-wide system CPU. It would have the same ns/s vs percent gap (divide by 1e7) as widgets[6]."
+
+- source_path: 'widgets[14].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum by (container_image_name) ({otel_metric_name="container.memory.file", otel_metric_type="sum"})'
+  otel_metrics: [container.memory.file]
+  in_dataset: yes
+  labels: {docker_image: container_image_name}
+  live_check: "yes, 23 series (14:05–15:21Z)"
+  notes: "docker.mem.cache is page-cache memory (bytes, gauge). The Datadog agent fills it from memory.stat 'file' on cgroup v2, which is exactly container.memory.file (non-monotonic sum, By, cgroup v2 only), and from 'cache' on cgroup v1, which is container.memory.cache. This dataset is cgroup v2. Units match. $scope dropped. container.image.name values include the tag (e.g. ghcr.io/open-telemetry/demo:latest-ad), like Datadog's docker_image."
+
+- source_path: 'widgets[18].definition.requests[0]'
+  outcome: blocked
+  reason: "no OTel metric: no candidate measures swap used by a container. container.memory.hierarchical_memsw_limit is a limit, not usage"
+  otel_metrics: []
+  labels: {docker_image: container_image_name}
+  live_check: not run (blocked)
+  notes: "docker.mem.swap is swap in use (memory.swap.current on cgroup v2). Neither the dataset nor the candidate list has an equivalent."
+
+- source_path: 'widgets[20].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_image_name) (rate({otel_metric_name="container.blockio.io_service_bytes_recursive", otel_metric_type="sum", operation="read"}[$__rate_interval]))'
+  otel_metrics: [container.blockio.io_service_bytes_recursive]
+  in_dataset: yes
+  labels: {docker_image: container_image_name}
+  live_check: "yes, 23 series (rate window 5m substituted for $__rate_interval, 14:05–15:21Z)"
+  notes: "docker.io.read_bytes is bytes read per second (gauge, byte/second). rate() of the cumulative By counter gives By/s, so units match. Grain differs: OTel series are per block device (device_major, device_minor), while Datadog first totals each container across devices. Here avg runs over container×device series. Collapsing device_major/device_minor per container before the avg would match Datadog. Restarts add container_id series."
+
+- source_path: 'widgets[21].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_image_name) (rate({otel_metric_name="container.blockio.io_service_bytes_recursive", otel_metric_type="sum", operation="write"}[$__rate_interval]))'
+  otel_metrics: [container.blockio.io_service_bytes_recursive]
+  in_dataset: yes
+  labels: {docker_image: container_image_name}
+  live_check: "yes, 23 series (rate window 5m substituted for $__rate_interval, 14:05–15:21Z)"
+  notes: "Same as widgets[20], for writes: By/s matches byte/second, and the per-device grain (device_major, device_minor) differs from Datadog's per-container total."
+
+- source_path: 'widgets[23].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_image_name) (rate({otel_metric_name="container.network.io.usage.rx_bytes", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [container.network.io.usage.rx_bytes]
+  in_dataset: yes
+  labels: {docker_image: container_image_name}
+  live_check: "yes, 23 series (rate window 5m substituted for $__rate_interval, 14:05–15:21Z)"
+  notes: "docker.net.bytes_rcvd is bytes received per second (gauge, byte/second). rate() of the By counter gives By/s, so units match. OTel series are per network interface (label interface; only eth0 in this dataset), so a container with several interfaces would need interface collapsed per container. Restarts add container_id series."
+
+- source_path: 'widgets[24].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_image_name) (rate({otel_metric_name="container.network.io.usage.tx_bytes", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [container.network.io.usage.tx_bytes]
+  in_dataset: yes
+  labels: {docker_image: container_image_name}
+  live_check: "yes, 23 series (rate window 5m substituted for $__rate_interval, 14:05–15:21Z)"
+  notes: "Same as widgets[23], for transmitted bytes: By/s matches byte/second, and series are per interface (label interface)."
+
+- source_path: 'widgets[25].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: top"
+  otel_metrics: [container.network.io.usage.tx_bytes]
+  labels: {container_name: container_name}
+  live_check: not run (blocked)
+  notes: "The closest query would be topk(5, avg by (container_name) (rate({otel_metric_name=\"container.network.io.usage.tx_bytes\", otel_metric_type=\"sum\"}[$__rate_interval]))). The 'max' reducer over the whole window would be lost."
+
+- source_path: 'widgets[26].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (container_name) (rate({otel_metric_name="container.network.io.usage.tx_bytes", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [container.network.io.usage.tx_bytes]
+  in_dataset: yes
+  labels: {container_name: container_name}
+  live_check: "yes, 23 series (rate window 5m substituted for $__rate_interval, 14:05–15:21Z)"
+  notes: "Units match (By/s vs byte/second). Series are per interface (label interface). Restarts produce several container_id series per container_name. Heatmap caveat as in widgets[3]."
+
+- source_path: 'widgets[27].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: top (also timeshift, fill)"
+  otel_metrics: [container.state.status]
+  labels: {docker_image: container_image_name}
+  live_check: not run (blocked)
+  notes: "The closest query would be topk(20, sum({otel_metric_name=\"container.state.status\", otel_metric_type=\"sum\", container_state_status=\"running\"})). The grouping by image cannot be expressed: container.state.status has no container.image.name. The metric is also not in dataset default."

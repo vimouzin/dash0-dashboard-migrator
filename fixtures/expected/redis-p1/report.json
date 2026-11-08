@@ -1,0 +1,3376 @@
+{
+  "compilerVersion": "0.1.0",
+  "diagnostics": [
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Template variable '$host' became a Perses ListVariable on label 'host_name'; variable rendering unverified in Dash0. Selected values are matched as an anchored regex (=~\"^($host)$\"); they are not escaped, so values containing regex characters such as '.' can match more series.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "template_variables[1]",
+      "suggestedAction": "Check the variable in Dash0 after publishing."
+    },
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'banner_img' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.banner_img",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_unit' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.custom_unit",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.stats.keyspace_hits' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.stats.keyspace_hits{$scope,$host}",
+      "suggestedAction": "Review the 'redis.stats.keyspace_hits' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.stats.keyspace_hits{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.stats.keyspace_misses' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.stats.keyspace_misses{$scope,$host}",
+      "suggestedAction": "Review the 'redis.stats.keyspace_misses' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.stats.keyspace_misses{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.clients.blocked' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.clients.blocked{$scope,$host}",
+      "suggestedAction": "Review the 'redis.clients.blocked' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.clients.blocked{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.keys' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys{$scope,$host}",
+      "suggestedAction": "Review the 'redis.keys' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.rdb.changes_since_last' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.rdb.changes_since_last{$scope,$host}",
+      "suggestedAction": "Review the 'redis.rdb.changes_since_last' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.rdb.changes_since_last{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_unit' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.custom_unit",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'redis.replication.master_link_down_since_seconds'.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.replication.master_link_down_since_seconds{$scope,$host}",
+      "suggestedAction": "Add a reviewed entry for 'redis.replication.master_link_down_since_seconds' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'redis.info.latency_ms'.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.info.latency_ms{$scope,$host} by {host}",
+      "suggestedAction": "Add a reviewed entry for 'redis.info.latency_ms' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_FORMULA",
+      "message": "Function 'top' is not supported: Datadog ranks each series once over its points (https://docs.datadoghq.com/dashboards/functions/rank/#top); PromQL topk ranks at every step, and the docs leave the ranked window open.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].formulas[0].formula",
+      "sourceText": "top(query1 / 1000, 10, 'mean', 'desc')",
+      "suggestedAction": "Remove top() to convert all series unranked, or migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'number_format' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].formulas[0].number_format",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'redis.slowlog.micros.count'.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.slowlog.micros.count{$host,$scope} by {command,name}",
+      "suggestedAction": "Add a reviewed entry for 'redis.slowlog.micros.count' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[3].definition.style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'number_format' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].formulas[0].number_format",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'redis.replication.delay'.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.replication.delay{$host,$scope}",
+      "suggestedAction": "Add a reviewed entry for 'redis.replication.delay' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'time' is empty and is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.time",
+      "suggestedAction": "No action needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.cpu.sys' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.cpu.sys{$host,$scope}",
+      "suggestedAction": "Review the 'redis.cpu.sys' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.cpu.sys{$host,$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.cpu.user' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.cpu.user{$host,$scope}",
+      "suggestedAction": "Review the 'redis.cpu.user' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.cpu.user{$host,$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.stats.keyspace_hits' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.stats.keyspace_hits{$scope,$host}",
+      "suggestedAction": "Review the 'redis.stats.keyspace_hits' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.stats.keyspace_hits{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.stats.keyspace_misses' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.stats.keyspace_misses{$scope,$host}",
+      "suggestedAction": "Review the 'redis.stats.keyspace_misses' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.stats.keyspace_misses{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.stats.keyspace_hits' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.stats.keyspace_hits{$scope,$host}",
+      "suggestedAction": "Review the 'redis.stats.keyspace_hits' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.stats.keyspace_hits{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.stats.keyspace_misses' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.stats.keyspace_misses{$scope,$host}",
+      "suggestedAction": "Review the 'redis.stats.keyspace_misses' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[1].query",
+      "sourceText": "avg:redis.stats.keyspace_misses{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.mem.used' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.mem.used{$scope,$host} by {host}",
+      "suggestedAction": "Review the 'redis.mem.used' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.mem.used{$scope,$host} by {host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'redis.mem.maxmemory'.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[1].query",
+      "sourceText": "max:redis.mem.maxmemory{$scope,$host} by {host}",
+      "suggestedAction": "Add a reviewed entry for 'redis.mem.maxmemory' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[1].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_FORMULA",
+      "message": "Function 'per_minute' is not supported: Datadog documents it only as 'Graph the rate at which the metric is changing per minute' (https://docs.datadoghq.com/dashboards/functions/rate/); without a formula, neither a PromQL derivative nor a constant factor is known to match.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].formulas[0].formula",
+      "sourceText": "per_minute(query2)",
+      "suggestedAction": "Migrate this widget or monitor manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.mem.rss' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.mem.rss{$scope,$host}",
+      "suggestedAction": "Review the 'redis.mem.rss' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.mem.rss{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.mem.fragmentation_ratio' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.mem.fragmentation_ratio{$scope,$host}",
+      "suggestedAction": "Review the 'redis.mem.fragmentation_ratio' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.mem.fragmentation_ratio{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.mem.fragmentation_ratio' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.mem.fragmentation_ratio{$scope,$host}",
+      "suggestedAction": "Review the 'redis.mem.fragmentation_ratio' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "avg:redis.mem.fragmentation_ratio{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.net.clients' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.net.clients{$scope,$host}",
+      "suggestedAction": "Review the 'redis.net.clients' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.net.clients{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.clients.blocked' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.clients.blocked{$scope,$host}",
+      "suggestedAction": "Review the 'redis.clients.blocked' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.clients.blocked{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.net.slaves' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.net.slaves{$scope,$host}",
+      "suggestedAction": "Review the 'redis.net.slaves' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.net.slaves{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_FORMULA",
+      "message": "Function 'diff' is not supported: Datadog takes the difference per interval after time aggregation (https://docs.datadoghq.com/dashboards/functions/rate/); the interval depends on the graph, so no fixed PromQL range reproduces it.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].formulas[0].formula",
+      "sourceText": "diff(query1)",
+      "suggestedAction": "Migrate this widget or monitor manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'time' is empty and is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.time",
+      "suggestedAction": "No action needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'number_format' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.requests[0].formulas[0].number_format",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.net.commands' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.net.commands{$scope,$host}",
+      "suggestedAction": "Review the 'redis.net.commands' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.net.commands{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'timeseries_background' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.timeseries_background",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.keys' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys{$scope,$host}",
+      "suggestedAction": "Review the 'redis.keys' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.keys' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys{$scope,$host}",
+      "suggestedAction": "Review the 'redis.keys' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'timeseries_background' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.timeseries_background",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.keys.expired' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys.expired{$scope,$host}",
+      "suggestedAction": "Review the 'redis.keys.expired' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.keys.expired{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'redis.expires' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.expires{$scope,$host}",
+      "suggestedAction": "Review the 'redis.expires' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "sum:redis.expires{$scope,$host}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Query option 'semantic_mode' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[0].semantic_mode",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'timeseries_background' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.timeseries_background",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'distribution' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'list_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'list_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    }
+  ],
+  "format": "json",
+  "items": [
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "",
+      "title": "Redis - Overview"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0]",
+      "title": "Hit rate"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1]",
+      "title": "Blocked clients"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2]",
+      "title": "Redis keyspace"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3]",
+      "title": "Unsaved changes"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4]",
+      "title": "Primary link down"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0]",
+      "title": "Latency by Host"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[2]",
+      "title": "Slowlog duration"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[3]",
+      "title": "Slowlog query rates"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[4]",
+      "title": "Average replication delay (offset)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[5]",
+      "title": "Average CPU usage"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[6]",
+      "title": "Cache hit rate"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[2].definition.widgets[7]",
+      "title": "Cache hit rate"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0]",
+      "title": "Percent Used Memory by Host"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[2]",
+      "title": "Evictions"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[3]",
+      "title": "Total allocated memory"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[4]",
+      "title": "Fragmentation ratio"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[3].definition.widgets[5]",
+      "title": "Fragmentation ratio"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0]",
+      "title": "Connected clients"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[2]",
+      "title": "Blocked clients"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[3]",
+      "title": "Connected replicas"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[4]",
+      "title": "Rejected connections"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[4].definition.widgets[5]",
+      "title": "Commands per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0]",
+      "title": "Total keys"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1]",
+      "title": "Current total"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3]",
+      "title": "Expired keys"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4]",
+      "title": "Keys with expiration"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5]",
+      "title": "Key length distribution"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0]",
+      "title": "Error Logs"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1]",
+      "title": "All Logs"
+    }
+  ],
+  "mapping": [
+    {
+      "sha256": "398b4655f99ff868a0cc7fb8e9ecc1d3acc369dc47f57c3492d5fe6bf3ba92a5",
+      "sourceId": "redis.json"
+    }
+  ],
+  "mappingCoverage": {
+    "metrics": [
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[4].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.clients.blocked"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.cpu.sys"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[5].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.cpu.user"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.expires"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.info.latency_ms"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.key.length"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.keys"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[3].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.keys.evicted"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.keys.expired"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[3].definition.widgets[4].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[3].definition.widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.mem.fragmentation_ratio"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.mem.maxmemory"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[3].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.mem.rss"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[3].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.mem.used"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.net.clients"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[4].definition.widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.net.commands"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.net.rejected"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[4].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.net.slaves"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.rdb.changes_since_last"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.replication.delay"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.replication.master_link_down_since_seconds"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.slowlog.micros.95percentile"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[3].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "redis.slowlog.micros.count"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.stats.keyspace_hits"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[6].definition.requests[0].queries[1].query"
+          },
+          {
+            "sourceId": "dashboards/overview.json",
+            "sourcePath": "widgets[2].definition.widgets[7].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "redis.stats.keyspace_misses"
+      }
+    ],
+    "parsedQueries": 32,
+    "unparsedQueries": []
+  },
+  "provider": "datadog",
+  "reportVersion": 1,
+  "summary": {
+    "dashboards": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 1,
+      "translated": 0
+    },
+    "monitors": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 0,
+      "translated": 0
+    },
+    "skippedFiles": 0,
+    "widgets": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 11,
+      "partial": 0,
+      "translated": 25
+    }
+  },
+  "validation": {
+    "api": "not_run",
+    "schema": "passed",
+    "semantics": "not_run",
+    "syntax": "passed"
+  }
+}

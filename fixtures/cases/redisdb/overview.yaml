@@ -1,0 +1,500 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: redisdb/assets/dashboards/overview.json
+  fixture: fixtures/datadog/integrations-core/redisdb/dashboards/overview.json
+service: redisdb
+dashboard_id: overview
+title: Redis - Overview
+layout_type: ordered
+template_variables:
+- name: scope
+  prefix: null
+  default: '*'
+- name: host
+  prefix: host
+  default: '*'
+- name: key
+  prefix: key
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: group
+  title: About Redis
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1]
+  type: group
+  title: Overview
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[0]
+  type: query_value
+  title: Hit rate
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[1]
+  type: query_value
+  title: Blocked clients
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[2]
+  type: query_value
+  title: Redis keyspace
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[3]
+  type: query_value
+  title: Unsaved changes
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[4]
+  type: query_value
+  title: Primary link down
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[5]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2]
+  type: group
+  title: Performance Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[0]
+  type: timeseries
+  title: Latency by Host
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[2]
+  type: timeseries
+  title: Slowlog duration
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[3]
+  type: toplist
+  title: Slowlog query rates
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[4]
+  type: timeseries
+  title: Average replication delay (offset)
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[5]
+  type: timeseries
+  title: Average CPU usage
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[6]
+  type: query_value
+  title: Cache hit rate
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[7]
+  type: timeseries
+  title: Cache hit rate
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3]
+  type: group
+  title: Memory Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3].definition.widgets[0]
+  type: timeseries
+  title: Percent Used Memory by Host
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3].definition.widgets[2]
+  type: timeseries
+  title: Evictions
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[3]
+  type: timeseries
+  title: Total allocated memory
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[4]
+  type: query_value
+  title: Fragmentation ratio
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[5]
+  type: timeseries
+  title: Fragmentation ratio
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4]
+  type: group
+  title: Base Activity Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[0]
+  type: timeseries
+  title: Connected clients
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[2]
+  type: timeseries
+  title: Blocked clients
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[3]
+  type: timeseries
+  title: Connected replicas
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[4]
+  type: timeseries
+  title: Rejected connections
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[5]
+  type: query_value
+  title: Commands per second
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5]
+  type: group
+  title: Key Metrics
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[0]
+  type: timeseries
+  title: Total keys
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[1]
+  type: query_value
+  title: Current total
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[2]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[3]
+  type: timeseries
+  title: Expired keys
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[4]
+  type: query_value
+  title: Keys with expiration
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[5]
+  type: distribution
+  title: Key length distribution
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6]
+  type: group
+  title: Logs
+  request_count: 0
+  has_layout: true
+- source_path: widgets[6].definition.widgets[0]
+  type: list_stream
+  title: Error Logs
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[1]
+  type: list_stream
+  title: All Logs
+  request_count: 1
+  has_layout: true
+requests:
+- source_path: widgets[1].definition.widgets[0].definition.requests[0]
+  widget_type: query_value
+  widget_title: Hit rate
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.stats.keyspace_hits{$scope,$host}
+  - name: query2
+    data_source: metrics
+    query: avg:redis.stats.keyspace_misses{$scope,$host}
+  formulas:
+  - (query1 / (query1 + query2)) * 100
+- source_path: widgets[1].definition.widgets[1].definition.requests[0]
+  widget_type: query_value
+  widget_title: Blocked clients
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.clients.blocked{$scope,$host}
+  formulas: []
+- source_path: widgets[1].definition.widgets[2].definition.requests[0]
+  widget_type: query_value
+  widget_title: Redis keyspace
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.keys{$scope,$host}
+  formulas: []
+- source_path: widgets[1].definition.widgets[3].definition.requests[0]
+  widget_type: query_value
+  widget_title: Unsaved changes
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.rdb.changes_since_last{$scope,$host}
+  formulas: []
+- source_path: widgets[1].definition.widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Primary link down
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.replication.master_link_down_since_seconds{$scope,$host}
+  formulas: []
+- source_path: widgets[2].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Latency by Host
+  queries:
+  - name: query2
+    data_source: metrics
+    query: avg:redis.info.latency_ms{$scope,$host} by {host}
+  formulas:
+  - query2
+- source_path: widgets[2].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Slowlog duration
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.slowlog.micros.95percentile{$scope,$host} by {name,command}
+  formulas:
+  - top(query1 / 1000, 10, 'mean', 'desc')
+- source_path: widgets[2].definition.widgets[3].definition.requests[0]
+  widget_type: toplist
+  widget_title: Slowlog query rates
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.slowlog.micros.count{$host,$scope} by {command,name}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Average replication delay (offset)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.replication.delay{$host,$scope}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[5].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Average CPU usage
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.cpu.sys{$host,$scope}
+  - name: query2
+    data_source: metrics
+    query: avg:redis.cpu.user{$host,$scope}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[2].definition.widgets[6].definition.requests[0]
+  widget_type: query_value
+  widget_title: Cache hit rate
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.stats.keyspace_hits{$scope,$host}
+  - name: query2
+    data_source: metrics
+    query: avg:redis.stats.keyspace_misses{$scope,$host}
+  formulas:
+  - (query1 / (query1 + query2)) * 100
+- source_path: widgets[2].definition.widgets[7].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Cache hit rate
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.stats.keyspace_hits{$scope,$host}
+  - name: query2
+    data_source: metrics
+    query: avg:redis.stats.keyspace_misses{$scope,$host}
+  formulas:
+  - (query1 / (query1 + query2)) * 100
+- source_path: widgets[3].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Percent Used Memory by Host
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.mem.used{$scope,$host} by {host}
+  - name: query2
+    data_source: metrics
+    query: max:redis.mem.maxmemory{$scope,$host} by {host}
+  formulas:
+  - (query1 / query2) * 100
+- source_path: widgets[3].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Evictions
+  queries:
+  - name: query2
+    data_source: metrics
+    query: sum:redis.keys.evicted{$scope,$host} by {host}
+  formulas:
+  - per_minute(query2)
+- source_path: widgets[3].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Total allocated memory
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.mem.rss{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Fragmentation ratio
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.mem.fragmentation_ratio{$scope,$host}
+  formulas: []
+- source_path: widgets[3].definition.widgets[5].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Fragmentation ratio
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:redis.mem.fragmentation_ratio{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Connected clients
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.net.clients{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Blocked clients
+  queries:
+  - name: query2
+    data_source: metrics
+    query: sum:redis.clients.blocked{$scope,$host}
+  formulas:
+  - query2
+- source_path: widgets[4].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Connected replicas
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.net.slaves{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Rejected connections
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.net.rejected{$scope,$host}
+  formulas:
+  - diff(query1)
+- source_path: widgets[4].definition.widgets[5].definition.requests[0]
+  widget_type: query_value
+  widget_title: Commands per second
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.net.commands{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Total keys
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.keys{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[1].definition.requests[0]
+  widget_type: query_value
+  widget_title: Current total
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.keys{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Expired keys
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.keys.expired{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[4].definition.requests[0]
+  widget_type: query_value
+  widget_title: Keys with expiration
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.expires{$scope,$host}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[5].definition.requests[0]
+  widget_type: distribution
+  widget_title: Key length distribution
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:redis.key.length{$scope, $host, $key} by {key}
+  formulas:
+  - query1
+- source_path: widgets[6].definition.widgets[0].definition.requests[0]
+  widget_type: list_stream
+  widget_title: Error Logs
+  queries: []
+  formulas: []
+- source_path: widgets[6].definition.widgets[1].definition.requests[0]
+  widget_type: list_stream
+  widget_title: All Logs
+  queries: []
+  formulas: []

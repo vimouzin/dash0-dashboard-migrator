@@ -1,0 +1,18 @@
+{
+  "annotations": {
+    "description": "Partition without an active leader detected",
+    "summary": "[Kafka] Offline partition on {{ \"{{\" }}host.name{{ \"}}\" }}"
+  },
+  "enabled": false,
+  "expression": "avg_over_time((avg ({otel_metric_name=\"kafka.partition.offline\", otel_metric_type=\"sum\"}))[5m:1m]) > $__threshold",
+  "for": "0s",
+  "interval": "1m",
+  "labels": {
+    "migration_remarks": "NEWHOST,FULLWINDOW"
+  },
+  "name": "[Kafka] Offline partition on {{host.name}}",
+  "thresholds": {
+    "degraded": 0.0,
+    "failed": 1.0
+  }
+}

@@ -1,0 +1,80 @@
+# Local Perses viewer for the oracle review dashboards (issue #87). See README.md next to this file.
+#
+#   DASH0_AUTH_TOKEN=... docker compose -f scripts/review/docker-compose.yaml up -d
+#
+# Credentials come ONLY from the environment (DASH0_API_URL, DASH0_AUTH_TOKEN, DASH0_DATASET, the
+# same names `migrator publish` uses); nothing secret is written to a committed file:
+#   * the token becomes the compose secret file /run/secrets/dash0_auth_token inside the container,
+#     referenced by provisioning/secret.yaml (authorization.credentialsFile);
+#   * the API URL and dataset are interpolated into the datasource config below (not secret).
+#
+# Docs:
+#   Dash0 Prometheus API: https://www.dash0.com/docs/api-reference/operations/get/api/prometheus/api/v1/query
+#     (GET <api>/api/prometheus/api/v1/query, `Authorization: Bearer <token>`, dataset from the
+#     `dataset` query parameter or the `Dash0-Dataset` header, else the org's default dataset)
+#   Dash0 Perses integration (proxy URL + Authorization + Dash0-Dataset headers):
+#     https://www.dash0.com/hub/integrations/int_perses/overview
+#   Perses datasource + HTTP proxy: https://github.com/perses/perses/blob/v0.55.1/docs/api/datasource.md
+#     and https://github.com/perses/perses/blob/v0.55.1/docs/plugins/common.md (HTTP Proxy specification)
+#   Perses secrets: https://github.com/perses/perses/blob/v0.55.1/docs/api/secret.md
+#   Compose configs/secrets: https://docs.docker.com/reference/compose-file/configs/
+#     https://docs.docker.com/reference/compose-file/secrets/
+name: oracle-review
+
+services:
+  perses:
+    image: persesdev/perses:v0.55.1
+    command: ["--config=/etc/perses/review/config.yaml", "--log.level=info"]
+    ports:
+      - "127.0.0.1:${PERSES_PORT:-8080}:8080"   # PERSES_PORT=18080 if 8080 is taken
+    volumes:
+      - ./perses-config.yaml:/etc/perses/review/config.yaml:ro
+      - ./provisioning:/etc/perses/provisioning/static:ro
+    configs:
+      - source: dash0_datasource
+        target: /etc/perses/provisioning/env/datasource.yaml
+    secrets:
+      - dash0_auth_token
+
+configs:
+  dash0_datasource:
+    # Default Prometheus datasource of the project: the review dashboards' queries name no
+    # datasource, so Perses uses this one.
+    content: |
+      kind: Datasource
+      metadata:
+        name: dash0
+        project: oracle-review
+      spec:
+        default: true
+        display:
+          name: Dash0 (${DASH0_DATASET:-default})
+        plugin:
+          kind: PrometheusDatasource
+          spec:
+            proxy:
+              kind: HTTPProxy
+              spec:
+                url: ${DASH0_API_URL:-https://api.eu-west-1.aws.dash0.com}/api/prometheus
+                secret: dash0
+                headers:
+                  Dash0-Dataset: ${DASH0_DATASET:-default}
+                allowedEndpoints:
+                  - endpointPattern: /api/v1/labels
+                    method: POST
+                  - endpointPattern: /api/v1/series
+                    method: POST
+                  - endpointPattern: /api/v1/metadata
+                    method: GET
+                  - endpointPattern: /api/v1/query
+                    method: POST
+                  - endpointPattern: /api/v1/query_range
+                    method: POST
+                  - endpointPattern: /api/v1/parse_query
+                    method: POST
+                  - endpointPattern: '/api/v1/label/([a-zA-Z0-9_-]+)/values'
+                    method: GET
+
+secrets:
+  dash0_auth_token:
+    environment: DASH0_AUTH_TOKEN

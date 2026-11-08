@@ -1,0 +1,83 @@
+[project]
+name = "dash0-dashboard-migrator"
+version = "0.1.0"
+description = "Deterministic Datadog -> Perses dashboard migrator (no LLM in the conversion path)"
+authors = [
+    { name = "Felix Bischof", email = "felix.bischof@tum.de" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "promql-parser>=0.12.0",
+    "pydantic>=2.14.3",
+    "pyyaml>=6.0.3",
+]
+
+# The single entry point for every project command: `uv run migrator <command>`.
+[project.scripts]
+migrator = "migrator.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+# Plain `uv run` / `uv sync` install everything, including the Agent0 oracle client.
+default-groups = ["dev", "oracle"]
+
+[tool.uv.build-backend]
+module-name = "migrator"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.4",
+    "types-pyyaml>=6.0.12.20261103",
+]
+oracle = [
+    "mcp==2.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = ["promql_parser"]
+ignore_missing_imports = true
+
+# Development-time fixture tooling under scripts/ (tests/scripts puts it on sys.path); it is
+# never imported by the converter, so it is not part of the typed package.
+[[tool.mypy.overrides]]
+module = ["build_expected", "render_oracle_prompt", "run_oracle", "build_otel_catalog"]
+ignore_missing_imports = true
+
+# The oracle clients (group `oracle`, installed by default) are not part of the typed package.
+[[tool.mypy.overrides]]
+module = ["mcp", "mcp.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["tests.scripts.test_run_oracle"]
+disallow_untyped_decorators = false
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# Oracle tooling tests (#88): long literal prompts, PromQL and fixture strings.
+"tests/scripts/*" = ["E501"]

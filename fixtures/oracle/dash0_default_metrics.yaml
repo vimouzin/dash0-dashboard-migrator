@@ -1,0 +1,524 @@
+# Snapshot of the metric names in the Dash0 `default` dataset (development-time only).
+# Taken 2026-11-07 with the dash0 MCP tool getMetricCatalog, dataset `default`, time range
+# 2026-11-07T14:00Z–15:30Z (the only window with receiver data). Prefixes: container (unfiltered first
+# page), and postgresql|nginx|redis|kafka|zookeeper|system|process|jvm|messaging via the filter
+# otel.metric.name matches ^(…)\..* (no zookeeper or messaging metrics exist). Other prefixes
+# (dash0, demo, aspnetcore, dotnet, db, …) are not needed by the pinned dashboards.
+# scripts/build_expected.py uses it to tell "in the dataset" from "OTel metric, not in the dataset".
+# Value: the metric type(s) seen (a name can appear with two types).
+dataset: default
+taken: '2026-11-07'
+metrics:
+  container.blockio.io_service_bytes_recursive:
+  - sum
+  container.cpu.usage.kernelmode:
+  - sum
+  container.cpu.usage.system:
+  - sum
+  container.cpu.usage.total:
+  - sum
+  container.cpu.usage.usermode:
+  - sum
+  container.cpu.utilization:
+  - gauge
+  container.memory.file:
+  - sum
+  container.memory.percent:
+  - gauge
+  container.memory.usage.limit:
+  - sum
+  container.memory.usage.total:
+  - sum
+  container.network.io.usage.rx_bytes:
+  - sum
+  container.network.io.usage.rx_dropped:
+  - sum
+  container.network.io.usage.rx_packets:
+  - sum
+  container.network.io.usage.tx_bytes:
+  - sum
+  container.network.io.usage.tx_dropped:
+  - sum
+  container.network.io.usage.tx_packets:
+  - sum
+  container.uptime:
+  - gauge
+  jvm.class.count:
+  - sum
+  jvm.class.loaded:
+  - sum
+  jvm.class.unloaded:
+  - sum
+  jvm.cpu.count:
+  - sum
+  jvm.cpu.recent_utilization:
+  - gauge
+  jvm.cpu.time:
+  - sum
+  jvm.gc.duration:
+  - histogram
+  jvm.memory.committed:
+  - sum
+  jvm.memory.limit:
+  - sum
+  jvm.memory.used:
+  - sum
+  jvm.memory.used_after_last_gc:
+  - sum
+  jvm.thread.count:
+  - sum
+  kafka.brokers:
+  - sum
+  kafka.consumer.assigned_partitions:
+  - gauge
+  kafka.consumer.bytes_consumed_rate:
+  - gauge
+  kafka.consumer.bytes_consumed_total:
+  - sum
+  kafka.consumer.commit_latency_avg:
+  - gauge
+  kafka.consumer.commit_latency_max:
+  - gauge
+  kafka.consumer.commit_rate:
+  - gauge
+  kafka.consumer.commit_sync_time_ns_total:
+  - sum
+  kafka.consumer.commit_total:
+  - sum
+  kafka.consumer.committed_time_ns_total:
+  - sum
+  kafka.consumer.connection_close_rate:
+  - gauge
+  kafka.consumer.connection_close_total:
+  - sum
+  kafka.consumer.connection_count:
+  - gauge
+  kafka.consumer.connection_creation_rate:
+  - gauge
+  kafka.consumer.connection_creation_total:
+  - sum
+  kafka.consumer.failed_authentication_rate:
+  - gauge
+  kafka.consumer.failed_authentication_total:
+  - sum
+  kafka.consumer.failed_reauthentication_rate:
+  - gauge
+  kafka.consumer.failed_reauthentication_total:
+  - sum
+  kafka.consumer.failed_rebalance_rate_per_hour:
+  - gauge
+  kafka.consumer.failed_rebalance_total:
+  - sum
+  kafka.consumer.fetch_latency_avg:
+  - gauge
+  kafka.consumer.fetch_latency_max:
+  - gauge
+  kafka.consumer.fetch_rate:
+  - gauge
+  kafka.consumer.fetch_size_avg:
+  - gauge
+  kafka.consumer.fetch_size_max:
+  - gauge
+  kafka.consumer.fetch_throttle_time_avg:
+  - gauge
+  kafka.consumer.fetch_throttle_time_max:
+  - gauge
+  kafka.consumer.fetch_total:
+  - sum
+  kafka.consumer.heartbeat_rate:
+  - gauge
+  kafka.consumer.heartbeat_response_time_max:
+  - gauge
+  kafka.consumer.heartbeat_total:
+  - sum
+  kafka.consumer.incoming_byte_rate:
+  - gauge
+  kafka.consumer.incoming_byte_total:
+  - sum
+  kafka.consumer.io_ratio:
+  - gauge
+  kafka.consumer.io_time_ns_avg:
+  - gauge
+  kafka.consumer.io_time_ns_total:
+  - sum
+  kafka.consumer.io_wait_ratio:
+  - gauge
+  kafka.consumer.io_wait_time_ns_avg:
+  - gauge
+  kafka.consumer.io_wait_time_ns_total:
+  - sum
+  kafka.consumer.join_rate:
+  - gauge
+  kafka.consumer.join_time_avg:
+  - gauge
+  kafka.consumer.join_time_max:
+  - gauge
+  kafka.consumer.join_total:
+  - sum
+  kafka.consumer.last_heartbeat_seconds_ago:
+  - gauge
+  kafka.consumer.last_poll_seconds_ago:
+  - gauge
+  kafka.consumer.last_rebalance_seconds_ago:
+  - gauge
+  kafka.consumer.network_io_rate:
+  - gauge
+  kafka.consumer.network_io_total:
+  - sum
+  kafka.consumer.outgoing_byte_rate:
+  - gauge
+  kafka.consumer.outgoing_byte_total:
+  - sum
+  kafka.consumer.poll_idle_ratio_avg:
+  - gauge
+  kafka.consumer.rebalance_latency_avg:
+  - gauge
+  kafka.consumer.rebalance_latency_max:
+  - gauge
+  kafka.consumer.rebalance_latency_total:
+  - sum
+  kafka.consumer.rebalance_rate_per_hour:
+  - gauge
+  kafka.consumer.rebalance_total:
+  - sum
+  kafka.consumer.records_consumed_rate:
+  - gauge
+  kafka.consumer.records_consumed_total:
+  - sum
+  kafka.consumer.records_lag:
+  - gauge
+  kafka.consumer.records_lag_avg:
+  - gauge
+  kafka.consumer.records_lag_max:
+  - gauge
+  kafka.consumer.records_lead:
+  - gauge
+  kafka.consumer.records_lead_avg:
+  - gauge
+  kafka.consumer.records_lead_min:
+  - gauge
+  kafka.consumer.records_per_request_avg:
+  - gauge
+  kafka.consumer.request_latency_avg:
+  - gauge
+  kafka.consumer.request_latency_max:
+  - gauge
+  kafka.consumer.request_rate:
+  - gauge
+  kafka.consumer.request_size_avg:
+  - gauge
+  kafka.consumer.request_size_max:
+  - gauge
+  kafka.consumer.request_total:
+  - sum
+  kafka.consumer.response_rate:
+  - gauge
+  kafka.consumer.response_total:
+  - sum
+  kafka.consumer.select_rate:
+  - gauge
+  kafka.consumer.select_total:
+  - sum
+  kafka.consumer.successful_authentication_no_reauth_total:
+  - sum
+  kafka.consumer.successful_authentication_rate:
+  - gauge
+  kafka.consumer.successful_authentication_total:
+  - sum
+  kafka.consumer.successful_reauthentication_rate:
+  - gauge
+  kafka.consumer.successful_reauthentication_total:
+  - sum
+  kafka.consumer.sync_rate:
+  - gauge
+  kafka.consumer.sync_time_avg:
+  - gauge
+  kafka.consumer.sync_time_max:
+  - gauge
+  kafka.consumer.sync_total:
+  - sum
+  kafka.consumer.time_between_poll_avg:
+  - gauge
+  kafka.consumer.time_between_poll_max:
+  - gauge
+  kafka.consumer_group.lag:
+  - gauge
+  kafka.consumer_group.lag_sum:
+  - gauge
+  kafka.consumer_group.members:
+  - sum
+  kafka.consumer_group.offset:
+  - gauge
+  kafka.consumer_group.offset_sum:
+  - gauge
+  kafka.controller.active.count:
+  - sum
+  kafka.isr.operation.count:
+  - sum
+  kafka.lag.max:
+  - gauge
+  kafka.leaderElection.unclean.count:
+  - sum
+  kafka.logs.flush.Count:
+  - sum
+  kafka.logs.flush.time.50p:
+  - gauge
+  kafka.logs.flush.time.99p:
+  - gauge
+  kafka.message.count:
+  - sum
+  kafka.network.io:
+  - sum
+  kafka.partition.count:
+  - sum
+  kafka.partition.current_offset:
+  - gauge
+  kafka.partition.offline:
+  - sum
+  kafka.partition.oldest_offset:
+  - gauge
+  kafka.partition.replicas:
+  - sum
+  kafka.partition.replicas_in_sync:
+  - sum
+  kafka.partition.underReplicated:
+  - sum
+  kafka.purgatory.size:
+  - sum
+  kafka.request.count:
+  - sum
+  kafka.request.failed:
+  - sum
+  kafka.request.queue:
+  - sum
+  kafka.request.time.50p:
+  - gauge
+  kafka.request.time.99p:
+  - gauge
+  kafka.request.time.total:
+  - sum
+  kafka.topic.partitions:
+  - sum
+  nginx.connections_accepted:
+  - sum
+  nginx.connections_current:
+  - sum
+  nginx.connections_handled:
+  - sum
+  nginx.requests:
+  - sum
+  postgresql.backends:
+  - sum
+  postgresql.bgwriter.buffers.allocated:
+  - sum
+  postgresql.bgwriter.buffers.writes:
+  - sum
+  postgresql.bgwriter.checkpoint.count:
+  - sum
+  postgresql.bgwriter.duration:
+  - sum
+  postgresql.bgwriter.maxwritten:
+  - sum
+  postgresql.blks_hit:
+  - sum
+  postgresql.blks_read:
+  - sum
+  postgresql.blocks_read:
+  - sum
+  postgresql.commits:
+  - sum
+  postgresql.connection.max:
+  - gauge
+  postgresql.database.count:
+  - sum
+  postgresql.db_size:
+  - sum
+  postgresql.deadlocks:
+  - sum
+  postgresql.index.scans:
+  - sum
+  postgresql.index.size:
+  - gauge
+  postgresql.operations:
+  - sum
+  postgresql.rollbacks:
+  - sum
+  postgresql.rows:
+  - sum
+  postgresql.table.count:
+  - sum
+  postgresql.table.size:
+  - sum
+  postgresql.table.vacuum.count:
+  - sum
+  postgresql.tup_deleted:
+  - sum
+  postgresql.tup_fetched:
+  - sum
+  postgresql.tup_inserted:
+  - sum
+  postgresql.tup_returned:
+  - sum
+  postgresql.tup_updated:
+  - sum
+  process.context_switches:
+  - sum
+  process.cpu.time:
+  - sum
+  process.cpu.utilization:
+  - gauge
+  process.disk.io:
+  - sum
+  process.memory.usage:
+  - sum
+  process.memory.virtual:
+  - sum
+  process.open_file_descriptor.count:
+  - sum
+  process.runtime.cpython.context_switches:
+  - sum
+  process.runtime.cpython.cpu.utilization:
+  - gauge
+  process.runtime.cpython.cpu_time:
+  - sum
+  process.runtime.cpython.gc_count:
+  - sum
+  process.runtime.cpython.memory:
+  - sum
+  process.runtime.cpython.thread_count:
+  - sum
+  process.thread.count:
+  - sum
+  process.unix.file_descriptor.count:
+  - sum
+  process.uptime:
+  - gauge
+  redis.clients.blocked:
+  - sum
+  redis.clients.connected:
+  - sum
+  redis.clients.max_input_buffer:
+  - gauge
+  redis.clients.max_output_buffer:
+  - gauge
+  redis.commands:
+  - gauge
+  redis.commands.processed:
+  - sum
+  redis.connections.received:
+  - sum
+  redis.connections.rejected:
+  - sum
+  redis.cpu.time:
+  - sum
+  redis.db.avg_ttl:
+  - gauge
+  redis.db.expires:
+  - gauge
+  redis.db.keys:
+  - gauge
+  redis.keys.evicted:
+  - sum
+  redis.keys.expired:
+  - sum
+  redis.keyspace.hits:
+  - sum
+  redis.keyspace.misses:
+  - sum
+  redis.latest_fork:
+  - gauge
+  redis.memory.fragmentation_ratio:
+  - gauge
+  redis.memory.lua:
+  - gauge
+  redis.memory.peak:
+  - gauge
+  redis.memory.rss:
+  - gauge
+  redis.memory.used:
+  - gauge
+  redis.net.input:
+  - sum
+  redis.net.output:
+  - sum
+  redis.rdb.changes_since_last_save:
+  - sum
+  redis.replication.backlog_first_byte_offset:
+  - gauge
+  redis.replication.offset:
+  - gauge
+  redis.slaves.connected:
+  - sum
+  redis.uptime:
+  - sum
+  system.cpu.load_average.15m:
+  - gauge
+  system.cpu.load_average.1m:
+  - gauge
+  system.cpu.load_average.5m:
+  - gauge
+  system.cpu.logical.count:
+  - sum
+  system.cpu.time:
+  - sum
+  system.cpu.utilization:
+  - gauge
+  system.disk.io:
+  - sum
+  system.disk.io_time:
+  - sum
+  system.disk.merged:
+  - sum
+  system.disk.operation_time:
+  - sum
+  system.disk.operations:
+  - sum
+  system.disk.pending_operations:
+  - sum
+  system.disk.time:
+  - sum
+  system.disk.weighted_io_time:
+  - sum
+  system.filesystem.inodes.usage:
+  - sum
+  system.filesystem.usage:
+  - sum
+  system.memory.limit:
+  - sum
+  system.memory.usage:
+  - gauge
+  - sum
+  system.memory.utilization:
+  - gauge
+  system.network.connection.count:
+  - sum
+  system.network.dropped:
+  - sum
+  system.network.dropped_packets:
+  - sum
+  system.network.errors:
+  - sum
+  system.network.io:
+  - sum
+  system.network.packets:
+  - sum
+  system.paging.faults:
+  - sum
+  system.paging.operations:
+  - sum
+  system.paging.usage:
+  - sum
+  system.paging.utilization:
+  - gauge
+  system.process.count:
+  - sum
+  system.process.created:
+  - sum
+  system.swap.usage:
+  - gauge
+  system.swap.utilization:
+  - gauge
+  system.thread_count:
+  - gauge
+  system.uptime:
+  - gauge

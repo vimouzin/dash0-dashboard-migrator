@@ -1,0 +1,85 @@
+# Agent0 answer, verbatim. Asked 2026-11-07T20:25:43Z via dash0 MCP runTask (scripts/run_oracle.py, requested advanced/high), dataset default, thread f129ee44-1bb2-4804-bbe7-dcdab6350b36, prompt: prompt.md (sha256 bbbb95d3fa0f).
+# Provenance only, never test input.
+- source_path: 'widgets[1].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: "unsupported function: as_count"
+  otel_metrics: [nginx.connections_accepted, nginx.connections_handled]
+  labels: {}
+  notes: "Two things block this request. It uses .as_count(), and nginx.net.conn_dropped_per_s has no direct OTel equivalent: it would have to be computed as accepted minus handled, which the converter does not allow. Closest PromQL, not applied: sum(increase({otel_metric_name=\"nginx.connections_accepted\", otel_metric_type=\"sum\"}[$__range])) - sum(increase({otel_metric_name=\"nginx.connections_handled\", otel_metric_type=\"sum\"}[$__range])). Both metrics are monotonic sums from collector-contrib/receiver/nginxreceiver/metadata.yaml and are in the dataset."
+
+- source_path: 'widgets[4].definition.widgets[0].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg(rate({otel_metric_name="nginx.requests", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [nginx.requests]
+  in_dataset: yes
+  labels: {}
+  live_check: "yes, 1 series (about 0.86 to 4.5 req/s over 14:05Z to 15:21Z)"
+  notes: "nginx.net.request_per_s is a per-second rate. nginx.requests is a cumulative monotonic counter with unit {requests}, so rate() gives requests per second. The single query_value number comes from the panel reducer, not from PromQL. Grain: the counter is split into 12 sequential series by dash0_resource_hash (resource restarts). Only one is live at a time, so avg() is not distorted, but per-series rate can dip at restart boundaries. The aggregation already collapses dash0_resource_hash."
+
+- source_path: 'widgets[4].definition.widgets[1].definition.requests.fill'
+  outcome: translated
+  promql:
+    - 'avg by (host_name) (rate({otel_metric_name="nginx.requests", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [nginx.requests]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: "yes, 1 series (host_name=docker-desktop)"
+  notes: "Datadog host maps to the resource attribute host.name, which becomes the label host_name. Within each host, the restart-induced series (label dash0_resource_hash) are collapsed by the by (host_name) aggregation."
+
+- source_path: 'widgets[4].definition.widgets[4].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state="reading", host_name=~"$Host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: "yes, 1 series (value 0 throughout the window)"
+  notes: "nginx.net.reading is a gauge of connections reading the request header. nginx.connections_current is a non-monotonic sum with unit {connections}, and state=reading is the same stub_status field, so no rate() is used. The sum() collapses the restart series split by dash0_resource_hash."
+
+- source_path: 'widgets[4].definition.widgets[4].definition.requests[1]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state="writing", host_name=~"$Host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: "yes, 1 series (value 1)"
+  notes: "nginx.net.writing maps to state=writing of the non-monotonic sum nginx.connections_current, which is the same stub_status field. No rate() is used. The sum() collapses the dash0_resource_hash restart series."
+
+- source_path: 'widgets[4].definition.widgets[4].definition.requests[2]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state="waiting", host_name=~"$Host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: "yes, 1 series (values 0 to 25)"
+  notes: "nginx.net.waiting (idle keep-alive connections) maps to state=waiting of the non-monotonic sum nginx.connections_current. No rate() is used. The sum() collapses the dash0_resource_hash restart series."
+
+- source_path: 'widgets[4].definition.widgets[5].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum by (service_name) (rate({otel_metric_name="nginx.requests", otel_metric_type="sum"}[$__rate_interval]))'
+  otel_metrics: [nginx.requests]
+  in_dataset: yes
+  labels: {service: service_name}
+  live_check: "yes, 1 series (service_name empty)"
+  notes: "The nginx receiver series in this dataset have no service.name attribute, so by (service_name) returns one series with an empty label instead of one per service. To get a per-service split, service.name would have to be added to the resource, for example with the collector resource processor. The change widget's period comparison (compare_to) is a widget setting, not part of the query, so it is not in the PromQL."
+
+- source_path: 'widgets[5].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: "no direct OTel equivalent: dropped connections must be computed (accepted - handled)"
+  otel_metrics: [nginx.connections_accepted, nginx.connections_handled]
+  labels: {host: host_name}
+  notes: "Neither the dataset nor the candidate list has a dropped-connections metric. Proposed expression, not applied: sum(rate({otel_metric_name=\"nginx.connections_accepted\", otel_metric_type=\"sum\", host_name=~\"$Host\"}[$__rate_interval])) - sum(rate({otel_metric_name=\"nginx.connections_handled\", otel_metric_type=\"sum\", host_name=~\"$Host\"}[$__rate_interval])). Both are monotonic sums with unit {connections} and are in the dataset."
+
+- source_path: 'widgets[5].definition.widgets[1].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum({otel_metric_name="nginx.connections_current", otel_metric_type="sum", state="active", host_name=~"$Host"})'
+  otel_metrics: [nginx.connections_current]
+  in_dataset: yes
+  labels: {host: host_name}
+  live_check: "yes, 1 series (values 1 to 26)"
+  notes: "nginx.net.connections is a gauge of active client connections, the same stub_status field as state=active of the non-monotonic sum nginx.connections_current, so no rate() is used. Active includes the waiting connections, so do not stack it with reading, writing and waiting. The widget title says per second, but both the Datadog and OTel metrics are point-in-time counts, not rates. The sum() collapses the dash0_resource_hash restart series."

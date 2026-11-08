@@ -1,0 +1,100 @@
+{
+  "labels": {
+    "container_name": "container_name",
+    "docker_image": "container_image_name"
+  },
+  "metrics": {
+    "docker.cpu.system": {
+      "kind": "rate",
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.cpu.system: gauge, percent, no per-unit, 'percent of time ... of this container, unnormalized'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/generic/processor.go:177 submits container.cpu.system (cgroup system CPU time, ns) with sender.Rate; docker/adapter.go:19,54 renames it docker.cpu.system and divides by 1e7 (generic/adapters_utils.go:10 ConvertNanosecondsToHz), so 100 = one full core. OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.cpu.usage.kernelmode: monotonic cumulative sum, ns. Units: percent vs ns; rate() gives ns/s; scale 1e-07 = the Agent's / 1e7. type deviation: metadata.csv says gauge, but the Agent submits a Rate of a cumulative counter (processor.go:177), stored in-app as gauge. vendor deviation: the table has no docker.* row; adapter.go:19 renames Datadog container.cpu.system to docker.cpu.system. The table maps container.cpu.system to container.cpu.usage.system, but the receiver documents that metric as 'the usage for the system, not the container'. The Agent value is the container's kernel-mode time (pkg/util/containers/metrics/docker/collector_linux.go:37 UsageInKernelmode; cgroup v2 cpu.stat system_usec), i.e. container.cpu.usage.kernelmode ('time spent by tasks of the cgroup in kernel mode'). Dash0: fixtures/oracle/dash0_default_metrics.yaml lists container.cpu.usage.kernelmode (sum); Dash0 live 2026-11-08, dataset default, read-only: count by (container_name, container_image_name) (last_over_time({otel_metric_name=\"container.cpu.usage.kernelmode\"}[24h])) = 23 series. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1e-07,
+      "sourceUnit": "percent",
+      "target": {
+        "name": "container.cpu.usage.kernelmode",
+        "type": "sum"
+      },
+      "targetUnit": "ns"
+    },
+    "docker.cpu.user": {
+      "kind": "rate",
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.cpu.user: gauge, percent, no per-unit, 'percent of time ... of this container, unnormalized'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/generic/processor.go:176 submits container.cpu.user (cgroup user CPU time, ns) with sender.Rate; docker/adapter.go:18,53 renames it docker.cpu.user and divides by 1e7 (generic/adapters_utils.go:10 ConvertNanosecondsToHz), so 100 = one full core. OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.cpu.usage.usermode: monotonic cumulative sum, ns. Units: percent vs ns; rate() gives ns/s; scale 1e-07 = the Agent's / 1e7. type deviation: metadata.csv says gauge, but the Agent submits a Rate of a cumulative counter (processor.go:176), stored in-app as gauge. vendor deviation: the table has no docker.* row; adapter.go:18 renames Datadog container.cpu.user to docker.cpu.user, and the table maps container.cpu.user to container.cpu.usage.usermode ('time spent by tasks of the cgroup in user mode'). Dash0: fixtures/oracle/dash0_default_metrics.yaml lists container.cpu.usage.usermode (sum); Dash0 live 2026-11-08, dataset default, read-only: count by (container_name, container_image_name) (last_over_time({otel_metric_name=\"container.cpu.usage.usermode\"}[24h])) = 23 series. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1e-07,
+      "sourceUnit": "percent",
+      "target": {
+        "name": "container.cpu.usage.usermode",
+        "type": "sum"
+      },
+      "targetUnit": "ns"
+    },
+    "docker.io.read_bytes": {
+      "kind": "rate",
+      "matchers": {
+        "operation": "read"
+      },
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.io.read_bytes: gauge, byte per second, 'Bytes read per second from disk by the processes of the container'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/generic/processor.go:230 submits container.io.read per device (tags device, device_name) with sender.Rate of cumulative bytes (cgroup v2 io.stat rbytes, pkg/util/cgroups/cgroupv2_io.go; Docker blkio io_service_bytes_recursive Read); docker/adapter.go:34 renames it docker.io.read_bytes. OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.blockio.io_service_bytes_recursive: monotonic cumulative sum, By, attributes device_major, device_minor, operation. Units: byte/second vs By; rate() gives By/s; scale 1. Grain: both sides keep one series per container and device, so no grain. The Agent sends one per-container series only if it cannot resolve device names (processor.go:236). Matcher operation=read: cgroup v2 value; cgroup v1 hosts report Read. vendor deviation: the table has no docker.* row; adapter.go:34 renames Datadog container.io.read to docker.io.read_bytes, and the table maps container.io.read to container.blockio.io_service_bytes_recursive.read, the receiver's per-operation form of this metric with operation=read. Dash0: snapshot lists the metric (sum); Dash0 live 2026-11-08, dataset default, read-only: count by (operation) (last_over_time({otel_metric_name=\"container.blockio.io_service_bytes_recursive\"}[24h])) = read, write; count by (device_major, device_minor) (same) = 254:0 only. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "container.blockio.io_service_bytes_recursive",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "docker.io.write_bytes": {
+      "kind": "rate",
+      "matchers": {
+        "operation": "write"
+      },
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.io.write_bytes: gauge, byte per second, 'Bytes written per second to disk by the processes of the container'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/generic/processor.go:232 submits container.io.write per device (tags device, device_name) with sender.Rate of cumulative bytes (cgroup v2 io.stat wbytes, pkg/util/cgroups/cgroupv2_io.go; Docker blkio io_service_bytes_recursive Write); docker/adapter.go:36 renames it docker.io.write_bytes. OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.blockio.io_service_bytes_recursive: monotonic cumulative sum, By, attributes device_major, device_minor, operation. Units: byte/second vs By; rate() gives By/s; scale 1. Grain: both sides keep one series per container and device, so no grain. The Agent sends one per-container series only if it cannot resolve device names (processor.go:236). Matcher operation=write: cgroup v2 value; cgroup v1 hosts report Write. vendor deviation: the table has no docker.* row; adapter.go:36 renames Datadog container.io.write to docker.io.write_bytes, and the table maps container.io.write to container.blockio.io_service_bytes_recursive.write, the receiver's per-operation form of this metric with operation=write. Dash0: snapshot lists the metric (sum); Dash0 live 2026-11-08, dataset default, read-only: count by (operation) (last_over_time({otel_metric_name=\"container.blockio.io_service_bytes_recursive\"}[24h])) = read, write; count by (device_major, device_minor) (same) = 254:0 only. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "container.blockio.io_service_bytes_recursive",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "docker.mem.cache": {
+      "kind": "gauge",
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.mem.cache: gauge, byte, 'memory ... used to cache data from disk'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/generic/processor.go:198 submits container.memory.cache with sender.Gauge; docker/adapter.go:28 renames it docker.mem.cache. The value is memory.stat file on cgroup v2 (pkg/util/cgroups/cgroupv2_memory.go:36; Docker collector pkg/util/containers/metrics/docker/collector_linux.go:51 reads total_cache on v1, file on v2). OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.memory.file: non-monotonic cumulative sum, By, 'memory used to cache filesystem data, including tmpfs and shared memory (cgroups v2 only)': the same memory.stat field. Read as gauge. Units: byte vs By; scale 1. vendor deviation: the table has no docker.* row; adapter.go:28 renames Datadog container.memory.cache to docker.mem.cache, and the table maps container.memory.cache to container.memory.total_cache, the cgroup v1 field. The Dash0 host runs cgroup v2 and reports container.memory.file. Dash0: snapshot lists container.memory.file (sum), no total_cache; Dash0 live 2026-11-08, dataset default, read-only: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"container\\\\..*\"}[24h])) = 17 metrics incl. container.memory.file. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte",
+      "target": {
+        "name": "container.memory.file",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "docker.net.bytes_rcvd": {
+      "kind": "rate",
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.net.bytes_rcvd: gauge, byte per second, 'Bytes received per second from the network'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/docker/check_network.go:174-182 submits docker.net.bytes_rcvd per interface (tag docker_network) with sender.Rate of the interface's cumulative BytesRcvd; docker/adapter.go:42 drops the generic container.net.rcvd for docker. OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.network.io.usage.rx_bytes: monotonic cumulative sum, By, attribute interface. Units: byte/second vs By; rate() gives By/s; scale 1. Grain: both sides keep one series per container and interface, so no grain. vendor deviation: the table has no docker.* row; it maps container.net.rcvd to container.network.io.usage.rx_bytes, and the Agent reports that interface counter as docker.net.bytes_rcvd instead (adapter.go:42). Dash0: snapshot lists the metric (sum); Dash0 live 2026-11-08, dataset default, read-only: count by (interface) (last_over_time({otel_metric_name=\"container.network.io.usage.rx_bytes\"}[24h])) = eth0 only. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "container.network.io.usage.rx_bytes",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    },
+    "docker.net.bytes_sent": {
+      "kind": "rate",
+      "ref": "Datadog: integrations-core@a9b9e42 docker_daemon/metadata.csv docker.net.bytes_sent: gauge, byte per second, 'Bytes sent per second to the network'. Check: datadog-agent@7.85.2 (c7e9b19) pkg/collector/corechecks/containers/docker/check_network.go:174-182 submits docker.net.bytes_sent per interface (tag docker_network) with sender.Rate of the interface's cumulative BytesSent; docker/adapter.go:41 drops the generic container.net.sent for docker. OTel: collector-contrib@v0.165.0 receiver/dockerstatsreceiver/metadata.yaml container.network.io.usage.tx_bytes: monotonic cumulative sum, By, attribute interface. Units: byte/second vs By; rate() gives By/s; scale 1. Grain: both sides keep one series per container and interface, so no grain. vendor deviation: the table has no docker.* row; it maps container.net.sent to container.network.io.usage.tx_bytes, and the Agent reports that interface counter as docker.net.bytes_sent instead (adapter.go:41). Dash0: snapshot lists the metric (sum); Dash0 live 2026-11-08, dataset default, read-only: count by (interface) (last_over_time({otel_metric_name=\"container.network.io.usage.tx_bytes\"}[24h])) = eth0 only. Labels: the Agent tagger (comp/core/tagger/collectors/workloadmeta_extract.go:233,244) sets container_name = container name and docker_image = <image>:<tag>; Dash0 container_name and container_image_name have the same form (e.g. postgres:18.6). Untagged images: the Agent appends :latest (comp/core/workloadmeta/def/types.go:337); all 23 Dash0 images are tagged. Churn: container_id changes per recreate (Dash0 24h: 320 container_id, 23 container_name); the Agent tags container_id too (generic/processor.go:103, high cardinality). Dash0 also splits 20 container_id when enriched resource attributes change (e.g. os_description); avg then briefly counts both series.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte/second",
+      "target": {
+        "name": "container.network.io.usage.tx_bytes",
+        "type": "sum"
+      },
+      "targetUnit": "By"
+    }
+  },
+  "source": "datadog",
+  "version": 1
+}

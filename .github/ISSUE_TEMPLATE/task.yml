@@ -1,0 +1,109 @@
+name: Task
+description: One unit of work, small enough for one branch and one PR.
+title: "<area>: <short title>"
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every task is tracked as an issue, and discussion about it happens here (see `AGENTS.md`, "Tracking work in GitHub issues").
+        Write it for an agent with no chat context: what to change and why, which files it owns, how to verify, and when to stop and ask. `docs/handoff/README.md` holds the waves and merge order.
+        Title with a short area name, for example `converter: …`, `mapping/kafka: …`, `verify: …`.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What changes, and why it matters. One to three sentences, phrased as an outcome rather than an activity.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Everything an agent without chat history needs - current behaviour with file and function names, evidence, links to related issues and docs.
+    validations:
+      required: true
+  - type: input
+    id: plan
+    attributes:
+      label: Plan reference
+      description: Link to the plan task (`docs/handoff/NN-….md#task-n-…`) or open-work item (`docs/handoff/README.md`), or "none".
+  - type: input
+    id: group
+    attributes:
+      label: Parallel group
+      description: "Wave (`wave:N`), the files this issue owns, and whether it is a `hotspot:converter` that merges one at a time (see `docs/handoff/README.md`)."
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: The concrete pieces of work, as a checklist. Keep it short; the steps live in the plan.
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: |
+        What must be true for this issue to be accepted. Each criterion must pass or fail on observable evidence:
+        a named test, an exact output, an exit code, a recorded check. Given/When/Then is fine. No "works well".
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: Verify
+      description: The exact commands that show the criteria are met.
+      value: |
+        ```sh
+        uv run migrator check
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: What this issue deliberately does not do. File new issues for those.
+      value: Anything not listed above. File a new issue for it instead of widening this one.
+  - type: textarea
+    id: stop
+    attributes:
+      label: Stop and ask
+      description: Conditions under which the agent comments on the issue and waits instead of guessing (open semantics, approximations, live writes, new dependencies, files outside the list).
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: "`Depends on #n`, external blockers (B1–B3), required approvals. Also set the issue's native \"blocked by\" relationship."
+      value: |
+        - Depends on #
+  - type: textarea
+    id: files
+    attributes:
+      label: Files
+      description: Files this issue creates or changes. Check open PRs before touching files another branch changes.
+  - type: textarea
+    id: dod
+    attributes:
+      label: Definition of Done
+      description: The shared checklist from `AGENTS.md`. Don't remove items; tick them before closing.
+      value: |
+        - [ ] Every acceptance criterion is met, with evidence (test names, commands and their real output) in the PR or a closing comment
+        - [ ] `uv run migrator check` passes (ruff, mypy --strict, pytest); new behaviour has focused tests
+        - [ ] Conversion stays deterministic and LLM-free; no timestamps, absolute paths or environment data in artifacts
+        - [ ] Changed goldens and expected trees are regenerated in the same commit, and the PR explains the diff
+        - [ ] Only the files listed under Files changed, or the PR says why
+        - [ ] No secrets, raw live responses or run artifacts committed
+        - [ ] Docs touched by the change are updated (README, the open work list in `docs/handoff/README.md`, `docs/STATUS.md` when the overall state changes)
+        - [ ] Work is on its own branch; the PR says `Closes #<this issue>`; follow-ups are filed as new issues
+        - [ ] Reviewed by XNotAGuestX (a PR approval, or Felix's explicit go-ahead when the PR comes from his own account)
+        - [ ] Merged into `main` by Felix or an agent acting for him
+    validations:
+      required: true

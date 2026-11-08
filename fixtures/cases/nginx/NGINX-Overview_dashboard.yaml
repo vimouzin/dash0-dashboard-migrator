@@ -1,0 +1,228 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: nginx/assets/dashboards/NGINX-Overview_dashboard.json
+  fixture: fixtures/datadog/integrations-core/nginx/dashboards/NGINX-Overview_dashboard.json
+service: nginx
+dashboard_id: NGINX-Overview_dashboard
+title: NGINX - Overview
+layout_type: ordered
+template_variables:
+- name: Host
+  prefix: host
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: group
+  title: New group
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1]
+  type: group
+  title: Activity Summary
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[0]
+  type: query_value
+  title: Dropped connections, last 15m
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[1]
+  type: check_status
+  title: Agent connection to NGINX
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[2]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[3]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[4]
+  type: manage_status
+  title: Nginx metric monitors
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2]
+  type: group
+  title: Anomaly Detection
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[0]
+  type: event_stream
+  title: Nginx Watchdog alerts
+  request_count: 0
+  has_layout: true
+- source_path: widgets[2].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3]
+  type: group
+  title: Logs
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[3].definition.widgets[1]
+  type: log_stream
+  title: NGINX Error logs
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4]
+  type: group
+  title: Requests
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[0]
+  type: query_value
+  title: Requests per second
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[1]
+  type: hostmap
+  title: Requests per second by host
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[2]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[3]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[4].definition.widgets[4]
+  type: timeseries
+  title: 'Requests: reading, writing, waiting'
+  request_count: 3
+  has_layout: true
+- source_path: widgets[4].definition.widgets[5]
+  type: change
+  title: Change in overall requests per second
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[6]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5]
+  type: group
+  title: 'Connections '
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[0]
+  type: timeseries
+  title: Dropped connections per second
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[1]
+  type: timeseries
+  title: Active connections per second
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[2]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+requests:
+- source_path: widgets[1].definition.widgets[0].definition.requests[0]
+  widget_type: query_value
+  widget_title: Dropped connections, last 15m
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.net.conn_dropped_per_s{*}.as_count()
+  formulas: []
+- source_path: widgets[4].definition.widgets[0].definition.requests[0]
+  widget_type: query_value
+  widget_title: Requests per second
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:nginx.net.request_per_s{*}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[1].definition.requests.fill
+  widget_type: hostmap
+  widget_title: Requests per second by host
+  queries:
+  - name: null
+    data_source: metrics
+    query: avg:nginx.net.request_per_s{*} by {host}
+  formulas: []
+- source_path: widgets[4].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: 'Requests: reading, writing, waiting'
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.net.reading{$Host}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[4].definition.requests[1]
+  widget_type: timeseries
+  widget_title: 'Requests: reading, writing, waiting'
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.net.writing{$Host}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[4].definition.requests[2]
+  widget_type: timeseries
+  widget_title: 'Requests: reading, writing, waiting'
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.net.waiting{$Host}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[5].definition.requests[0]
+  widget_type: change
+  widget_title: Change in overall requests per second
+  queries:
+  - name: null
+    data_source: metrics
+    query: sum:nginx.net.request_per_s{*} by {service}
+  formulas: []
+- source_path: widgets[5].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Dropped connections per second
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.net.conn_dropped_per_s{$Host}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Active connections per second
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:nginx.net.connections{$Host}
+  formulas:
+  - query1

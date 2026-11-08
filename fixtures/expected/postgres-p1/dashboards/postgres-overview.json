@@ -1,0 +1,551 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "postgres-overview",
+    "project": "datadog-migration"
+  },
+  "spec": {
+    "display": {
+      "description": "This dashboard provides a high-level overview of your PostgreSQL databases, so you can track throughput, replication, locks, and other metrics from all your servers and spot potential issues. Further reading on PostgreSQL monitoring:\n\n- [Datadog's guide to key PostgreSQL metrics](https://www.datadoghq.com/blog/postgresql-monitoring/)\n\n- [Collecting metrics with PostgreSQL monitoring tools](https://www.datadoghq.com/blog/postgresql-monitoring-tools/)\n\n- [How to monitor PostgreSQL with Datadog](https://www.datadoghq.com/blog/collect-postgresql-data-with-datadog/)\n\n- [Datadog's PostgreSQL integration docs](https://docs.datadoghq.com/integrations/postgres/)\n\nClone this template dashboard to make changes and add your own graph widgets.\n\nMigration remarks: TOPN (see panel descriptions).",
+      "name": "Postgres - Overview"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "About Postgres"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0-0"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0-1"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 8,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Current Activity"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-0"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-1"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 6
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Resource Utilization"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-0"
+              },
+              "height": 6,
+              "width": 10,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-3"
+              },
+              "height": 9,
+              "width": 6,
+              "x": 0,
+              "y": 12
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-4"
+              },
+              "height": 9,
+              "width": 6,
+              "x": 6,
+              "y": 12
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Rows"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-0"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-1"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 8,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-3"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 6
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-4"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 8,
+              "y": 6
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Connections Monitor"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-1"
+              },
+              "height": 12,
+              "width": 10,
+              "x": 14,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-2"
+              },
+              "height": 3,
+              "width": 14,
+              "x": 0,
+              "y": 9
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-0-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "\nThis dashboard provides a high-level overview of your PostgreSQL databases, so you can track throughput, replication, locks, and other metrics from all your servers and spot potential issues. \n\n"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-0-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "\n**Further reading on PostgreSQL monitoring**\n\n- [Datadog's guide to key PostgreSQL metrics](https://www.datadoghq.com/blog/postgresql-monitoring/)\n\n- [Collecting metrics with PostgreSQL monitoring tools](https://www.datadoghq.com/blog/postgresql-monitoring-tools/)\n\n- [How to monitor PostgreSQL with Datadog](https://www.datadoghq.com/blog/collect-postgresql-data-with-datadog/)\n\n- [Datadog's PostgreSQL integration docs](https://docs.datadoghq.com/integrations/postgres/)"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-1-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Max connections in use"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(max (sum by (service_instance_id) (max by (service_instance_id, postgresql_database_name) ({otel_metric_name=\"postgresql.backends\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})) / on (service_instance_id) max by (service_instance_id) ({otel_metric_name=\"postgresql.connection.max\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"}))) * 100"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Rows fetched / returned"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(sum (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_fetched\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval])))) / ((sum (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_fetched\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval])))) + (sum (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_returned\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))))) * 100"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-2-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Dead rows"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (service_instance_id, postgresql_database_name, postgresql_table_name) ({otel_metric_name=\"postgresql.rows\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\", state=\"dead\"}))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-2-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TOPN] Datadog showed only the top (or bottom) N series; the Perses bar chart has no limit, so it shows every series in the same order. The first N bars match.",
+            "name": "Most frequently scanned indexes"
+          },
+          "plugin": {
+            "kind": "BarChart",
+            "spec": {
+              "calculation": "mean",
+              "sort": "desc"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_index_name) (max by (postgresql_index_name, service_instance_id, postgresql_database_name, postgresql_table_name) (rate({otel_metric_name=\"postgresql.index.scans\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\"}[$__rate_interval])))",
+                    "seriesNameFormat": "{{postgresql_index_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-2-4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TOPN] Datadog showed only the top (or bottom) N series; the Perses bar chart has no limit, so it shows every series in the same order. The first N bars match.",
+            "name": "Least frequently scanned indexes"
+          },
+          "plugin": {
+            "kind": "BarChart",
+            "spec": {
+              "calculation": "mean",
+              "sort": "asc"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_index_name) (max by (postgresql_index_name, service_instance_id, postgresql_database_name, postgresql_table_name) (rate({otel_metric_name=\"postgresql.index.scans\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\"}[$__rate_interval])))",
+                    "seriesNameFormat": "{{postgresql_index_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Inserted"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_database_name) (max by (postgresql_database_name, service_instance_id) (rate({otel_metric_name=\"postgresql.tup_inserted\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\"}[$__rate_interval])))",
+                    "seriesNameFormat": "{{postgresql_database_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Updated"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_database_name) (max by (postgresql_database_name, service_instance_id) (rate({otel_metric_name=\"postgresql.tup_updated\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\"}[$__rate_interval])))",
+                    "seriesNameFormat": "{{postgresql_database_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Deleted"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_database_name) (max by (postgresql_database_name, service_instance_id) (rate({otel_metric_name=\"postgresql.tup_deleted\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\"}[$__rate_interval])))",
+                    "seriesNameFormat": "{{postgresql_database_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Heap-only updates "
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_database_name) (max by (postgresql_database_name, service_instance_id, postgresql_table_name) (rate({otel_metric_name=\"postgresql.operations\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\", operation=\"hot_upd\"}[$__rate_interval])))",
+                    "seriesNameFormat": "{{postgresql_database_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-5-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "[TOPN] Datadog showed only the top (or bottom) N series; the Perses bar chart has no limit, so it shows every series in the same order. The first N bars match.",
+            "name": "Most connected databases"
+          },
+          "plugin": {
+            "kind": "BarChart",
+            "spec": {
+              "calculation": "mean",
+              "sort": "desc"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "max by (postgresql_database_name) (max by (postgresql_database_name, service_instance_id) ({otel_metric_name=\"postgresql.backends\", otel_metric_type=\"sum\", postgresql_database_name=~\"^($db)$\", host_name=~\"^($host)$\"}))",
+                    "seriesNameFormat": "{{postgresql_database_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-5-2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "A PostgreSQL database cluster is not a collection of servers, but a collection of databases managed by a single server."
+            }
+          },
+          "queries": []
+        }
+      }
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "allowAllValue": true,
+          "allowMultiple": true,
+          "defaultValue": "$__all",
+          "display": {
+            "name": "db"
+          },
+          "name": "db",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "postgresql_database_name"
+            }
+          }
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "allowAllValue": true,
+          "allowMultiple": true,
+          "defaultValue": "$__all",
+          "display": {
+            "name": "host"
+          },
+          "name": "host",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "host_name"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

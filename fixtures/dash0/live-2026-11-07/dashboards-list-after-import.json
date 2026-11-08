@@ -1,0 +1,23 @@
+[
+  {
+    "dataset": "default",
+    "description": "Which services, SDKs, hosts and containers send which telemetry signals, over the selected time range.",
+    "id": "72b590cf-1985-4b40-961a-ed522e7606ea",
+    "name": "telemetry-inventory-by-source",
+    "tags": []
+  },
+  {
+    "dataset": "default",
+    "description": "Which telemetry signals arrive in this dataset and how much of each, over the selected time range.",
+    "id": "7f5ea82e-fbe5-42ff-a99d-0b35c833047d",
+    "name": "telemetry-inventory-overview",
+    "tags": []
+  },
+  {
+    "dataset": "default",
+    "description": "This dashboard provides real-time insights into your PostgreSQL databases, so you can monitor throughput and resource utilization metrics from all your servers and troubleshoot performance issues. Further reading on PostgreSQL monitoring:\n\n- [Datadog's guide to key PostgreSQL metrics](https://www.datadoghq.com/blog/postgresql-monitoring/)\n\n- [Collecting metrics with PostgreSQL monitoring tools](https://www.datadoghq.com/blog/postgresql-monitoring-tools/)\n\n- [How to monitor PostgreSQL with Datadog](https://www.datadoghq.com/blog/collect-postgresql-data-with-datadog/)\n\n- [Datadog's PostgreSQL integration docs](https://docs.datadoghq.com/integrations/postgres/)\n\nClone this template dashboard to make changes and add your own graph widgets.",
+    "id": "eebfaf39-969d-4fe3-b379-9234d77e1937",
+    "name": "demo-postgres-metrics",
+    "tags": []
+  }
+]

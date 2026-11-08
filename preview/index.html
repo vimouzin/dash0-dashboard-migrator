@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Migrate · Demo preview</title>
+  <meta name="description" content="UI-only demo: move Datadog dashboards and alerts to Dash0.">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    // Dark by default; remember the viewer's choice when storage is available.
+    try { const t = localStorage.getItem("migrate-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="wrap top-in">
+      <span class="brand"><span class="mark" aria-hidden="true"></span>Migrate</span>
+      <div class="top-right">
+        <span class="mono faint hide-sm" id="data-mode">Local converter</span>
+        <button id="tour-btn" class="theme-btn tour-btn" type="button" hidden>
+          <span class="tour-dot" aria-hidden="true"></span><span class="tour-txt">Start tour</span>
+        </button>
+        <button id="theme-btn" class="theme-btn" type="button" aria-label="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true"></span><span class="theme-txt">Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- 1. Start -->
+    <section id="start" class="screen is-active" aria-labelledby="start-title">
+      <div class="wrap start-wrap">
+        <h1 id="start-title" class="display start-title">Datadog to Dash0<span class="dot">.</span></h1>
+        <div class="start-row">
+          <p class="lead">Convert Datadog dashboards and monitors to Perses and Dash0 files.</p>
+          <button id="start-btn" class="go" type="button">
+            <span class="go-label">Convert</span>
+            <span class="go-arrow" aria-hidden="true"><span class="a1">→</span><span class="a2">→</span></span>
+          </button>
+        </div>
+        <!-- Files to convert: a drop zone on the left, one-click samples on the right. -->
+        <div class="upload" id="upload">
+          <div class="drop" id="drop">
+            <input id="source-files" class="drop-input" type="file" accept=".json,application/json" multiple aria-describedby="drop-txt">
+            <label class="drop-empty" for="source-files">
+              <span class="drop-title">Choose Datadog JSON files</span>
+              <span class="drop-txt" id="drop-txt">Dashboards or monitors exported from Datadog. Drag them here.</span>
+              <span class="drop-note">No files selected? Convert runs the pinned Postgres demo. Uses mappings/datadog.</span>
+            </label>
+            <div class="drop-picked" id="drop-picked" hidden>
+              <p class="drop-count mono" id="drop-count" aria-live="polite"></p>
+              <ul class="drop-files mono" id="drop-files"></ul>
+              <div class="drop-acts">
+                <label class="link-btn" for="source-files">Choose other files</label>
+                <button class="link-btn" type="button" id="clear-files">Clear</button>
+              </div>
+            </div>
+          </div>
+          <div class="samples">
+            <p class="samples-head mono">Or try a sample:</p>
+            <ul class="sample-list">
+              <li><button class="sample" type="button" data-sample="checkout_dashboard.json checkout_error_rate_monitor.json" aria-pressed="false">
+                <span class="sample-name">Online shop checkout</span><span class="sample-cat mono">Fictional · dashboard and alert</span><span class="sample-fmt mono">2 files</span>
+              </button></li>
+              <li><button class="sample" type="button" data-sample="checkout_dashboard.json" aria-pressed="false">
+                <span class="sample-name">Checkout dashboard</span><span class="sample-cat mono">Volume, errors, latency</span><span class="sample-fmt mono">Dashboard</span>
+              </button></li>
+              <li><button class="sample" type="button" data-sample="checkout_error_rate_monitor.json" aria-pressed="false">
+                <span class="sample-name">High checkout error rate</span><span class="sample-cat mono">Alert above 5%</span><span class="sample-fmt mono">Monitor</span>
+              </button></li>
+              <li><button class="sample" type="button" data-sample="" aria-pressed="false">
+                <span class="sample-name">PostgreSQL integration</span><span class="sample-cat mono">Datadog's own · pinned demo</span><span class="sample-fmt mono">Built in</span>
+              </button></li>
+            </ul>
+          </div>
+        </div>
+        <p class="start-error mono" id="start-error" role="alert"></p>
+      </div>
+    </section>
+
+    <!-- 2. Run and results -->
+    <section id="run" class="screen" aria-labelledby="results-title">
+      <div class="wrap run-wrap">
+        <div class="run-head">
+          <div class="run-head-l">
+            <h2 id="results-title" class="display display-sm" tabindex="-1">Conversion results<span class="dot">.</span></h2>
+          </div>
+          <a id="download-results" class="btn btn-primary" hidden>Download results (.json) <span class="arrow" aria-hidden="true">↓</span></a>
+        </div>
+        <p class="visually-hidden" id="live" aria-live="polite"></p>
+        <p class="why" id="run-note"></p>
+        <p class="why" id="ai-quota" role="status" hidden></p>
+        <div class="category-summary" id="category-summary" aria-label="Outcomes"></div>
+
+        <!-- A dial: one tick per item (or per group of items when there are many). A tick lights in
+             its status colour when the (simulated) backend finishes it; the orange arc keeps turning while it works. -->
+        <div class="stage-wrap" id="stage-wrap">
+          <div class="stage">
+            <div class="stage-l" aria-hidden="true">
+            <div class="dial">
+              <svg class="dial-svg" viewBox="0 0 400 400">
+                <circle class="orbit" cx="200" cy="200" r="150"/>
+                <circle class="comet" cx="200" cy="200" r="150" pathLength="100"/>
+                <g id="ticks"></g>
+              </svg>
+              <div class="dial-center">
+                <p class="dial-pct"><span id="pct">0</span><small>%</small></p>
+                <p class="dial-now mono" id="now"></p>
+              </div>
+            </div>
+            <p class="legend mono">
+              <span><i class="s-converted"></i><b id="n-converted">0</b> converted</span>
+              <span><i class="s-review"></i><b id="n-review">0</b> review</span>
+              <span><i class="s-unsupported"></i><b id="n-unsupported">0</b> not supported</span>
+            </p>
+            </div>
+            <!-- What the migration is doing: one box per step, in while the step runs, out when it ends. -->
+            <!-- Right column: the run's three phases above the box that says what is happening now. -->
+            <div class="stage-side">
+            <ol class="progress" id="progress" aria-label="Migration progress">
+              <li><span class="num">01</span><span class="lbl">Read</span></li>
+              <li><span class="num">02</span><span class="lbl">Translate</span></li>
+              <li><span class="num">03</span><span class="lbl">Check</span></li>
+            </ol>
+            <div class="stage-r" id="steps">
+              <div class="publish" id="publish" hidden>
+                <div class="step-box">
+                  <p class="step-num mono">04 / 04</p>
+                  <h3 class="step-title">Migration ready</h3>
+                </div>
+                <button id="publish-btn" class="go pub" type="button">
+                  <span class="go-label"><span class="pub-txt">Publish final migration</span></span>
+                  <span class="go-arrow" aria-hidden="true">
+                    <span class="a1">→</span><span class="a2">→</span>
+                    <svg class="pub-tick" viewBox="0 0 12 12"><path d="M2.2 6.3l2.4 2.4L9.8 3.4"/></svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="board is-hidden" id="board">
+          <section class="col" data-status="converted" aria-labelledby="h-converted">
+            <h3 class="col-head" id="h-converted">Translated</h3>
+            <ul class="items"></ul>
+          </section>
+          <section class="col" data-status="review" aria-labelledby="h-review">
+            <h3 class="col-head" id="h-review">Converted with remarks · Review</h3>
+            <ul class="items"></ul>
+          </section>
+          <section class="col" data-status="unsupported" aria-labelledby="h-unsupported">
+            <h3 class="col-head" id="h-unsupported">Blocked</h3>
+            <ul class="items"></ul>
+          </section>
+        </div>
+
+        <div class="foot">
+          <p class="why" id="limitations">Publishing and numeric comparison are unavailable here. Nothing has been sent to Dash0.</p>
+          <div class="callout" id="callout">
+            <span class="badge s-unsupported" aria-hidden="true"><svg viewBox="0 0 22 22"><path d="M8 8l6 6"/><path d="M14 8l-6 6"/></svg></span>
+            <p id="callout-txt">1 item has no Dash0 equivalent.</p>
+            <button class="btn btn-primary" type="button" id="options-btn">See options <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div class="foot-acts">
+            <button id="finish-btn" class="btn btn-primary btn-big" type="button">Finish migration <span class="arrow" aria-hidden="true">→</span></button>
+            <button id="again-btn" class="btn btn-ghost" type="button">Run again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Not supported: two ways forward -->
+    <section id="unsupported" class="screen" aria-labelledby="unsup-title">
+      <div class="wrap unsup-wrap">
+        <button class="back mono" type="button" id="back-btn"><span aria-hidden="true">←</span> Results</button>
+        <h2 id="unsup-title" class="display display-sm" tabindex="-1">Not supported<span class="dot">.</span></h2>
+        <ul class="unsup-list" id="unsup-list"></ul>
+
+        <div class="options">
+          <article class="option" id="opt-consult">
+            <p class="opt-num mono">01</p>
+            <h3 class="opt-title">Manual follow-up</h3>
+            <p class="opt-txt">Use the reported diagnostic and suggested action. Consultation booking is unavailable.</p>
+            <div class="opt-act">
+              <button class="btn btn-primary btn-big accept-btn consult-btn" type="button" id="consult-btn">
+                <svg class="tick" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6.3l2.4 2.4L9.8 3.4"/></svg>
+                <span class="txt">Book a call</span>
+              </button>
+            </div>
+          </article>
+          <article class="option" id="opt-ai">
+            <p class="opt-num mono">02</p>
+            <h3 class="opt-title">Try with AI</h3>
+            <p class="opt-txt">Get a suggested workaround.</p>
+            <div class="opt-act" id="ai-act"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Done: "ready" hero, then what moved (donut per panel), then the end view. -->
+    <section id="done" class="screen" aria-label="Migration complete">
+      <div class="wrap done-wrap">
+        <div class="dview" data-view="ready">
+          <div class="hero">
+            <div class="halo" aria-hidden="true"><i class="h2"></i><i class="h3"></i><i class="h4"></i><i class="h1"></i></div>
+            <p class="mono hero-eyebrow">Migration complete</p>
+            <h2 class="display hero-t" tabindex="-1" id="ready-title">Your dashboards<br>are ready<span class="dot">.</span></h2>
+            <button class="orb" type="button" data-dview="overview" aria-label="See what moved">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+            <p class="mono faint hero-note" id="ready-note"></p>
+          </div>
+        </div>
+
+        <div class="dview" data-view="overview" hidden>
+          <button class="back mono" type="button" data-dview="ready"><span aria-hidden="true">←</span> Back</button>
+          <h2 class="display display-sm" tabindex="-1" id="moved-title">What moved<span class="dot">.</span></h2>
+          <p class="lead moved-lead" id="moved-lead"></p>
+          <div class="moved">
+            <div class="donut-card">
+              <svg class="donut" id="donut" viewBox="0 0 140 140" role="img"></svg>
+              <div class="mrows" id="mrows"></div>
+            </div>
+            <div class="dash-card">
+              <p class="mono faint dash-head">Panels per dashboard</p>
+              <ul class="dash-list" id="dash-list"></ul>
+            </div>
+          </div>
+          <div class="done-acts">
+            <button class="btn btn-primary btn-big" type="button" data-dview="end">Continue <span class="arrow" aria-hidden="true">→</span></button>
+            <button class="btn btn-ghost" type="button" data-results="1">Back to results</button>
+          </div>
+        </div>
+
+        <div class="dview" data-view="end" hidden>
+          <div class="end">
+            <div class="okring" aria-hidden="true"><svg viewBox="0 0 56 56"><path d="M15 29 24 38 42 19"/></svg></div>
+            <h2 class="display hero-t" tabindex="-1" id="end-title">All set<span class="dot">.</span></h2>
+            <p class="lead" id="end-lead"></p>
+            <div class="done-acts center">
+              <a class="btn btn-primary btn-big" id="end-download" hidden>Download results (.json) <span class="arrow" aria-hidden="true">↓</span></a>
+              <button class="btn btn-primary btn-big" type="button" data-results="1" id="end-results">Back to results <span class="arrow" aria-hidden="true">→</span></button>
+              <button class="btn btn-primary btn-big" type="button" data-dview="fine" id="end-next" hidden>Continue <span class="arrow" aria-hidden="true">→</span></button>
+              <button class="btn btn-ghost" type="button" id="end-again">Convert more</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Closing page from the keynote demo. Reachable only once no blocked item is left open. -->
+        <div class="dview" data-view="fine" hidden>
+          <div class="end">
+            <div class="okring" aria-hidden="true"><svg viewBox="0 0 56 56"><path d="M15 29 24 38 42 19"/></svg></div>
+            <h2 class="display hero-t" tabindex="-1" id="fine-title">All systems<br>functioning<span class="dot">.</span></h2>
+            <p class="lead">Welcome to Dash0. The dashboard is yours now.</p>
+            <div class="done-acts center">
+              <button class="btn btn-primary btn-big" type="button" data-results="1">Explore the results <span class="arrow" aria-hidden="true">→</span></button>
+              <button class="btn btn-ghost" type="button" data-dview="ready">Replay</button>
+            </div>
+            <p class="mono faint" id="fine-note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="backend.js"></script>
+  <script src="app.js"></script>
+  <script src="copilot.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

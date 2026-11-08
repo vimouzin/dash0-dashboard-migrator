@@ -1,0 +1,317 @@
+# Agent0 answer, verbatim. Asked 2026-11-07T20:31:06Z via dash0 MCP runTask (scripts/run_oracle.py, requested advanced/high), dataset default, thread 1a5f22a2-8146-4e21-ab05-133ebe1fdc8d, prompt: prompt.md (sha256 2cf08e549e16).
+# Provenance only, never test input.
+- source_path: 'widgets[2].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'not a metrics request (topology_map with no metric queries)'
+  otel_metrics: []
+  labels: {}
+  notes: 'This is a Data Streams Monitoring topology view. There is nothing to convert to PromQL.'
+
+- source_path: 'widgets[2].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: as_rate'
+  otel_metrics: []
+  labels: {topic: topic, env: deployment_environment_name}
+  notes: 'data_streams.latency and data_streams.kafka.lag_seconds are Datadog Data Streams Monitoring metrics. Neither the dataset nor the candidate list has an OTel metric for pathway message counts or for lag in seconds (kafka.consumer_group.lag counts messages, not seconds). The request would stay blocked without .as_rate() too.'
+
+- source_path: 'widgets[3].definition.widgets[0].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {}
+  notes: 'Closest PromQL without weighted(): sum({otel_metric_name="kafka.partition.offline", otel_metric_type="sum"}). That metric is in the dataset as an updowncounter sum, while the java-contrib definition says gauge. Both read KafkaController OfflinePartitionsCount.'
+
+- source_path: 'widgets[3].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'Closest PromQL: sum({otel_metric_name="kafka.partition.underReplicated", otel_metric_type="sum", deployment_environment_name=~"$env"}). This is the dataset metric, from the Java agent rule on ReplicaManager UnderReplicatedPartitions. The candidate kafka.partition.under_replicated (gauge) is not in the dataset.'
+
+- source_path: 'widgets[3].definition.widgets[2].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'max(rate({otel_metric_name="kafka.isr.operation.count", otel_metric_type="sum", operation="expand", deployment_environment_name=~"$env"}[$__rate_interval])) - max(rate({otel_metric_name="kafka.isr.operation.count", otel_metric_type="sum", operation="shrink", deployment_environment_name=~"$env"}[$__rate_interval]))'
+  otel_metrics: [kafka.isr.operation.count]
+  in_dataset: 'yes'
+  labels: {env: deployment_environment_name}
+  live_check: 'yes, 1 series (value 0 over 14:05-15:21Z)'
+  notes: 'Datadog isr_expands.rate and isr_shrinks.rate are per-second rates of the ReplicaManager IsrExpandsPerSec and IsrShrinksPerSec Count values. kafka.isr.operation.count is the same Count as a monotonic counter split by operation=expand|shrink, so rate() matches. No Kafka metric in the dataset has deployment.environment.name. The $env matcher only works because the All value (.*) also matches series without the label. A specific env value would return nothing. Series are split by container.id and service.instance.id across 10 broker container restarts, and the outer max() collapses them.'
+
+- source_path: 'widgets[3].definition.widgets[3].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg({otel_metric_name="kafka.request.time.avg", otel_metric_type="gauge", type="FetchFollower", deployment_environment_name=~"$env"})'
+  otel_metrics: [kafka.request.time.avg]
+  in_dataset: 'no'
+  otel_source: [java-contrib/jmx-scraper/src/main/resources/kafka.yaml]
+  labels: {env: deployment_environment_name}
+  live_check: not in dataset
+  notes: 'Both sides read the Mean attribute of kafka.network RequestMetrics TotalTimeMs with request=FetchFollower, in ms. The type value comes from param(request), and the dataset has the same values (Produce, FetchConsumer, FetchFollower) on kafka.request.time.50p. The dataset only has 50p, 99p and total. 50p is a median, not a mean, and rate(total)/rate(count) would be a computed metric, so neither is used. deployment.environment.name is not on any Kafka metric in the dataset.'
+
+- source_path: 'widgets[3].definition.widgets[4].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg({otel_metric_name="kafka.request.time.avg", otel_metric_type="gauge", type="FetchConsumer", deployment_environment_name=~"$env"})'
+  otel_metrics: [kafka.request.time.avg]
+  in_dataset: 'no'
+  otel_source: [java-contrib/jmx-scraper/src/main/resources/kafka.yaml]
+  labels: {env: deployment_environment_name}
+  live_check: not in dataset
+  notes: 'TotalTimeMs Mean for request=FetchConsumer, in ms on both sides. The dataset only has kafka.request.time.50p, 99p and total, which are not the mean. deployment.environment.name is absent in the dataset.'
+
+- source_path: 'widgets[3].definition.widgets[5].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg({otel_metric_name="kafka.request.time.avg", otel_metric_type="gauge", type="Produce", deployment_environment_name=~"$env"})'
+  otel_metrics: [kafka.request.time.avg]
+  in_dataset: 'no'
+  otel_source: [java-contrib/jmx-scraper/src/main/resources/kafka.yaml]
+  labels: {env: deployment_environment_name}
+  live_check: not in dataset
+  notes: 'TotalTimeMs Mean for request=Produce, in ms on both sides. The dataset only has kafka.request.time.50p, 99p and total, which are not the mean. deployment.environment.name is absent in the dataset.'
+
+- source_path: 'widgets[4].definition.widgets[1].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg(rate({otel_metric_name="kafka.leader.election.rate", otel_metric_type="sum", deployment_environment_name=~"$env"}[$__rate_interval]))'
+    - 'avg(rate({otel_metric_name="kafka.leaderElection.unclean.count", otel_metric_type="sum", deployment_environment_name=~"$env"}[$__rate_interval]))'
+  otel_metrics: [kafka.leader.election.rate, kafka.leaderElection.unclean.count]
+  in_dataset: partly
+  otel_source: [java-contrib/jmx-scraper/src/main/resources/kafka.yaml]
+  labels: {env: deployment_environment_name}
+  live_check: 'partly: query2 (leader elections) not in dataset; query1 (unclean) yes, 1 series (value 0)'
+  notes: 'Formula order is query2 then query1. Datadog leader_elections.rate is a per-second rate of ControllerStats LeaderElectionRateAndTimeMs Count, which the java-contrib counter kafka.leader.election.rate reads. Datadog unclean_leader_elections.rate is a rate of UncleanLeaderElectionsPerSec Count. The dataset carries that counter as kafka.leaderElection.unclean.count ({elections}), from the OTel Java agent JMX kafka-broker rule (scope io.opentelemetry.jmx), so the dataset metric is used instead of kafka.unclean.election.rate. The matching Java agent clean-election counter, kafka.leaderElection.count, is not in the dataset. deployment.environment.name is absent in the dataset.'
+
+- source_path: 'widgets[4].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'Closest PromQL: sum by (deployment_environment_name) (rate({otel_metric_name="kafka.network.io", otel_metric_type="sum", direction="in", deployment_environment_name=~"$env"}[$__rate_interval])), and the same with direction="out". kafka.network.io is in the dataset (BrokerTopicMetrics BytesInPerSec and BytesOutPerSec Count, in By).'
+
+- source_path: 'widgets[4].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'Closest PromQL: sum by (deployment_environment_name) ({otel_metric_name="kafka.purgatory.size", otel_metric_type="sum", type="Produce", deployment_environment_name=~"$env"}), and the same with type="Fetch". In the dataset kafka.purgatory.size is an updowncounter sum. The candidate definition says gauge.'
+
+- source_path: 'widgets[4].definition.widgets[4].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'avg by (deployment_environment_name) ({otel_metric_name="kafka.request.time.avg", otel_metric_type="gauge", type="Produce", deployment_environment_name=~"$env"})'
+    - 'avg by (deployment_environment_name) ({otel_metric_name="kafka.request.time.avg", otel_metric_type="gauge", type="FetchConsumer", deployment_environment_name=~"$env"})'
+  otel_metrics: [kafka.request.time.avg]
+  in_dataset: 'no'
+  otel_source: [java-contrib/jmx-scraper/src/main/resources/kafka.yaml]
+  labels: {env: deployment_environment_name}
+  live_check: not in dataset
+  notes: 'TotalTimeMs Mean for Produce and FetchConsumer, in ms. Because deployment.environment.name is not on any Kafka metric in the dataset, the by-env grouping would give one series with an empty env label.'
+
+- source_path: 'widgets[5].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {topic: topic, env: deployment_environment_name}
+  notes: 'Closest PromQL: sum by (topic, deployment_environment_name) ({otel_metric_name="kafka.producer.byte-rate", otel_metric_type="gauge", deployment_environment_name=~"$env"}). That metric comes from java-contrib/jmx-scraper/src/main/resources/kafka-producer.yaml and is not in the dataset. The dataset has no kafka.producer.* metrics.'
+
+- source_path: 'widgets[5].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted, abs'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'Closest PromQL: abs(sum by (host_name) ({otel_metric_name="kafka.producer.request-rate", otel_metric_type="gauge", deployment_environment_name=~"$env"})), and the same for kafka.producer.response-rate. Both come from kafka-producer.yaml and are not in the dataset.'
+
+- source_path: 'widgets[5].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'Closest PromQL: sum by (deployment_environment_name) ({otel_metric_name="kafka.producer.request-latency-avg", otel_metric_type="gauge", deployment_environment_name=~"$env"}), in ms. It comes from kafka-producer.yaml and is not in the dataset.'
+
+- source_path: 'widgets[5].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'Closest PromQL: sum by (deployment_environment_name) ({otel_metric_name="kafka.producer.io-wait-time-ns-avg", otel_metric_type="gauge", deployment_environment_name=~"$env"}). It comes from kafka-producer.yaml, is not in the dataset, and its unit is ns.'
+
+- source_path: 'widgets[6].definition.widgets[1].definition.requests[0]'
+  outcome: translated
+  promql:
+    - 'sum by (host_name, group, deployment_environment_name) ({otel_metric_name="kafka.consumer_group.lag", otel_metric_type="gauge", deployment_environment_name=~"$env", group=~"$consumer_group"})'
+    - 'sum by (host_name, group, deployment_environment_name) ({otel_metric_name="kafka.consumer_group.offset", otel_metric_type="gauge", deployment_environment_name=~"$env", group=~"$consumer_group"})'
+  otel_metrics: [kafka.consumer_group.lag, kafka.consumer_group.offset]
+  in_dataset: 'yes'
+  labels: {host: host_name, consumer_group: group, env: deployment_environment_name}
+  live_check: 'yes, 2 series for each formula (groups accounting and fraud-detection, host docker-desktop)'
+  notes: 'Datadog kafka.consumer_lag and kafka.consumer_offset are per consumer_group, topic and partition, summed here. kafkametricsreceiver reports the same lag and committed offset per group, topic and partition (unit 1). The Datadog host tag is the agent host running the kafka_consumer check. host_name here is the collector host from resource detection (docker-desktop), not a broker. deployment.environment.name is absent, so the env label is empty.'
+
+- source_path: 'widgets[6].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {consumer_group: group, env: deployment_environment_name}
+  notes: 'Closest metric in the dataset: kafka.consumer.bytes_consumed_rate (gauge, no unit, from Java agent kafka-clients instrumentation). Candidate: kafka.consumer.bytes-consumed-rate (kafka-consumer.yaml), which is not in the dataset. Client metrics are keyed by client-id, not consumer group.'
+
+- source_path: 'widgets[6].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted, abs'
+  otel_metrics: []
+  labels: {client-id: client_id, env: deployment_environment_name}
+  notes: 'Closest PromQL: abs(sum by (client_id, deployment_environment_name) ({otel_metric_name="kafka.consumer.records_consumed_rate", otel_metric_type="gauge", deployment_environment_name=~"$env"})). That metric is in the dataset (Java agent kafka-clients). The candidate kafka.consumer.records-consumed-rate is not in the dataset.'
+
+- source_path: 'widgets[6].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {env: deployment_environment_name, consumer_group: group}
+  notes: 'Closest metric in the dataset: kafka.consumer.fetch_rate (gauge). Candidate: kafka.consumer.fetch-rate (kafka-consumer.yaml), which is not in the dataset.'
+
+- source_path: 'widgets[7].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: top'
+  otel_metrics: []
+  labels: {env: deployment_environment_name, topic: topic}
+  notes: 'data_streams.kafka.lag_seconds (lag in seconds, from Data Streams Monitoring) has no OTel equivalent. kafka.consumer_group.lag counts messages. Closest shape: topk(10, max by (deployment_environment_name, topic) (...)).'
+
+- source_path: 'widgets[7].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: as_rate, rollup, default_zero'
+  otel_metrics: []
+  labels: {service: service_name, env: deployment_environment_name}
+  notes: 'This also uses the Datadog value-filter aggregation count(v: v>=0). data_streams.latency pathway counts have no OTel metric. messaging.client.sent.messages (semantic conventions, not in the dataset) would be the nearest: sum by (service_name, deployment_environment_name) (rate(...[$__rate_interval])).'
+
+- source_path: 'widgets[7].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: as_rate, rollup, default_zero'
+  otel_metrics: []
+  labels: {service: service_name, env: deployment_environment_name}
+  notes: 'This also uses count(v: v>=0). The nearest would be messaging.client.consumed.messages (semantic conventions, not in the dataset).'
+
+- source_path: 'widgets[7].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: top'
+  otel_metrics: []
+  labels: {topic: topic, env: deployment_environment_name}
+  notes: 'data_streams.payload_size (a per-message payload size distribution) has no OTel equivalent in the dataset or the candidate list.'
+
+- source_path: 'widgets[7].definition.widgets[5].definition.requests[0]'
+  outcome: blocked
+  reason: 'not a metrics request (distribution widget with no metric queries)'
+  otel_metrics: []
+  labels: {}
+  notes: 'There are no queries to convert.'
+
+- source_path: 'widgets[8].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'The KRaft raft-metrics current-leader value has no metric in the dataset or the candidate list.'
+
+- source_path: 'widgets[8].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'There is no metric for the KRaft metadata loader current controller id. kafka.controller.active.count counts active controllers, not the controller id.'
+
+- source_path: 'widgets[8].definition.widgets[3].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'Datadog counts brokers the KRaft controller sees as active, meaning registered and unfenced (QuorumControllerMetrics ActiveBrokerCount). kafka.brokers (in the dataset, kafkametricsreceiver) is defined as the number of brokers in the cluster from cluster metadata, and does not define how fenced brokers count. kafka.controller.active.count counts controllers. If the definitions were accepted as equivalent, the proposal would be avg({otel_metric_name="kafka.brokers", otel_metric_type="sum", deployment_environment_name=~"$env"}).'
+
+- source_path: 'widgets[8].definition.widgets[4].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'There is no fenced broker count in the dataset or the candidate list.'
+
+- source_path: 'widgets[8].definition.widgets[5].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'This is the high watermark of the KRaft metadata log (__cluster_metadata). kafka.partition.current_offset covers user topic partitions, not the raft log.'
+
+- source_path: 'widgets[8].definition.widgets[6].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {env: deployment_environment_name}
+  notes: 'There is no metric for the KRaft metadata.version feature level.'
+
+- source_path: 'widgets[8].definition.widgets[7].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'There is no metric for the broker-metadata last-applied-record lag. kafka.max.lag is replica fetcher lag in messages, a different quantity.'
+
+- source_path: 'widgets[8].definition.widgets[8].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'kafka.consumer.commit_latency_avg and commit_latency_max in the dataset measure consumer offset-commit latency, not raft commit latency.'
+
+- source_path: 'widgets[8].definition.widgets[9].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'There are no metrics for the raft append-records or fetch-records rates. kafka.message.count counts messages in to user topics.'
+
+- source_path: 'widgets[8].definition.widgets[10].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'There are no metrics for metadata load or apply error counts.'
+
+- source_path: 'widgets[8].definition.widgets[11].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'There is no metric for the snapshot emitter latest-snapshot age.'
+
+- source_path: 'widgets[8].definition.widgets[12].definition.requests[0]'
+  outcome: blocked
+  reason: 'no OTel metric'
+  otel_metrics: []
+  labels: {host: host_name, env: deployment_environment_name}
+  notes: 'kafka.consumer.poll_idle_ratio_avg in the dataset is the consumer client poll idle ratio, not the KRaft raft client poll idle ratio.'
+
+- source_path: 'widgets[9].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {type: jvm_gc_name, env: deployment_environment_name}
+  notes: 'Closest PromQL: sum by (jvm_gc_name, deployment_environment_name) (rate(jvm.gc.duration histogram count[$__rate_interval])), split major and minor with jvm_gc_action. jvm.gc.duration is in the dataset (histogram, s). Datadog major_collection_count and minor_collection_count are already per-second rates.'
+
+- source_path: 'widgets[9].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'unsupported function: weighted'
+  otel_metrics: []
+  labels: {type: jvm_gc_name, env: deployment_environment_name}
+  notes: 'Closest metric: the histogram_sum of rate(jvm.gc.duration[$__rate_interval]), split by jvm_gc_action. Units differ: Datadog collection_time is ms per second, OTel is s, so the scale would be x1000 (https://opentelemetry.io/docs/specs/semconv/runtime/jvm-metrics/#metric-jvmgcduration).'
+
+- source_path: 'widgets[10].definition.widgets[1].definition.requests[0]'
+  outcome: blocked
+  reason: 'not a metrics request (log query)'
+  otel_metrics: []
+  labels: {}
+  notes: 'Query a is a Datadog logs query, not a metric query.'
+
+- source_path: 'widgets[10].definition.widgets[2].definition.requests[0]'
+  outcome: blocked
+  reason: 'not a metrics request (list_stream of logs)'
+  otel_metrics: []
+  labels: {}
+  notes: 'This is a log stream widget with no metric queries.'

@@ -1,0 +1,155 @@
+{
+  "title": "Live infrastructure redis",
+  "description": "Synthetic source assets; target artifacts are generated exclusively by migrator convert. Numeric parity does not validate every stated approximation or assumption.",
+  "layout_type": "ordered",
+  "template_variables": [
+    {
+      "name": "host",
+      "prefix": "host",
+      "default": "*"
+    }
+  ],
+  "widgets": [
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "redis: memory",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:redis.mem.used{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "redis: clients",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:redis.net.clients{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "redis: keys",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "sum:redis.keys{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "redis: fragmentation",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:redis.mem.fragmentation_ratio{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "redis: maxmemory",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:redis.mem.maxmemory{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "type": "timeseries",
+        "title": "redis: pinned-memory",
+        "requests": [
+          {
+            "response_format": "timeseries",
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "a",
+                "query": "avg:redis.mem.used{$host}"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "a"
+              }
+            ]
+          }
+        ],
+        "time": {
+          "live_span": "1h"
+        }
+      }
+    }
+  ]
+}

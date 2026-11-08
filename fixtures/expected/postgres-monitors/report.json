@@ -1,0 +1,145 @@
+{
+  "compilerVersion": "0.1.0",
+  "diagnostics": [
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Monitor option 'include_tags' is ignored.",
+      "severity": "info",
+      "sourceId": "monitors/percent_usage_connections.json",
+      "sourcePath": "options.include_tags",
+      "suggestedAction": "No action needed; notification titles are not migrated."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "NEWHOST: new_host_delay is 300 s. Datadog skips new hosts for a grace period (new_host_delay); Dash0 has none, so a new host can alert right after it starts reporting.",
+      "remark": "NEWHOST",
+      "severity": "warning",
+      "sourceId": "monitors/percent_usage_connections.json",
+      "sourcePath": "options.new_host_delay",
+      "suggestedAction": "Check that this difference is acceptable for the alert."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "FULLWINDOW: require_full_window is true. Datadog waits for a full evaluation window (require_full_window); Dash0 evaluates partial windows, so a new series can alert early.",
+      "remark": "FULLWINDOW",
+      "severity": "warning",
+      "sourceId": "monitors/percent_usage_connections.json",
+      "sourcePath": "options.require_full_window",
+      "suggestedAction": "Check that this difference is acceptable for the alert."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'postgresql.percent_usage_connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "monitors/percent_usage_connections.json",
+      "sourcePath": "query",
+      "sourceText": "avg(last_15m):avg:postgresql.percent_usage_connections{*} > 0.9",
+      "suggestedAction": "Review the 'postgresql.percent_usage_connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Monitor field 'tags' is ignored.",
+      "severity": "info",
+      "sourceId": "monitors/percent_usage_connections.json",
+      "sourcePath": "tags",
+      "suggestedAction": "No action needed unless routing depends on it."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Function 'anomalies' is not supported: Datadog's anomaly algorithms and bounds are not documented precisely enough to reproduce in PromQL (https://docs.datadoghq.com/monitors/types/anomaly/).",
+      "severity": "error",
+      "sourceId": "monitors/replication_delay.json",
+      "sourcePath": "query",
+      "sourceText": "avg(last_1h):anomalies(avg:postgresql.replication_delay{*}, 'basic', 2, direction='above', alert_window='last_15m', interval=20, count_default_zero='true') >= 1",
+      "suggestedAction": "Rewrite the query within the supported subset or migrate it manually."
+    }
+  ],
+  "format": "json",
+  "items": [
+    {
+      "kind": "monitor",
+      "outcome": "approximated",
+      "remarks": [
+        "NEWHOST",
+        "FULLWINDOW"
+      ],
+      "sourceId": "monitors/percent_usage_connections.json",
+      "sourcePath": "",
+      "title": "[Postgres] Number of connections is approaching connection limit on {{host.name}}"
+    },
+    {
+      "kind": "monitor",
+      "outcome": "blocked",
+      "sourceId": "monitors/replication_delay.json",
+      "sourcePath": "",
+      "title": "[Postgres] Replication delay is abnormally high on {{host.name}}"
+    }
+  ],
+  "mapping": [
+    {
+      "sha256": "4123ccb1de4a78cf0f8eb5d0c205e2aeaece6292d7d41289680449e304fc5c0e",
+      "sourceId": "postgres.json"
+    }
+  ],
+  "mappingCoverage": {
+    "metrics": [
+      {
+        "locations": [
+          {
+            "sourceId": "monitors/percent_usage_connections.json",
+            "sourcePath": "definition.query"
+          }
+        ],
+        "mapped": true,
+        "metric": "postgresql.percent_usage_connections"
+      }
+    ],
+    "parsedQueries": 1,
+    "unparsedQueries": [
+      {
+        "code": "UNSUPPORTED_QUERY_FUNCTION",
+        "message": "Function 'anomalies' is not supported: Datadog's anomaly algorithms and bounds are not documented precisely enough to reproduce in PromQL (https://docs.datadoghq.com/monitors/types/anomaly/).",
+        "severity": "error",
+        "sourceId": "monitors/replication_delay.json",
+        "sourcePath": "definition.query",
+        "sourceText": "avg(last_1h):anomalies(avg:postgresql.replication_delay{*}, 'basic', 2, direction='above', alert_window='last_15m', interval=20, count_default_zero='true') >= 1",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      }
+    ]
+  },
+  "provider": "datadog",
+  "reportVersion": 1,
+  "summary": {
+    "dashboards": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 0,
+      "translated": 0
+    },
+    "monitors": {
+      "approximated": 1,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 1,
+      "partial": 0,
+      "translated": 0
+    },
+    "skippedFiles": 0,
+    "widgets": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 0,
+      "translated": 0
+    }
+  },
+  "validation": {
+    "api": "not_run",
+    "schema": "passed",
+    "semantics": "not_run",
+    "syntax": "passed"
+  }
+}

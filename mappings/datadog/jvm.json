@@ -1,0 +1,23 @@
+{
+  "gaps": {
+    "jvm.gc.major_collection_count": {
+      "reason": "Vendor row 'jvm.gc.major_collection_count{type: GarbageCollector}' -> jvm.gc.collections.count (fixtures/datadog/otel-mapping.yaml), but jvm.gc.collections.count is not in the pinned OTel sources (fixtures/otel/catalog.yaml), so its type, unit and attributes cannot be checked. The pinned semconv metric jvm.gc.duration (fixtures/otel/semantic-conventions/model/jvm/metrics.yaml: histogram, unit s, attributes jvm.gc.name, jvm.gc.action) is related, but the pinned files do not enumerate jvm.gc.action values and Datadog's major/minor split (JMXFetch default JVM metrics) is not pinned either, so filtering it to the count of major collections is not a deterministic rebuild. No pinned Datadog type: no pinned metadata.csv lists jvm.* (fixtures/datadog/integrations-core/*/metadata.csv); the fixture kafka dashboards query it by {type,env}. ",
+      "tag": "NOEQUIV"
+    },
+    "jvm.gc.major_collection_time": {
+      "reason": "Vendor row 'jvm.gc.major_collection_time{type: GarbageCollector}' -> jvm.gc.collections.elapsed (fixtures/datadog/otel-mapping.yaml), but jvm.gc.collections.elapsed is not in the pinned OTel sources (fixtures/otel/catalog.yaml), so its type, unit and attributes cannot be checked. The pinned semconv metric jvm.gc.duration (fixtures/otel/semantic-conventions/model/jvm/metrics.yaml: histogram, unit s, attributes jvm.gc.name, jvm.gc.action) is related, but the pinned files do not enumerate jvm.gc.action values and Datadog's major/minor split (JMXFetch default JVM metrics) is not pinned either, so filtering it to the time spent in major collections is not a deterministic rebuild. No pinned Datadog type: no pinned metadata.csv lists jvm.* (fixtures/datadog/integrations-core/*/metadata.csv); the fixture kafka dashboards query it by {type,env}. ",
+      "tag": "NOEQUIV"
+    },
+    "jvm.gc.minor_collection_count": {
+      "reason": "Vendor row 'jvm.gc.minor_collection_count{type: GarbageCollector}' -> jvm.gc.collections.count (fixtures/datadog/otel-mapping.yaml), but jvm.gc.collections.count is not in the pinned OTel sources (fixtures/otel/catalog.yaml), so its type, unit and attributes cannot be checked. The pinned semconv metric jvm.gc.duration (fixtures/otel/semantic-conventions/model/jvm/metrics.yaml: histogram, unit s, attributes jvm.gc.name, jvm.gc.action) is related, but the pinned files do not enumerate jvm.gc.action values and Datadog's major/minor split (JMXFetch default JVM metrics) is not pinned either, so filtering it to the count of minor collections is not a deterministic rebuild. No pinned Datadog type: no pinned metadata.csv lists jvm.* (fixtures/datadog/integrations-core/*/metadata.csv); the fixture kafka dashboards query it by {type,env}. ",
+      "tag": "NOEQUIV"
+    },
+    "jvm.gc.minor_collection_time": {
+      "reason": "Vendor row 'jvm.gc.minor_collection_time{type: GarbageCollector}' -> jvm.gc.collections.elapsed (fixtures/datadog/otel-mapping.yaml), but jvm.gc.collections.elapsed is not in the pinned OTel sources (fixtures/otel/catalog.yaml), so its type, unit and attributes cannot be checked. The pinned semconv metric jvm.gc.duration (fixtures/otel/semantic-conventions/model/jvm/metrics.yaml: histogram, unit s, attributes jvm.gc.name, jvm.gc.action) is related, but the pinned files do not enumerate jvm.gc.action values and Datadog's major/minor split (JMXFetch default JVM metrics) is not pinned either, so filtering it to the time spent in minor collections is not a deterministic rebuild. No pinned Datadog type: no pinned metadata.csv lists jvm.* (fixtures/datadog/integrations-core/*/metadata.csv); the fixture kafka dashboards query it by {type,env}. ",
+      "tag": "NOEQUIV"
+    }
+  },
+  "metrics": {},
+  "source": "datadog",
+  "version": 1
+}

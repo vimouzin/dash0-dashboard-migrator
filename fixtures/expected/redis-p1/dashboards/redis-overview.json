@@ -1,0 +1,932 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "redis-overview",
+    "project": "datadog-migration"
+  },
+  "spec": {
+    "display": {
+      "description": "This dashboard provides a high-level overview of key Redis metrics to help you monitor your Redis primary's performance and manage your Redis instance.\n\nFor more information, see:\n\n- Our [official Redis documentation](https://docs.datadoghq.com/integrations/redisdb/)\n\nOr our 3-part series blog post:\n\n- Part 1: [How to monitor Redis performance metrics](https://www.datadoghq.com/blog/how-to-monitor-redis-performance-metrics/) \n- Part 2: [Collecting Redis metrics](https://www.datadoghq.com/blog/how-to-collect-redis-metrics/)\n- Part 3: [Monitoring Redis with Datadog](https://www.datadoghq.com/blog/monitor-redis-using-datadog/) (cloned)",
+      "name": "Redis - Overview"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "About Redis"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0-0"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0-1"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 8,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Overview"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-0"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-1"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 4,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-2"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 0,
+              "y": 3
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-3"
+              },
+              "height": 3,
+              "width": 4,
+              "x": 4,
+              "y": 3
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-5"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 4,
+              "y": 6
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Performance Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-1"
+              },
+              "height": 12,
+              "width": 4,
+              "x": 8,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-5"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 0,
+              "y": 24
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-6"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 0,
+              "y": 30
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-7"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 4,
+              "y": 30
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Memory Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-1"
+              },
+              "height": 12,
+              "width": 4,
+              "x": 8,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-3"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 0,
+              "y": 18
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-4"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 0,
+              "y": 24
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-5"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 4,
+              "y": 24
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Base Activity Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-0"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-1"
+              },
+              "height": 6,
+              "width": 6,
+              "x": 12,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-2"
+              },
+              "height": 6,
+              "width": 6,
+              "x": 18,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-3"
+              },
+              "height": 6,
+              "width": 10,
+              "x": 0,
+              "y": 6
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4-5"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 20,
+              "y": 6
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Key Metrics"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-0"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-1"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 12,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-2"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 16,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-3"
+              },
+              "height": 6,
+              "width": 12,
+              "x": 0,
+              "y": 6
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-5-4"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 12,
+              "y": 6
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-0-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "This dashboard shows latency information and slow query counts that summarize your Redis master's performance, as well as memory metrics to help you manage your Redis instance.\n\n##### [Official Datadog Redis documentation ↗](https://docs.datadoghq.com/integrations/redisdb/)"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-0-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Our 3-part blog series**\n\n\n[How to monitor Redis performance metrics&nbsp;↗](https://www.datadoghq.com/blog/how-to-monitor-redis-performance-metrics/)\n\n[Collecting Redis metrics&nbsp;↗](https://www.datadoghq.com/blog/how-to-collect-redis-metrics/)\n\n[Monitoring Redis with Datadog&nbsp;↗](https://www.datadoghq.com/blog/monitor-redis-using-datadog/)"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-1-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Hit rate"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(avg (rate({otel_metric_name=\"redis.keyspace.hits\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))) / ((avg (rate({otel_metric_name=\"redis.keyspace.hits\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))) + (avg (rate({otel_metric_name=\"redis.keyspace.misses\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval])))) * 100"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Blocked clients"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "max"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.clients.blocked\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Redis keyspace"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "max"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.db.keys\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Unsaved changes"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.rdb.changes_since_last_save\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "This metric is only available when the connection between the primary and its replica has been lost. Ideally, this value should never exceed zero—the primary and the replica should be in constant communication to ensure the replica is not serving stale data."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-2-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Latency measures the **time between a client request and the server response**, and monitoring it enables you to detect changes in Redis performance. The single-threaded nature of Redis means that a long response time for one request increases the latency for all subsequent requests, leading to serious bottlenecks."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-2-5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Average CPU usage"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg (rate({otel_metric_name=\"redis.cpu.time\", otel_metric_type=\"sum\", host_name=~\"^($host)$\", state=\"sys\"}[$__rate_interval]))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg (rate({otel_metric_name=\"redis.cpu.time\", otel_metric_type=\"sum\", host_name=~\"^($host)$\", state=\"user\"}[$__rate_interval]))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-2-6": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Cache hit rate"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(avg (rate({otel_metric_name=\"redis.keyspace.hits\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))) / ((avg (rate({otel_metric_name=\"redis.keyspace.hits\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))) + (avg (rate({otel_metric_name=\"redis.keyspace.misses\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval])))) * 100"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-2-7": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Cache hit rate"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(avg (rate({otel_metric_name=\"redis.keyspace.hits\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))) / ((avg (rate({otel_metric_name=\"redis.keyspace.hits\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))) + (avg (rate({otel_metric_name=\"redis.keyspace.misses\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval])))) * 100"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-3-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Memory usage is a crucial performance factor. If `used_memory > total available system memory`, the OS will begin swapping old/unused sections of memory and writing them to disk. Writing or reading from disk is up to 100,000 times slower than writing or reading from memory (0.1 µs for memory vs. 10 ms for disk)."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-3-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Total allocated memory"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.memory.rss\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-3-4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Fragmentation ratio"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg ({otel_metric_name=\"redis.memory.fragmentation_ratio\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-3-5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Fragmentation ratio"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg ({otel_metric_name=\"redis.memory.fragmentation_ratio\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Connected clients"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.clients.connected\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Redis has 10,000 client connections available by default, but you can adjust the maximum number of connections with the `maxclient` directive in redis.conf. New connection attempts will be refused if your Redis instance is currently at its maximum number of connections."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-4-2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Blocked clients"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.clients.blocked\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Connected replicas"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.slaves.connected\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4-5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Commands per second"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (rate({otel_metric_name=\"redis.commands.processed\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}[$__rate_interval]))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-5-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Total keys"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.db.keys\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-5-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Current total"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.db.keys\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-5-2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Monitoring key length helps surface unexpectedly large or growing data structures (lists, sets, hashes, sorted sets), which can drive memory usage and cause performance issues. \n\nEnable in Agent's `redisdb.yaml` with the `keys` option."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-5-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Expired keys"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.keys.expired\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-5-4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Keys with expiration"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum ({otel_metric_name=\"redis.db.expires\", otel_metric_type=\"gauge\", host_name=~\"^($host)$\"})"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "allowAllValue": true,
+          "allowMultiple": true,
+          "defaultValue": "$__all",
+          "display": {
+            "name": "host"
+          },
+          "name": "host",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "host_name"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

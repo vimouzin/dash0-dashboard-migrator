@@ -1,0 +1,27 @@
+{
+  "title": "Synthetic layout",
+  "description": "Every top-level widget has a layout.",
+  "layout_type": "ordered",
+  "template_variables": [],
+  "widgets": [
+    {
+      "definition": { "type": "timeseries", "title": "A", "requests": [{ "q": "avg:postgresql.connections{*}" }] },
+      "layout": { "x": 0, "y": 0, "width": 4, "height": 2 }
+    },
+    {
+      "definition": { "type": "timeseries", "title": "B", "requests": [{ "q": "max:postgresql.connections{*}" }] },
+      "layout": { "x": 4, "y": 0, "width": 8, "height": 2 }
+    },
+    {
+      "definition": {
+        "type": "group",
+        "title": "Group",
+        "layout_type": "ordered",
+        "widgets": [
+          { "definition": { "type": "toplist", "title": "Blocked child", "requests": [{ "q": "avg:postgresql.connections{*}" }] } }
+        ]
+      },
+      "layout": { "x": 0, "y": 2, "width": 12, "height": 4 }
+    }
+  ]
+}

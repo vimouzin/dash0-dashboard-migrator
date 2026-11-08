@@ -1,0 +1,153 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "nginx-metrics",
+    "project": "datadog-migration"
+  },
+  "spec": {
+    "display": {
+      "description": "This dashboard breaks down a handful of valuable metrics for monitoring your NGINX servers, so you can track NGINX activity and identify serious issues like [dropped connections](https://www.datadoghq.com/blog/how-to-monitor-nginx/#basic-activity-metrics) or [5xx server errors](https://www.datadoghq.com/blog/how-to-monitor-nginx/#error-metrics). Further reading on NGINX monitoring:\n\n- [Datadog's guide to key NGINX metrics](https://www.datadoghq.com/blog/how-to-monitor-nginx/)\n\n- [How to collect NGINX metrics using built-in tools](https://www.datadoghq.com/blog/how-to-collect-nginx-metrics/)\n\n- [How to monitor NGINX with Datadog](https://www.datadoghq.com/blog/how-to-monitor-nginx-with-datadog/)\n\n- [Datadog's NGINX integration docs](https://docs.datadoghq.com/integrations/nginx/)\n\nClone this template dashboard to make changes and add your own graph widgets.",
+      "name": "NGINX - Metrics"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-4"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 8
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Requests per second"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) (rate({otel_metric_name=\"nginx.requests\", otel_metric_type=\"sum\"}[$__rate_interval])))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Active connections per second"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\", state=\"active\"}))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Connections: reading,writing,waiting"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\", state=\"reading\"}))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\", state=\"writing\"}))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\", state=\"waiting\"}))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "variables": []
+  }
+}

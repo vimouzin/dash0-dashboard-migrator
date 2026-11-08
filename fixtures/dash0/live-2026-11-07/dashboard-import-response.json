@@ -1,0 +1,223 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "annotations": {
+      "dash0.com/folder-path": "/datadog-migration"
+    },
+    "createdAt": "<redacted>",
+    "dash0Extensions": {
+      "dataset": "default"
+    },
+    "labels": {
+      "dash0.com/source": "ui"
+    },
+    "name": "demo-postgres-metrics",
+    "project": "datadog-migration",
+    "updatedAt": "<redacted>",
+    "version": 1
+  },
+  "spec": {
+    "display": {
+      "description": "This dashboard provides real-time insights into your PostgreSQL databases, so you can monitor throughput and resource utilization metrics from all your servers and troubleshoot performance issues. Further reading on PostgreSQL monitoring:\n\n- [Datadog's guide to key PostgreSQL metrics](https://www.datadoghq.com/blog/postgresql-monitoring/)\n\n- [Collecting metrics with PostgreSQL monitoring tools](https://www.datadoghq.com/blog/postgresql-monitoring-tools/)\n\n- [How to monitor PostgreSQL with Datadog](https://www.datadoghq.com/blog/collect-postgresql-data-with-datadog/)\n\n- [Datadog's PostgreSQL integration docs](https://docs.datadoghq.com/integrations/postgres/)\n\nClone this template dashboard to make changes and add your own graph widgets.",
+      "name": "demo-Postgres - Metrics"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-6"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 8
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-8"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 12,
+              "y": 8
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Rows fetched / returned / inserted / updated (per sec)"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_fetched\", otel_metric_type=\"sum\"}[$__rate_interval])))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_returned\", otel_metric_type=\"sum\"}[$__rate_interval])))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_inserted\", otel_metric_type=\"sum\"}[$__rate_interval])))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg (max by (service_instance_id, postgresql_database_name) (rate({otel_metric_name=\"postgresql.tup_updated\", otel_metric_type=\"sum\"}[$__rate_interval])))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Connections"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "avg by (postgresql_database_name) (max by (postgresql_database_name, service_instance_id) ({otel_metric_name=\"postgresql.backends\", otel_metric_type=\"sum\"}))",
+                    "seriesNameFormat": "{{postgresql_database_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-6": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "I/O wait (%)"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "(max (avg by (host_name) ({otel_metric_name=\"system.cpu.utilization\", otel_metric_type=\"gauge\", cpu_mode=\"wait\"}))) * 100"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-8": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Network traffic (per sec)"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (rate({otel_metric_name=\"system.network.io\", otel_metric_type=\"sum\", system_network_direction=\"receive\"}[$__rate_interval]))"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (rate({otel_metric_name=\"system.network.io\", otel_metric_type=\"sum\", system_network_direction=\"transmit\"}[$__rate_interval]))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "variables": []
+  }
+}

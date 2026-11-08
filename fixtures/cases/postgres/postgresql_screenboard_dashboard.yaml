@@ -1,0 +1,520 @@
+source:
+  repository: DataDog/integrations-core
+  commit: a9b9e42b7e484861ecbd1f5919da7c52a694b74d
+  file: postgres/assets/dashboards/postgresql_screenboard_dashboard.json
+  fixture: fixtures/datadog/integrations-core/postgres/dashboards/postgresql_screenboard_dashboard.json
+service: postgres
+dashboard_id: postgresql_screenboard_dashboard
+title: Postgres - Overview
+layout_type: ordered
+template_variables:
+- name: scope
+  prefix: null
+  default: '*'
+- name: table
+  prefix: table
+  default: '*'
+- name: db
+  prefix: db
+  default: '*'
+- name: host
+  prefix: host
+  default: '*'
+widgets:
+- source_path: widgets[0]
+  type: group
+  title: About Postgres
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[0]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[0].definition.widgets[1]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1]
+  type: group
+  title: Current Activity
+  request_count: 0
+  has_layout: true
+- source_path: widgets[1].definition.widgets[0]
+  type: query_value
+  title: Max connections in use
+  request_count: 1
+  has_layout: true
+- source_path: widgets[1].definition.widgets[1]
+  type: query_value
+  title: Rows fetched / returned
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2]
+  type: group
+  title: Resource Utilization
+  request_count: 0
+  has_layout: false
+- source_path: widgets[2].definition.widgets[0]
+  type: timeseries
+  title: Dead rows
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[1]
+  type: query_table
+  title: Resources by table
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[2]
+  type: timeseries
+  title: Temp bytes
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[3]
+  type: toplist
+  title: Most frequently scanned indexes
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[4]
+  type: toplist
+  title: Least frequently scanned indexes
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[5]
+  type: toplist
+  title: Tables with most disk usage (top 5)
+  request_count: 1
+  has_layout: true
+- source_path: widgets[2].definition.widgets[6]
+  type: toplist
+  title: Tables with most live rows
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3]
+  type: group
+  title: Locks
+  request_count: 0
+  has_layout: false
+- source_path: widgets[3].definition.widgets[0]
+  type: timeseries
+  title: Locks by lock mode
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[1]
+  type: toplist
+  title: Locks by lock mode
+  request_count: 1
+  has_layout: true
+- source_path: widgets[3].definition.widgets[2]
+  type: timeseries
+  title: Deadlocks count
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4]
+  type: group
+  title: Rows
+  request_count: 0
+  has_layout: false
+- source_path: widgets[4].definition.widgets[0]
+  type: timeseries
+  title: Inserted
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[1]
+  type: timeseries
+  title: Updated
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[2]
+  type: query_table
+  title: Actions
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[3]
+  type: timeseries
+  title: Deleted
+  request_count: 1
+  has_layout: true
+- source_path: widgets[4].definition.widgets[4]
+  type: timeseries
+  title: 'Heap-only updates '
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5]
+  type: group
+  title: Connections Monitor
+  request_count: 0
+  has_layout: true
+- source_path: widgets[5].definition.widgets[0]
+  type: timeseries
+  title: Connections per database
+  request_count: 2
+  has_layout: true
+- source_path: widgets[5].definition.widgets[1]
+  type: toplist
+  title: Most connected databases
+  request_count: 1
+  has_layout: true
+- source_path: widgets[5].definition.widgets[2]
+  type: note
+  title: null
+  request_count: 0
+  has_layout: true
+- source_path: widgets[6]
+  type: group
+  title: Throughput
+  request_count: 0
+  has_layout: false
+- source_path: widgets[6].definition.widgets[0]
+  type: timeseries
+  title: Sequential scans vs index scans
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[1]
+  type: query_table
+  title: Top table scans
+  request_count: 1
+  has_layout: true
+- source_path: widgets[6].definition.widgets[2]
+  type: timeseries
+  title: Sequential scans vs. week before
+  request_count: 2
+  has_layout: true
+- source_path: widgets[6].definition.widgets[3]
+  type: toplist
+  title: Top function calls
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7]
+  type: group
+  title: Replication
+  request_count: 0
+  has_layout: false
+- source_path: widgets[7].definition.widgets[0]
+  type: timeseries
+  title: Number of hosts with replication delay
+  request_count: 1
+  has_layout: true
+- source_path: widgets[7].definition.widgets[1]
+  type: toplist
+  title: Max replication delay
+  request_count: 1
+  has_layout: true
+- source_path: widgets[8]
+  type: group
+  title: Checkpoints
+  request_count: 0
+  has_layout: true
+- source_path: widgets[8].definition.widgets[0]
+  type: timeseries
+  title: Scheduled vs requested checkpoints
+  request_count: 2
+  has_layout: true
+- source_path: widgets[9]
+  type: group
+  title: Logs
+  request_count: 0
+  has_layout: true
+- source_path: widgets[9].definition.widgets[0]
+  type: log_stream
+  title: ''
+  request_count: 0
+  has_layout: true
+requests:
+- source_path: widgets[1].definition.widgets[0].definition.requests[0]
+  widget_type: query_value
+  widget_title: Max connections in use
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:postgresql.percent_usage_connections{$scope,$host}
+  formulas:
+  - query1 * 100
+- source_path: widgets[1].definition.widgets[1].definition.requests[0]
+  widget_type: query_value
+  widget_title: Rows fetched / returned
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.rows_fetched{$scope,$host}
+  - name: query2
+    data_source: metrics
+    query: sum:postgresql.rows_returned{$scope,$host}
+  formulas:
+  - query1 / (query1 + query2) * 100
+- source_path: widgets[2].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Dead rows
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.dead_rows{$scope,$db,$table,$host}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[1].definition.requests[0]
+  widget_type: query_table
+  widget_title: Resources by table
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.total_size{$scope,$db,$table,$host} by {table}
+  - name: query2
+    data_source: metrics
+    query: avg:postgresql.index_scans{$scope,$db,$table,$host} by {table}
+  - name: query3
+    data_source: metrics
+    query: avg:postgresql.live_rows{$scope,$db,$table,$host} by {table}
+  - name: query4
+    data_source: metrics
+    query: avg:postgresql.dead_rows{$scope,$db,$table,$host} by {table}
+  formulas:
+  - query1
+  - query2
+  - query3
+  - query4
+- source_path: widgets[2].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Temp bytes
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.temp_bytes{$scope,$db,$table,$host}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[3].definition.requests[0]
+  widget_type: toplist
+  widget_title: Most frequently scanned indexes
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.index_scans{$scope,$db,$host} by {index}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[4].definition.requests[0]
+  widget_type: toplist
+  widget_title: Least frequently scanned indexes
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.index_scans{$scope,$db,$host} by {index}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[5].definition.requests[0]
+  widget_type: toplist
+  widget_title: Tables with most disk usage (top 5)
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.total_size{$scope,$table,$host} by {table}
+  formulas:
+  - query1
+- source_path: widgets[2].definition.widgets[6].definition.requests[0]
+  widget_type: toplist
+  widget_title: Tables with most live rows
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.live_rows{$scope,$table,$host} by {table}
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Locks by lock mode
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.locks{$scope,$host} by {lock_mode,table}
+  formulas:
+  - top(query1, 5, 'mean', 'desc')
+- source_path: widgets[3].definition.widgets[1].definition.requests[0]
+  widget_type: toplist
+  widget_title: Locks by lock mode
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.locks{$scope,$host} by {lock_mode,table}
+  formulas:
+  - query1
+- source_path: widgets[3].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Deadlocks count
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:postgresql.deadlocks.count{$scope,$host} by {db}.as_count()
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Inserted
+  queries:
+  - name: query3
+    data_source: metrics
+    query: avg:postgresql.rows_inserted{$scope,$db,$host} by {db}
+  formulas:
+  - query3
+- source_path: widgets[4].definition.widgets[1].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Updated
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_updated{$scope,$db,$host} by {db}
+  formulas:
+  - query1
+- source_path: widgets[4].definition.widgets[2].definition.requests[0]
+  widget_type: query_table
+  widget_title: Actions
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_inserted{$db,$scope,$host} by {db}
+  - name: query2
+    data_source: metrics
+    query: avg:postgresql.rows_updated{$db,$scope,$host} by {db}
+  - name: query3
+    data_source: metrics
+    query: avg:postgresql.rows_deleted{$db,$scope,$host} by {db}
+  formulas:
+  - query1
+  - query2
+  - query3
+- source_path: widgets[4].definition.widgets[3].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Deleted
+  queries:
+  - name: query2
+    data_source: metrics
+    query: avg:postgresql.rows_deleted{$scope,$db,$host} by {db}
+  formulas:
+  - query2
+- source_path: widgets[4].definition.widgets[4].definition.requests[0]
+  widget_type: timeseries
+  widget_title: 'Heap-only updates '
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.rows_hot_updated{$scope,$db,$host} by {db}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Connections per database
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.connections{$scope,$db,$host} by {db}.rollup(max)
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[0].definition.requests[1]
+  widget_type: timeseries
+  widget_title: Connections per database
+  queries:
+  - name: query1
+    data_source: metrics
+    query: min:postgresql.max_connections{$scope,$db,$host} by {db}
+  formulas:
+  - query1
+- source_path: widgets[5].definition.widgets[1].definition.requests[0]
+  widget_type: toplist
+  widget_title: Most connected databases
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:postgresql.connections{$scope,$db,$host} by {db}
+  formulas:
+  - query1
+- source_path: widgets[6].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Sequential scans vs index scans
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.index_scans{$scope,$db,$host} by {db}
+  - name: query2
+    data_source: metrics
+    query: avg:postgresql.seq_scans{$scope,$db,$host} by {db}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[6].definition.widgets[1].definition.requests[0]
+  widget_type: query_table
+  widget_title: Top table scans
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.index_scans{$scope,$db,$table,$host} by {db}
+  - name: query2
+    data_source: metrics
+    query: avg:postgresql.seq_scans{$scope,$db,$table,$host} by {db}
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[6].definition.widgets[2].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Sequential scans vs. week before
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.seq_scans{$scope,$db,$table,$host}
+  formulas:
+  - query1
+- source_path: widgets[6].definition.widgets[2].definition.requests[1]
+  widget_type: timeseries
+  widget_title: Sequential scans vs. week before
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.seq_scans{$scope,$db,$table,$host}
+  formulas:
+  - week_before(query1)
+- source_path: widgets[6].definition.widgets[3].definition.requests[0]
+  widget_type: toplist
+  widget_title: Top function calls
+  queries:
+  - name: query1
+    data_source: metrics
+    query: avg:postgresql.function.calls{$scope,$db,$table,$host} by {function}
+  formulas:
+  - query1
+- source_path: widgets[7].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Number of hosts with replication delay
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.replication_delay_bytes{$scope,$host} by {host}
+  formulas:
+  - count_nonzero(query1)
+- source_path: widgets[7].definition.widgets[1].definition.requests[0]
+  widget_type: toplist
+  widget_title: Max replication delay
+  queries:
+  - name: query1
+    data_source: metrics
+    query: max:postgresql.replication_delay{$scope,$host} by {host}
+  formulas:
+  - query1
+- source_path: widgets[8].definition.widgets[0].definition.requests[0]
+  widget_type: timeseries
+  widget_title: Scheduled vs requested checkpoints
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.bgwriter.checkpoints_timed{$scope,$db,$host}.as_count()
+  - name: query2
+    data_source: metrics
+    query: sum:postgresql.bgwriter.checkpoints_requested{$scope,$db,$host}.as_count()
+  formulas:
+  - query1
+  - query2
+- source_path: widgets[8].definition.widgets[0].definition.requests[1]
+  widget_type: timeseries
+  widget_title: Scheduled vs requested checkpoints
+  queries:
+  - name: query1
+    data_source: metrics
+    query: sum:postgresql.bgwriter.checkpoints_requested{$scope,$db,$host}.as_count()
+  formulas:
+  - query1

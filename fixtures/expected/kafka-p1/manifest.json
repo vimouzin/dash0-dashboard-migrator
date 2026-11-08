@@ -1,0 +1,94 @@
+{
+  "compilerVersion": "0.1.0",
+  "entries": [
+    {
+      "eligible": true,
+      "kind": "check-rule",
+      "outcome": "approximated",
+      "path": "check-rules/kafka-offline-partition-on-host-name.json",
+      "remarks": [
+        "NEWHOST",
+        "FULLWINDOW"
+      ],
+      "sha256": "ebb02be437c1832a56408f9e8504acc2e77a469e3eb4ece3ec985bcb1b784489",
+      "sourceId": "monitors/kafka_offline_partition.json"
+    },
+    {
+      "eligible": false,
+      "kind": "dashboard",
+      "outcome": "partial",
+      "path": "dashboards/kafka-kraft-overview.json",
+      "remarks": [
+        "WEIGHTED"
+      ],
+      "sha256": "c6741bfe8a82559b370d9a99a8891e2c3abecf5a998e85eb7411b8858dfda581",
+      "sourceId": "dashboards/kafka_kraft_dashboard.json"
+    },
+    {
+      "eligible": false,
+      "kind": "dashboard",
+      "outcome": "partial",
+      "path": "dashboards/kafka-zookeeper-and-kafka-consumer-overview.json",
+      "remarks": [
+        "WEIGHTED"
+      ],
+      "sha256": "bb41c6992dc8d3b0b7d990231ce1e390df540a9d6fe7486c47126322d527c42b",
+      "sourceId": "dashboards/kafka_dashboard.json"
+    },
+    {
+      "eligible": true,
+      "kind": "prometheus-rule",
+      "outcome": "approximated",
+      "path": "rules/kafka-offline-partition-on-host-name.prometheus.json",
+      "remarks": [
+        "NEWHOST",
+        "FULLWINDOW"
+      ],
+      "sha256": "83f4c87d0bd43dc661448f3472f4d403c49248b0d87dfeb0c6a460ad06e65018",
+      "sourceId": "monitors/kafka_offline_partition.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/dashboards/kafka_dashboard.json",
+      "sha256": "c3a7153c975b9c90d000789be31711c1744ad8d0c24534ab410bf885d6eee3a7",
+      "sourceId": "dashboards/kafka_dashboard.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/dashboards/kafka_kraft_dashboard.json",
+      "sha256": "05a3022613ad53e515c98319689bddfd0164c18feeed68114962c77b5e1de6bf",
+      "sourceId": "dashboards/kafka_kraft_dashboard.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/monitors/broker_produce_latency.json",
+      "sha256": "84cf7f1b60a6be54313b0cf5b08bd182011c7aec3b7292dcb64c66097fd55974",
+      "sourceId": "monitors/broker_produce_latency.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/monitors/kafka_high_producer_request_rate.json",
+      "sha256": "d62c880af5f407f3691a3fa9d65adedd388a69c9720875350a4a6027ff83a525",
+      "sourceId": "monitors/kafka_high_producer_request_rate.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/monitors/kafka_offline_partition.json",
+      "sha256": "cdc43b42f13cc20ca6844705633b9dc5f6c62411867789248ac20db606ee7fdc",
+      "sourceId": "monitors/kafka_offline_partition.json"
+    }
+  ],
+  "format": "json",
+  "manifestVersion": 1,
+  "provider": "datadog"
+}

@@ -1,0 +1,289 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "nginx-plus-overview",
+    "project": "datadog-migration"
+  },
+  "spec": {
+    "display": {
+      "description": "",
+      "name": "NGINX Plus - Overview"
+    },
+    "duration": "1h",
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "About NGINX Plus"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0-0"
+              },
+              "height": 12,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-0-1"
+              },
+              "height": 12,
+              "width": 8,
+              "x": 8,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Basic Activity Summary"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-1"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 4,
+              "y": 0
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-3"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 4,
+              "y": 6
+            },
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-1-5"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 4,
+              "y": 12
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Anomaly Detection"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-2-1"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 16,
+              "y": 0
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Performance Summary"
+          },
+          "items": [
+            {
+              "content": {
+                "$ref": "#/spec/panels/widget-3-1"
+              },
+              "height": 6,
+              "width": 4,
+              "x": 8,
+              "y": 0
+            }
+          ]
+        }
+      }
+    ],
+    "panels": {
+      "widget-0-0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "With this dashboard, you can get a high-level view of your NGINX Plus deployments and troubleshoot performance issues, including:\n\n- a high-level view of combined end-user activity\n- how often your servers are failing to process seemingly valid requests\n- how long your servers are taking to process client requests\n"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-0-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**To learn more about our NGINX integration, see**\n\n- Our official [integration documentation](https://docs.datadoghq.com/integrations/nginx/?tab=host).\n\n- Our [blog post](https://www.datadoghq.com/blog/how-to-monitor-nginx/).\n\nYou can clone this dashboard, copy and paste widgets from other out-of-the-box dashboards, and create your own visualizations for your custom applications.\n\n"
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-1-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Accepted connections"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.connections_accepted\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Idle/waiting connections"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\", host_name=~\"^($host)$\", state=\"waiting\"}))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-1-5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": "Total requests"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "sum (max by (host_name) ({otel_metric_name=\"nginx.requests\", otel_metric_type=\"sum\", host_name=~\"^($host)$\"}))"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "widget-2-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "Watchdog proactively detects and surfaces anomalous behavior across your services and infrastructure to help you catch issues early.\n\nGet notified of new Watchdog alerts by creating a Watchdog Monitor [here](https://app.datadoghq.com/monitors#create/watchdog)."
+            }
+          },
+          "queries": []
+        }
+      },
+      "widget-3-1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "description": "",
+            "name": ""
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "\n🟢  Green : low number of requests\n\n🟠  Orange: high number of requests"
+            }
+          },
+          "queries": []
+        }
+      }
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "allowAllValue": true,
+          "allowMultiple": true,
+          "defaultValue": "$__all",
+          "display": {
+            "name": "host"
+          },
+          "name": "host",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "host_name"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "cases": {
+    "docker_daemon/docker_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:32:52Z",
+      "asked_at": "2026-11-07T20:28:59Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "39f4dc1481cb36d2d11149a40a95042020c3616840da0da02277f2b42e91b959",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "67a2353f-2940-44aa-bb43-ca814ca9ce06"
+    },
+    "kafka/kafka_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:34:14Z",
+      "asked_at": "2026-11-07T20:30:26Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "11cb9b7fe0a8677c4c04bbfdf901065c90107294ff31cf607178c15f246978cc",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "5a4ad9a2-0b2e-474d-88ac-7bdc1266b471"
+    },
+    "kafka/kafka_kraft_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:35:05Z",
+      "asked_at": "2026-11-07T20:31:06Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "2cf08e549e1693e37ebd025afd00e77cd0e3576a95b2cd6a190ed5381c826580",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "1a5f22a2-8146-4e21-ab05-133ebe1fdc8d"
+    },
+    "nginx/NGINX-Metrics_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:25:43Z",
+      "asked_at": "2026-11-07T20:24:30Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "53d0254c967ca9c048c8504b47856400bae5ae8a591253e79912ac2ed11ddd48",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "0d2c6b2a-f047-4812-b3ef-7914e2793669"
+    },
+    "nginx/NGINX-Overview_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:27:01Z",
+      "asked_at": "2026-11-07T20:25:43Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "bbbb95d3fa0fa3c698ec9d3a9ed0c80a005078c8ac64f7df5be5ff3c2618db60",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "f129ee44-1bb2-4804-bbe7-dcdab6350b36"
+    },
+    "nginx/plus_overview": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:28:59Z",
+      "asked_at": "2026-11-07T20:27:01Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "c3f5a26e3c23b2ebd776245d54dd7c7ad1125ccef18327a00841a155a6d3b2a9",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "36cc596e-96b8-437a-bbe2-1e9a5f5dc37e"
+    },
+    "postgres/postgresql_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:27:08Z",
+      "asked_at": "2026-11-07T20:24:29Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "f72b7c5e3c71b34555bca9f19876fa267101baeddd9c79d6faa88d3220be4534",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "9c275e07-5371-4a85-b27a-34db19e9ce2a"
+    },
+    "postgres/postgresql_screenboard_dashboard": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:30:25Z",
+      "asked_at": "2026-11-07T20:24:30Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "8f1ae03d0e9036ce1a60d06a00734ce9f73527b52195c4fb3fe17e07b62817d9",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "b3246e09-4a8c-4ff8-bf92-e570985a9fe8"
+    },
+    "redisdb/overview": {
+      "adopted": true,
+      "answered_at": "2026-11-07T20:31:06Z",
+      "asked_at": "2026-11-07T20:27:08Z",
+      "attempts": 1,
+      "dataset": "default",
+      "error": null,
+      "model_class": "advanced",
+      "prompt_sha256": "0d90ebe28e8eba2ad612dce2402ebfa12539bedd46ed9330c36035a2bab8c1ee",
+      "reasoning_effort": "high",
+      "status": "done",
+      "thread_id": "05b39b88-b47b-4c95-bbdd-71c00bbcf5b7"
+    }
+  },
+  "version": 1
+}

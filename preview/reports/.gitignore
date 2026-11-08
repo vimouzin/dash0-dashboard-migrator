@@ -1,0 +1,3 @@
+# Run artifacts (report.json copies) stay out of Git.
+*
+!.gitignore

@@ -1,0 +1,168 @@
+{
+  "labels": {
+    "host": "host_name"
+  },
+  "metrics": {
+    "nginx.connections.accepted": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "ref": "vendor deviation: Datadog's table pairs nginx.connections_accepted with nginx.connections.accepted_count, the monotonic_count form of the same Plus field (nginx/datadog_checks/nginx/metrics.py METRICS_SEND_AS_COUNT); this entry is its gauge form. Datadog: NGINX Plus API /connections field accepted (https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_json/_flatten_json), the cumulative total submitted as gauge; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit connection, \"The total number of accepted client connections.\" OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.connections_accepted (stub_status accepts, stats.Connections.Accepted), monotonic cumulative sum, unit {connections}, same description; the raw value, no rate(), matches the gauge of the total. Units: connection vs {connections}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "nginx.connections_accepted",
+        "type": "sum"
+      },
+      "targetUnit": "{connections}"
+    },
+    "nginx.connections.idle": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "waiting"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row nginx.connections.idle <-> nginx.connections_current; filter state:waiting in https://docs.datadoghq.com/opentelemetry/mapping/metrics_mapping.md (nginxreceiver rows, fetched 2026-11-08). Datadog: NGINX Plus API /connections field idle (https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_json/_flatten_json), submitted as gauge; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit connection, \"The current number of idle client connections.\" OTel reads stub_status Waiting, which nginx documents as \"the current number of idle client connections waiting for a request\" (https://nginx.org/en/docs/http/ngx_http_stub_status_module.html). OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.connections_current{state=waiting}, non-monotonic cumulative sum, unit {connections}. Units: connection vs {connections}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "nginx.connections_current",
+        "type": "sum"
+      },
+      "targetUnit": "{connections}"
+    },
+    "nginx.net.connections": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "active"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row nginx.net.connections <-> nginx.connections_current; filter state:active in https://docs.datadoghq.com/opentelemetry/mapping/metrics_mapping.md (nginxreceiver rows, fetched 2026-11-08). Datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_text: stub_status field \"Active connections\", submitted as gauge nginx.net.connections; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit connection. OTel records the same field (stats.Connections.Active). OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.connections_current{state=active}, non-monotonic cumulative sum, unit {connections}. Units: connection vs {connections}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "nginx.connections_current",
+        "type": "sum"
+      },
+      "targetUnit": "{connections}"
+    },
+    "nginx.net.reading": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "reading"
+      },
+      "ref": "vendor deviation: Datadog's table has no row for nginx.net.reading; it is the Reading field of the same stub_status line as the nginx.net.waiting row. Datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_text: stub_status field \"Reading\", submitted as gauge nginx.net.reading; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit connection. OTel records the same field (stats.Connections.Reading). OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.connections_current{state=reading}, non-monotonic cumulative sum, unit {connections}. Units: connection vs {connections}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "nginx.connections_current",
+        "type": "sum"
+      },
+      "targetUnit": "{connections}"
+    },
+    "nginx.net.request_per_s": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "rate",
+      "ref": "vendor deviation: Datadog's table has no row for nginx.net.request_per_s; it pairs nginx.requests with nginx.requests.total_count, the count form of the same request counter. Datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_text: stub_status field requests (third number), submitted with self.rate() (per-second rate between check runs); integrations-core@a9b9e42 nginx/metadata.csv: rate, unit request per second. OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.requests (stats.Requests), monotonic cumulative sum, unit {requests}; rate() gives {requests}/s. Units: request/second vs rate({requests}), scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "request/second",
+      "target": {
+        "name": "nginx.requests",
+        "type": "sum"
+      },
+      "targetUnit": "{requests}"
+    },
+    "nginx.net.waiting": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "waiting"
+      },
+      "ref": "Vendor: fixtures/datadog/otel-mapping.yaml row nginx.net.waiting <-> nginx.connections_current; filter state:waiting in https://docs.datadoghq.com/opentelemetry/mapping/metrics_mapping.md (nginxreceiver rows, fetched 2026-11-08). Datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_text: stub_status field \"Waiting\", submitted as gauge nginx.net.waiting; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit connection. OTel records the same field (stats.Connections.Waiting). OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.connections_current{state=waiting}, non-monotonic cumulative sum, unit {connections}. Units: connection vs {connections}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "nginx.connections_current",
+        "type": "sum"
+      },
+      "targetUnit": "{connections}"
+    },
+    "nginx.net.writing": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "matchers": {
+        "state": "writing"
+      },
+      "ref": "vendor deviation: Datadog's table has no row for nginx.net.writing; it is the Writing field of the same stub_status line as the nginx.net.waiting row. Datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_text: stub_status field \"Writing\", submitted as gauge nginx.net.writing; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit connection. OTel records the same field (stats.Connections.Writing). OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.connections_current{state=writing}, non-monotonic cumulative sum, unit {connections}. Units: connection vs {connections}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "nginx.connections_current",
+        "type": "sum"
+      },
+      "targetUnit": "{connections}"
+    },
+    "nginx.requests.total": {
+      "grain": {
+        "aggregation": "max",
+        "labels": [
+          "host_name"
+        ]
+      },
+      "kind": "gauge",
+      "ref": "vendor deviation: Datadog's table pairs nginx.requests with nginx.requests.total_count, the monotonic_count form of the same Plus field (nginx/datadog_checks/nginx/metrics.py METRICS_SEND_AS_COUNT); this entry is its gauge form. Datadog: NGINX Plus API /http/requests field total (https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py parse_json/_flatten_json), the cumulative total submitted as gauge; integrations-core@a9b9e42 nginx/metadata.csv: gauge, unit request, \"The total number of client requests.\" OTel: fixtures/otel/collector-contrib/receiver/nginxreceiver/metadata.yaml (v0.160.0; scraper.go records the stub_status fields): nginx.requests (stub_status requests, stats.Requests), monotonic cumulative sum, unit {requests}, \"Total number of requests made to the server since it started\"; the raw value, no rate(), matches the gauge of the total. Units: request vs {requests}, scale 1. Dash0 default, read-only, at 2026-11-08T01:00Z: count by (otel_metric_name) (last_over_time({otel_metric_name=~\"nginx\\\\..*\", otel_metric_type=\"sum\"}[24h])) returned nginx.connections_accepted, nginx.connections_current, nginx.connections_handled, nginx.requests; the same with otel_metric_type=\"gauge\" returned nothing; count by (host_name, otel_metric_name, state) (last_over_time({otel_metric_name=\"nginx.connections_current\", otel_metric_type=\"sum\"}[24h])) returned state in (active, reading, waiting, writing), host_name=docker-desktop. Snapshot fixtures/oracle/dash0_default_metrics.yaml agrees (all four as sum). Grain: max by (host_name) drops duplicate series after collector restarts (dash0_resource_hash and os_description rotate; 15 hashes on 2026-11-07). Dash0 2026-11-07T14:00Z to 2026-11-08T00:30Z, 1m step: sum({...state=\"writing\"}) read 2 at 9 points where sum(max by (host_name) (...)) read 1. Assumes one nginx per host: Datadog's nginx_host and port tags have no OTel label.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "request",
+      "target": {
+        "name": "nginx.requests",
+        "type": "sum"
+      },
+      "targetUnit": "{requests}"
+    }
+  },
+  "source": "datadog",
+  "version": 1
+}

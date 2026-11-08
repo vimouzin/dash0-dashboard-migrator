@@ -1,0 +1,24 @@
+{
+  "compilerVersion": "0.1.0",
+  "entries": [
+    {
+      "eligible": false,
+      "kind": "dashboard",
+      "outcome": "partial",
+      "path": "dashboards/redis-overview.json",
+      "sha256": "560c3d5e6c7bd7485cc246d22a5aa647a9153eb00d947699adcc356d77d73bda",
+      "sourceId": "dashboards/overview.json"
+    },
+    {
+      "eligible": false,
+      "kind": "source",
+      "outcome": null,
+      "path": "source/dashboards/overview.json",
+      "sha256": "75f939abc4adbc1bb23adfd084ac9e79865e57d91262b1fea40736363fbf2722",
+      "sourceId": "dashboards/overview.json"
+    }
+  ],
+  "format": "json",
+  "manifestVersion": 1,
+  "provider": "datadog"
+}

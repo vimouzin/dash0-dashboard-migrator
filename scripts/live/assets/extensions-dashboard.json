@@ -1,0 +1,14 @@
+{
+  "title": "Live deterministic function extensions",
+  "description": "Synthetic source fixtures for empirical comparison. Targets are generated exclusively by migrator convert.",
+  "layout_type": "ordered",
+  "template_variables": [{"name": "host", "prefix": "host", "default": "*"}],
+  "widgets": [
+    {"definition": {"type": "timeseries", "title": "Weighted Redis memory", "requests": [{"response_format": "timeseries", "queries": [{"data_source": "metrics", "name": "a", "query": "sum:redis.mem.used{$host}.weighted()"}], "formulas": [{"formula": "a"}]}]}},
+    {"definition": {"type": "timeseries", "title": "Redis average rollup", "requests": [{"response_format": "timeseries", "queries": [{"data_source": "metrics", "name": "a", "query": "avg:redis.mem.used{$host}.rollup(avg, 60)"}], "formulas": [{"formula": "a"}]}]}},
+    {"definition": {"type": "timeseries", "title": "Redis maximum rollup", "requests": [{"response_format": "timeseries", "queries": [{"data_source": "metrics", "name": "a", "query": "avg:redis.mem.used{$host}.rollup(max, 60)"}], "formulas": [{"formula": "a"}]}]}},
+    {"definition": {"type": "timeseries", "title": "Postgres explicit rate", "requests": [{"response_format": "timeseries", "queries": [{"data_source": "metrics", "name": "a", "query": "avg:postgresql.rows_fetched{$host}.as_rate()"}], "formulas": [{"formula": "a"}]}]}},
+    {"definition": {"type": "timeseries", "title": "Redis exact baseline", "requests": [{"response_format": "timeseries", "queries": [{"data_source": "metrics", "name": "a", "query": "avg:redis.mem.used{$host}"}], "formulas": [{"formula": "a"}]}]}},
+    {"definition": {"type": "timeseries", "title": "Redis exact memory ratio", "requests": [{"response_format": "timeseries", "queries": [{"data_source": "metrics", "name": "a", "query": "avg:redis.mem.used{$host}"}, {"data_source": "metrics", "name": "b", "query": "avg:redis.mem.rss{$host}"}], "formulas": [{"formula": "a / b"}]}]}}
+  ]
+}

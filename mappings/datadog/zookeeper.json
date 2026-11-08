@@ -1,0 +1,64 @@
+{
+  "gaps": {
+    "zookeeper.commit_count": {
+      "reason": "Datadog submits mntr key zk_commit_count (ZooKeeper 3.6+, commits on the leader; https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/metadata.csv) as a gauge; the pinned zookeeperscraper (fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml) defines no commit metric and its mntr key list (https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f56f9a38c9864e892af542f1dbd28f475d6779dc/scraper/zookeeperscraper/metrics.go) does not read zk_commit_count. No vendor row.",
+      "tag": "NOOTEL"
+    }
+  },
+  "metrics": {
+    "zookeeper.avg_latency": {
+      "kind": "gauge",
+      "labels": {},
+      "ref": "vendor deviation: fixtures/datadog/otel-mapping.yaml pins no zookeeper. rows (prefix not in the pin). Both sides parse the same ZooKeeper mntr line: datadog https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/datadog_checks/zk/zk.py parse_mntr turns key zk_X into zookeeper.X (normalize_metric_label) and submits it as gauge (only zk_packets_received/sent are rates); otel https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f56f9a38c9864e892af542f1dbd28f475d6779dc/scraper/zookeeperscraper/metrics.go recordDataPointsFunc maps the mntr key to the metric below. Labels: none mapped; the zookeeperscraper (fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml) documents only resource attributes server.state and zk.version, no host or env, so widgets that filter or group by host/env block on the label. Datadog type: no zk/metadata.csv is pinned under fixtures/datadog/integrations-core, so tests/datadog/test_metric_types.py reports it as unknown. mntr key zk_avg_latency. datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/metadata.csv gauge, unit millisecond, 'The amount of time it takes for the server to respond to a client request.' otel: fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml zookeeper.latency.avg: 'Average time in milliseconds for requests to be processed.', gauge, unit ms (int). scale 1. dash0: not checked (no access in this run).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "millisecond",
+      "target": {
+        "name": "zookeeper.latency.avg",
+        "type": "gauge"
+      },
+      "targetUnit": "ms"
+    },
+    "zookeeper.max_file_descriptor_count": {
+      "kind": "gauge",
+      "labels": {},
+      "ref": "vendor deviation: fixtures/datadog/otel-mapping.yaml pins no zookeeper. rows (prefix not in the pin). Both sides parse the same ZooKeeper mntr line: datadog https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/datadog_checks/zk/zk.py parse_mntr turns key zk_X into zookeeper.X (normalize_metric_label) and submits it as gauge (only zk_packets_received/sent are rates); otel https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f56f9a38c9864e892af542f1dbd28f475d6779dc/scraper/zookeeperscraper/metrics.go recordDataPointsFunc maps the mntr key to the metric below. Labels: none mapped; the zookeeperscraper (fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml) documents only resource attributes server.state and zk.version, no host or env, so widgets that filter or group by host/env block on the label. Datadog type: no zk/metadata.csv is pinned under fixtures/datadog/integrations-core, so tests/datadog/test_metric_types.py reports it as unknown. mntr key zk_max_file_descriptor_count. datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/metadata.csv gauge, no unit. otel: fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml zookeeper.file_descriptor.limit: 'Maximum number of file descriptors that a ZooKeeper server can open.', gauge, unit {file_descriptors}. scale 1. dash0: not checked (no access in this run).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "",
+      "target": {
+        "name": "zookeeper.file_descriptor.limit",
+        "type": "gauge"
+      },
+      "targetUnit": "{file_descriptors}"
+    },
+    "zookeeper.open_file_descriptor_count": {
+      "kind": "gauge",
+      "labels": {},
+      "ref": "vendor deviation: fixtures/datadog/otel-mapping.yaml pins no zookeeper. rows (prefix not in the pin). Both sides parse the same ZooKeeper mntr line: datadog https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/datadog_checks/zk/zk.py parse_mntr turns key zk_X into zookeeper.X (normalize_metric_label) and submits it as gauge (only zk_packets_received/sent are rates); otel https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f56f9a38c9864e892af542f1dbd28f475d6779dc/scraper/zookeeperscraper/metrics.go recordDataPointsFunc maps the mntr key to the metric below. Labels: none mapped; the zookeeperscraper (fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml) documents only resource attributes server.state and zk.version, no host or env, so widgets that filter or group by host/env block on the label. Datadog type: no zk/metadata.csv is pinned under fixtures/datadog/integrations-core, so tests/datadog/test_metric_types.py reports it as unknown. mntr key zk_open_file_descriptor_count. datadog: https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/metadata.csv gauge, no unit. otel: fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml zookeeper.file_descriptor.open: 'Number of file descriptors that a ZooKeeper server has open.', sum (non-monotonic, cumulative), unit {file_descriptors}. scale 1. dash0: not checked (no access in this run).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "",
+      "target": {
+        "name": "zookeeper.file_descriptor.open",
+        "type": "sum"
+      },
+      "targetUnit": "{file_descriptors}"
+    },
+    "zookeeper.pending_syncs": {
+      "kind": "gauge",
+      "labels": {},
+      "ref": "vendor deviation: fixtures/datadog/otel-mapping.yaml pins no zookeeper. rows (prefix not in the pin). Both sides parse the same ZooKeeper mntr line: datadog https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/datadog_checks/zk/zk.py parse_mntr turns key zk_X into zookeeper.X (normalize_metric_label) and submits it as gauge (only zk_packets_received/sent are rates); otel https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f56f9a38c9864e892af542f1dbd28f475d6779dc/scraper/zookeeperscraper/metrics.go recordDataPointsFunc maps the mntr key to the metric below. Labels: none mapped; the zookeeperscraper (fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml) documents only resource attributes server.state and zk.version, no host or env, so widgets that filter or group by host/env block on the label. Datadog type: no zk/metadata.csv is pinned under fixtures/datadog/integrations-core, so tests/datadog/test_metric_types.py reports it as unknown. mntr key zk_pending_syncs. datadog: not listed in https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/zk/metadata.csv; submitted as gauge by the generic parse_mntr path. Leader only (ZooKeeper mntr). otel: fixtures/otel/collector-contrib/scraper/zookeeperscraper/metadata.yaml zookeeper.sync.pending: 'The number of pending syncs from the followers. Only exposed by the leader.', sum (non-monotonic, cumulative), unit {syncs}. scale 1. dash0: not checked (no access in this run).",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "",
+      "target": {
+        "name": "zookeeper.sync.pending",
+        "type": "sum"
+      },
+      "targetUnit": "{syncs}"
+    }
+  },
+  "source": "datadog",
+  "version": 1
+}

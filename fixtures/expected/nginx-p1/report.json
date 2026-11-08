@@ -1,0 +1,3886 @@
+{
+  "compilerVersion": "0.1.0",
+  "diagnostics": [
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.net.conn_dropped_per_s'.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[0].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.conn_dropped_per_s{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.net.conn_dropped_per_s' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.server_zone.responses.5xx'.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[1].definition.requests[0].q",
+      "sourceText": "sum:nginx.server_zone.responses.5xx{$scope}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.server_zone.responses.5xx' to the mapping file."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.request_per_s' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.request_per_s{$scope}",
+      "suggestedAction": "Review the 'nginx.net.request_per_s' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[2].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.request_per_s{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[3].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.connections{$scope}",
+      "suggestedAction": "Review the 'nginx.net.connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[3].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.connections{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.reading' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.reading{$scope}",
+      "suggestedAction": "Review the 'nginx.net.reading' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.reading{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.writing' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[1].q",
+      "sourceText": "sum:nginx.net.writing{$scope}",
+      "suggestedAction": "Review the 'nginx.net.writing' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[1].q",
+      "sourceText": "sum:nginx.net.writing{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.waiting' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[2].q",
+      "sourceText": "sum:nginx.net.waiting{$scope}",
+      "suggestedAction": "Review the 'nginx.net.waiting' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "TEMPLATE_VARIABLE_DROPPED",
+      "message": "Template variable '$scope' (default '*') dropped; the converted panel shows all series.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4].definition.requests[2].q",
+      "sourceText": "sum:nginx.net.waiting{$scope}",
+      "suggestedAction": "Add a label mapping for the variable's prefix tag to filter by it."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Template variable '$Host' became a Perses ListVariable on label 'host_name'; variable rendering unverified in Dash0. Selected values are matched as an anchored regex (=~\"^($Host)$\"); they are not escaped, so values containing regex characters such as '.' can match more series.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "template_variables[0]",
+      "suggestedAction": "Check the variable in Dash0 after publishing."
+    },
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'banner_img' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.banner_img",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.net.conn_dropped_per_s'.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].q",
+      "sourceText": "sum:nginx.net.conn_dropped_per_s{*}.as_count()",
+      "suggestedAction": "Add a reviewed entry for 'nginx.net.conn_dropped_per_s' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 15m. Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'check_status' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'manage_status' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'event_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'log_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.request_per_s' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "avg:nginx.net.request_per_s{*}",
+      "suggestedAction": "Review the 'nginx.net.request_per_s' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'hostmap' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.reading' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.net.reading{$Host}",
+      "suggestedAction": "Review the 'nginx.net.reading' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[1].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[1].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.writing' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[1].queries[0].query",
+      "sourceText": "sum:nginx.net.writing{$Host}",
+      "suggestedAction": "Review the 'nginx.net.writing' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[1].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[2].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[2].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.waiting' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[2].queries[0].query",
+      "sourceText": "sum:nginx.net.waiting{$Host}",
+      "suggestedAction": "Review the 'nginx.net.waiting' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.requests[2].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'change' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[5].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.net.conn_dropped_per_s'.",
+      "severity": "error",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.net.conn_dropped_per_s{$Host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.net.conn_dropped_per_s' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.net.connections' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.net.connections{$Host}",
+      "suggestedAction": "Review the 'nginx.net.connections' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "APPROXIMATED",
+      "message": "TIMEPIN: Datadog showed the last 1h (the dashboard default). Datadog pinned this widget to its own time frame; Perses and Dash0 panels have no per-panel time range, so it follows the dashboard time picker. Values reduced over that range, including query values and rankings, can change.",
+      "remark": "TIMEPIN",
+      "severity": "warning",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.time",
+      "suggestedAction": "Check the panel; set the dashboard time range if the pinned frame matters."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Template variable '$host' became a Perses ListVariable on label 'host_name'; variable rendering unverified in Dash0. Selected values are matched as an anchored regex (=~\"^($host)$\"); they are not escaped, so values containing regex characters such as '.' can match more series.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "template_variables[0]",
+      "suggestedAction": "Check the variable in Dash0 after publishing."
+    },
+    {
+      "code": "LAYOUT_APPROXIMATED",
+      "message": "Datadog layout converted to a 24-column Perses grid; positions are approximate.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets",
+      "suggestedAction": "Adjust panel positions in Perses if needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'banner_img' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.banner_img",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'check_status' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.connections.accepted' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].q",
+      "sourceText": "sum:nginx.connections.accepted{$host}",
+      "suggestedAction": "Review the 'nginx.connections.accepted' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.connections.active'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].q",
+      "sourceText": "sum:nginx.connections.active{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.connections.active' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.connections.idle' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].q",
+      "sourceText": "sum:nginx.connections.idle{$host}",
+      "suggestedAction": "Review the 'nginx.connections.idle' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_FUNCTION",
+      "message": "Function 'per_second' is not supported: Datadog documents it only as 'Graph the rate at which the metric is changing per second' (https://docs.datadoghq.com/dashboards/functions/rate/); without a formula, neither a PromQL derivative nor a constant factor is known to match.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].q",
+      "sourceText": "per_second(sum:nginx.connections.dropped{$host})",
+      "suggestedAction": "Migrate this widget or monitor manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.requests.total' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.requests[0].q",
+      "sourceText": "sum:nginx.requests.total{$host}",
+      "suggestedAction": "Review the 'nginx.requests.total' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'event_stream' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'has_padding' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.has_padding",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'vertical_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1].definition.vertical_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'hostmap' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'font_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.font_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_tick' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.show_tick",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'text_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.text_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_edge' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.tick_edge",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'tick_pos' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1].definition.tick_pos",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'query_table' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.server_zone.responses.4xx'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.server_zone.responses.4xx{$host} by {host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.server_zone.responses.4xx' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.server_zone.responses.5xx'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[1].query",
+      "sourceText": "sum:nginx.server_zone.responses.5xx{$host} by {host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.server_zone.responses.5xx' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'time' is empty and is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.time",
+      "suggestedAction": "No action needed."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.hit.bytes'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].q",
+      "sourceText": "avg:nginx.cache.hit.bytes{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.hit.bytes' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.hit.bytes'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.cache.hit.bytes{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.hit.bytes' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].formulas[2].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.bypass.bytes'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.cache.bypass.bytes{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.bypass.bytes' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.bypass.bytes_written'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].queries[1].query",
+      "sourceText": "sum:nginx.cache.bypass.bytes_written{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.bypass.bytes_written' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'autoscale' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.autoscale",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'custom_links' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.custom_links",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'precision' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.precision",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'conditional_formats' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].conditional_formats",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.cold'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].q",
+      "sourceText": "sum:nginx.cache.cold{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.cold' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.max_size'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.cache.max_size{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.max_size' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.size'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[1].query",
+      "sourceText": "sum:nginx.cache.size{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.size' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].formulas[2].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.miss.bytes'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.cache.miss.bytes{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.miss.bytes' to the mapping file."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.cache.miss.bytes_written'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].queries[1].query",
+      "sourceText": "sum:nginx.cache.miss.bytes_written{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.cache.miss.bytes_written' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].formulas[0].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Formula option 'alias' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].formulas[1].alias",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.connections.active'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.connections.active{$host}",
+      "suggestedAction": "Add a reviewed entry for 'nginx.connections.active' to the mapping file."
+    },
+    {
+      "code": "UNREVIEWED_MAPPING",
+      "message": "Mapping for 'nginx.connections.idle' has not been reviewed by a human.",
+      "severity": "warning",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[1].query",
+      "sourceText": "sum:nginx.connections.idle{$host}",
+      "suggestedAction": "Review the 'nginx.connections.idle' entry against its ref and set 'reviewed'."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.legend_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_FORMULA",
+      "message": "Function 'per_second' is not supported: Datadog documents it only as 'Graph the rate at which the metric is changing per second' (https://docs.datadoghq.com/dashboards/functions/rate/); without a formula, neither a PromQL derivative nor a constant factor is known to match.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.requests[0].formulas[0].formula",
+      "sourceText": "per_second(query1)",
+      "suggestedAction": "Migrate this widget or monitor manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'background_color' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.background_color",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Group option 'show_title' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.show_title",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_WIDGET",
+      "message": "Widget type 'query_table' is not supported.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[0].definition.type",
+      "suggestedAction": "Migrate this widget manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_columns' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.legend_columns",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'legend_layout' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.legend_layout",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'markers' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.markers",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "MISSING_METRIC_MAPPING",
+      "message": "No mapping for metric 'nginx.ssl.handshakes_count'.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].queries[0].query",
+      "sourceText": "sum:nginx.ssl.handshakes_count{$host} by {host}.as_count()",
+      "suggestedAction": "Add a reviewed entry for 'nginx.ssl.handshakes_count' to the mapping file."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'display_type' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[1].display_type",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'on_right_yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[1].on_right_yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "UNSUPPORTED_QUERY_SYNTAX",
+      "message": "Unexpected '-' at offset 0.",
+      "severity": "error",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[1].q",
+      "sourceText": "-sum:nginx.ssl.handshakes_failed_count{*} by {host}.as_count()",
+      "suggestedAction": "Rewrite the query within the supported subset or migrate it manually."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Request option 'style' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.requests[1].style",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'show_legend' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.show_legend",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_align' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.title_align",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'title_size' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.title_size",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    },
+    {
+      "code": "OPTION_IGNORED",
+      "message": "Widget option 'yaxis' is ignored.",
+      "severity": "info",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1].definition.yaxis",
+      "suggestedAction": "No action needed unless the option matters for this panel."
+    }
+  ],
+  "format": "json",
+  "items": [
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "",
+      "title": "NGINX - Metrics"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[0]",
+      "title": "Dropped connections per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[1]",
+      "title": "5xx per second (only available for NGINX Plus)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[2]",
+      "title": "Requests per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[3]",
+      "title": "Active connections per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+      "sourcePath": "widgets[4]",
+      "title": "Connections: reading,writing,waiting"
+    },
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "",
+      "title": "NGINX - Overview"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[0]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[0].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[0]",
+      "title": "Dropped connections, last 15m"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[1]",
+      "title": "Agent connection to NGINX"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[2]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[3]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[1].definition.widgets[4]",
+      "title": "Nginx metric monitors"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[0]",
+      "title": "Nginx Watchdog alerts"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[2].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[0]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[3].definition.widgets[1]",
+      "title": "NGINX Error logs"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[0]",
+      "title": "Requests per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[1]",
+      "title": "Requests per second by host"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[2]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[3]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[4]",
+      "title": "Requests: reading, writing, waiting"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[5]",
+      "title": "Change in overall requests per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[4].definition.widgets[6]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[0]",
+      "title": "Dropped connections per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "approximated",
+      "remarks": [
+        "TIMEPIN"
+      ],
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[1]",
+      "title": "Active connections per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+      "sourcePath": "widgets[5].definition.widgets[2]",
+      "title": ""
+    },
+    {
+      "kind": "dashboard",
+      "outcome": "partial",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "",
+      "title": "NGINX Plus - Overview"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[0]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[0].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[0]",
+      "title": "Nginx host up"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[1]",
+      "title": "Accepted connections"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[2]",
+      "title": "Active connections"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[3]",
+      "title": "Idle/waiting connections"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[4]",
+      "title": "Dropped connections"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[1].definition.widgets[5]",
+      "title": "Total requests"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[0]",
+      "title": "Nginx Plus Watchdog alerts"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[2].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[0]",
+      "title": "Request load by host"
+    },
+    {
+      "kind": "widget",
+      "outcome": "translated",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[3].definition.widgets[1]",
+      "title": ""
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[0]",
+      "title": "4xx & 5xx responses per sec"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[4].definition.widgets[1]",
+      "title": "4xx & 5xx responses per sec"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[0]",
+      "title": "Avg bytes hit"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[1]",
+      "title": "Bytes hit in cache"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[2]",
+      "title": "Bypassed bytes in cached"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[3]",
+      "title": "Hosts loading cache"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[4]",
+      "title": "Cache size"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[5].definition.widgets[5]",
+      "title": "Missed bytes in cache"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[0]",
+      "title": "Current connections (idle & active)"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[6].definition.widgets[1]",
+      "title": "Dropped connections per second"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[0]",
+      "title": "Handshakes per hosts"
+    },
+    {
+      "kind": "widget",
+      "outcome": "blocked",
+      "sourceId": "dashboards/plus_overview.json",
+      "sourcePath": "widgets[7].definition.widgets[1]",
+      "title": "Successful vs failed SSL handshakes"
+    }
+  ],
+  "mapping": [
+    {
+      "sha256": "499b056c5b4e1a8ab3519b6a546d44a04bbfabfc2f383bed78cb0c44e308d4ba",
+      "sourceId": "nginx.json"
+    }
+  ],
+  "mappingCoverage": {
+    "metrics": [
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.bypass.bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[2].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.bypass.bytes_written"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[3].definition.requests[0].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.cold"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.hit.bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.max_size"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.miss.bytes"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[5].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.miss.bytes_written"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[5].definition.widgets[4].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.cache.size"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[1].definition.widgets[1].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.connections.accepted"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[1].definition.widgets[2].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.connections.active"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[6].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.connections.dropped"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[1].definition.widgets[3].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[6].definition.widgets[0].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.connections.idle"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[0].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[1].definition.widgets[0].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[5].definition.widgets[0].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.net.conn_dropped_per_s"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[3].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[5].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.net.connections"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[4].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.net.reading"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[2].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].queries[0].query"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[5].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.net.request_per_s"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[2].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[4].definition.requests[2].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.net.waiting"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[4].definition.requests[1].q"
+          },
+          {
+            "sourceId": "dashboards/NGINX-Overview_dashboard.json",
+            "sourcePath": "widgets[4].definition.widgets[4].definition.requests[1].queries[0].query"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.net.writing"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[1].definition.widgets[5].definition.requests[0].q"
+          }
+        ],
+        "mapped": true,
+        "metric": "nginx.requests.total"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[4].definition.widgets[0].definition.requests[1].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.server_zone.responses.4xx"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/NGINX-Metrics_dashboard.json",
+            "sourcePath": "widgets[1].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[4].definition.widgets[0].definition.requests[2].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[4].definition.widgets[1].definition.requests[0].queries[1].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.server_zone.responses.5xx"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[4].definition.widgets[0].definition.requests[0].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.server_zone.responses.total"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[7].definition.widgets[0].definition.requests[0].q"
+          },
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[7].definition.widgets[1].definition.requests[0].queries[0].query"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.ssl.handshakes_count"
+      },
+      {
+        "locations": [
+          {
+            "sourceId": "dashboards/plus_overview.json",
+            "sourcePath": "widgets[7].definition.widgets[0].definition.requests[1].q"
+          }
+        ],
+        "mapped": false,
+        "metric": "nginx.ssl.handshakes_failed_count"
+      }
+    ],
+    "parsedQueries": 39,
+    "unparsedQueries": [
+      {
+        "code": "UNSUPPORTED_QUERY_FUNCTION",
+        "message": "Function 'per_second' is not supported.",
+        "severity": "error",
+        "sourceId": "dashboards/plus_overview.json",
+        "sourcePath": "widgets[1].definition.widgets[4].definition.requests[0].q",
+        "sourceText": "per_second(sum:nginx.connections.dropped{$host})",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      },
+      {
+        "code": "UNSUPPORTED_QUERY_SYNTAX",
+        "message": "Unexpected '-' at offset 0.",
+        "severity": "error",
+        "sourceId": "dashboards/plus_overview.json",
+        "sourcePath": "widgets[7].definition.widgets[1].definition.requests[1].q",
+        "sourceText": "-sum:nginx.ssl.handshakes_failed_count{*} by {host}.as_count()",
+        "suggestedAction": "Mapping coverage is unknown for this query; use the supported grammar."
+      }
+    ]
+  },
+  "provider": "datadog",
+  "reportVersion": 1,
+  "summary": {
+    "dashboards": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 3,
+      "translated": 0
+    },
+    "monitors": {
+      "approximated": 0,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 0,
+      "partial": 0,
+      "translated": 0
+    },
+    "skippedFiles": 0,
+    "widgets": {
+      "approximated": 2,
+      "assumed": 0,
+      "best_effort": 0,
+      "blocked": 27,
+      "partial": 0,
+      "translated": 21
+    }
+  },
+  "validation": {
+    "api": "not_run",
+    "schema": "passed",
+    "semantics": "not_run",
+    "syntax": "passed"
+  }
+}

@@ -1,0 +1,8 @@
+# Provisioned at Perses start (and every provisioning.interval). Docs:
+# https://github.com/perses/perses/blob/v0.55.1/docs/api/project.md
+kind: Project
+metadata:
+  name: oracle-review
+spec:
+  display:
+    name: Oracle review (issue 87)

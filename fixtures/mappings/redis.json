@@ -1,0 +1,219 @@
+{
+  "labels": {
+    "host": "host_name"
+  },
+  "metrics": {
+    "redis.clients.blocked": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.clients.blocked -> redis.clients.blocked. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'blocked_clients', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit connection. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.clients.blocked, sum (non-monotonic, cumulative), unit {client}, from INFO blocked_clients (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: connection vs {client}, both a count of clients. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.clients.blocked as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "redis.clients.blocked",
+        "type": "sum"
+      },
+      "targetUnit": "{client}"
+    },
+    "redis.cpu.sys": {
+      "kind": "rate",
+      "matchers": {
+        "state": "sys"
+      },
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.cpu.sys -> redis.cpu.time. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py RATE_KEYS 'used_cpu_sys', submitted with self.rate() (redisdb.py _check_info_fields); metadata.csv gauge, no unit, no per_unit_name. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.cpu.time, sum (monotonic, cumulative), unit s, from INFO used_cpu_sys (metric_functions.go at v0.165.0), attribute state=sys; same definition at v0.160.0, the version in Dash0. Units: Datadog none in metadata.csv (CPU seconds per second after self.rate()) vs s cumulative; rate() gives s/s. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.cpu.time as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop; state values sys, sys_children, sys_main_thread, user, user_children, user_main_thread. Kind rate. type deviation: metadata.csv lists gauge without per_unit_name, but RATE_KEYS submits the cumulative used_cpu_sys with self.rate(), so Datadog shows CPU seconds per second; rate() over redis.cpu.time{state=\"sys\"} gives the same. The matcher excludes sys_children and sys_main_thread, which Datadog reports as separate metrics (redis.cpu.sys_children, redis.cpu.sys_main_thread). Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "second/second",
+      "target": {
+        "name": "redis.cpu.time",
+        "type": "sum"
+      },
+      "targetUnit": "s"
+    },
+    "redis.cpu.user": {
+      "kind": "rate",
+      "matchers": {
+        "state": "user"
+      },
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.cpu.user -> redis.cpu.time. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py RATE_KEYS 'used_cpu_user', submitted with self.rate() (redisdb.py _check_info_fields); metadata.csv gauge, no unit, no per_unit_name. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.cpu.time, sum (monotonic, cumulative), unit s, from INFO used_cpu_user (metric_functions.go at v0.165.0), attribute state=user; same definition at v0.160.0, the version in Dash0. Units: Datadog none in metadata.csv (CPU seconds per second after self.rate()) vs s cumulative; rate() gives s/s. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.cpu.time as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop; state values sys, sys_children, sys_main_thread, user, user_children, user_main_thread. Kind rate. type deviation: metadata.csv lists gauge without per_unit_name, but RATE_KEYS submits the cumulative used_cpu_user with self.rate(), so Datadog shows CPU seconds per second; rate() over redis.cpu.time{state=\"user\"} gives the same. The matcher excludes user_children and user_main_thread, which Datadog reports as separate metrics (redis.cpu.user_children, redis.cpu.user_main_thread). Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "second/second",
+      "target": {
+        "name": "redis.cpu.time",
+        "type": "sum"
+      },
+      "targetUnit": "s"
+    },
+    "redis.expires": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.expires -> redis.db.expires. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/redisdb.py subkeys 'expires': self.gauge per INFO keyspace dbN line, tag redis_db:dbN; metadata.csv gauge, unit key. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.db.expires, gauge, unit {key}, from INFO keyspace dbN expires=, attribute db (redis_scraper.go recordKeyspaceMetrics at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: key vs {key}. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.db.expires as gauge; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop; db=\"0\". Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Datadog tag redis_db:db0 vs OTel db=\"0\": the db label is not mapped. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "key",
+      "target": {
+        "name": "redis.db.expires",
+        "type": "gauge"
+      },
+      "targetUnit": "{key}"
+    },
+    "redis.keys": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.keys -> redis.db.keys. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/redisdb.py subkeys 'keys': self.gauge per INFO keyspace dbN line, tag redis_db:dbN; metadata.csv gauge, unit key. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.db.keys, gauge, unit {key}, from INFO keyspace dbN keys=, attribute db (redis_scraper.go recordKeyspaceMetrics at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: key vs {key}. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.db.keys as gauge; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop; db=\"0\". Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Datadog tag redis_db:db0 vs OTel db=\"0\": the db label is not mapped. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "key",
+      "target": {
+        "name": "redis.db.keys",
+        "type": "gauge"
+      },
+      "targetUnit": "{key}"
+    },
+    "redis.keys.evicted": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.keys.evicted -> redis.keys.evicted. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'evicted_keys', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit key, no per_unit_name. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.keys.evicted, sum (monotonic, cumulative), unit {key}, from INFO evicted_keys (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: key vs {key}, both a running total. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.keys.evicted as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; it submits the running total with self.gauge, so the raw cumulative value is mapped, not rate(). Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "key",
+      "target": {
+        "name": "redis.keys.evicted",
+        "type": "sum"
+      },
+      "targetUnit": "{key}"
+    },
+    "redis.keys.expired": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.keys.expired -> redis.keys.expired. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'expired_keys', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit key, no per_unit_name. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.keys.expired, sum (monotonic, cumulative), unit {event}, from INFO expired_keys (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: key vs {event}, both a running total of expired keys. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.keys.expired as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; it submits the running total with self.gauge, so the raw cumulative value is mapped, not rate(). Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "key",
+      "target": {
+        "name": "redis.keys.expired",
+        "type": "sum"
+      },
+      "targetUnit": "{event}"
+    },
+    "redis.mem.fragmentation_ratio": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.mem.fragmentation_ratio -> redis.memory.fragmentation_ratio. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'mem_fragmentation_ratio', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit fraction. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.memory.fragmentation_ratio, gauge, unit 1, from INFO mem_fragmentation_ratio (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: fraction vs 1, both rss / used. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.memory.fragmentation_ratio as gauge; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "fraction",
+      "target": {
+        "name": "redis.memory.fragmentation_ratio",
+        "type": "gauge"
+      },
+      "targetUnit": "1"
+    },
+    "redis.mem.rss": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.mem.rss -> redis.memory.rss. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'used_memory_rss', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit byte. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.memory.rss, gauge, unit By, from INFO used_memory_rss (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: byte vs By. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.memory.rss as gauge; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte",
+      "target": {
+        "name": "redis.memory.rss",
+        "type": "gauge"
+      },
+      "targetUnit": "By"
+    },
+    "redis.mem.used": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.mem.used -> redis.memory.used. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'used_memory', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit byte. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.memory.used, gauge, unit By, from INFO used_memory (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: byte vs By. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.memory.used as gauge; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "byte",
+      "target": {
+        "name": "redis.memory.used",
+        "type": "gauge"
+      },
+      "targetUnit": "By"
+    },
+    "redis.net.clients": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.net.clients -> redis.clients.connected. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'connected_clients', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit connection. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.clients.connected, sum (non-monotonic, cumulative), unit {client}, from INFO connected_clients (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: connection vs {client}; both exclude replicas. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.clients.connected as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "redis.clients.connected",
+        "type": "sum"
+      },
+      "targetUnit": "{client}"
+    },
+    "redis.net.commands": {
+      "kind": "rate",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.net.commands -> redis.commands.processed. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py RATE_KEYS 'total_commands_processed', submitted with self.rate() (redisdb.py _check_info_fields); metadata.csv gauge, unit command, no per_unit_name. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.commands.processed, sum (monotonic, cumulative), unit {command}, from INFO total_commands_processed (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: Datadog command (commands per second after self.rate()) vs {command} cumulative; rate() gives {command}/s. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.commands.processed as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind rate. type deviation: metadata.csv lists gauge without per_unit_name, but RATE_KEYS submits the cumulative total_commands_processed with self.rate(), so Datadog shows commands per second. The table's other row, redis.commands, is INFO instantaneous_ops_per_sec, which Datadog reports as redis.net.instantaneous_ops_per_sec (constants.py GAUGE_KEYS); so redis.commands.processed is the row that fits. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "command/second",
+      "target": {
+        "name": "redis.commands.processed",
+        "type": "sum"
+      },
+      "targetUnit": "{command}"
+    },
+    "redis.net.rejected": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.net.rejected -> redis.connections.rejected. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'rejected_connections', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit connection, no per_unit_name. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.connections.rejected, sum (monotonic, cumulative), unit {connection}, from INFO rejected_connections (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: connection vs {connection}, both a running total. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.connections.rejected as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; it submits the running total with self.gauge, so the raw cumulative value is mapped, not rate(). Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "redis.connections.rejected",
+        "type": "sum"
+      },
+      "targetUnit": "{connection}"
+    },
+    "redis.net.slaves": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.net.slaves -> redis.slaves.connected. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'connected_slaves', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, unit connection. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.slaves.connected, sum (non-monotonic, cumulative), unit {replica}, from INFO connected_slaves (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: connection vs {replica}, both a count of replicas. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.slaves.connected as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "connection",
+      "target": {
+        "name": "redis.slaves.connected",
+        "type": "sum"
+      },
+      "targetUnit": "{replica}"
+    },
+    "redis.rdb.changes_since_last": {
+      "kind": "gauge",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.rdb.changes_since_last -> redis.rdb.changes_since_last_save. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py GAUGE_KEYS 'rdb_changes_since_last_save', submitted with self.gauge (redisdb.py _check_info_fields); metadata.csv gauge, no unit. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.rdb.changes_since_last_save, sum (non-monotonic, cumulative), unit {change}, from INFO rdb_changes_since_last_save (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: Datadog none in metadata.csv (a count of changes) vs {change}. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.rdb.changes_since_last_save as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind gauge: Datadog gauge without per-second unit; both sides read the same INFO value. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "change",
+      "target": {
+        "name": "redis.rdb.changes_since_last_save",
+        "type": "sum"
+      },
+      "targetUnit": "{change}"
+    },
+    "redis.stats.keyspace_hits": {
+      "kind": "rate",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.stats.keyspace_hits -> redis.keyspace.hits. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py RATE_KEYS 'keyspace_hits', submitted with self.rate() (redisdb.py _check_info_fields); metadata.csv gauge, unit key, per_unit_name second. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.keyspace.hits, sum (monotonic, cumulative), unit {hit}, from INFO keyspace_hits (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: key/second vs {hit} cumulative; rate() gives {hit}/s. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.keyspace.hits as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind rate: Datadog gauge per second; self.rate() of the INFO counter equals rate() over the monotonic sum. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "key/second",
+      "target": {
+        "name": "redis.keyspace.hits",
+        "type": "sum"
+      },
+      "targetUnit": "{hit}"
+    },
+    "redis.stats.keyspace_misses": {
+      "kind": "rate",
+      "ref": "Vendor row: fixtures/datadog/otel-mapping.yaml redis.stats.keyspace_misses -> redis.keyspace.misses. Datadog: integrations-core@a9b9e42 redisdb/datadog_checks/redisdb/constants.py RATE_KEYS 'keyspace_misses', submitted with self.rate() (redisdb.py _check_info_fields); metadata.csv gauge, unit key, per_unit_name second. OTel: fixtures/otel/collector-contrib/receiver/redisreceiver/metadata.yaml redis.keyspace.misses, sum (monotonic, cumulative), unit {miss}, from INFO keyspace_misses (metric_functions.go at v0.165.0); same definition at v0.160.0, the version in Dash0. Units: key/second vs {miss} cumulative; rate() gives {miss}/s. Dash0 default: fixtures/oracle/dash0_default_metrics.yaml lists redis.keyspace.misses as sum; read-only count by (otel_metric_name, otel_metric_type, state, db, host_name) (last_over_time({otel_metric_name=~\"redis[.].*\"}[90m])) at 2026-11-07T15:30Z returned it with host_name=docker-desktop. Kind rate: Datadog gauge per second; self.rate() of the INFO counter equals rate() over the monotonic sum. Churn: series split across dash0_resource_hash values that differ only in os_description (a container id); no service_instance_id. count({otel_metric_name=\"redis.memory.used\", otel_metric_type=\"gauge\"}) at 1m steps, 2026-11-07T14:00-15:40Z: 2 series in 9 of the 69 minutes with data, so a sum across series briefly doubles. No grain set; open question in the #113 PR.",
+      "reviewed": null,
+      "scale": 1,
+      "sourceUnit": "key/second",
+      "target": {
+        "name": "redis.keyspace.misses",
+        "type": "sum"
+      },
+      "targetUnit": "{miss}"
+    }
+  },
+  "source": "datadog",
+  "version": 1
+}

@@ -1,0 +1,68 @@
+# Hand-written Datadog metric-query parser cases.
+# Source: plan 02 (docs/handoff/02-query-parser.md, removed after completion; see git history), grammar + Task 1 tests, ported 1:1 to Python.
+# These are spec cases, not oracle output.
+provenance: docs/handoff/02-query-parser.md
+cases:
+  - id: aggregator-variable-groupby
+    query: "avg:postgresql.connections{$scope} by {db}"
+    expected:
+      ok: true
+      query:
+        aggregator: avg
+        metric: postgresql.connections
+        filters: [{kind: variable, name: scope}]
+        group_by: [db]
+        functions: []
+  - id: missing-aggregator-is-none
+    query: "postgresql.rows_inserted{$scope}"
+    expected: {ok: true, query: {aggregator: null}}
+  - id: star-filter-is-empty
+    query: "avg:x.y{*}"
+    expected: {ok: true, query: {filters: []}}
+  - id: tag-filters
+    query: "max:system.cpu.iowait{env:demo, host:db-1}"
+    expected:
+      ok: true
+      query:
+        filters:
+          - {kind: tag, key: env, value: demo, negated: false, alternatives: []}
+          - {kind: tag, key: host, value: db-1, negated: false, alternatives: []}
+  - id: trailing-functions-parsed
+    query: "sum:x{*}.rollup(max, 60).as_count()"
+    expected:
+      ok: true
+      query:
+        functions: [{name: rollup, args: [max, "60"]}, {name: as_count, args: []}]
+  - id: wrapping-function-rejected
+    query: "anomalies(avg:x{*}, 'basic', 2)"
+    expected: {ok: false, code: UNSUPPORTED_QUERY_FUNCTION, offset: 0, message: "Function 'anomalies' is not supported."}
+  - id: negation-parsed  # #178
+    query: "avg:x{!env:prod}"
+    expected:
+      ok: true
+      query:
+        filters: [{kind: tag, key: env, value: prod, negated: true, alternatives: []}]
+  - id: same-key-or-parsed  # #178
+    query: "avg:x{env:a OR env:b}"
+    expected:
+      ok: true
+      query:
+        filters: [{kind: tag, key: env, value: a, negated: false, alternatives: [b]}]
+  - id: wildcard-value-parsed  # #178
+    query: "avg:x{host:db-*}"
+    expected:
+      ok: true
+      query:
+        filters: [{kind: tag, key: host, value: db-*, negated: false, alternatives: []}]
+  - id: cross-key-or-rejected  # #178
+    query: "avg:x{env:a OR host:b}"
+    expected: {ok: false, code: UNSUPPORTED_QUERY_SYNTAX}
+  - id: trailing-input-rejected
+    query: "avg:x{*} / 2"
+    expected: {ok: false, code: UNSUPPORTED_QUERY_SYNTAX, offset: 8}
+  - id: empty-input-rejected
+    query: ""
+    expected: {ok: false, code: UNSUPPORTED_QUERY_SYNTAX, offset: 0}
+  - id: whitespace-input-rejected
+    query: "   "
+    expected: {ok: false, code: UNSUPPORTED_QUERY_SYNTAX, offset: 0}
