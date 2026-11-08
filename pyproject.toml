@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intern0"
+version = "0.1.0"
+description = "Moves Datadog dashboards and monitors to Dash0. Rule-based, no AI."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+intern0 = "intern0.cli:main"
+
+[tool.setuptools]
+packages = ["intern0", "intern0.converter"]
+
+[tool.setuptools.package-data]
+"intern0.converter" = ["datadog_metrics.csv.gz"]

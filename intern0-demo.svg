@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="677" viewBox="0 0 900 677">
+<style>
+.t{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;white-space:pre}
+.l{opacity:0;animation:in .25s ease-out forwards}
+@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.l{animation:none;opacity:1}}
+</style>
+<rect width="900" height="677" rx="12" fill="#0B0C0F"/>
+<rect x=".5" y=".5" width="899" height="676" rx="12" fill="none" stroke="#26272D"/>
+<circle cx="22" cy="20" r="6" fill="#FF5F57"/><circle cx="42" cy="20" r="6" fill="#FEBC2E"/><circle cx="62" cy="20" r="6" fill="#28C840"/>
+<text x="450.0" y="24" text-anchor="middle" class="t" style="fill:#8B8C94;font-size:12px">intern0 — Datadog → Dash0</text>
+<g class="l" style="animation-delay:0.20s"><text x="22" y="60" class="t"><tspan style="fill:#8B8C94">$ </tspan><tspan style="fill:#E7E7EA;font-weight:700">intern0 migrate</tspan></text></g>
+<g class="l" style="animation-delay:0.78s"><text x="22" y="102" class="t"><tspan style="fill:#F34140">  ● </tspan><tspan style="fill:#E7E7EA;font-weight:700">intern0</tspan><tspan style="fill:#E7E7EA">   Datadog </tspan><tspan style="fill:#F34140">→</tspan><tspan style="fill:#E7E7EA"> Dash0   </tspan><tspan style="fill:#8B8C94">v0.1.0</tspan></text></g>
+<g class="l" style="animation-delay:0.96s"><text x="22" y="123" class="t"><tspan style="fill:#8B8C94">    Rule-based translation. No AI, same input, same output.</tspan></text></g>
+<g class="l" style="animation-delay:1.64s"><text x="22" y="165" class="t"><tspan style="fill:#F34140">▸ </tspan><tspan style="fill:#E7E7EA;font-weight:700">Datadog</tspan><tspan style="fill:#8B8C94">  Europe · datadoghq.eu</tspan></text></g>
+<g class="l" style="animation-delay:2.54s"><text x="22" y="186" class="t"><tspan style="fill:#3DDC97">  ✓ Logged in to Datadog (datadoghq.eu)</tspan></text></g>
+<g class="l" style="animation-delay:3.14s"><text x="22" y="207" class="t"><tspan style="fill:#E7E7EA">  Found 18 dashboards and 19 monitors.</tspan></text></g>
+<g class="l" style="animation-delay:3.82s"><text x="22" y="249" class="t"><tspan style="fill:#F34140;font-weight:700">▸ What should move to Dash0?</tspan></text></g>
+<g class="l" style="animation-delay:4.00s"><text x="22" y="270" class="t"><tspan style="fill:#8B8C94">  ↑↓ move · space select · a all/none · enter continue · q quit   2 selected</tspan></text></g>
+<g class="l" style="animation-delay:4.18s"><rect x="18" y="276" width="864" height="21" rx="3" fill="#F34140"/><text x="22" y="291" class="t"><tspan style="fill:#FFFFFF;font-weight:700"> [x] Dashboard  Glitchy Shop – Minimal</tspan></text></g>
+<g class="l" style="animation-delay:4.36s"><text x="22" y="312" class="t"><tspan style="fill:#E7E7EA"> [ ] Dashboard  Money Path</tspan></text></g>
+<g class="l" style="animation-delay:4.54s"><text x="22" y="333" class="t"><tspan style="fill:#E7E7EA"> [ ] Dashboard  OpenTelemetry Demo - Astronomy Shop</tspan></text></g>
+<g class="l" style="animation-delay:4.72s"><text x="22" y="354" class="t"><tspan style="fill:#F34140"> [x] Monitor    [glitchy-shop] More than 5 checkout requests in 2 minutes</tspan></text></g>
+<g class="l" style="animation-delay:5.60s"><text x="22" y="396" class="t"><tspan style="fill:#F34140">▸ </tspan><tspan style="fill:#E7E7EA;font-weight:700">Plan</tspan></text></g>
+<g class="l" style="animation-delay:6.20s"><text x="22" y="417" class="t"><tspan style="fill:#E7E7EA">  ⚠️  dashboard Glitchy Shop – Minimal</tspan></text></g>
+<g class="l" style="animation-delay:6.38s"><text x="22" y="438" class="t"><tspan style="fill:#8B8C94">       2 widgets: 1 ✅  1 ⚠️  0 ❌</tspan></text></g>
+<g class="l" style="animation-delay:6.78s"><text x="22" y="459" class="t"><tspan style="fill:#E7E7EA">  ⚠️  monitor   [glitchy-shop] More than 5 checkout requests in 2 minutes</tspan></text></g>
+<g class="l" style="animation-delay:6.96s"><text x="22" y="480" class="t"><tspan style="fill:#8B8C94">       message part '{{#is_recovery}}' dropped (Dash0 has one description)</tspan></text></g>
+<g class="l" style="animation-delay:7.64s"><text x="22" y="522" class="t"><tspan style="fill:#E7E7EA">  Import into Dash0 now? [y/N] </tspan><tspan style="fill:#E7E7EA;font-weight:700">y</tspan></text></g>
+<g class="l" style="animation-delay:8.44s"><text x="22" y="543" class="t"><tspan style="fill:#F34140">▸ </tspan><tspan style="fill:#E7E7EA;font-weight:700">Dash0</tspan><tspan style="fill:#8B8C94">  Europe · GCP Netherlands</tspan></text></g>
+<g class="l" style="animation-delay:9.34s"><text x="22" y="564" class="t"><tspan style="fill:#3DDC97">  ✓ Logged in to Dash0</tspan></text></g>
+<g class="l" style="animation-delay:9.94s"><text x="22" y="585" class="t"><tspan style="fill:#3DDC97">  ✓ dashboard Glitchy Shop – Minimal</tspan></text></g>
+<g class="l" style="animation-delay:10.34s"><text x="22" y="606" class="t"><tspan style="fill:#3DDC97">  ✓ 1 alert created</tspan></text></g>
+<g class="l" style="animation-delay:10.92s"><text x="22" y="648" class="t"><tspan style="fill:#F34140">● </tspan><tspan style="fill:#E7E7EA;font-weight:700">Done. Running again updates instead of duplicating.</tspan></text></g>
+</svg>
