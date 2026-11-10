@@ -1,0 +1,169 @@
+# Hand-curated (not generated). Datadog postgres metric -> OTel postgresqlreceiver metric. Schema: src/ir/mappings.ts (CONTRACT-001).
+# Evidence for every row: the metric's type/unit/description in the Datadog metadata.csv and the metric's type/unit/
+# description/attributes in the receiver metadata.yaml (both under sources). Each note says which fields were compared.
+# ddKind follows how the Datadog check SUBMITS the metric (datadog_check: AgentCheck.rate -> rate,
+# monotonic_count -> count, gauge -> gauge), which beats metadata.csv where they disagree (function.calls).
+# First 6 rows: tools/improve round 2 (gates passed). The rest: researched in that round, held back by the old
+# no-regression gate (fixed in ab8d3f5), checked against the check source and enabled by hand.
+version: 1
+integration: postgresql
+sources:
+  datadog_check: "https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/postgres/datadog_checks/postgres/util.py (+ relationsmanager.py)"
+  datadog_metadata: "https://github.com/DataDog/integrations-core/blob/master/postgres/metadata.csv"
+  otel_receiver: "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.164.0/receiver/postgresqlreceiver/metadata.yaml"
+metrics:
+  postgresql.max_connections:
+    otel: "postgresql.connection.max"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{connections}"
+    status: exact
+    note: "metadata.csv: 'The maximum number of client connections allowed to this database' (gauge, connection). Receiver metadata.yaml: postgresql.connection.max 'Configured maximum number of client connections allowed' (gauge, {connections}). Same setting and unit; the OTel metric has no database attribute (Datadog repeats the value per db tag)."
+  postgresql.total_size:
+    otel: "postgresql.table.size"
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    status: exact
+    note: "metadata.csv: 'The total disk space used by the table, including indexes and TOAST data' (gauge, byte; tagged db, schema, table). Receiver metadata.yaml: postgresql.table.size 'Total disk space used by a table, including its indexes and TOAST data' (non-monotonic sum, By; attributes db.namespace, db.collection.name). Same quantity and unit."
+  postgresql.replication_delay:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The current replication delay in seconds' (gauge, second). Receiver metadata.yaml postgresql.wal.lag / postgresql.wal.delay ('Time between flushing recent WAL locally and receiving notification that the standby server has completed an operation with it', per replication_client) uses the wording of Datadog's separate postgresql.replication.wal_{write,flush,replay}_lag metrics, not this one. No same-semantic receiver metric."
+  postgresql.replication_delay_bytes:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The current replication delay in bytes' (gauge, byte, no per-standby tags). Receiver metadata.yaml postgresql.replication.data_delay ('The amount of data delayed in replication', per replication_client) is reported per connected standby, like Datadog's separate postgresql.replication.*_lsn_delay metrics. No same-semantic receiver metric."
+  postgresql.bgwriter.checkpoints_requested:
+    otel: "postgresql.bgwriter.checkpoint.count"
+    labels: {type: "requested"}
+    ddKind: count
+    otelKind: counter
+    unit: "{checkpoints}"
+    status: approximate
+    note: "metadata.csv: 'The number of requested checkpoints that were performed' (count). Receiver metadata.yaml: postgresql.bgwriter.checkpoint.count 'The number of checkpoints performed' (cumulative monotonic sum) with attribute type (bg_checkpoint_type, requested|scheduled); select type=\"requested\". Datadog stores per-interval counts, OTel a running total."
+  postgresql.bgwriter.checkpoints_timed:
+    otel: "postgresql.bgwriter.checkpoint.count"
+    labels: {type: "scheduled"}
+    ddKind: count
+    otelKind: counter
+    unit: "{checkpoints}"
+    status: approximate
+    note: "metadata.csv: 'The number of scheduled checkpoints that were performed' (count). Receiver metadata.yaml: postgresql.bgwriter.checkpoint.count 'The number of checkpoints performed' (cumulative monotonic sum) with attribute type (bg_checkpoint_type, requested|scheduled); select type=\"scheduled\". Datadog stores per-interval counts, OTel a running total."
+  # --- Per-second rates: the check submits AgentCheck.rate (util.py DB_METRICS, relationsmanager.py 'type': 'rate').
+  postgresql.rows_inserted:
+    otel: "postgresql.tup_inserted"
+    ddKind: rate
+    otelKind: counter
+    unit: "{tup_inserted}"
+    status: approximate
+    note: "metadata.csv: 'The number of rows inserted by queries in this database' (gauge, row/second; check: tup_inserted AgentCheck.rate). Receiver metadata.yaml: postgresql.tup_inserted 'Number of rows inserted by queries in the database' (monotonic sum). Same counter (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver: enable metrics.postgresql.tup_inserted."
+  postgresql.rows_updated:
+    otel: "postgresql.tup_updated"
+    ddKind: rate
+    otelKind: counter
+    unit: "{tup_updated}"
+    status: approximate
+    note: "metadata.csv: 'The number of rows updated by queries in this database' (gauge, row/second; check: tup_updated AgentCheck.rate). Receiver metadata.yaml: postgresql.tup_updated 'Number of rows updated by queries in the database' (monotonic sum) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver."
+  postgresql.rows_deleted:
+    otel: "postgresql.tup_deleted"
+    ddKind: rate
+    otelKind: counter
+    unit: "{tup_deleted}"
+    status: approximate
+    note: "metadata.csv: 'The number of rows deleted by queries in this database' (gauge, row/second; check: tup_deleted AgentCheck.rate). Receiver metadata.yaml: postgresql.tup_deleted 'Number of rows deleted by queries in the database' (monotonic sum) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver."
+  postgresql.rows_fetched:
+    otel: "postgresql.tup_fetched"
+    ddKind: rate
+    otelKind: counter
+    unit: "{tup_fetched}"
+    status: approximate
+    note: "metadata.csv: 'The number of rows fetched by queries in this database' (gauge, row/second; check: tup_fetched AgentCheck.rate). Receiver metadata.yaml: postgresql.tup_fetched 'Number of rows fetched by queries in the database' (monotonic sum) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver."
+  postgresql.rows_returned:
+    otel: "postgresql.tup_returned"
+    ddKind: rate
+    otelKind: counter
+    unit: "{tup_returned}"
+    status: approximate
+    note: "metadata.csv: 'The number of rows returned by queries in this database' (gauge, row/second; check: tup_returned AgentCheck.rate). Receiver metadata.yaml: postgresql.tup_returned 'Number of rows returned by queries in the database' (monotonic sum) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver."
+  postgresql.rows_hot_updated:
+    otel: "postgresql.operations"
+    labels: {operation: "hot_upd"}
+    ddKind: rate
+    otelKind: counter
+    unit: "1"
+    status: approximate
+    note: "metadata.csv: 'The number of rows HOT updated' (gauge, row/second, per table; check: relationsmanager 'type': 'rate'). Receiver metadata.yaml: postgresql.operations 'The number of db row operations' (monotonic sum, per table) with operation=hot_upd (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate)."
+  postgresql.index_scans:
+    otel: "postgresql.index.scans"
+    ddKind: rate
+    otelKind: counter
+    unit: "{scans}"
+    status: approximate
+    note: "metadata.csv: 'The number of index scans initiated on this table' (gauge, scan/second; check: relationsmanager 'type': 'rate'). Receiver metadata.yaml: postgresql.index.scans 'The number of index scans on a table' (monotonic sum, per index; sum by table for Datadog's per-table value) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate)."
+  postgresql.seq_scans:
+    otel: "postgresql.sequential_scans"
+    ddKind: rate
+    otelKind: counter
+    unit: "{sequential_scan}"
+    status: approximate
+    note: "metadata.csv: 'The number of sequential scans initiated on this table' (gauge, scan/second; check: relationsmanager 'type': 'rate'). Receiver metadata.yaml: postgresql.sequential_scans 'The number of sequential scans' (monotonic sum, per table) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver."
+  postgresql.temp_bytes:
+    otel: "postgresql.temp.io"
+    ddKind: rate
+    otelKind: counter
+    unit: "By"
+    status: approximate
+    note: "metadata.csv: 'The amount of data written to temporary files by queries in this database' (gauge, byte/second; check: temp_bytes AgentCheck.rate). Receiver metadata.yaml: postgresql.temp.io 'Total amount of data written to temporary files by queries' (monotonic sum, By) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Disabled by default in the receiver."
+  postgresql.function.calls:
+    otel: "postgresql.function.calls"
+    ddKind: rate
+    otelKind: counter
+    unit: "{call}"
+    status: approximate
+    note: "metadata.csv says gauge with no per-second unit, but the check submits 'calls' with AgentCheck.rate (util.py FUNCTION_METRICS), so ddKind rate. Receiver metadata.yaml: postgresql.function.calls 'The number of calls made to a function' (monotonic sum, per function) (D-18: ddKind rate -> rate() on the receiver's cumulative counter, approximate). Both need track_functions; disabled by default in the receiver."
+  # --- Gauges whose scope differs slightly: approximate, with the difference in the note.
+  postgresql.connections:
+    otel: "postgresql.backends"
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "1"
+    status: approximate
+    note: "metadata.csv: 'The number of active connections to this database' (gauge; check: numbackends AgentCheck.gauge from pg_stat_database). Receiver metadata.yaml: postgresql.backends 'The number of backend processes associated with each database' (non-monotonic sum, per db). Approximate: the receiver description also covers non-client backends."
+  postgresql.live_rows:
+    otel: "postgresql.rows"
+    labels: {state: "live"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "1"
+    status: approximate
+    note: "metadata.csv: 'The estimated number of live rows' (gauge, per table; check: relationsmanager 'type': 'gauge'). Receiver metadata.yaml: postgresql.rows 'The number of rows in the database' (non-monotonic sum, per table) with state=live; both are estimates."
+  postgresql.dead_rows:
+    otel: "postgresql.rows"
+    labels: {state: "dead"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "1"
+    status: approximate
+    note: "metadata.csv: 'The estimated number of dead rows' (gauge, per table; check: relationsmanager 'type': 'gauge'). Receiver metadata.yaml: postgresql.rows with state=dead (non-monotonic sum, per table)."
+  postgresql.locks:
+    otel: "postgresql.database.locks"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{lock}"
+    status: approximate
+    note: "metadata.csv: 'The number of locks active for this database' (gauge, tagged lock_mode, granted). Receiver metadata.yaml: postgresql.database.locks 'The number of database locks, including those held by the receiver' (gauge; relation, mode, lock_type). The receiver counts its own locks and has no granted attribute. Disabled by default in the receiver."
+  # --- Derived: a ratio of two receiver metrics (the translator treats derived rows as manual for now).
+  postgresql.percent_usage_connections:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "postgresql.backends / postgresql.connection.max"
+    note: "metadata.csv: 'The number of connections to this database as a fraction of the maximum number of allowed connections' (gauge, fraction; check: SUM(numbackends)/MAX(setting)). Receiver metadata.yaml has no ratio; sum(postgresql.backends) / postgresql.connection.max gives it."
+  # Not mapped: postgresql.deadlocks.count (check: monotonic_count -> ddKind count). count -> counter has no tested
+  # translator rule yet (kindTransform fails closed), so the row would only turn a heuristic into manual.

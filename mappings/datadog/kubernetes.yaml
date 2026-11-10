@@ -1,0 +1,210 @@
+# Hand-curated (not generated). Datadog kubelet check (kubernetes.*) -> OTel kubeletstatsreceiver, plus
+# k8sclusterreceiver for what comes from the pod spec (requests, limits, restarts). Schema: src/ir/mappings.ts.
+# Scope: the 27 kubernetes.* metrics that DataDog/integrations-core dashboards and monitors actually query.
+# Evidence for every row: Datadog metadata.csv + the check code that submits the metric (prometheus.py, summary.py,
+# cadvisor.py, kubelet.py) and the receiver metadata.yaml, all pinned in dash0-team docs/research/sources/kubernetes/
+# (and kubernetes_state/ for k8scluster). ddKind follows the check's submit call (self.rate -> rate), which beats
+# metadata.csv: metadata.csv lists every kubernetes.* metric as a gauge, including the per-second ones.
+version: 1
+integration: kubernetes
+sources:
+  datadog_check: "https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/kubelet/datadog_checks/kubelet/ (prometheus.py, summary.py, cadvisor.py, kubelet.py)"
+  datadog_metadata: "https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/kubelet/metadata.csv"
+  otel_receiver: "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.164.0/receiver/kubeletstatsreceiver/metadata.yaml"
+  otel_receiver_cluster: "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.164.0/receiver/k8sclusterreceiver/metadata.yaml"
+metrics:
+  # --- CPU
+  kubernetes.cpu.usage.total:
+    otel: "container.cpu.time"
+    ddKind: rate
+    otelKind: counter
+    unit: "s"
+    scale: 1000000000
+    status: approximate
+    note: "check source prometheus.py container_cpu_usage_seconds_total: cAdvisor CPU seconds x 10^9, submitted with self.rate (AgentCheck.rate), so Datadog stores nanocores per container (summary.py does the same from usageCoreNanoSeconds). Receiver metadata.yaml: container.cpu.time 'Total cumulative CPU time (sum of all cores)' (cumulative monotonic sum, s), per container. rate() gives cores; x 10^9 gives nanocores."
+  kubernetes.cpu.requests:
+    otel: "k8s.container.cpu_request"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{cpu}"
+    status: approximate
+    note: "check source kubelet.py: the container's resources.requests.cpu from the pod spec, self.gauge, in cores. k8sclusterreceiver metadata.yaml: k8s.container.cpu_request 'Resource requested for the container' (gauge, {cpu}). Same value from the API server instead of the kubelet; needs the k8s_cluster receiver."
+  kubernetes.cpu.limits:
+    otel: "k8s.container.cpu_limit"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{cpu}"
+    status: approximate
+    note: "check source kubelet.py: resources.limits.cpu from the pod spec, self.gauge, in cores. k8sclusterreceiver metadata.yaml: k8s.container.cpu_limit 'Maximum resource limit set for the container' (gauge, {cpu}). Needs the k8s_cluster receiver."
+  # --- Memory
+  kubernetes.memory.usage:
+    otel: "container.memory.usage"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "By"
+    status: exact
+    note: "metadata.csv: 'Current memory usage in bytes including all memory regardless of when it was accessed' (gauge, byte); check source prometheus.py container_memory_usage_bytes / summary.py memory.usageBytes, per container. Receiver metadata.yaml: container.memory.usage 'Container memory usage' (gauge, By), from the same kubelet summary usageBytes."
+  kubernetes.memory.rss:
+    otel: "container.memory.rss"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "By"
+    status: exact
+    note: "metadata.csv: 'Size of RSS in bytes' (gauge, byte), per container. Receiver metadata.yaml: container.memory.rss 'Container memory rss' (gauge, By)."
+  kubernetes.memory.requests:
+    otel: "k8s.container.memory_request"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "By"
+    status: approximate
+    note: "check source kubelet.py: resources.requests.memory from the pod spec, self.gauge, bytes. k8sclusterreceiver metadata.yaml: k8s.container.memory_request 'Resource requested for the container' (gauge, By). Needs the k8s_cluster receiver."
+  kubernetes.memory.limits:
+    otel: "k8s.container.memory_limit"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "By"
+    status: approximate
+    note: "check source kubelet.py: resources.limits.memory from the pod spec, self.gauge, bytes. k8sclusterreceiver metadata.yaml: k8s.container.memory_limit 'Maximum resource limit set for the container' (gauge, By). Needs the k8s_cluster receiver."
+  kubernetes.memory.usage_pct:
+    otel: "k8s.container.memory_limit_utilization"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "1"
+    status: approximate
+    note: "check source prometheus.py _process_limit_metric: usage / limit per container, only when a limit is set (fraction). Receiver metadata.yaml: k8s.container.memory_limit_utilization 'Container memory utilization as a ratio of the container's limits' (gauge, 1). Disabled by default in the receiver: enable it."
+  # --- Network (per pod, summed over interfaces by the check)
+  kubernetes.network.rx_bytes:
+    otel: "k8s.pod.network.io"
+    labels: {direction: "receive"}
+    sumBy: ["interface"]
+    ddKind: rate
+    otelKind: counter
+    unit: "By"
+    status: approximate
+    note: "check source prometheus.py _process_pod_rate (container_network_receive_bytes_total) and summary.py rxBytes: self.rate per pod, bytes per second. Receiver metadata.yaml: k8s.pod.network.io 'Pod network IO' (cumulative monotonic sum, By) with attributes interface and direction (receive|transmit); select direction=receive and sum the interfaces."
+  kubernetes.network.tx_bytes:
+    otel: "k8s.pod.network.io"
+    labels: {direction: "transmit"}
+    sumBy: ["interface"]
+    ddKind: rate
+    otelKind: counter
+    unit: "By"
+    status: approximate
+    note: "check source prometheus.py _process_pod_rate (container_network_transmit_bytes_total) and summary.py txBytes: self.rate per pod. Receiver metadata.yaml: k8s.pod.network.io (cumulative monotonic sum, By), direction=transmit, interfaces summed."
+  kubernetes.network.rx_errors:
+    otel: "k8s.pod.network.errors"
+    labels: {direction: "receive"}
+    sumBy: ["interface"]
+    ddKind: rate
+    otelKind: counter
+    unit: "1"
+    status: approximate
+    note: "check source prometheus.py _process_pod_rate (container_network_receive_errors_total): self.rate per pod, errors per second. Receiver metadata.yaml: k8s.pod.network.errors 'Pod network errors' (cumulative monotonic sum) with interface and direction; direction=receive, interfaces summed."
+  kubernetes.network.tx_errors:
+    otel: "k8s.pod.network.errors"
+    labels: {direction: "transmit"}
+    sumBy: ["interface"]
+    ddKind: rate
+    otelKind: counter
+    unit: "1"
+    status: approximate
+    note: "check source prometheus.py _process_pod_rate (container_network_transmit_errors_total): self.rate per pod. Receiver metadata.yaml: k8s.pod.network.errors, direction=transmit, interfaces summed."
+  kubernetes.network_errors:
+    otel: "k8s.pod.network.errors"
+    sumBy: ["interface", "direction"]
+    ddKind: rate
+    otelKind: counter
+    unit: "1"
+    status: approximate
+    note: "check source cadvisor.py (legacy cAdvisor API): self.rate of rx + tx errors per pod. Not in metadata.csv. Receiver metadata.yaml: k8s.pod.network.errors summed over interface and both directions."
+  kubernetes.network.rx_dropped:
+    otel: null
+    ddKind: rate
+    otelKind: null
+    status: none
+    note: "check source prometheus.py container_network_receive_packets_dropped_total, self.rate. kubeletstatsreceiver reports only network io and errors (from the kubelet summary API, which has no dropped-packet counters). No equivalent."
+  kubernetes.network.tx_dropped:
+    otel: null
+    ddKind: rate
+    otelKind: null
+    status: none
+    note: "check source prometheus.py container_network_transmit_packets_dropped_total, self.rate. No dropped-packet metric in kubeletstatsreceiver. No equivalent."
+  # --- Disk
+  kubernetes.filesystem.usage:
+    otel: "container.filesystem.usage"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "By"
+    status: approximate
+    note: "metadata.csv: 'The amount of disk used' (gauge, byte); check source prometheus.py container_fs_usage_bytes (cAdvisor, tagged device) or summary.py. Receiver metadata.yaml: container.filesystem.usage 'Container filesystem usage' (gauge, By), from the kubelet summary rootfs: no device tag, and cAdvisor may count more filesystems."
+  kubernetes.filesystem.usage_pct:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "container.filesystem.usage / container.filesystem.capacity"
+    note: "check source prometheus.py container_fs_limit_bytes / summary.py: usage / capacity (fraction). Receiver metadata.yaml has container.filesystem.usage and container.filesystem.capacity (gauge, By). Not translated yet (derived)."
+  kubernetes.node.filesystem.usage:
+    otel: "k8s.node.filesystem.usage"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "By"
+    status: exact
+    note: "check source summary.py: node fs.usedBytes, self.gauge. Receiver metadata.yaml: k8s.node.filesystem.usage 'Node filesystem usage' (gauge, By), from the same kubelet summary field."
+  kubernetes.node.filesystem.usage_pct:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "k8s.node.filesystem.usage / k8s.node.filesystem.capacity"
+    note: "check source summary.py: usedBytes / capacityBytes (fraction). Receiver metadata.yaml: k8s.node.filesystem.usage and k8s.node.filesystem.capacity (gauge, By). Not translated yet (derived)."
+  kubernetes.io.read_bytes:
+    otel: null
+    ddKind: rate
+    otelKind: null
+    status: none
+    note: "check source prometheus.py container_fs_reads_bytes_total, self.rate (cAdvisor). kubeletstatsreceiver has no disk IO metric (the kubelet summary API has none). No equivalent."
+  kubernetes.io.write_bytes:
+    otel: null
+    ddKind: rate
+    otelKind: null
+    status: none
+    note: "check source prometheus.py container_fs_writes_bytes_total, self.rate (cAdvisor). No disk IO metric in kubeletstatsreceiver. No equivalent."
+  # --- Pods and containers
+  kubernetes.containers.restarts:
+    otel: "k8s.container.restarts"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{restart}"
+    status: exact
+    note: "check source kubelet.py: containerStatuses restartCount, self.gauge per container. k8sclusterreceiver metadata.yaml: k8s.container.restarts 'How many times the container has restarted in the recent past', pulled from the same restartCount (gauge, {restart}). Needs the k8s_cluster receiver."
+  kubernetes.pods.running:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "check source kubelet.py _report_pods_running: count of running pods per node and owner, self.gauge. Neither receiver emits a pod count: k8s.pod.phase is one series per pod whose value encodes the phase (2 = Running), so the count needs count(k8s.pod.phase == 2), which the translator doesn't build. No direct equivalent."
+  kubernetes.containers.running:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "check source kubelet.py _report_pods_running: count of running containers, self.gauge. No container count in either receiver (k8s.container.status.state is per container and disabled by default). No direct equivalent."
+  kubernetes.containers.state.terminated:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The number of currently terminated containers' (gauge). k8sclusterreceiver k8s.container.status.state{k8s.container.status.state=terminated} is per container (disabled by default); a count needs aggregation the translator doesn't build. No direct equivalent."
+  kubernetes.liveness_probe.success.total:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Cumulative number of successful liveness probe for a container' (kubelet prober metrics). Neither receiver reports probe results. No equivalent."
+  kubernetes.liveness_probe.failure.total:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Cumulative number of failed liveness probe for a container'. Neither receiver reports probe results. No equivalent."

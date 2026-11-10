@@ -1,0 +1,442 @@
+{
+  "sections": [
+    {
+      "title": "About Redis",
+      "items": [
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 6
+        },
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 12,
+          "y": 0,
+          "width": 12,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "title": "Overview",
+      "items": [
+        {
+          "panel": "Hit rate",
+          "kind": "StatChart",
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 3
+        },
+        {
+          "panel": "Blocked clients",
+          "kind": "StatChart",
+          "x": 12,
+          "y": 0,
+          "width": 12,
+          "height": 3
+        },
+        {
+          "panel": "Redis keyspace",
+          "kind": "StatChart",
+          "x": 0,
+          "y": 3,
+          "width": 12,
+          "height": 3
+        },
+        {
+          "panel": "Unsaved changes",
+          "kind": "StatChart",
+          "x": 12,
+          "y": 3,
+          "width": 12,
+          "height": 3
+        },
+        {
+          "panel": "Primary link down",
+          "kind": "StatChart",
+          "x": 0,
+          "y": 6,
+          "width": 12,
+          "height": 6
+        },
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 12,
+          "y": 6,
+          "width": 12,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "title": "Performance Metrics",
+      "items": [
+        {
+          "panel": "Latency by Host",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 12
+        },
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 16,
+          "y": 0,
+          "width": 8,
+          "height": 12
+        },
+        {
+          "panel": "Slowlog duration",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 12,
+          "width": 16,
+          "height": 6
+        },
+        {
+          "panel": "Slowlog query rates",
+          "kind": "TimeSeriesTable",
+          "x": 16,
+          "y": 12,
+          "width": 8,
+          "height": 6
+        },
+        {
+          "panel": "Average replication delay (offset)",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 18,
+          "width": 24,
+          "height": 6
+        },
+        {
+          "panel": "Average CPU usage",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 6
+        },
+        {
+          "panel": "Cache hit rate",
+          "kind": "StatChart",
+          "x": 0,
+          "y": 30,
+          "width": 8,
+          "height": 6
+        },
+        {
+          "panel": "Cache hit rate",
+          "kind": "TimeSeriesChart",
+          "x": 8,
+          "y": 30,
+          "width": 16,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "title": "Memory Metrics",
+      "items": [
+        {
+          "panel": "Percent Used Memory by Host",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 12
+        },
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 16,
+          "y": 0,
+          "width": 8,
+          "height": 12
+        },
+        {
+          "panel": "Evictions",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 12,
+          "width": 24,
+          "height": 6
+        },
+        {
+          "panel": "Total allocated memory",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 18,
+          "width": 24,
+          "height": 6
+        },
+        {
+          "panel": "Fragmentation ratio",
+          "kind": "StatChart",
+          "x": 0,
+          "y": 24,
+          "width": 8,
+          "height": 6
+        },
+        {
+          "panel": "Fragmentation ratio",
+          "kind": "TimeSeriesChart",
+          "x": 8,
+          "y": 24,
+          "width": 16,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "title": "Base Activity Metrics",
+      "items": [
+        {
+          "panel": "Connected clients",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 6
+        },
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 12,
+          "y": 0,
+          "width": 6,
+          "height": 6
+        },
+        {
+          "panel": "Blocked clients",
+          "kind": "TimeSeriesChart",
+          "x": 18,
+          "y": 0,
+          "width": 6,
+          "height": 6
+        },
+        {
+          "panel": "Connected replicas",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 6,
+          "width": 10,
+          "height": 6
+        },
+        {
+          "panel": "Rejected connections",
+          "kind": "TimeSeriesChart",
+          "x": 10,
+          "y": 6,
+          "width": 10,
+          "height": 6
+        },
+        {
+          "panel": "Commands per second",
+          "kind": "StatChart",
+          "x": 20,
+          "y": 6,
+          "width": 4,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "title": "Key Metrics",
+      "items": [
+        {
+          "panel": "Total keys",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 6
+        },
+        {
+          "panel": "Current total",
+          "kind": "StatChart",
+          "x": 12,
+          "y": 0,
+          "width": 4,
+          "height": 6
+        },
+        {
+          "panel": "note",
+          "kind": "Markdown",
+          "x": 16,
+          "y": 0,
+          "width": 8,
+          "height": 6
+        },
+        {
+          "panel": "Expired keys",
+          "kind": "TimeSeriesChart",
+          "x": 0,
+          "y": 6,
+          "width": 12,
+          "height": 6
+        },
+        {
+          "panel": "Keys with expiration",
+          "kind": "StatChart",
+          "x": 12,
+          "y": 6,
+          "width": 4,
+          "height": 6
+        },
+        {
+          "panel": "Key length distribution",
+          "kind": "Markdown",
+          "x": 16,
+          "y": 6,
+          "width": 8,
+          "height": 6
+        }
+      ]
+    },
+    {
+      "title": "Logs",
+      "items": [
+        {
+          "panel": "Error Logs",
+          "kind": "Markdown",
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 24
+        },
+        {
+          "panel": "All Logs",
+          "kind": "Markdown",
+          "x": 12,
+          "y": 0,
+          "width": 12,
+          "height": 24
+        }
+      ]
+    }
+  ],
+  "thresholds": {
+    "StatChart Hit rate": {
+      "mode": "absolute",
+      "defaultColor": "#e5484d",
+      "steps": [
+        {
+          "value": 75,
+          "color": "#f5a623"
+        },
+        {
+          "value": 90,
+          "color": "#30a46c"
+        }
+      ]
+    },
+    "StatChart Blocked clients": {
+      "mode": "absolute",
+      "defaultColor": "#30a46c",
+      "steps": [
+        {
+          "value": 1,
+          "color": "#e5484d"
+        }
+      ]
+    },
+    "StatChart Redis keyspace": {
+      "mode": "absolute",
+      "steps": [
+        {
+          "value": 0,
+          "color": "#30a46c"
+        }
+      ]
+    },
+    "StatChart Unsaved changes": {
+      "mode": "absolute",
+      "defaultColor": "#30a46c",
+      "steps": [
+        {
+          "value": 1073741824,
+          "color": "#e5484d"
+        }
+      ]
+    },
+    "StatChart Primary link down": {
+      "mode": "absolute",
+      "defaultColor": "#30a46c",
+      "steps": [
+        {
+          "value": 60,
+          "color": "#e5484d"
+        }
+      ]
+    },
+    "StatChart Cache hit rate": {
+      "mode": "absolute",
+      "defaultColor": "#f5a623",
+      "steps": [
+        {
+          "value": 75,
+          "color": "#30a46c"
+        }
+      ]
+    },
+    "TimeSeriesChart Cache hit rate": {
+      "mode": "absolute",
+      "steps": [
+        {
+          "value": 75,
+          "color": "#f5a623",
+          "name": "Investigate"
+        },
+        {
+          "value": 100,
+          "color": "#30a46c",
+          "name": "Ideal hit rate"
+        }
+      ]
+    },
+    "TimeSeriesChart Percent Used Memory by Host": {
+      "mode": "absolute",
+      "steps": [
+        {
+          "value": 80,
+          "color": "#f5a623",
+          "name": "80% memory usage"
+        },
+        {
+          "value": 100,
+          "color": "#e5484d",
+          "name": "Max memory reached"
+        }
+      ]
+    },
+    "StatChart Fragmentation ratio": {
+      "mode": "absolute",
+      "defaultColor": "#e5484d",
+      "steps": [
+        {
+          "value": 1.5,
+          "color": "#30a46c"
+        }
+      ]
+    },
+    "TimeSeriesChart Fragmentation ratio": {
+      "mode": "absolute",
+      "steps": [
+        {
+          "value": 1.5,
+          "color": "#e5484d",
+          "name": "Restart Redis"
+        }
+      ]
+    }
+  }
+}

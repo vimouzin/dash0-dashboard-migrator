@@ -1,0 +1,27 @@
+[
+  {
+    "id": "dd-monitor-postgres__percent_usage_connections",
+    "kind": "alert",
+    "title": "[Postgres] Number of connections is approaching connection limit on {{host.name}}",
+    "widget_type": "query alert",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "classify.monitor.metric",
+      "alert.opt.notification",
+      "alert.opt.new_group_delay",
+      "alert.opt.require_full_window.true",
+      "metric.derived",
+      "emit.certificate"
+    ],
+    "assumptions": [
+      "A.full-window",
+      "A.no-new-groups",
+      "A.notify-manual"
+    ],
+    "findings": [
+      "exact-under monitor.option",
+      "manual metric.derived"
+    ]
+  }
+]

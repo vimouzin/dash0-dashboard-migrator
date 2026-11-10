@@ -1,0 +1,29 @@
+[
+  {
+    "id": "dd-monitor-nginx__conn_dropped",
+    "kind": "alert",
+    "title": "[NGINX] Connection drop rate is high",
+    "widget_type": "query alert",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "classify.monitor.metric",
+      "alert.opt.unknown",
+      "alert.opt.notification",
+      "alert.opt.new_group_delay",
+      "alert.opt.require_full_window.false",
+      "alert.threshold.recovery",
+      "fn.anomalies",
+      "emit.certificate"
+    ],
+    "assumptions": [
+      "A.no-new-groups",
+      "A.notify-manual"
+    ],
+    "findings": [
+      "exact-under monitor.option",
+      "manual fn.anomalies",
+      "manual monitor.option"
+    ]
+  }
+]

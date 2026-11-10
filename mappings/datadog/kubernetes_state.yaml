@@ -1,0 +1,332 @@
+# Hand-curated (not generated). Datadog kubernetes_state_core (kubernetes_state.*) -> OTel k8sclusterreceiver. Schema: src/ir/mappings.ts.
+# Scope: the kubernetes_state.* metrics that DataDog/integrations-core dashboards and monitors actually query.
+# Evidence: Datadog metadata.csv (kubernetes_state_core, every metric a gauge) and the receiver metadata.yaml, pinned in
+# dash0-team docs/research/sources/kubernetes_state/. Each note names the Kubernetes API field both sides read when it's
+# the same one. Rows with status none: the receiver has no same-semantic metric (mostly object counts and node
+# capacity, which k8sclusterreceiver v0.164.0 doesn't emit).
+version: 1
+integration: kubernetes_state
+sources:
+  datadog_metadata: "https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/kubernetes_state_core/metadata.csv"
+  otel_receiver: "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.164.0/receiver/k8sclusterreceiver/metadata.yaml"
+metrics:
+  kubernetes_state.deployment.replicas_desired:
+    otel: "k8s.deployment.desired"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'Number of desired pods for a deployment' (gauge). Receiver metadata.yaml: k8s.deployment.desired 'Number of desired pods in this deployment' (gauge, {pod}); both read spec.replicas."
+  kubernetes_state.deployment.replicas_available:
+    otel: "k8s.deployment.available"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'The number of available replicas per deployment' (gauge). Receiver metadata.yaml: k8s.deployment.available 'Total number of available pods (ready for at least minReadySeconds) targeted by this deployment' (gauge, {pod}); both read status.availableReplicas."
+  kubernetes_state.deployment.replicas:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The number of replicas per deployment' (gauge). This is status.replicas (all pods targeted, ready or not). The receiver reports only desired (spec.replicas) and available. No equivalent."
+  kubernetes_state.deployment.replicas_updated:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The number of updated replicas per deployment' (gauge). status.updatedReplicas: not reported by k8sclusterreceiver. No equivalent."
+  kubernetes_state.deployment.replicas_unavailable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The number of unavailable replicas per deployment' (gauge). status.unavailableReplicas: not reported (desired - available is close but not the same during rollouts). No equivalent."
+  kubernetes_state.deployment.rollingupdate.max_unavailable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Maximum number of unavailable replicas during a rolling update of a deployment' (gauge). Not reported by k8sclusterreceiver. No equivalent."
+  kubernetes_state.deployment.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of deployments' (gauge). k8sclusterreceiver emits per-object metrics, no object counts; a count needs count by (...) over k8s.deployment.desired, which the translator doesn't build. No direct equivalent."
+  kubernetes_state.replicaset.replicas_desired:
+    otel: "k8s.replicaset.desired"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'Number of desired pods for a ReplicaSet' (gauge). Receiver metadata.yaml: k8s.replicaset.desired 'Number of desired pods in this replicaset' (gauge, {pod}); spec.replicas."
+  kubernetes_state.replicaset.replicas_ready:
+    otel: "k8s.replicaset.available"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: approximate
+    note: "metadata.csv: 'The number of ready replicas per ReplicaSet' (gauge). (status.readyReplicas). Receiver metadata.yaml: k8s.replicaset.available 'Total number of available pods (ready for at least minReadySeconds)' (status.availableReplicas). Equal when minReadySeconds is 0 (the default); lower while pods wait out minReadySeconds."
+  kubernetes_state.replicaset.replicas:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The number of replicas per ReplicaSet' (gauge). status.replicas: the receiver reports only desired and available. No equivalent."
+  kubernetes_state.daemonset.desired:
+    otel: "k8s.daemonset.desired_scheduled_nodes"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{node}"
+    status: exact
+    note: "metadata.csv: 'The number of nodes that should be running the daemon pod' (gauge). Receiver metadata.yaml: k8s.daemonset.desired_scheduled_nodes 'Number of nodes that should be running the daemon pod' (gauge, {node}); status.desiredNumberScheduled."
+  kubernetes_state.daemonset.ready:
+    otel: "k8s.daemonset.ready_nodes"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{node}"
+    status: exact
+    note: "metadata.csv: 'The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready' (gauge). Receiver metadata.yaml: k8s.daemonset.ready_nodes, same wording (gauge, {node}); status.numberReady."
+  kubernetes_state.daemonset.scheduled:
+    otel: "k8s.daemonset.current_scheduled_nodes"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{node}"
+    status: exact
+    note: "metadata.csv: 'The number of nodes running at least one daemon pod and are supposed to' (gauge). Receiver metadata.yaml: k8s.daemonset.current_scheduled_nodes 'Number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod' (gauge, {node}); status.currentNumberScheduled."
+  kubernetes_state.daemonset.misscheduled:
+    otel: "k8s.daemonset.misscheduled_nodes"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{node}"
+    status: exact
+    note: "metadata.csv: 'The number of nodes running a daemon pod but are not supposed to' (gauge). Receiver metadata.yaml: k8s.daemonset.misscheduled_nodes, same wording (gauge, {node}); status.numberMisscheduled."
+  kubernetes_state.daemonset.updated:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The total number of nodes that are running updated daemon pod' (gauge). status.updatedNumberScheduled: not reported. No equivalent."
+  kubernetes_state.daemonset.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of DaemonSets' (gauge). No object counts in k8sclusterreceiver. No direct equivalent."
+  kubernetes_state.statefulset.replicas_desired:
+    otel: "k8s.statefulset.desired_pods"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'Number of desired pods for a StatefulSet' (gauge). Receiver metadata.yaml: k8s.statefulset.desired_pods 'Number of desired pods in the stateful set (the spec.replicas field)' (gauge, {pod})."
+  kubernetes_state.statefulset.replicas_ready:
+    otel: "k8s.statefulset.ready_pods"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'The number of ready replicas per StatefulSet' (gauge). Receiver metadata.yaml: k8s.statefulset.ready_pods 'Number of pods created by the stateful set that have the Ready condition' (gauge, {pod}); status.readyReplicas."
+  kubernetes_state.statefulset.replicas_current:
+    otel: "k8s.statefulset.current_pods"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'The number of current replicas per StatefulSet' (gauge). Receiver metadata.yaml: k8s.statefulset.current_pods 'The number of pods created by the StatefulSet controller from the StatefulSet version' (gauge, {pod}); status.currentReplicas."
+  kubernetes_state.statefulset.replicas_updated:
+    otel: "k8s.statefulset.updated_pods"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'The number of updated replicas per StatefulSet' (gauge). Receiver metadata.yaml: k8s.statefulset.updated_pods (gauge, {pod}); status.updatedReplicas."
+  kubernetes_state.statefulset.replicas:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The number of replicas per StatefulSet' (gauge). status.replicas: not reported (current_pods is status.currentReplicas, which differs during an update). No equivalent."
+  kubernetes_state.statefulset.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of StatefulSets' (gauge). No object counts in k8sclusterreceiver. No direct equivalent."
+  kubernetes_state.job.succeeded:
+    otel: "k8s.job.successful_pods"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'The number of pods which reached Phase Succeeded' (gauge). Receiver metadata.yaml: k8s.job.successful_pods 'The number of pods which reached phase Succeeded for a job' (gauge, {pod}); status.succeeded."
+  kubernetes_state.job.failed:
+    otel: "k8s.job.failed_pods"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{pod}"
+    status: exact
+    note: "metadata.csv: 'The number of pods which reached Phase Failed' (gauge). Receiver metadata.yaml: k8s.job.failed_pods 'The number of pods which reached phase Failed for a job' (gauge, {pod}); status.failed."
+  kubernetes_state.job.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of jobs' (gauge). No object counts in k8sclusterreceiver. No direct equivalent."
+  kubernetes_state.job.duration:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Time elapsed between the start and completion time of the job' (gauge). Not reported by k8sclusterreceiver. No equivalent."
+  kubernetes_state.cronjob.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of cronjobs' (gauge). No object counts in k8sclusterreceiver. No direct equivalent."
+  kubernetes_state.container.restarts:
+    otel: "k8s.container.restarts"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{restart}"
+    status: exact
+    note: "metadata.csv: 'The number of container restarts per container' (gauge). Receiver metadata.yaml: k8s.container.restarts 'How many times the container has restarted in the recent past', from restartCount (gauge, {restart})."
+  kubernetes_state.container.ready:
+    otel: "k8s.container.ready"
+    ddKind: gauge
+    otelKind: gauge
+    status: exact
+    note: "metadata.csv: 'Describes whether the containers readiness check succeeded' (gauge). Receiver metadata.yaml: k8s.container.ready 'Whether a container has passed its readiness probe (0 for no, 1 for yes)' (gauge)."
+  kubernetes_state.container.cpu_requested:
+    otel: "k8s.container.cpu_request"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{cpu}"
+    status: exact
+    note: "metadata.csv: 'The value of CPU requested by a container' (gauge). (cpu). Receiver metadata.yaml: k8s.container.cpu_request 'Resource requested for the container' (gauge, {cpu})."
+  kubernetes_state.container.running:
+    otel: "k8s.container.status.state"
+    labels: {"k8s.container.status.state": "running"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "{container}"
+    status: approximate
+    note: "metadata.csv: 'Describes whether the container is currently in running state' (gauge). (1 or 0 per container). Receiver metadata.yaml: k8s.container.status.state with k8s.container.status.state=running (non-monotonic sum, {container}), 1 for the container's current state. Disabled by default in the receiver (experimental): enable it."
+  kubernetes_state.container.terminated:
+    otel: "k8s.container.status.state"
+    labels: {"k8s.container.status.state": "terminated"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "{container}"
+    status: approximate
+    note: "metadata.csv: 'Describes whether the container is currently in terminated state' (gauge). Receiver metadata.yaml: k8s.container.status.state with k8s.container.status.state=terminated (non-monotonic sum, {container}). Disabled by default in the receiver (experimental): enable it."
+  kubernetes_state.container.status_report.count.waiting:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Describes the reason the container is currently in waiting state' (gauge). (per reason). k8s.container.status.reason (disabled by default) mixes waiting and terminated reasons in one attribute, so the waiting-only set can't be selected exactly. No equivalent."
+  kubernetes_state.pod.status_phase:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The pods current phase' (gauge). One series per pod_phase tag, value 1. Receiver metadata.yaml: k8s.pod.phase is one series per pod whose VALUE encodes the phase (1 Pending ... 5 Unknown), so a sum by pod_phase has no selector equivalent. No direct equivalent."
+  kubernetes_state.pod.ready:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Describes whether the pod is ready to serve requests' (gauge). No pod readiness metric in k8sclusterreceiver (only per container, k8s.container.ready). No equivalent."
+  kubernetes_state.pod.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of Pods' (gauge). No object counts in k8sclusterreceiver. No direct equivalent."
+  kubernetes_state.service.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of services' (gauge). No object counts in k8sclusterreceiver. No direct equivalent."
+  kubernetes_state.crd.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of custom resource definitions' (gauge). Not reported. No equivalent."
+  kubernetes_state.node.count:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Number of nodes' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.cpu_allocatable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The allocatable CPU of a node that is available for scheduling' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.cpu_capacity:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The CPU capacity of a node' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.memory_allocatable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The allocatable memory of a node that is available for scheduling' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.memory_capacity:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The memory capacity of a node' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.pods_allocatable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The allocatable memory of a node that is available for scheduling' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.pods_capacity:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The pods capacity of a node' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.ephemeral_storage_capacity:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The ephemeral-storage capacity of a node' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.gpu_allocatable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The allocatable GPU of a node that is available for scheduling' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.gpu_capacity:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The GPU capacity of a node' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.status:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'Whether the node can schedule new pods' (gauge). k8sclusterreceiver v0.164.0 reports only k8s.node.condition for nodes (no capacity, allocatable or count metrics). No equivalent."
+  kubernetes_state.node.by_condition:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "metadata.csv: 'The condition of a cluster node' (gauge). One series per (condition, status) tag pair, value 1. Receiver metadata.yaml: k8s.node.condition (disabled by default) is one series per condition whose VALUE encodes the status (1 true, 0 false, -1 unknown), so status:true has no selector equivalent. No direct equivalent."

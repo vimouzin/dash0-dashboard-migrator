@@ -1,0 +1,1009 @@
+[
+  {
+    "id": "dd-dash-redisdb__overview/w-0/w-8013519185925578",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-0/w-2021637053460700",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-1/w-4861235762516572",
+    "kind": "panel",
+    "title": "Hit rate",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"redis.keyspace.hits\"}[$__interval] anchored)) / (avg (rate({otel_metric_name=\"redis.keyspace.hits\"}[$__interval] anchored)) + avg (rate({otel_metric_name=\"redis.keyspace.misses\"}[$__interval] anchored))) * 100"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "arith.same-groups",
+      "arith.div",
+      "arith.number",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.nonzero-denominator",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under panel.conditional-format",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-1/w-4413414001262562",
+    "kind": "panel",
+    "title": "Blocked clients",
+    "widget_type": "query_value",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.clients.blocked\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under panel.conditional-format",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-1/w-3774440462666086",
+    "kind": "panel",
+    "title": "Redis keyspace",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.db.keys\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.rollup.default",
+      "space.agg",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under panel.conditional-format",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-1/w-5886678624997982",
+    "kind": "panel",
+    "title": "Unsaved changes",
+    "widget_type": "query_value",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.rdb.changes_since_last_save\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under panel.conditional-format",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-1/w-8493776400619900",
+    "kind": "panel",
+    "title": "Primary link down",
+    "widget_type": "query_value",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.no_equivalent"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-1/w-7896589211182748",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-17",
+    "kind": "panel",
+    "title": "Latency by Host",
+    "widget_type": "timeseries",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.no_equivalent"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-18",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-19",
+    "kind": "panel",
+    "title": "Slowlog duration",
+    "widget_type": "timeseries",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.no_equivalent"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-8558020471598403",
+    "kind": "panel",
+    "title": "Slowlog query rates",
+    "widget_type": "toplist",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.no_equivalent"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-3029111733155793",
+    "kind": "panel",
+    "title": "Average replication delay (offset)",
+    "widget_type": "timeseries",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.no_equivalent"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-8261008667770670",
+    "kind": "panel",
+    "title": "Average CPU usage",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"redis.cpu.time\", state=\"sys\"}[$__interval] anchored))",
+      "avg (rate({otel_metric_name=\"redis.cpu.time\", state=\"user\"}[$__interval] anchored))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "select.labels",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-20",
+    "kind": "panel",
+    "title": "Cache hit rate",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"redis.keyspace.hits\"}[$__interval] anchored)) / (avg (rate({otel_metric_name=\"redis.keyspace.hits\"}[$__interval] anchored)) + avg (rate({otel_metric_name=\"redis.keyspace.misses\"}[$__interval] anchored))) * 100"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "arith.same-groups",
+      "arith.div",
+      "arith.number",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.nonzero-denominator",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under panel.conditional-format",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-2/w-21",
+    "kind": "panel",
+    "title": "Cache hit rate",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"redis.keyspace.hits\"}[$__interval] anchored)) / (avg (rate({otel_metric_name=\"redis.keyspace.hits\"}[$__interval] anchored)) + avg (rate({otel_metric_name=\"redis.keyspace.misses\"}[$__interval] anchored))) * 100"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "arith.same-groups",
+      "arith.div",
+      "arith.number",
+      "widget.timeseries",
+      "panel.markers",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.nonzero-denominator",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under panel.markers",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3/w-23",
+    "kind": "panel",
+    "title": "Percent Used Memory by Host",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "avg by (host_name) (avg_over_time({otel_metric_name=\"redis.memory.used\"}[$__interval])) / max by (host_name) (avg_over_time({otel_metric_name=\"redis.maxmemory\"}[$__interval])) * 100"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "arith.same-groups",
+      "arith.div",
+      "arith.number",
+      "widget.timeseries",
+      "panel.markers",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.nonzero-denominator",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under panel.markers",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3/w-24",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3/w-25",
+    "kind": "panel",
+    "title": "Evictions",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "60 * sum by (host_name) (rate({otel_metric_name=\"redis.keys.evicted\"}[$__rate_interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "fn.per_unit.counter",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.dd-per-unit",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3/w-8528925087848645",
+    "kind": "panel",
+    "title": "Total allocated memory",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.memory.rss\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3/w-26",
+    "kind": "panel",
+    "title": "Fragmentation ratio",
+    "widget_type": "query_value",
+    "status": "exact-under",
+    "promql": [
+      "avg (avg_over_time({otel_metric_name=\"redis.memory.fragmentation_ratio\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under panel.conditional-format",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3/w-27",
+    "kind": "panel",
+    "title": "Fragmentation ratio",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "avg (avg_over_time({otel_metric_name=\"redis.memory.fragmentation_ratio\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "panel.markers",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under panel.markers",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-4/w-11",
+    "kind": "panel",
+    "title": "Connected clients",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.clients.connected\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-4/w-12",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-4/w-29",
+    "kind": "panel",
+    "title": "Blocked clients",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.clients.blocked\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-4/w-13",
+    "kind": "panel",
+    "title": "Connected replicas",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.slaves.connected\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-4/w-14",
+    "kind": "panel",
+    "title": "Rejected connections",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.connections.rejected\"}[$__interval])) - sum (avg_over_time({otel_metric_name=\"redis.connections.rejected\"}[$__interval] offset $__interval))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "fn.diff",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-gaps",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-4/w-22",
+    "kind": "panel",
+    "title": "Commands per second",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "sum (rate({otel_metric_name=\"redis.commands.processed\"}[$__interval] anchored))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "widget.query_value",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3286140376470284/w-16",
+    "kind": "panel",
+    "title": "Total keys",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.db.keys\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "panel.style",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under panel.style",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3286140376470284/w-1840397376605166",
+    "kind": "panel",
+    "title": "Current total",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.db.keys\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.rollup.default",
+      "space.agg",
+      "widget.query_value",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3286140376470284/w-4351331682136830",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3286140376470284/w-7595489265803660",
+    "kind": "panel",
+    "title": "Expired keys",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.keys.expired\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "panel.style",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under panel.style",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3286140376470284/w-4565766774748375",
+    "kind": "panel",
+    "title": "Keys with expiration",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"redis.db.expires\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.rollup.default",
+      "space.agg",
+      "widget.query_value",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-3286140376470284/w-7861051565277545",
+    "kind": "panel",
+    "title": "Key length distribution",
+    "widget_type": "distribution",
+    "status": "unsupported",
+    "promql": [],
+    "rules": [
+      "widget.heatmap",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual widget.unsupported"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-5/w-30",
+    "kind": "panel",
+    "title": "Error Logs",
+    "widget_type": "list_stream",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "logs.stream",
+      "log.match.reserved.approx",
+      "log.match.value",
+      "log.match.var.dropped",
+      "log.match.status",
+      "panel.style",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.logtable-keys",
+      "A.log-source",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under log.match.var.dropped",
+      "exact-under logs.stream",
+      "exact-under panel.style"
+    ]
+  },
+  {
+    "id": "dd-dash-redisdb__overview/w-5/w-5980709888086058",
+    "kind": "panel",
+    "title": "All Logs",
+    "widget_type": "list_stream",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "logs.stream",
+      "log.match.reserved.approx",
+      "log.match.value",
+      "log.match.var.dropped",
+      "panel.style",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.logtable-keys",
+      "A.log-source",
+      "A.var-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under log.match.var.dropped",
+      "exact-under logs.stream",
+      "exact-under panel.style"
+    ]
+  }
+]

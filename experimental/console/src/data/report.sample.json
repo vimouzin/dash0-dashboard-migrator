@@ -1,0 +1,1626 @@
+{
+  "SAMPLE": "Generated from the real fixture and the predicted plan in 06 section 10. Not tool output. Do not quote numbers from it.",
+  "diagnostics": [],
+  "items": [
+    {
+      "group": null,
+      "id": "group-1",
+      "kind": "group",
+      "layout": {
+        "h": 5,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/0",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "About Redis",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "About Redis",
+      "id": "widget-1.1",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/0/definition/widgets/0",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "About Redis",
+      "id": "widget-1.2",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/0/definition/widgets/1",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 8,
+        "y": 0
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "group": null,
+      "id": "group-2",
+      "kind": "group",
+      "layout": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/1",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "Overview",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Overview",
+      "id": "widget-2.1",
+      "kind": "widget",
+      "layout": {
+        "h": 1,
+        "w": 2,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "100 * avg(rate({otel_metric_name=\"redis.keyspace.hits\"}[1m])) / (avg(rate({otel_metric_name=\"redis.keyspace.hits\"}[1m])) + avg(rate({otel_metric_name=\"redis.keyspace.misses\"}[1m])))",
+      "reason_codes": ["RATE_CONVERSION", "ZERO_DENOMINATOR_RISK", "TEMPLATE_VARIABLE_PINNED"],
+      "source_formula": "(query1 / (query1 + query2)) * 100",
+      "source_path": "/widgets/1/definition/widgets/0",
+      "source_queries": [
+        "avg:redis.stats.keyspace_hits{$scope,$host}",
+        "avg:redis.stats.keyspace_misses{$scope,$host}"
+      ],
+      "status": "approximate",
+      "target_layout": {
+        "h": 1,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "StatChart (mean)",
+      "title": "Hit rate",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Overview",
+      "id": "widget-2.2",
+      "kind": "widget",
+      "layout": {
+        "h": 1,
+        "w": 2,
+        "x": 2,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.clients.blocked\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": null,
+      "source_path": "/widgets/1/definition/widgets/1",
+      "source_queries": ["sum:redis.clients.blocked{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 1,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "target_panel": "StatChart (max)",
+      "title": "Blocked clients",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Overview",
+      "id": "widget-2.3",
+      "kind": "widget",
+      "layout": {
+        "h": 1,
+        "w": 2,
+        "x": 0,
+        "y": 1
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.db.keys\"})",
+      "reason_codes": ["DB_SUM_REQUIRED"],
+      "source_formula": null,
+      "source_path": "/widgets/1/definition/widgets/2",
+      "source_queries": ["sum:redis.keys{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 1,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "target_panel": "StatChart (max)",
+      "title": "Redis keyspace",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Overview",
+      "id": "widget-2.4",
+      "kind": "widget",
+      "layout": {
+        "h": 1,
+        "w": 2,
+        "x": 2,
+        "y": 1
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.rdb.changes_since_last_save\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": null,
+      "source_path": "/widgets/1/definition/widgets/3",
+      "source_queries": ["sum:redis.rdb.changes_since_last{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 1,
+        "w": 4,
+        "x": 4,
+        "y": 1
+      },
+      "target_panel": "StatChart (mean)",
+      "title": "Unsaved changes",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Overview",
+      "id": "widget-2.5",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 2
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["NO_EQUIVALENT_METRIC"],
+      "source_formula": null,
+      "source_path": "/widgets/1/definition/widgets/4",
+      "source_queries": ["sum:redis.replication.master_link_down_since_seconds{$scope,$host}"],
+      "status": "no_data",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "target_panel": "placeholder",
+      "title": "Primary link down",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Overview",
+      "id": "widget-2.6",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 2
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/1/definition/widgets/5",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "group": null,
+      "id": "group-3",
+      "kind": "group",
+      "layout": {
+        "h": 13,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/2",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "Performance Metrics",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.1",
+      "kind": "widget",
+      "layout": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["NO_EQUIVALENT_METRIC"],
+      "source_formula": "query2",
+      "source_path": "/widgets/2/definition/widgets/0",
+      "source_queries": ["avg:redis.info.latency_ms{$scope,$host} by {host}"],
+      "status": "no_data",
+      "target_layout": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "placeholder",
+      "title": "Latency by Host",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.2",
+      "kind": "widget",
+      "layout": {
+        "h": 4,
+        "w": 2,
+        "x": 4,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/2/definition/widgets/1",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.3",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 4
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["NO_EQUIVALENT_METRIC"],
+      "source_formula": "top(query1 / 1000, 10, 'mean', 'desc')",
+      "source_path": "/widgets/2/definition/widgets/2",
+      "source_queries": ["sum:redis.slowlog.micros.95percentile{$scope,$host} by {name,command}"],
+      "status": "no_data",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 0,
+        "y": 4
+      },
+      "target_panel": "placeholder",
+      "title": "Slowlog duration",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.4",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 4
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["NO_EQUIVALENT_METRIC"],
+      "source_formula": "query1",
+      "source_path": "/widgets/2/definition/widgets/3",
+      "source_queries": ["sum:redis.slowlog.micros.count{$host,$scope} by {command,name}"],
+      "status": "no_data",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 8,
+        "y": 4
+      },
+      "target_panel": "placeholder",
+      "title": "Slowlog query rates",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "toplist"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.5",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 6
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["NO_EQUIVALENT_METRIC"],
+      "source_formula": "query1",
+      "source_path": "/widgets/2/definition/widgets/4",
+      "source_queries": ["avg:redis.replication.delay{$host,$scope}"],
+      "status": "no_data",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "target_panel": "placeholder",
+      "title": "Average replication delay (offset)",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.6",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 8
+      },
+      "notes": "",
+      "promql": [
+        "avg(rate({otel_metric_name=\"redis.cpu.time\",state=\"sys\"}[1m]))",
+        "avg(rate({otel_metric_name=\"redis.cpu.time\",state=\"user\"}[1m]))"
+      ],
+      "reason_codes": ["RATE_CONVERSION"],
+      "source_formula": ["query1", "query2"],
+      "source_path": "/widgets/2/definition/widgets/5",
+      "source_queries": ["avg:redis.cpu.sys{$host,$scope}", "avg:redis.cpu.user{$host,$scope}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "target_panel": "TimeSeriesChart, 2 queries",
+      "title": "Average CPU usage",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.7",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 10
+      },
+      "notes": "",
+      "promql": "100 * avg(rate({otel_metric_name=\"redis.keyspace.hits\"}[1m])) / (avg(rate({otel_metric_name=\"redis.keyspace.hits\"}[1m])) + avg(rate({otel_metric_name=\"redis.keyspace.misses\"}[1m])))",
+      "reason_codes": ["RATE_CONVERSION", "ZERO_DENOMINATOR_RISK"],
+      "source_formula": "(query1 / (query1 + query2)) * 100",
+      "source_path": "/widgets/2/definition/widgets/6",
+      "source_queries": [
+        "avg:redis.stats.keyspace_hits{$scope,$host}",
+        "avg:redis.stats.keyspace_misses{$scope,$host}"
+      ],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 10
+      },
+      "target_panel": "StatChart (mean)",
+      "title": "Cache hit rate",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Performance Metrics",
+      "id": "widget-3.8",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 2,
+        "y": 10
+      },
+      "notes": "",
+      "promql": "100 * avg(rate({otel_metric_name=\"redis.keyspace.hits\"}[1m])) / (avg(rate({otel_metric_name=\"redis.keyspace.hits\"}[1m])) + avg(rate({otel_metric_name=\"redis.keyspace.misses\"}[1m])))",
+      "reason_codes": ["RATE_CONVERSION", "ZERO_DENOMINATOR_RISK"],
+      "source_formula": "(query1 / (query1 + query2)) * 100",
+      "source_path": "/widgets/2/definition/widgets/7",
+      "source_queries": [
+        "avg:redis.stats.keyspace_hits{$scope,$host}",
+        "avg:redis.stats.keyspace_misses{$scope,$host}"
+      ],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 4,
+        "y": 10
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Cache hit rate",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "group": null,
+      "id": "group-4",
+      "kind": "group",
+      "layout": {
+        "h": 11,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/3",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "Memory Metrics",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Memory Metrics",
+      "id": "widget-4.1",
+      "kind": "widget",
+      "layout": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "100 * avg({otel_metric_name=\"redis.memory.used\"}) / max({otel_metric_name=\"redis.maxmemory\"})",
+      "reason_codes": ["LABEL_MAPPING_MISSING", "METRIC_NOT_ENABLED", "ZERO_DENOMINATOR_RISK"],
+      "source_formula": "(query1 / query2) * 100",
+      "source_path": "/widgets/3/definition/widgets/0",
+      "source_queries": [
+        "avg:redis.mem.used{$scope,$host} by {host}",
+        "max:redis.mem.maxmemory{$scope,$host} by {host}"
+      ],
+      "status": "approximate",
+      "target_layout": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Percent Used Memory by Host",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Memory Metrics",
+      "id": "widget-4.2",
+      "kind": "widget",
+      "layout": {
+        "h": 4,
+        "w": 2,
+        "x": 4,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/3/definition/widgets/1",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Memory Metrics",
+      "id": "widget-4.3",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 4
+      },
+      "notes": "",
+      "promql": "60 * sum(rate({otel_metric_name=\"redis.keys.evicted\"}[1m]))",
+      "reason_codes": ["APPROXIMATE_FUNCTION", "LABEL_MAPPING_MISSING"],
+      "source_formula": "per_minute(query2)",
+      "source_path": "/widgets/3/definition/widgets/2",
+      "source_queries": ["sum:redis.keys.evicted{$scope,$host} by {host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Evictions",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Memory Metrics",
+      "id": "widget-4.4",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 6
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.memory.rss\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": "query1",
+      "source_path": "/widgets/3/definition/widgets/3",
+      "source_queries": ["sum:redis.mem.rss{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Total allocated memory",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Memory Metrics",
+      "id": "widget-4.5",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 8
+      },
+      "notes": "",
+      "promql": "avg({otel_metric_name=\"redis.memory.fragmentation_ratio\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": null,
+      "source_path": "/widgets/3/definition/widgets/4",
+      "source_queries": ["avg:redis.mem.fragmentation_ratio{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 8
+      },
+      "target_panel": "StatChart (mean)",
+      "title": "Fragmentation ratio",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Memory Metrics",
+      "id": "widget-4.6",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 2,
+        "y": 8
+      },
+      "notes": "",
+      "promql": "avg({otel_metric_name=\"redis.memory.fragmentation_ratio\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": "query1",
+      "source_path": "/widgets/3/definition/widgets/5",
+      "source_queries": ["avg:redis.mem.fragmentation_ratio{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 4,
+        "y": 8
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Fragmentation ratio",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "group": null,
+      "id": "group-5",
+      "kind": "group",
+      "layout": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/4",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "Base Activity Metrics",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Base Activity Metrics",
+      "id": "widget-5.1",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.clients.connected\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": "query1",
+      "source_path": "/widgets/4/definition/widgets/0",
+      "source_queries": ["sum:redis.net.clients{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Connected clients",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Base Activity Metrics",
+      "id": "widget-5.2",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/4/definition/widgets/1",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 2,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Base Activity Metrics",
+      "id": "widget-5.3",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.clients.blocked\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": "query2",
+      "source_path": "/widgets/4/definition/widgets/2",
+      "source_queries": ["sum:redis.clients.blocked{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Blocked clients",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Base Activity Metrics",
+      "id": "widget-5.4",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 2
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.slaves.connected\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": "query1",
+      "source_path": "/widgets/4/definition/widgets/3",
+      "source_queries": ["sum:redis.net.slaves{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 10,
+        "x": 0,
+        "y": 2
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Connected replicas",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Base Activity Metrics",
+      "id": "widget-5.5",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 5,
+        "x": 5,
+        "y": 2
+      },
+      "notes": "",
+      "promql": "sum(increase({otel_metric_name=\"redis.connections.rejected\"}[1m]))",
+      "reason_codes": ["APPROXIMATE_FUNCTION"],
+      "source_formula": "diff(query1)",
+      "source_path": "/widgets/4/definition/widgets/4",
+      "source_queries": ["sum:redis.net.rejected{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 10,
+        "x": 10,
+        "y": 2
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Rejected connections",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Base Activity Metrics",
+      "id": "widget-5.6",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 10,
+        "y": 2
+      },
+      "notes": "",
+      "promql": "sum(rate({otel_metric_name=\"redis.commands.processed\"}[1m]))",
+      "reason_codes": ["RATE_CONVERSION"],
+      "source_formula": "query1",
+      "source_path": "/widgets/4/definition/widgets/5",
+      "source_queries": ["sum:redis.net.commands{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "target_panel": "StatChart (mean)",
+      "title": "Commands per second",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "group": null,
+      "id": "group-6",
+      "kind": "group",
+      "layout": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/5",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "Key Metrics",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Key Metrics",
+      "id": "widget-6.1",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.db.keys\"})",
+      "reason_codes": ["DB_SUM_REQUIRED"],
+      "source_formula": "query1",
+      "source_path": "/widgets/5/definition/widgets/0",
+      "source_queries": ["sum:redis.keys{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Total keys",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Key Metrics",
+      "id": "widget-6.2",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 0
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.db.keys\"})",
+      "reason_codes": ["DB_SUM_REQUIRED"],
+      "source_formula": "query1",
+      "source_path": "/widgets/5/definition/widgets/1",
+      "source_queries": ["sum:redis.keys{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "target_panel": "StatChart (last)",
+      "title": "Current total",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Key Metrics",
+      "id": "widget-6.3",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": [],
+      "source_formula": null,
+      "source_path": "/widgets/5/definition/widgets/2",
+      "source_queries": [],
+      "status": "exact",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "target_panel": "Markdown",
+      "title": "untitled",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "note"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Key Metrics",
+      "id": "widget-6.4",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 2
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.keys.expired\"})",
+      "reason_codes": ["DEFAULT_ROLLUP_DIFFERENCE"],
+      "source_formula": "query1",
+      "source_path": "/widgets/5/definition/widgets/3",
+      "source_queries": ["sum:redis.keys.expired{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 2
+      },
+      "target_panel": "TimeSeriesChart",
+      "title": "Expired keys",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "timeseries"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Key Metrics",
+      "id": "widget-6.5",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 2
+      },
+      "notes": "",
+      "promql": "sum({otel_metric_name=\"redis.db.expires\"})",
+      "reason_codes": ["DB_SUM_REQUIRED"],
+      "source_formula": "query1",
+      "source_path": "/widgets/5/definition/widgets/4",
+      "source_queries": ["sum:redis.expires{$scope,$host}"],
+      "status": "approximate",
+      "target_layout": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "target_panel": "StatChart (last)",
+      "title": "Keys with expiration",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query_value"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Key Metrics",
+      "id": "widget-6.6",
+      "kind": "widget",
+      "layout": {
+        "h": 2,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["UNSUPPORTED_WIDGET", "NO_EQUIVALENT_METRIC"],
+      "source_formula": "query1",
+      "source_path": "/widgets/5/definition/widgets/5",
+      "source_queries": ["sum:redis.key.length{$scope, $host, $key} by {key}"],
+      "status": "unsupported",
+      "target_layout": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 2
+      },
+      "target_panel": "placeholder",
+      "title": "Key length distribution",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "distribution"
+    },
+    {
+      "group": null,
+      "id": "group-7",
+      "kind": "group",
+      "layout": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "reason_codes": ["LAYOUT_APPROXIMATE"],
+      "source_path": "/widgets/6",
+      "status": "approximate",
+      "target_panel": "Grid section",
+      "title": "Logs",
+      "widget_type": "group"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Logs",
+      "id": "widget-7.1",
+      "kind": "widget",
+      "layout": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["UNSUPPORTED_WIDGET", "NON_METRIC_DATA_SOURCE"],
+      "source_formula": null,
+      "source_path": "/widgets/6/definition/widgets/0",
+      "source_queries": ["source:redis $scope $host status:error"],
+      "status": "unsupported",
+      "target_layout": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "target_panel": "placeholder",
+      "title": "Error Logs",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "list_stream"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": "Logs",
+      "id": "widget-7.2",
+      "kind": "widget",
+      "layout": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "notes": "",
+      "promql": null,
+      "reason_codes": ["UNSUPPORTED_WIDGET", "NON_METRIC_DATA_SOURCE"],
+      "source_formula": null,
+      "source_path": "/widgets/6/definition/widgets/1",
+      "source_queries": ["source:redis $scope $host"],
+      "status": "unsupported",
+      "target_layout": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "target_panel": "placeholder",
+      "title": "All Logs",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "list_stream"
+    },
+    {
+      "dash0": {
+        "asset_id": null,
+        "import_status": null,
+        "url": null
+      },
+      "group": null,
+      "id": "monitor-high_mem",
+      "kind": "monitor",
+      "layout": null,
+      "notes": "require_full_window and new_host_delay have no Dash0 equivalent",
+      "promql": "avg_over_time((100 * avg({otel_metric_name=\"redis.memory.used\"}) / avg({otel_metric_name=\"redis.maxmemory\"}))[5m:1m]) > $__threshold",
+      "reason_codes": [
+        "MONITOR_OPTION_UNSUPPORTED",
+        "LABELS_DROPPED_BY_AGGREGATION",
+        "ZERO_DENOMINATOR_RISK",
+        "METRIC_NOT_ENABLED"
+      ],
+      "source_formula": null,
+      "source_path": "/definition",
+      "source_queries": [
+        "avg(last_5m):100 * avg:redis.mem.used{*} / avg:redis.mem.maxmemory{*} > 90"
+      ],
+      "status": "approximate",
+      "target_panel": "PrometheusAlertRule",
+      "thresholds": {
+        "degraded": 70,
+        "failed": 90
+      },
+      "title": "[Redis] High memory consumption",
+      "verification": {
+        "imported": null,
+        "numeric_check": "not_tested",
+        "promql_valid": null,
+        "returns_data": null,
+        "schema_valid": null
+      },
+      "widget_type": "query alert"
+    }
+  ],
+  "run": {
+    "mapping_version": "redis-v1",
+    "rule_version": "1",
+    "source": "redisdb/assets/dashboards/overview.json",
+    "source_commit": "a9b9e42b7e48",
+    "source_sha256": "75f939abc4adbc1bb23adfd084ac9e79865e57d91262b1fea40736363fbf2722",
+    "tool_version": "sample"
+  },
+  "schema_version": "1",
+  "summary": {
+    "import": {
+      "created": 0,
+      "not_attempted": 44,
+      "rejected": 0,
+      "updated": 0
+    },
+    "metrics": {
+      "mapped": 18,
+      "no_equivalent": 6,
+      "total": 24,
+      "unknown": 0
+    },
+    "monitors": {
+      "approximate": 1,
+      "exact": 0,
+      "failed": 0,
+      "total": 1,
+      "unsupported": 0
+    },
+    "numerical": {
+      "failed": 0,
+      "not_tested": 1,
+      "passed": 0
+    },
+    "widgets": {
+      "approximate": 21,
+      "exact": 7,
+      "failed": 0,
+      "no_data": 5,
+      "total": 36,
+      "unsupported": 3
+    }
+  }
+}

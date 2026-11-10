@@ -1,0 +1,289 @@
+# Hand-curated (not generated). Datadog system.* host metric -> OTel hostmetricsreceiver metric. Schema: src/ir/mappings.ts (CONTRACT-001).
+# Evidence for every row: how the datadog-agent core check computes and submits the metric (sender.Gauge / sender.Rate,
+# pinned at tag 7.60.0), and the metric's type/unit/attributes in the hostmetrics scraper metadata.yaml plus the scraper
+# code that fills it (pinned at contrib v0.164.0). Byte copies: dash0-team docs/research/sources/{datadog-agent-system,hostmetrics}/.
+# Units: Datadog system.cpu.* are PERCENT of CPU time (0-100), OTel system.cpu.utilization a fraction (0-1): scale 100.
+# Datadog system.mem.* are MiB (bytes / 1024 / 1024), OTel bytes: scale 1/1048576 = 9.5367431640625e-07.
+# Rows with scale wait for select.metric.transform (until it lands T4 fails them closed as metric.needs_transform).
+# Scope: the Linux core checks (cpu, load, memory, io, network). The paging scraper (system.swap.*) is not pinned.
+version: 1
+integration: system
+sources:
+  datadog_cpu_check: "https://github.com/DataDog/datadog-agent/blob/7.60.0/pkg/collector/corechecks/system/cpu/cpu/cpu.go"
+  datadog_load_check: "https://github.com/DataDog/datadog-agent/blob/7.60.0/pkg/collector/corechecks/system/cpu/load/load.go"
+  datadog_memory_check: "https://github.com/DataDog/datadog-agent/blob/7.60.0/pkg/collector/corechecks/system/memory/memory_nix.go"
+  datadog_io_check: "https://github.com/DataDog/datadog-agent/blob/7.60.0/pkg/collector/corechecks/system/disk/io/iostats_nix.go"
+  datadog_network_check: "https://github.com/DataDog/datadog-agent/blob/7.60.0/pkg/collector/corechecks/net/network/network.go"
+  otel_receiver: "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.0/receiver/hostmetricsreceiver/internal/scraper"
+metrics:
+  # ---- CPU (cpu.go: 100 * delta(state) / delta(user+system+idle+nice+iowait+irq+softirq+steal), aggregate over all CPUs)
+  system.cpu.idle:
+    otel: "system.cpu.utilization"
+    labels: {state: "idle"}
+    ddKind: gauge
+    otelKind: gauge
+    unit: "1"
+    scale: 100
+    status: approximate
+    note: "check source cpu.go: sender.Gauge('system.cpu.idle', idle*toPercent) = 100 * delta(Idle) / delta(total CPU time), all CPUs together (percent). Receiver metadata.yaml: system.cpu.utilization (gauge, unit 1) state=idle; ucal/cpu_utilization_calculator.go: delta(Idle) / delta(same 8-state total) per CPU, and generated_config.go defaults to attributes [state] with aggregation_strategy avg, i.e. averaged over CPUs. Fraction -> percent: scale 100. Approximate: average of per-CPU ratios vs ratio of sums, and a different scrape interval. Disabled by default in the receiver (enable system.cpu.utilization); if the cpu attribute is opted in, the series must be averaged over cpu."
+  system.cpu.iowait:
+    otel: "system.cpu.utilization"
+    labels: {state: "wait"}
+    ddKind: gauge
+    otelKind: gauge
+    unit: "1"
+    scale: 100
+    status: approximate
+    note: "check source cpu.go: sender.Gauge('system.cpu.iowait') = 100 * delta(Iowait) / delta(total CPU time) (percent). Receiver metadata.yaml: system.cpu.utilization state=wait, which cpu_scraper_linux.go fills from cpuUtilization.Iowait; averaged over CPUs by default (generated_config.go). Scale 100 (fraction -> percent). Approximate for the same reasons as system.cpu.idle. Disabled by default in the receiver."
+  system.cpu.stolen:
+    otel: "system.cpu.utilization"
+    labels: {state: "steal"}
+    ddKind: gauge
+    otelKind: gauge
+    unit: "1"
+    scale: 100
+    status: approximate
+    note: "check source cpu.go: sender.Gauge('system.cpu.stolen') = 100 * delta(Steal) / delta(total CPU time) (percent). Receiver metadata.yaml: system.cpu.utilization state=steal (cpu_scraper_linux.go: cpuUtilization.Steal); averaged over CPUs by default. Scale 100. Approximate as system.cpu.idle. Disabled by default in the receiver."
+  system.cpu.user:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "100 * (system.cpu.utilization{state=user} + system.cpu.utilization{state=nice})"
+    note: "check source cpu.go: user = (User + Nice) deltas, so system.cpu.user is 100 * delta(User+Nice) / delta(total) (percent). Receiver metadata.yaml: system.cpu.utilization has user and nice as separate states (cpu_scraper_linux.go), so no single series matches: the sum of the two states, times 100. Disabled by default in the receiver. Not translated yet (derived)."
+  system.cpu.system:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "100 * (system.cpu.utilization{state=system} + system.cpu.utilization{state=interrupt} + system.cpu.utilization{state=softirq})"
+    note: "check source cpu.go: system = (System + Irq + Softirq) deltas (percent). Receiver metadata.yaml: system.cpu.utilization states system, interrupt (Irq) and softirq are separate (cpu_scraper_linux.go), so the equivalent is their sum times 100. Disabled by default in the receiver. Not translated yet (derived)."
+  system.cpu.interrupt:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "100 * (system.cpu.utilization{state=interrupt} + system.cpu.utilization{state=softirq})"
+    note: "check source cpu.go: interrupt = (Irq + Softirq) deltas (percent). Receiver metadata.yaml: system.cpu.utilization states interrupt and softirq (cpu_scraper_linux.go); their sum times 100. Disabled by default in the receiver. Not translated yet (derived)."
+  system.cpu.guest:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: none
+    note: "check source cpu.go: 100 * delta(Guest) / delta(total) (percent). Receiver metadata.yaml: system.cpu.utilization/system.cpu.time have no guest state (enum idle, interrupt, nice, softirq, steal, system, user, wait); ucal/cpu_utilization_calculator.go says guest time is already inside user on Linux and is not reported separately. No equivalent."
+  # ---- Load (load.go: raw load averages from gopsutil load.Avg)
+  system.load.1:
+    otel: "system.cpu.load_average.1m"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{thread}"
+    status: exact
+    note: "check source load.go: sender.Gauge('system.load.1', avg.Load1), the raw 1-minute load average. Receiver metadata.yaml (load scraper): system.cpu.load_average.1m 'Average CPU Load over 1 minute' (gauge, {thread}). Same quantity, value as is."
+  system.load.5:
+    otel: "system.cpu.load_average.5m"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{thread}"
+    status: exact
+    note: "check source load.go: sender.Gauge('system.load.5', avg.Load5). Receiver metadata.yaml: system.cpu.load_average.5m (gauge, {thread}). Same quantity, value as is."
+  system.load.15:
+    otel: "system.cpu.load_average.15m"
+    ddKind: gauge
+    otelKind: gauge
+    unit: "{thread}"
+    status: exact
+    note: "check source load.go: sender.Gauge('system.load.15', avg.Load15). Receiver metadata.yaml: system.cpu.load_average.15m (gauge, {thread}). Same quantity, value as is."
+  # ---- Memory (memory_nix.go: gopsutil mem.VirtualMemory fields / mbSize, mbSize = 1024*1024)
+  system.mem.total:
+    otel: "system.memory.limit"
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: exact
+    note: "check source memory_nix.go: sender.Gauge('system.mem.total', v.Total/mbSize) (MiB). Receiver metadata.yaml: system.memory.limit 'Total bytes of memory available' (non-monotonic sum, By); memory_scraper.go records memInfo.Total. Same field, bytes -> MiB: scale 1/1048576. Disabled by default in the receiver (enable system.memory.limit)."
+  system.mem.free:
+    otel: "system.memory.usage"
+    labels: {state: "free"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: exact
+    note: "check source memory_nix.go: sender.Gauge('system.mem.free', v.Free/mbSize) (MiB). Receiver metadata.yaml: system.memory.usage (non-monotonic sum, By) state=free; memory_scraper_linux.go records memInfo.Free. Same field, scale 1/1048576."
+  system.mem.usable:
+    otel: "system.linux.memory.available"
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: approximate
+    note: "check source memory_nix.go: sender.Gauge('system.mem.usable', v.Available/mbSize) (MiB). Receiver metadata.yaml: system.linux.memory.available (non-monotonic sum, By, Linux only); memory_scraper_linux.go records memInfo.Available. Same field on Linux, scale 1/1048576; approximate because the receiver has no equivalent off Linux (the Datadog check reports it on every unix). Disabled by default in the receiver (enable system.linux.memory.available)."
+  system.mem.used:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "(system.memory.limit - system.memory.usage{state=free}) / 1048576"
+    note: "check source memory_nix.go: system.mem.used = (v.Total - v.Free)/mbSize. Receiver metadata.yaml: system.memory.usage state=used is Total - Free - Buffers - Cached (or Total - Available behind a feature gate, memory_scraper_linux.go), not the same quantity, so the equivalent is limit minus free. system.memory.limit is disabled by default in the receiver. Not translated yet (derived)."
+  system.mem.pct_usable:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "system.linux.memory.available / system.memory.limit"
+    note: "check source memory_nix.go: sender.Gauge('system.mem.pct_usable', v.Available/v.Total) (a fraction 0-1). Receiver metadata.yaml: system.linux.memory.available / system.memory.limit, both disabled by default in the receiver. Not translated yet (derived)."
+  system.mem.cached:
+    otel: "system.memory.usage"
+    labels: {state: "cached"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: exact
+    note: "check source memory_nix.go (linux): sender.Gauge('system.mem.cached', v.Cached/mbSize) (MiB). Receiver metadata.yaml: system.memory.usage state=cached; memory_scraper_linux.go records memInfo.Cached. Same field, scale 1/1048576."
+  system.mem.buffered:
+    otel: "system.memory.usage"
+    labels: {state: "buffered"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: exact
+    note: "check source memory_nix.go (linux): sender.Gauge('system.mem.buffered', v.Buffers/mbSize) (MiB). Receiver metadata.yaml: system.memory.usage state=buffered; memory_scraper_linux.go records memInfo.Buffers. Same field, scale 1/1048576."
+  system.mem.slab_reclaimable:
+    otel: "system.memory.usage"
+    labels: {state: "slab_reclaimable"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: exact
+    note: "check source memory_nix.go (linux): sender.Gauge('system.mem.slab_reclaimable', v.Sreclaimable/mbSize) (MiB). Receiver metadata.yaml: system.memory.usage state=slab_reclaimable; memory_scraper_linux.go records memInfo.Sreclaimable. Same field, scale 1/1048576."
+  system.mem.shared:
+    otel: "system.memory.linux.shared"
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "By"
+    scale: 9.5367431640625e-07
+    status: exact
+    note: "check source memory_nix.go (linux): sender.Gauge('system.mem.shared', v.Shared/mbSize) (MiB). Receiver metadata.yaml: system.memory.linux.shared (non-monotonic sum, By, Linux only); memory_scraper_linux.go records memInfo.Shared. Same field, scale 1/1048576. Disabled by default in the receiver."
+  # ---- Disk IO (iostats_nix.go, per device; gopsutil disk.IOCounters)
+  system.io.util:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "100 * rate(system.disk.io_time)"
+    note: "check source iostats_nix.go: util = delta(IoTime ms) / (delta ms / 10) * 100, submitted as sender.Gauge('system.io.util', util/10), i.e. percent of wall time the device was busy, per device. Receiver metadata.yaml: system.disk.io_time 'Time disk spent activated' (monotonic sum, s, per device; disk_scraper_others.go records IoTime in seconds). Its per-second rate times 100 is the same percent. A Datadog gauge over an OTel counter has no kind rule, so this is a derived expression. Not translated yet (derived)."
+  system.io.r_s:
+    otel: "system.disk.operations"
+    labels: {direction: "read"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{operations}"
+    status: approximate
+    note: "check source iostats_nix.go: sender.Rate('system.io.r_s', ReadCount) per device (reads/s). Receiver metadata.yaml: system.disk.operations (monotonic sum) direction=read; disk_scraper_others.go records ReadCount. Same counter; D-18: rate() on the cumulative counter, approximate."
+  system.io.w_s:
+    otel: "system.disk.operations"
+    labels: {direction: "write"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{operations}"
+    status: approximate
+    note: "check source iostats_nix.go: sender.Rate('system.io.w_s', WriteCount) per device. Receiver metadata.yaml: system.disk.operations direction=write (WriteCount). D-18: rate(), approximate."
+  system.io.rrqm_s:
+    otel: "system.disk.merged"
+    labels: {direction: "read"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{operations}"
+    status: approximate
+    note: "check source iostats_nix.go: sender.Rate('system.io.rrqm_s', MergedReadCount) per device. Receiver metadata.yaml: system.disk.merged (monotonic sum) direction=read; disk_scraper_others_linux.go records MergedReadCount. D-18: rate(), approximate."
+  system.io.wrqm_s:
+    otel: "system.disk.merged"
+    labels: {direction: "write"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{operations}"
+    status: approximate
+    note: "check source iostats_nix.go: sender.Rate('system.io.wrqm_s', MergedWriteCount) per device. Receiver metadata.yaml: system.disk.merged direction=write (MergedWriteCount). D-18: rate(), approximate."
+  system.io.rkb_s:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "rate(system.disk.io{direction=read}) / 1024"
+    note: "check source iostats_nix.go: sender.Gauge('system.io.rkb_s', delta(ReadBytes) / kB / deltaSecond), kB = 1024 (iostats.go). Receiver metadata.yaml: system.disk.io (monotonic sum, By) direction=read (ReadBytes). The check computes the rate itself and submits a gauge, so this is a derived expression. Not translated yet (derived)."
+  system.io.wkb_s:
+    otel: null
+    ddKind: gauge
+    otelKind: null
+    status: approximate
+    derived: "rate(system.disk.io{direction=write}) / 1024"
+    note: "check source iostats_nix.go: sender.Gauge('system.io.wkb_s', delta(WriteBytes) / kB / deltaSecond), kB = 1024. Receiver metadata.yaml: system.disk.io direction=write (WriteBytes). Derived, not translated yet."
+  # ---- Network (network.go submitInterfaceMetrics: sender.Rate on gopsutil net.IOCounters, tags device/device_name)
+  system.net.bytes_rcvd:
+    otel: "system.network.io"
+    labels: {direction: "receive"}
+    ddKind: rate
+    otelKind: counter
+    unit: "By"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.bytes_rcvd', BytesRecv) per interface (bytes/s; metadata.csv says gauge, the check submits a rate). Receiver metadata.yaml: system.network.io (monotonic sum, By) direction=receive; network_scraper.go records BytesRecv. Same counter; D-18: rate() on the cumulative counter, approximate."
+  system.net.bytes_sent:
+    otel: "system.network.io"
+    labels: {direction: "transmit"}
+    ddKind: rate
+    otelKind: counter
+    unit: "By"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.bytes_sent', BytesSent) per interface (bytes/s). Receiver metadata.yaml: system.network.io direction=transmit (BytesSent). D-18: rate(), approximate."
+  system.net.packets_in.count:
+    otel: "system.network.packets"
+    labels: {direction: "receive"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{packets}"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.packets_in.count', PacketsRecv). Receiver metadata.yaml: system.network.packets (monotonic sum) direction=receive (PacketsRecv). D-18: rate(), approximate."
+  system.net.packets_out.count:
+    otel: "system.network.packets"
+    labels: {direction: "transmit"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{packets}"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.packets_out.count', PacketsSent). Receiver metadata.yaml: system.network.packets direction=transmit (PacketsSent). D-18: rate(), approximate."
+  system.net.packets_in.error:
+    otel: "system.network.errors"
+    labels: {direction: "receive"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{errors}"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.packets_in.error', Errin). Receiver metadata.yaml: system.network.errors (monotonic sum) direction=receive (Errin). D-18: rate(), approximate."
+  system.net.packets_out.error:
+    otel: "system.network.errors"
+    labels: {direction: "transmit"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{errors}"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.packets_out.error', Errout). Receiver metadata.yaml: system.network.errors direction=transmit (Errout). D-18: rate(), approximate."
+  system.net.packets_in.drop:
+    otel: "system.network.dropped"
+    labels: {direction: "receive"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{packets}"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.packets_in.drop', Dropin). Receiver metadata.yaml: system.network.dropped (monotonic sum) direction=receive (Dropin). D-18: rate(), approximate."
+  system.net.packets_out.drop:
+    otel: "system.network.dropped"
+    labels: {direction: "transmit"}
+    ddKind: rate
+    otelKind: counter
+    unit: "{packets}"
+    status: approximate
+    note: "check source network.go: sender.Rate('system.net.packets_out.drop', Dropout). Receiver metadata.yaml: system.network.dropped direction=transmit (Dropout). D-18: rate(), approximate."

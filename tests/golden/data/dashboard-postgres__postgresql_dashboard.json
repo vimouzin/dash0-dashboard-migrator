@@ -1,0 +1,287 @@
+[
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-0",
+    "kind": "panel",
+    "title": "Rows fetched / returned / inserted / updated (per sec)",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"postgresql.tup_fetched\"}[$__interval] anchored))",
+      "avg (rate({otel_metric_name=\"postgresql.tup_returned\"}[$__interval] anchored))",
+      "avg (rate({otel_metric_name=\"postgresql.tup_inserted\"}[$__interval] anchored))",
+      "avg (rate({otel_metric_name=\"postgresql.tup_updated\"}[$__interval] anchored))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-1",
+    "kind": "panel",
+    "title": "Connections",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "avg by (db) (avg_over_time({otel_metric_name=\"postgresql.backends\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.rollup.default",
+      "space.agg",
+      "label.default",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.tag-default",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form",
+      "exact-under tag.unmapped"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-2",
+    "kind": "panel",
+    "title": "Inserts / updates / deletes (per sec)",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"postgresql.tup_inserted\"}[$__interval] anchored))",
+      "avg (rate({otel_metric_name=\"postgresql.tup_deleted\"}[$__interval] anchored))",
+      "avg (rate({otel_metric_name=\"postgresql.tup_updated\"}[$__interval] anchored))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.ddrate.plain.anchored",
+      "space.default-avg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-3",
+    "kind": "panel",
+    "title": "Disk utilization (%)",
+    "widget_type": "timeseries",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.derived"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-4",
+    "kind": "panel",
+    "title": "System load",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "avg (avg_over_time({otel_metric_name=\"system.cpu.load_average.1m\"}[$__interval]))",
+      "avg (avg_over_time({otel_metric_name=\"system.cpu.load_average.5m\"}[$__interval]))",
+      "avg (avg_over_time({otel_metric_name=\"system.cpu.load_average.15m\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "time.rollup.default",
+      "space.default-avg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-5",
+    "kind": "panel",
+    "title": "CPU usage (%)",
+    "widget_type": "timeseries",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "select.labels",
+      "time.rollup.default",
+      "select.metric.transform",
+      "space.default-avg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form",
+      "manual metric.derived",
+      "manual metric.no_equivalent"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-6",
+    "kind": "panel",
+    "title": "I/O wait (%)",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "100 * max (avg_over_time({otel_metric_name=\"system.cpu.utilization\", state=\"wait\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "select.labels",
+      "time.rollup.default",
+      "select.metric.transform",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-7",
+    "kind": "panel",
+    "title": "System memory",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "9.5367431640625e-7 * sum (avg_over_time({otel_metric_name=\"system.linux.memory.available\"}[$__interval]))",
+      "9.5367431640625e-7 * sum (avg_over_time({otel_metric_name=\"system.memory.limit\"}[$__interval])) - 9.5367431640625e-7 * sum (avg_over_time({otel_metric_name=\"system.linux.memory.available\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "time.rollup.default",
+      "select.metric.transform",
+      "space.agg",
+      "arith.same-groups",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-postgres__postgresql_dashboard/w-8",
+    "kind": "panel",
+    "title": "Network traffic (per sec)",
+    "widget_type": "timeseries",
+    "status": "bounded",
+    "promql": [
+      "sum (rate({otel_metric_name=\"system.network.io\", direction=\"receive\"}[$__interval] anchored))",
+      "sum (rate({otel_metric_name=\"system.network.io\", direction=\"transmit\"}[$__interval] anchored))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "select.labels",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.var-default"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under scope.var.free-form"
+    ]
+  }
+]

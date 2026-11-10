@@ -1,0 +1,470 @@
+[
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-5246207281015974/w-7370311124819436",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-5246207281015974/w-5476438101081174",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-2550775938226890/w-2550775938226891",
+    "kind": "panel",
+    "title": "Dropped connections, last 15m",
+    "widget_type": "query_value",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.derived"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-2550775938226890/w-1275051521075692",
+    "kind": "panel",
+    "title": "Agent connection to NGINX",
+    "widget_type": "check_status",
+    "status": "unsupported",
+    "promql": [],
+    "rules": [
+      "widget.unsupported",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual widget.unsupported"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-2550775938226890/w-4071809555103542",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-2550775938226890/w-6613327356980228",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-2550775938226890/w-4233428487476186",
+    "kind": "panel",
+    "title": "Nginx metric monitors",
+    "widget_type": "manage_status",
+    "status": "unsupported",
+    "promql": [],
+    "rules": [
+      "widget.unsupported",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual widget.unsupported"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-5337379359809210/w-8461082730453168",
+    "kind": "panel",
+    "title": "Nginx Watchdog alerts",
+    "widget_type": "event_stream",
+    "status": "unsupported",
+    "promql": [],
+    "rules": [
+      "widget.unsupported",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual widget.unsupported"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-5337379359809210/w-2165182479929144",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-5323257507468104/w-518123602946722",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-5323257507468104/w-2423812479006580",
+    "kind": "panel",
+    "title": "NGINX Error logs",
+    "widget_type": "log_stream",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "logs.stream",
+      "log.match.reserved.approx",
+      "log.match.value",
+      "log.match.attr",
+      "panel.style",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.logtable-keys",
+      "A.log-source",
+      "A.log-attr-default",
+      "A.style"
+    ],
+    "findings": [
+      "exact-under logs.stream",
+      "exact-under panel.style"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-3441805486544432",
+    "kind": "panel",
+    "title": "Requests per second",
+    "widget_type": "query_value",
+    "status": "bounded",
+    "promql": [
+      "avg (rate({otel_metric_name=\"nginx.requests\"}[$__interval] anchored))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.metric.approximate",
+      "scope.all",
+      "time.ddrate.plain.anchored",
+      "space.agg",
+      "widget.query_value",
+      "panel.conditional-format",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.no-reset",
+      "A.regular-sampling",
+      "A.same-samples",
+      "A.style"
+    ],
+    "findings": [
+      "bounded metric.approximate",
+      "exact-under panel.conditional-format",
+      "exact-under widget.query_value"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-3441805486544433",
+    "kind": "panel",
+    "title": "Requests per second by host",
+    "widget_type": "hostmap",
+    "status": "unsupported",
+    "promql": [],
+    "rules": [
+      "widget.unsupported",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual widget.unsupported"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-8663159993822306",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-183855449379928",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-183855449379929",
+    "kind": "panel",
+    "title": "Requests: reading, writing, waiting",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"nginx.connections_current\", state=\"reading\"}[$__interval]))",
+      "sum (avg_over_time({otel_metric_name=\"nginx.connections_current\", state=\"writing\"}[$__interval]))",
+      "sum (avg_over_time({otel_metric_name=\"nginx.connections_current\", state=\"waiting\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.labels",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-4851971395880803",
+    "kind": "panel",
+    "title": "Change in overall requests per second",
+    "widget_type": "change",
+    "status": "unsupported",
+    "promql": [],
+    "rules": [
+      "widget.unsupported",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual widget.unsupported"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-474384486385996/w-4851971395880802",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-1344580655093670/w-1344580655093671",
+    "kind": "panel",
+    "title": "Dropped connections per second",
+    "widget_type": "timeseries",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "widget.unknown",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [],
+    "findings": [
+      "manual metric.derived"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-1344580655093670/w-1344580655093672",
+    "kind": "panel",
+    "title": "Active connections per second",
+    "widget_type": "timeseries",
+    "status": "exact-under",
+    "promql": [
+      "sum (avg_over_time({otel_metric_name=\"nginx.connections_current\", state=\"active\"}[$__interval]))"
+    ],
+    "rules": [
+      "select.metric.mapped",
+      "select.labels",
+      "time.rollup.default",
+      "space.agg",
+      "widget.timeseries",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.align",
+      "A.boundary",
+      "A.var-default"
+    ],
+    "findings": [
+      "exact-under scope.var.free-form"
+    ]
+  },
+  {
+    "id": "dd-dash-nginx__NGINX-Overview_dashboard/w-1344580655093670/w-5157405700596810",
+    "kind": "panel",
+    "title": "note",
+    "widget_type": "note",
+    "status": "exact-under",
+    "promql": [],
+    "rules": [
+      "widget.note",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item"
+    ],
+    "assumptions": [
+      "A.style"
+    ],
+    "findings": [
+      "exact-under widget.note"
+    ]
+  }
+]

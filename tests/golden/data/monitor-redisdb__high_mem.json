@@ -1,0 +1,56 @@
+[
+  {
+    "id": "dd-monitor-redisdb__high_mem",
+    "kind": "alert",
+    "title": "[Redis] High memory consumption",
+    "widget_type": "query alert",
+    "status": "exact-under",
+    "promql": [
+      "avg_over_time((100 * avg (avg_over_time({otel_metric_name=\"redis.memory.used\"}[1m])) / avg (avg_over_time({otel_metric_name=\"redis.maxmemory\"}[1m])))[5m:1m]) > $__threshold"
+    ],
+    "rules": [
+      "classify.monitor.metric",
+      "alert.opt.notification",
+      "alert.opt.new_group_delay",
+      "alert.opt.require_full_window.true",
+      "select.metric.mapped",
+      "scope.all",
+      "time.rollup.monitor-bucket",
+      "space.agg",
+      "arith.number",
+      "arith.same-groups",
+      "arith.div",
+      "monitor.window",
+      "monitor.cmp.gt",
+      "alert.threshold.both",
+      "alert.id",
+      "alert.name",
+      "alert.tags",
+      "alert.msg.summary",
+      "alert.msg.conditional",
+      "alert.msg.value",
+      "alert.defaults",
+      "emit.rules-disabled",
+      "emit.certificate",
+      "validate.preflight",
+      "emit.id",
+      "emit.single-item",
+      "emit.rules-disabled"
+    ],
+    "assumptions": [
+      "A.boundary",
+      "A.eval-1m",
+      "A.full-window",
+      "A.monitor-rollup-60s",
+      "A.msg-conditional",
+      "A.no-new-groups",
+      "A.nonzero-denominator",
+      "A.notify-manual"
+    ],
+    "findings": [
+      "exact-under alert.defaults",
+      "exact-under alert.msg.conditional",
+      "exact-under monitor.option"
+    ]
+  }
+]

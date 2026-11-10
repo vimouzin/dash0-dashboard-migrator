@@ -1,0 +1,57 @@
+# Hand-curated (not generated). Datadog nginx metric -> OTel nginxreceiver metric. Schema: src/ir/mappings.ts (CONTRACT-001).
+# Evidence for every row: the metric's type/unit/description in the Datadog metadata.csv, how the check submits it
+# (datadog_check), and the metric's type/unit/description/attributes in the receiver metadata.yaml.
+# Scope: the open-source stub_status metrics (what the receiver scrapes). NGINX Plus / VTS metrics have no receiver equivalent.
+version: 1
+integration: nginx
+sources:
+  datadog_check: "https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/datadog_checks/nginx/nginx.py"
+  datadog_metadata: "https://github.com/DataDog/integrations-core/blob/a9b9e42b7e484861ecbd1f5919da7c52a694b74d/nginx/metadata.csv"
+  otel_receiver: "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.164.0/receiver/nginxreceiver/metadata.yaml"
+metrics:
+  nginx.net.connections:
+    otel: "nginx.connections_current"
+    labels: {state: "active"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "{connections}"
+    status: exact
+    note: "metadata.csv: 'The total number of active connections' (gauge, connection; check: stub_status 'Active connections'). Receiver metadata.yaml: nginx.connections_current 'The current number of nginx connections by state' (non-monotonic sum) with state=active, read from the same stub_status field."
+  nginx.net.reading:
+    otel: "nginx.connections_current"
+    labels: {state: "reading"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "{connections}"
+    status: exact
+    note: "metadata.csv: 'The number of connections reading client requests' (gauge, connection; stub_status Reading). Receiver metadata.yaml: nginx.connections_current with state=reading (same stub_status field)."
+  nginx.net.writing:
+    otel: "nginx.connections_current"
+    labels: {state: "writing"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "{connections}"
+    status: exact
+    note: "metadata.csv: 'The number of connections waiting on upstream responses and/or writing responses back to the client' (gauge, connection; stub_status Writing). Receiver metadata.yaml: nginx.connections_current with state=writing (same stub_status field)."
+  nginx.net.waiting:
+    otel: "nginx.connections_current"
+    labels: {state: "waiting"}
+    ddKind: gauge
+    otelKind: updowncounter
+    unit: "{connections}"
+    status: exact
+    note: "metadata.csv: 'The number of keep-alive connections waiting for work' (gauge, connection; stub_status Waiting). Receiver metadata.yaml: nginx.connections_current with state=waiting (same stub_status field)."
+  nginx.net.request_per_s:
+    otel: "nginx.requests"
+    ddKind: rate
+    otelKind: counter
+    unit: "{requests}"
+    status: approximate
+    note: "metadata.csv: 'Rate of requests processed' (rate, request/second; check: self.rate on stub_status 'requests'). Receiver metadata.yaml: nginx.requests 'Total number of requests made to the server since it started' (monotonic sum). Same counter; D-18: ddKind rate -> rate() on the cumulative counter, approximate."
+  nginx.net.conn_dropped_per_s:
+    otel: null
+    ddKind: rate
+    otelKind: null
+    status: approximate
+    derived: "nginx.connections_accepted - nginx.connections_handled"
+    note: "metadata.csv: 'Rate of connections dropped' (rate; check: self.rate('nginx.net.conn_dropped_per_s', accepts - handled)). Receiver metadata.yaml: nginx.connections_accepted and nginx.connections_handled (both monotonic sums); rate(accepted) - rate(handled) gives it."

@@ -1,0 +1,35 @@
+{
+  "name": "dash0-dashboard-migrator",
+  "version": "0.5.6",
+  "description": "Deterministic Datadog -> Dash0 migrator: dashboards to Perses, queries to PromQL, monitors to Dash0 check rules.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "dd2dash0": "dist/bin.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc -p . --noEmit",
+    "integrations-core": "bash scripts/test-integrations-core.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "fast-check": "^3.23.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@lezer/lr": "^1.4.12",
+    "@prometheus-io/lezer-promql": "^0.316.0",
+    "yaml": "^2.6.1"
+  },
+  "optionalDependencies": {
+    "@elevenlabs/client": "1.30.0"
+  }
+}

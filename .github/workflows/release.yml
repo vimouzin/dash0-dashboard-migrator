@@ -1,0 +1,104 @@
+# Standalone dd2dash0 executables (no Node needed), built with `bun build --compile`.
+#   pull request  -> build + smoke test every target, upload them as workflow artifacts (nothing is published)
+#   tag v*        -> the same, then a GitHub Release with one archive per OS
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  pull_request:
+    paths: ["src/**", "mappings/**", "package.json", "package-lock.json", "scripts/release/**", ".github/workflows/release.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BUN_VERSION: "1.4.4"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: tag matches the version in the code
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          cli="$(grep -oE 'export const VERSION = "[^"]+"' src/cli.ts | cut -d'"' -f2)"
+          if [ "$tag" != "$pkg" ] || [ "$tag" != "$cli" ]; then
+            echo "::error::tag v$tag, but package.json says $pkg and src/cli.ts says $cli. Raise the version in both before tagging."
+            exit 1
+          fi
+      - run: npx tsc -p . --noEmit
+      - run: npx vitest run
+
+  build:
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { runner: macos-latest, target: bun-darwin-arm64, name: dd2dash0-macos-arm64, native: true }
+          - { runner: macos-latest, target: bun-darwin-x64, name: dd2dash0-macos-x64, native: false }
+          - { runner: ubuntu-latest, target: bun-linux-x64, name: dd2dash0-linux-x64, native: true }
+          - { runner: ubuntu-latest, target: bun-linux-arm64, name: dd2dash0-linux-arm64, native: false }
+          - { runner: ubuntu-latest, target: bun-windows-x64, name: dd2dash0-windows-x64, native: false, exe: .exe }
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      # A failed Bun download (GitHub 504s happen) is not fatal: build.sh then runs Bun from the npm registry.
+      - uses: oven-sh/setup-bun@v2
+        continue-on-error: true
+        with: { bun-version: "${{ env.BUN_VERSION }}" }
+      - run: npm ci --omit=optional
+      - name: "compile (one file, the mapping tables are embedded)"
+        run: |
+          out="dist/${{ matrix.name }}"
+          mkdir -p "$out"
+          scripts/release/build.sh ${{ matrix.target }} "$out/dd2dash0${{ matrix.exe }}"
+      - name: sign (ad hoc, required for Apple silicon)
+        if: startsWith(matrix.target, 'bun-darwin')
+        run: codesign --force --sign - "dist/${{ matrix.name }}/dd2dash0"
+      - name: smoke test (offline dry run on the fixtures)
+        if: matrix.native
+        run: |
+          bin="$PWD/dist/${{ matrix.name }}/dd2dash0"
+          "$bin" --version
+          tmp="$(mktemp -d)" && cd "$tmp"
+          export HOME="$tmp"   # a clean home and an empty folder: the built-in tables must work on their own
+          "$bin" --yes --dry-run --input "$GITHUB_WORKSPACE/fixtures/datadog" < /dev/null
+          test -f dd2dash0-run/*/report.md
+      - name: archive
+        run: |
+          cd dist
+          # The archive holds just the executable, at its top level: unpack and run ./dd2dash0.
+          if [ -n "${{ matrix.exe }}" ]; then (cd "${{ matrix.name }}" && zip -q "../${{ matrix.name }}.zip" dd2dash0.exe); else tar czf "${{ matrix.name }}.tar.gz" -C "${{ matrix.name }}" dd2dash0; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: dist/${{ matrix.name }}.*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: artifacts, merge-multiple: true }
+      - name: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd artifacts
+          sha256sum * > SHA256SUMS.txt
+          gh release create "$GITHUB_REF_NAME" * --repo "$GITHUB_REPOSITORY" --title "dd2dash0 $GITHUB_REF_NAME" --generate-notes

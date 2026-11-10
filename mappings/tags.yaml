@@ -1,0 +1,87 @@
+# Datadog tag -> Dash0 PromQL label (the OTel attribute with dots replaced by underscores).
+# Schema: src/ir/mappings.ts (CONTRACT-001). Unlisted tags are kept as they are, with a "tag.unmapped" finding.
+version: 1
+tags:
+  service:
+    label: service_name
+    status: exact
+    note: "Datadog unified service tagging -> OTel service.name (docs.datadoghq.com/opentelemetry/schema_semantics/semantic_mapping/)"
+  env:
+    label: deployment_environment_name
+    status: approximate
+    note: "OTel deployment.environment.name; older SDKs emit deployment.environment instead"
+  version:
+    label: service_version
+    status: exact
+    note: "OTel service.version"
+  host:
+    label: host_name
+    status: approximate
+    note: "Datadog resolves host from several attributes (host, datadog.host.name, cloud ids, k8s.node.name); OTel host.name is the common case"
+  redis_host:
+    label: server_address
+    status: approximate
+    note: "redisreceiver resource attribute server.address; disabled by default, enable it in the Collector (knowledge base D-22). Value format UNVERIFIED"
+  redis_port:
+    label: server_port
+    status: approximate
+    note: "redisreceiver resource attribute server.port; disabled by default. UNVERIFIED"
+  redis_role:
+    label: role
+    status: approximate
+    note: "redisreceiver attribute role (replica | primary); Datadog uses master | slave or role values. Value mapping UNVERIFIED"
+  command:
+    label: cmd
+    status: approximate
+    note: "redis.cmd.* attribute cmd; Datadog tags the same Redis command name. UNVERIFIED on live data"
+  redis_db:
+    label: db
+    status: approximate
+    note: "redis.db.* attribute db; Datadog values look like db0, OTel values like 0. Value mapping UNVERIFIED"
+  # Kubernetes: Datadog's tagger tags (kubelet + kubernetes_state checks) -> the OTel k8s.* resource attributes the
+  # kubeletstats / k8s_cluster receivers (or k8sattributes) set. Pairs from Datadog's OTel semantic mapping
+  # (docs.datadoghq.com/opentelemetry/schema_semantics/semantic_mapping/). Values are the same object names.
+  kube_namespace:
+    label: k8s_namespace_name
+    status: exact
+    note: "OTel k8s.namespace.name"
+  pod_name:
+    label: k8s_pod_name
+    status: exact
+    note: "OTel k8s.pod.name"
+  kube_container_name:
+    label: k8s_container_name
+    status: exact
+    note: "OTel k8s.container.name"
+  container_name:
+    label: k8s_container_name
+    status: approximate
+    note: "Datadog container_name is the runtime's container name; in Kubernetes it usually equals k8s.container.name"
+  kube_deployment:
+    label: k8s_deployment_name
+    status: exact
+    note: "OTel k8s.deployment.name"
+  kube_replica_set:
+    label: k8s_replicaset_name
+    status: exact
+    note: "OTel k8s.replicaset.name"
+  kube_daemon_set:
+    label: k8s_daemonset_name
+    status: exact
+    note: "OTel k8s.daemonset.name"
+  kube_stateful_set:
+    label: k8s_statefulset_name
+    status: exact
+    note: "OTel k8s.statefulset.name"
+  kube_job:
+    label: k8s_job_name
+    status: exact
+    note: "OTel k8s.job.name"
+  kube_cronjob:
+    label: k8s_cronjob_name
+    status: exact
+    note: "OTel k8s.cronjob.name"
+  kube_cluster_name:
+    label: k8s_cluster_name
+    status: approximate
+    note: "OTel k8s.cluster.name; not set by the k8s receivers, only by resourcedetection or a resource processor"

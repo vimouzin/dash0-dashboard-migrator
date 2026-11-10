@@ -1,0 +1,40 @@
+# Datadog log search -> Dash0 dash0.logs labels (T12).
+# Facts verified LIVE on 2026-11-07 against Dash0 (docs/research/dash0.md, "dash0.logs labels"):
+#  - log and resource attributes become labels with dots replaced by underscores;
+#  - severity is otel_log_severity_range (TRACE|DEBUG|INFO|WARN|ERROR|FATAL), normalised;
+#  - the body is otel_log_body (regex matching is unanchored);
+#  - Dash0 upgrades some deprecated semconv attributes (db.system -> db.system.name, ...).
+version: 1
+
+# Datadog reserved attributes and common tags (keys without '@') -> Dash0 label.
+reserved:
+  service: { label: service_name, status: exact }
+  host: { label: host_name, status: exact }
+  env: { label: deployment_environment_name, status: exact }
+  version: { label: service_version, status: exact }
+  trace_id: { label: otel_log_trace_id, status: approximate }
+  # Datadog's log `source` (the integration) has no OTel counterpart. It's kept as a `source` attribute,
+  # which a shipper has to set; the assumption is reported (A.log-source).
+  source: { label: source, status: approximate }
+
+# OTel attributes that Dash0 stores under their current semconv name (verified live: db.system, deployment.environment).
+renames:
+  db.system: db.system.name
+  deployment.environment: deployment.environment.name
+
+# Datadog status -> OTel severity range. Datadog has more levels than OTel ranges; levels with no 1:1 range are approximate.
+severity:
+  debug: { range: DEBUG, status: exact }
+  trace: { range: TRACE, status: exact }
+  info: { range: INFO, status: exact }
+  ok: { range: INFO, status: approximate }
+  notice: { range: INFO, status: approximate }
+  warn: { range: WARN, status: exact }
+  warning: { range: WARN, status: exact }
+  error: { range: ERROR, status: exact }
+  err: { range: ERROR, status: exact }
+  critical: { range: FATAL, status: approximate }
+  alert: { range: FATAL, status: approximate }
+  emergency: { range: FATAL, status: approximate }
+  emerg: { range: FATAL, status: approximate }
+  fatal: { range: FATAL, status: exact }

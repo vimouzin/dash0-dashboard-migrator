@@ -1,0 +1,16 @@
+# Datadog notification handle -> EXISTING Dash0 notification channel id (brief p.7: "supported notification settings").
+# Read by `dd2dash0 migrate` (override with --channels <file>); parsed by src/translate/alerts/channels.ts.
+#
+# - Handles are matched case-insensitively; the leading @ is optional.
+# - Ids come from Dash0: Settings -> Notification channels. dd2dash0 never creates a channel.
+# - A mapped handle is bound on the check rule (annotation dash0.com/notification-channel-ids). A handle used only
+#   in {{#is_alert}} gets ":critical-only".
+# - An unmapped handle stays a manual action in the report.
+#
+# Example:
+#   channels:
+#     "@slack-ops-alerts": 6f1c2a8e-0b0d-4c1e-9a52-3d1f0e7b9c44
+#     "@pagerduty-db": 9b7e4d21-55aa-4f0e-8c3b-2a6d1e9f0a13
+#
+# Empty by default: channel ids are specific to your Dash0 org, so every handle is reported as manual until mapped.
+channels: {}

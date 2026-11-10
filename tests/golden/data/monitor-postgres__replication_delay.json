@@ -1,0 +1,30 @@
+[
+  {
+    "id": "dd-monitor-postgres__replication_delay",
+    "kind": "alert",
+    "title": "[Postgres] Replication delay is abnormally high on {{host.name}}",
+    "widget_type": "query alert",
+    "status": "manual",
+    "promql": [],
+    "rules": [
+      "classify.monitor.metric",
+      "alert.opt.notification",
+      "alert.opt.new_group_delay",
+      "alert.opt.require_full_window.true",
+      "alert.opt.unknown",
+      "alert.threshold.recovery",
+      "fn.anomalies",
+      "emit.certificate"
+    ],
+    "assumptions": [
+      "A.full-window",
+      "A.no-new-groups",
+      "A.notify-manual"
+    ],
+    "findings": [
+      "exact-under monitor.option",
+      "manual fn.anomalies",
+      "manual monitor.option"
+    ]
+  }
+]
